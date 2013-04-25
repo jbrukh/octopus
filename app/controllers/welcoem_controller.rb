@@ -1,2 +1,0 @@
-class WelcoemController < ApplicationController
-end

@@ -17,6 +17,6 @@
 //= require ember
 //= require ember-data
 //= require_self
-//= require ruby
-Ruby = Ember.Application.create();
+//= require brain
+App = Ember.Application.create();
 //= require_tree .
