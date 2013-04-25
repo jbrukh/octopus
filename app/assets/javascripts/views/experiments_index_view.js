@@ -28,8 +28,8 @@ App.ExperimentsIndexView = Ember.View.extend({
     this.duration = 50;
     this.now = new Date(Date.now() - this.duration);
     this.width = 940;
-    this.height = 40;
-    this.bufferSize = 400;
+    this.height = 60;
+    this.bufferSize = 100;
 
     var duration = this.duration;
     var now = this.now;
@@ -83,7 +83,7 @@ App.ExperimentsIndexView = Ember.View.extend({
 
   destroyGraphs: function(){
     console.log('destroy graphs');
-    this.buffers();
+    this.buffers.stop();
   },
 
   createBuffers: function(dataAdapter){

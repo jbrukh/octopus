@@ -3,9 +3,13 @@ App.ExperimentsIndexController = Ember.Controller.extend(Ember.Evented, {
     console.log('starting experiment');
     this.set('isRunning', true);
 
-    var dataAdapter = App.MockDataAdapter.create({
-      resolution: 50,
-      channels: 8
+    //var dataAdapter = App.MockDataAdapter.create({
+    //  resolution: 50,
+    //  channels: 8
+    //});
+
+    var dataAdapter = App.WebSocketDataAdapter.create({
+      url: 'ws://localhost:8000/device'
     });
 
     this.set('dataAdapter', dataAdapter);
