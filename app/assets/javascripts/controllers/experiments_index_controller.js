@@ -1,4 +1,4 @@
-App.ExperimentsIndexController = Ember.Controller.extend({
+App.ExperimentsIndexController = Ember.Controller.extend(Ember.Evented, {
   start: function(){
     console.log('starting experiment');
     this.set('isRunning', true);
@@ -11,6 +11,8 @@ App.ExperimentsIndexController = Ember.Controller.extend({
     this.set('dataAdapter', dataAdapter);
 
     dataAdapter.start();
+
+    this.trigger('didStart');
   },
   stop: function(){
     console.log('stopping experiment');
@@ -18,5 +20,6 @@ App.ExperimentsIndexController = Ember.Controller.extend({
 
     var dataAdapter = this.get('dataAdapter');
     dataAdapter.stop();
+    this.trigger('didStop');
   }
 });

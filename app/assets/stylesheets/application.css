@@ -11,3 +11,9 @@
  *= require_self
  *= require_tree .
  */
+
+path.line {
+  stroke: steelblue;
+  stroke-width: 1;
+  fill: none;
+}
