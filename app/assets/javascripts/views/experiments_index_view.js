@@ -157,7 +157,7 @@ App.ExperimentsIndexView = Ember.View.extend({
     buffers.register(function(channels, frequency){
       _this.now = new Date();
       _this.x.domain([now - (bufferSize - 2) * duration, now - duration]);
-      _this.y.domain([0, d3.max(channels[channel])]);
+      _this.y.domain([d3.min(channels[channel]), d3.max(channels[channel])]);
 
       svg.select(".line")
           .attr("d", _this.line)
