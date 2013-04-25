@@ -5,6 +5,8 @@ gem 'rails', '4.0.0.beta1'
 
 gem 'sqlite3'
 
+gem 'ember-source', '1.0.0.rc3'
+gem 'handlebars-source', '1.0.0.rc3'
 gem "ember-rails"
 
 # Gems used only for assets and not required
