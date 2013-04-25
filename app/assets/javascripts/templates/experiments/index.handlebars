@@ -1,0 +1,16 @@
+<div class="page-header">
+  <div class="pull-right">
+    {{#unless isRunning}}
+      <a {{action start}} class="btn">Start</a>
+    {{else}}
+      <a {{action stop}} class="btn">Stop</a>
+    {{/unless}}
+  </div>
+  <h2>Experiments</h2>
+</div>
+
+{{#if isRunning}}
+  <div class="alert alert-info">
+    Reading {{dataAdapter.channels}} channels @ resolution of {{dataAdapter.resolution}}ms
+  </div>
+{{/if}}

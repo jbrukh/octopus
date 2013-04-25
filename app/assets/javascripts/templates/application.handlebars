@@ -1,5 +1,14 @@
-<h1>Application</h1>
+<div class="navbar navbar-static-top navbar-inverse">
+  <div class="navbar-inner">
+    {{#linkTo 'index' class='brand'}}Brain{{/linkTo}}
+    <ul class="nav">
+      {{#linkTo 'experiments.index' tagName='li'}}
+        <a {{bindAttr href="view.href"}}>Experiments</a>
+      {{/linkTo}}
+    </ul>
+  </div>
+</div>
 
-<p>Your content here.</p>
-
-{{outlet}}
+<div class="container">
+  {{outlet}}
+</div>
