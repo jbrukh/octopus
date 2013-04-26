@@ -43,6 +43,7 @@ App.WebSocketDataAdapter = Em.Object.extend({
       console.log("socket closed");
     };
   },
+
   stop: function(){
     var terminate = {
       connect: false
@@ -50,6 +51,7 @@ App.WebSocketDataAdapter = Em.Object.extend({
     this.ws.send(JSON.stringify(terminate));
     this.isStreaming = false;
   },
+
   sample: function(){
     if(this.frame !== null){
       return this.frame;

@@ -105,7 +105,7 @@ App.ExperimentsIndexView = Ember.View.extend({
     var callbacks = [];
 
     var createRange = function(){
-      return d3.range(bufferSize).map(function() { return null; });
+      return d3.range(bufferSize).map(function() { return 0; });
     };
 
     for(var i = 0 ; i < numChannels ; ++i){
