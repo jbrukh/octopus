@@ -8,6 +8,7 @@ App.ExperimentsIndexView = Ember.View.extend({
   height: null,
   bufferSize: null,
   buffers: null,
+  pointsDrawn: null,
 
   didInsertElement: function(){
     var controller = this.get('controller');
@@ -25,11 +26,11 @@ App.ExperimentsIndexView = Ember.View.extend({
   },
 
   initializeGraphPrimitives: function(){
-    this.duration = 20;
+    this.duration = 10;
     this.now = new Date(Date.now() - this.duration);
     this.width = 940;
     this.height = 60;
-    this.bufferSize = 100;
+    this.bufferSize = 800;
 
     var duration = this.duration;
     var now = this.now;
@@ -93,16 +94,26 @@ App.ExperimentsIndexView = Ember.View.extend({
     var height = this.height;
     var bufferSize = this.bufferSize;
 
+    this.pointsDrawn = 0;
+    p = this.pointsDrawn;
+
     var numChannels = dataAdapter.get('channels');
+
     console.log("creating " + numChannels  + " buffers of size " + bufferSize);
+
     var channels = [];
     var callbacks = [];
+
     var createRange = function(){
-      return d3.range(bufferSize).map(function() { return 0; });
+      return d3.range(bufferSize).map(function() { return null; });
     };
+
     for(var i = 0 ; i < numChannels ; ++i){
       channels.push(createRange());
     }
+
+    var _this = this;
+
     return {
       handle: null,
       get: function(){
@@ -117,7 +128,7 @@ App.ExperimentsIndexView = Ember.View.extend({
           }
           for(var c = 0 ; c < callbacks.length; ++c){
             var callback = callbacks[c];
-              callback(channels, frequency);
+            callback(channels, frequency);
           }
           for(var k = 0; k < numChannels; ++k){
             channels[k].shift();
