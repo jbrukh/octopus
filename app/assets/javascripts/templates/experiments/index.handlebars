@@ -6,13 +6,15 @@
       <a {{action stop}} class="btn btn-danger">Stop</a>
     {{/unless}}
   </div>
-  <h2>Experiments</h2>
-</div>
+  <h2>
+    Experiments
 
-{{#if isRunning}}
-  <div class="alert alert-info">
-    Reading {{dataAdapter.channels}} channels @ resolution of {{dataAdapter.resolution}}ms
-  </div>
-{{/if}}
+    {{#if isRunning}}
+      <small>
+        Reading {{dataAdapter.channels}} channels @ resolution of {{dataAdapter.resolution}}ms
+      </small>
+    {{/if}}
+  </h2>
+</div>
 
 <div id="graphs-container"></div>
