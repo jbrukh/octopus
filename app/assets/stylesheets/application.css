@@ -17,3 +17,11 @@ path.line {
   stroke-width: 1;
   fill: none;
 }
+
+path.channel-0 {
+  stroke: red;
+}
+
+path.channel-1 {
+  stroke: green;
+}
