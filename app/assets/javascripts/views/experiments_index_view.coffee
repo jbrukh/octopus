@@ -1,6 +1,6 @@
 App.ExperimentsIndexView = Ember.View.extend
 
-  graphDurationInSeconds: 60
+  graphDurationInSeconds: 30
   graphWidth: 940
   graphHeight: 60
 
@@ -47,16 +47,16 @@ App.ExperimentsIndexView = Ember.View.extend
     @clearCurrentGraph()
     @dataAdapter = @get('controller.dataAdapter');
 
-    numChannels = @dataAdapter.get('channels')
-    console.log "creating #{numChannels} graph buffers"
+    @numChannels = @dataAdapter.get('channels')
+    console.log "creating #{@numChannels} graph buffers"
 
     # create the buffers we're going to be charting
-    @buffers = [0..numChannels].map () =>
+    @buffers = [0..@numChannels].map () =>
       d3.range(@graphWidth).map(-> 0)
 
     console.log(@buffers[0].length)
 
-    @graphs = [0..numChannels].map (i) =>
+    @graphs = [0..@numChannels].map (i) =>
       @createGraph(i)
 
     @dataAdapter.start()
@@ -66,7 +66,7 @@ App.ExperimentsIndexView = Ember.View.extend
     @.$('#graphs-container').html ''
 
   createGraph: (bufferIndex) ->
-    margins = [1, 1, 1, 1];
+    margins = [1, 1, 1, 1]
 
     svg = d3.select('#graphs-container')
       .append("svg:svg")
@@ -89,16 +89,14 @@ App.ExperimentsIndexView = Ember.View.extend
 
   onUpdateInterval: (updateFrequency) ->
     sample = @dataAdapter.sample()
-    for i in [0..@dataAdapter.get('channels')]
+    for i in [0..@numChannels]
       buffer = @buffers[i]
-      buffer.push(sample[i])
+      buffer.push sample[i]
       buffer.shift()
-
       svg = @graphs[i].svg
       path = @graphs[i].path
 
-      @y.domain([d3.min(buffer), d3.max(buffer)]);
-
+      @y.domain [d3.min(buffer), d3.max(buffer)]
       svg.select(".line").attr("d", @line)
 
   stopGraphing: ->
