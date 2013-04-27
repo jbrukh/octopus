@@ -1,0 +1,26 @@
+<div class="page-header">
+  <h3>Settings</h3>
+</div>
+
+<form class="form-horizontal" {{action save on=submit}}>
+  <fieldset>
+    <legend>Mock Data Adapter</legend>
+    <div class="control-group">
+      <label class="control-label">Resolution</label>
+      <div class="controls">
+        {{input value=model.adapters.mock.resolution type=number}}
+      </div>
+    </div>
+
+    <div class="control-group">
+      <label class="control-label">Channels</label>
+      <div class="controls">
+        {{input value=model.adapters.mock.channels type=number}}
+      </div>
+    </div>
+  </fieldset>
+
+  <div class="form-actions">
+    <button type="submit" class="btn btn-primary">Save changes</button>
+  </div>
+</form>
