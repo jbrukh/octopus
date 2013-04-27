@@ -1,0 +1,15 @@
+<div class="thumbnail">
+  {{view App.VideoView srcBinding='view.src' viewName="videoView"}}
+</div>
+
+{{#unless view.videoView.isPlaying}}
+  <a href="#" class="btn btn-small" {{action play target=view.videoView}}>Play</a>
+{{else}}
+  <a href="#" class="btn btn-small" {{action pause target=view.videoView}}>Pause</a>
+{{/unless}}
+
+{{#if view.videoView.supportsFullscreen}}
+  <a href="#" class="btn btn-small" {{action fullscreen target=view.videoView}}>Fullscreen</a>
+{{/if}}
+
+{{secondsToTime view.videoView.progress}}
