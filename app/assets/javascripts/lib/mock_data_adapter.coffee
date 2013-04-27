@@ -9,7 +9,7 @@ App.MockDataAdapter = Em.Object.extend
     @frame = []
     @frame.push(Math.floor((Math.random()*100)+1)) for num in [0..channels]
     console.log "starting data adapter @ #{resolution}"
-    handle = setInterval((=> @tick()), resolution)
+    @handle = setInterval((=> @tick()), resolution)
 
   tick: ->
     newFrame = []
@@ -22,7 +22,7 @@ App.MockDataAdapter = Em.Object.extend
     @frame = newFrame;
 
   stop: ->
-    clearInterval handle
+    clearInterval @handle
     console.log 'stopping mock data adapter'
 
   sample: -> this.frame

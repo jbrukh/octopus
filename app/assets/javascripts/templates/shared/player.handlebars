@@ -1,6 +1,4 @@
-<div>
-  {{view App.VideoView srcBinding='view.src' viewName="videoView"}}
-</div>
+{{view App.VideoView srcBinding='view.src' viewName="videoView"}}
 
 {{#unless view.videoView.isPlaying}}
   <a href="#" class="btn btn-small btn-success" {{action play target=view.videoView}}>
