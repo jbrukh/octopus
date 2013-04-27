@@ -26,7 +26,7 @@ App.ExperimentsIndexView = Ember.View.extend({
   },
 
   initializeGraphPrimitives: function(){
-    this.duration = 10;
+    this.duration = 20;
     this.now = new Date(Date.now() - this.duration);
     this.width = 940;
     this.height = 60;
@@ -79,7 +79,7 @@ App.ExperimentsIndexView = Ember.View.extend({
       this.createGraph(this.buffers, i);
     }
 
-    this.buffers.start(50);
+    this.buffers.start(this.duration);
   },
 
   destroyGraphs: function(){

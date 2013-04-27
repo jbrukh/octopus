@@ -17,6 +17,10 @@ App.Settings.reopenClass
         mock: Em.Object.create
           resolution: 50
           channels: 8
+      graphs: Em.Object.create
+        streaming: Em.Object.create
+          bufferSize: 800
+          duration: 50
 
   load: ->
     console.log 'loading settings'
