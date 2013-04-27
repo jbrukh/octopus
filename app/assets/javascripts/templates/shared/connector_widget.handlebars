@@ -1,0 +1,9 @@
+{{#if model.isConnected}}
+  {{#linkTo 'status.index' class="btn btn-success"}}
+    <i class="icon-thumbs-up"></i>&nbsp;Octopus
+  {{/linkTo}}
+{{else}}
+  {{#linkTo 'status.index' class="btn btn-error"}}
+    <i class="icon-thumbs-down"></i>&nbsp;{{model.state}}
+  {{/linkTo}}
+{{/if}}
