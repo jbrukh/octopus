@@ -29,7 +29,7 @@ App.ExperimentsIndexView = Ember.View.extend
     # to draw the graphs
     @x = d3.scale.linear()
       .range([0, @graphWidth])
-      .domain([0, @graphWidth])
+      .domain([@graphWidth, 0])
 
     @y = d3.scale.linear()
       .range([@graphHeight, 0])
@@ -83,7 +83,7 @@ App.ExperimentsIndexView = Ember.View.extend
     return {svg: svg, path: path}
 
   startUpdateLoop: ->
-    updateFrequency = (@graphDurationInSeconds * 1000) / @graphWidth
+    updateFrequency = Math.round((@graphDurationInSeconds * 1000) / @graphWidth)
     console.log "starting update loop with frequency of #{updateFrequency}"
     @handle = setInterval((() => @onUpdateInterval(updateFrequency)), updateFrequency)
 
@@ -92,20 +92,14 @@ App.ExperimentsIndexView = Ember.View.extend
     for i in [0..@dataAdapter.get('channels')]
       buffer = @buffers[i]
       buffer.push(sample[i])
+      buffer.shift()
+
       svg = @graphs[i].svg
       path = @graphs[i].path
 
       @y.domain([d3.min(buffer), d3.max(buffer)]);
 
-      svg.select(".line")
-        .attr("d", @line)
-        .attr("transform", null)
-
-      path.transition()
-        .duration(updateFrequency)
-        .ease("linear")
-        .attr("transform", "translate(" + 1 + ")");
-      buffer.shift()
+      svg.select(".line").attr("d", @line)
 
   stopGraphing: ->
     clearInterval(@handle)
