@@ -15,12 +15,12 @@ App.Settings.reopenClass
     App.Settings.create
       adapters: Em.Object.create
         mock: Em.Object.create
-          resolution: 50
+          resolution: 10
           channels: 8
       graphs: Em.Object.create
         streaming: Em.Object.create
           bufferSize: 800
-          duration: 50
+          duration: 10
 
   load: ->
     console.log 'loading settings'

@@ -26,11 +26,11 @@ App.ExperimentsIndexView = Ember.View.extend({
   },
 
   initializeGraphPrimitives: function(){
-    this.duration = 20;
-    this.now = new Date(Date.now() - this.duration);
+    this.duration = 10;
+    this.now = Date.now();
     this.width = 940;
     this.height = 60;
-    this.bufferSize = 800;
+    this.bufferSize = 940;
 
     var duration = this.duration;
     var now = this.now;
@@ -39,7 +39,9 @@ App.ExperimentsIndexView = Ember.View.extend({
     var bufferSize = this.bufferSize;
 
     this.x = d3.time.scale()
-      .domain([now - (bufferSize - 2) * duration, now - duration])
+      .range([0, width]);
+
+    this.x = d3.scale.linear()
       .range([0, width]);
 
     this.y = d3.scale.linear()
@@ -48,9 +50,12 @@ App.ExperimentsIndexView = Ember.View.extend({
     var x = this.x;
     var y = this.y;
 
+    // create a line definition, this is used to convert a dataset
+    // into a set of points, that can be drawn as a line
+
     this.line = d3.svg.line()
       .interpolate("none")
-      .x(function(d, i) { return x(now - (bufferSize - 1 - i) * duration); })
+      .x(function(d, i) { return x(now - (bufferSize - i) * duration); })
       .y(function(d, i) { return y(d); });
   },
 
@@ -69,11 +74,6 @@ App.ExperimentsIndexView = Ember.View.extend({
     var dataAdapter = controller.get('dataAdapter');
 
     this.buffers = this.createBuffers(dataAdapter);
-
-    var line = d3.svg.line()
-      .interpolate("none")
-      .x(function(d, i) { return x(now - (bufferSize - 1 - i) * duration); })
-      .y(function(d, i) { return y(d); });
 
     for(var i = 0 ; i < dataAdapter.get('channels'); ++i){
       this.createGraph(this.buffers, i);
@@ -153,11 +153,17 @@ App.ExperimentsIndexView = Ember.View.extend({
 
     var selector = this.$();
 
+    var margins = [1, 1, 1, 1];
+
+    $('#graphs-container').hide();
+
     var svg = d3.select('#graphs-container')
-      .append("svg")
-      .attr("width", width)
-      .attr("height", height)
-      .append("g");
+      .append("svg:svg")
+        .attr('class', 'graph-streaming')
+        .attr("width", width + margins[1] + margins[3])
+        .attr("height", height + margins[0] + margins[2])
+      .append("svg:g")
+        .attr("transform", "translate(" + margins[3] + "," + margins[0] + ")");
 
     var path = svg.append("path")
         .data([buffers.get()[channel]])
@@ -166,8 +172,11 @@ App.ExperimentsIndexView = Ember.View.extend({
     var _this = this;
 
     buffers.register(function(channels, frequency){
+      // reset the domain based on the current time and
+      // set of points
+
       _this.now = new Date();
-      _this.x.domain([now - (bufferSize - 2) * duration, now - duration]);
+      _this.x.domain([now - (bufferSize * duration), now]);
       _this.y.domain([d3.min(channels[channel]), d3.max(channels[channel])]);
 
       svg.select(".line")
@@ -177,7 +186,9 @@ App.ExperimentsIndexView = Ember.View.extend({
       path.transition()
         .duration(frequency)
         .ease("linear")
-        .attr("transform", "translate(" + _this.x(now - (bufferSize - 1) * duration) + ")");
+        .attr("transform", "translate(" + _this.x(now - (bufferSize * duration)) + ")");
     });
+
+    $('#graphs-container').fadeIn();
   }
 });
