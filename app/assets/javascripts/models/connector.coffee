@@ -1,5 +1,7 @@
 App.Connector = Em.Object.extend
-  url: 'ws://localhost:8000/device'
+  url: 'ws://localhost:8000/control'
+  currentMessageId: 1
+  callbacks: []
 
   init: ->
     console.log 'creating connector'
@@ -25,10 +27,6 @@ App.Connector = Em.Object.extend
     # in the future
     setTimeout((() => @checkConnected()), 2000)
 
-  sendObject: (object) ->
-    serialized = JSON.stringify(object)
-    @ws.send(serialized)
-
   checkConnected: ->
     # ready state 0 is not yet established
     # ready state 3 is error or cannot connect
@@ -42,15 +40,12 @@ App.Connector = Em.Object.extend
     ws.onopen = () =>
       console.log "connector socket open"
       @set 'state', 'connected'
-      initialize = {
-        connect: true,
-        frequency: 100,
-        average: false
-      }
-      @sendObject(initialize)
+      @request({ message_type: 'info' }, (d) => @updateInfo(d))
 
     ws.onmessage = (evt) =>
-      null
+      response = JSON.parse(evt.data)
+      callback = @callbacks[response.id]
+      callback(response)
 
     ws.onerror = () =>
       console.error "Connector socket error..."
@@ -60,4 +55,14 @@ App.Connector = Em.Object.extend
       console.warn "connector socket close"
       @set 'state', 'disconnected'
       setTimeout((() => @checkConnected()), 2000)
-    return ws
+    ws
+
+  request: (object, callback) ->
+    object.id = "" + @currentMessageId++
+    serialized = JSON.stringify(object)
+    @callbacks[object.id] = callback
+    @ws.send(serialized)
+
+  updateInfo: (response) ->
+    @set 'device_name', response.device_name
+    @set 'version', response.version

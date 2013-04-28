@@ -7,4 +7,22 @@
     <strong>Could not find connector.</strong>
     Have you started the connector? Once it's running this message will go away.
   </div>
+{{else}}
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Connector settings</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Device Name</td>
+        <td>{{connector.device_name}}</td>
+      </tr>
+      <tr>
+        <td>Device Version</td>
+        <td>{{connector.version}}</td>
+      </tr>
+    </tbody>
+  </table>
 {{/unless}}

@@ -5,9 +5,7 @@ App.DataAdapter.reopenClass
 
   create: (type, properties) ->
     console.log "create data adapter: #{type}"
-    if type == 'mock'
-      return App.MockDataAdapter.create(properties)
-
-    if type == 'live'
-      return App.WebSocketDataAdapter.create
-        url: 'ws://localhost:8000/device'
+    switch type
+      when 'mock' then App.MockDataAdapter.create(properties)
+      when 'live' then  App.WebSocketDataAdapter.create(properties)
+      else throw "unknown data adapter type #{type}"

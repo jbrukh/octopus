@@ -21,6 +21,8 @@ App.Settings.reopenClass
         mock: Em.Object.create
           resolution: 10
           channels: 8
+        live: Em.Object.create
+          url: 'ws://localhost:8000/device'
       graphs: Em.Object.create
         streaming: Em.Object.create
           bufferSize: 800
