@@ -134,6 +134,7 @@ PLATFORMS
 
 DEPENDENCIES
   coffee-rails (~> 4.0.0.beta1)
+  ember-data-source (= 0.0.5)
   ember-rails
   ember-source (= 1.0.0.rc3)
   handlebars-source (= 1.0.0.rc3)
