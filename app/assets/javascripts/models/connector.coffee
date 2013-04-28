@@ -10,12 +10,15 @@ App.Connector = Em.Object.extend
     return @get('state') == 'connected'
   ).property('state')
 
+  isConnecting: (->
+    return @get('state') == 'connecting'
+  ).property('state')
+
   connect: ->
     console.log "connecting to websocket: #{this.url}"
 
     # set the state to connected and
     # create a new websocket
-    @set 'state', 'connecting'
     @ws = @createWebsocket(this.url)
 
     # schedule a check to make sure we're connected
@@ -29,10 +32,13 @@ App.Connector = Em.Object.extend
   checkConnected: ->
     # ready state 0 is not yet established
     # ready state 3 is error or cannot connect
+    return if @get('isConnecting')
     @connect() if(@ws.readyState == 0 || @ws.readyState == 3)
 
   createWebsocket: (url) ->
-    ws = new WebSocket('ws://localhost:8000/device')
+    console.debug "creating new websocket"
+    ws = new WebSocket(url)
+    @set 'state', 'connecting'
     ws.onopen = () =>
       console.log "connector socket open"
       @set 'state', 'connected'
@@ -47,12 +53,11 @@ App.Connector = Em.Object.extend
       null
 
     ws.onerror = () =>
-      console.log "connector socket error"
+      console.error "Connector socket error..."
       @set 'state', 'disconnected'
-      #setTimeout((() => @checkConnected()), 2000)
 
     ws.onclose = () =>
-      console.log "connector socket close"
+      console.warn "connector socket close"
       @set 'state', 'disconnected'
-      #setTimeout((() => @checkConnected()), 2000)
+      setTimeout((() => @checkConnected()), 2000)
     return ws
