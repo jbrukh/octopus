@@ -1,8 +1,11 @@
 App.Settings = Em.Object.extend
   save: ->
-    d = Ember.Deferred.create()
-    d.resolve(App.Settings.save(this))
-    d
+    result = Ember.Deferred.create()
+    if(App.Settings.save(this))
+      result.resolve()
+    else
+      result.reject()
+    result
 
 App.Settings.reopenClass
   instance: null
@@ -25,8 +28,14 @@ App.Settings.reopenClass
 
   load: ->
     console.log 'loading settings'
-    @createRecord()
+    record = @createRecord()
+    settings = localStorage['octopus.settings']
+    if settings
+      console.log ' - loading stored settings'
+      record.setProperties(JSON.parse(settings))
+    record
 
   save: (settings) ->
+    localStorage['octopus.settings'] = JSON.stringify(settings)
     @instance = settings
     settings
