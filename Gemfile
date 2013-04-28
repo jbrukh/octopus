@@ -7,7 +7,9 @@ gem 'rails', '4.0.0.beta1'
 gem 'pg'
 
 gem 'ember-source', '1.0.0.rc3'
-gem 'ember-data-source', '0.0.5'
+# ember data isn't up to date
+# once it is, re-add this and remove the vendor reference
+# gem 'ember-data-source'
 gem 'handlebars-source', '1.0.0.rc3'
 gem "ember-rails"
 

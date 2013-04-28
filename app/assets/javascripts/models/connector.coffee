@@ -40,12 +40,12 @@ App.Connector = Em.Object.extend
     ws.onopen = () =>
       console.log "connector socket open"
       @set 'state', 'connected'
-      @request({ message_type: 'info' }, (d) => @updateInfo(d))
+      @send({ message_type: 'info' }).then((d) => @onUpdateInfo(d))
 
     ws.onmessage = (evt) =>
       response = JSON.parse(evt.data)
-      callback = @callbacks[response.id]
-      callback(response)
+      deferred = @callbacks[response.id]
+      deferred.resolve(response)
 
     ws.onerror = () =>
       console.error "Connector socket error..."
@@ -57,12 +57,14 @@ App.Connector = Em.Object.extend
       setTimeout((() => @checkConnected()), 2000)
     ws
 
-  request: (object, callback) ->
+  send: (object) ->
+    deferred = Ember.Deferred.create()
     object.id = "" + @currentMessageId++
     serialized = JSON.stringify(object)
-    @callbacks[object.id] = callback
+    @callbacks[object.id] = deferred
     @ws.send(serialized)
+    deferred
 
-  updateInfo: (response) ->
+  onUpdateInfo: (response) ->
     @set 'device_name', response.device_name
     @set 'version', response.version

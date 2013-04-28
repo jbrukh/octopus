@@ -1,3 +1,4 @@
+//= require store
 //= require_tree ./models
 //= require_tree ./injectors
 //= require_tree ./controllers

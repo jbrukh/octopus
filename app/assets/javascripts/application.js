@@ -12,8 +12,9 @@
 //
 //= require jquery
 //= require handlebars
+//= require vendor/d3.v3
 //= require ember
-//= require ember-data
+//= require vendor/ember-data-latest
 //= require_self
 //= require brain
 App = Ember.Application.create();
