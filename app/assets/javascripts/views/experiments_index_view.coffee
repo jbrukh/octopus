@@ -13,6 +13,12 @@ App.ExperimentsIndexView = Ember.View.extend
     controller.on 'didStart', => @startGraphing()
     controller.on 'didStop', => @stopGraphing()
 
+  willDestroyElement: ->
+    console.debug 'unregistering event listeners'
+    controller = @get 'controller'
+    controller.off 'didStart'
+    controller.off 'didStop'
+
   setupGraphs: ->
     console.log "creating graph (#{@graphWidth}x#{@graphHeight})"
     console.log " - duration #{@graphDurationInSeconds} seconds"
@@ -36,6 +42,7 @@ App.ExperimentsIndexView = Ember.View.extend
       .y((d, i) => @y(d));
 
   startGraphing: ->
+    console.log 'start graphing'
     @clearCurrentGraph()
     @dataAdapter = @get('controller.dataAdapter');
 
@@ -43,17 +50,17 @@ App.ExperimentsIndexView = Ember.View.extend
     console.log "creating #{@numChannels} graph buffers"
 
     # create the buffers we're going to be charting
-    @buffers = [0..@numChannels].map () =>
+    @buffers = [0...@numChannels].map () =>
       d3.range(@graphWidth).map(-> 0)
 
-    @graphs = [0..@numChannels].map (i) =>
+    @graphs = [0...@numChannels].map (i) =>
       @createGraph(i)
 
-    @dataAdapter.start()
     @startUpdateLoop()
 
   clearCurrentGraph: ->
-    @.$('#graphs-container').html ''
+    console.debug 'clearing current graph'
+    this.$('#graphs-container').html ''
 
   createGraph: (bufferIndex) ->
     margins = [1, 1, 1, 1]
@@ -79,7 +86,7 @@ App.ExperimentsIndexView = Ember.View.extend
 
   onUpdateInterval: (updateFrequency) ->
     sample = @dataAdapter.sample()
-    for i in [0..@numChannels]
+    for i in [0...@numChannels]
       buffer = @buffers[i]
       buffer.push sample[i]
       buffer.shift()
