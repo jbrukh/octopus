@@ -8,18 +8,10 @@ App.ExperimentsIndexView = Ember.View.extend
   handle: null
 
   didInsertElement: ->
-    controller = @get 'controller'
-
     @setupGraphs()
-
-    # register controller events
-    controller.on 'didStart', =>
-      console.log 'did start'
-      @startGraphing()
-
-    controller.on 'didStop', =>
-      console.log 'did stop'
-      @stopGraphing()
+    controller = @get 'controller'
+    controller.on 'didStart', => @startGraphing()
+    controller.on 'didStop', => @stopGraphing()
 
   setupGraphs: ->
     console.log "creating graph (#{@graphWidth}x#{@graphHeight})"
@@ -53,8 +45,6 @@ App.ExperimentsIndexView = Ember.View.extend
     # create the buffers we're going to be charting
     @buffers = [0..@numChannels].map () =>
       d3.range(@graphWidth).map(-> 0)
-
-    console.log(@buffers[0].length)
 
     @graphs = [0..@numChannels].map (i) =>
       @createGraph(i)

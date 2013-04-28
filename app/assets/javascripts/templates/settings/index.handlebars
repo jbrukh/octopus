@@ -4,6 +4,18 @@
 
 <form class="form-horizontal" {{action save on=submit}}>
   <fieldset>
+    <legend>Basic</legend>
+    <div class="control-group">
+      <label class="control-label">Data Adapter</label>
+      <div class="controls">
+        {{view Ember.Select
+          contentBinding="dataAdapters"
+          valueBinding="model.adapters.selected"}}
+      </div>
+    </div>
+  </fieldset>
+
+  <fieldset>
     <legend>Mock Data Adapter</legend>
     <div class="control-group">
       <label class="control-label">Resolution</label>

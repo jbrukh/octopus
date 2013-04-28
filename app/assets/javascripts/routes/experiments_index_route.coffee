@@ -1,8 +1,9 @@
 App.ExperimentsIndexRoute = Ember.Route.extend
-  setupController: (controller, params) ->
-    controller.set 'dataAdapters', ['mock', 'live']
-    controller.set 'selectedDataAdapter', 'mock'
-
   activate: ->
     controller = @controllerFor('experiments.index')
-    controller.set 'settings', App.Settings.find()
+    settings = App.Settings.find()
+
+    adapter = settings.get('adapters.selected')
+    properties = settings.get("adapters.#{adapter}")
+
+    controller.set 'dataAdapter', App.DataAdapter.create(adapter, properties)

@@ -1,11 +1,12 @@
 App.DataAdapter = Em.Object.extend()
 
 App.DataAdapter.reopenClass
-  create: (type, settings) ->
+  available: ['live', 'mock']
+
+  create: (type, properties) ->
     console.log "create data adapter: #{type}"
-    adapterSettings = settings.get("adapters.#{type}")
     if type == 'mock'
-      return App.MockDataAdapter.create(adapterSettings)
+      return App.MockDataAdapter.create(properties)
 
     if type == 'live'
       return App.WebSocketDataAdapter.create
