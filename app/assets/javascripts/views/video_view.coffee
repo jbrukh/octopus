@@ -28,6 +28,7 @@ App.VideoView = Ember.View.extend
     console.log "loading video meta data"
     @set 'ready', true
     @set 'supportsFullscreen', true if this.$video.webkitSupportsFullscreen
+    @set 'duration', this.$video.duration
 
   fullscreen: ->
     this.$video.webkitEnterFullScreen()
@@ -39,3 +40,7 @@ App.VideoView = Ember.View.extend
   pause: ->
     this.$video.pause()
     @set 'isPlaying', false
+
+  progressPercentage: (->
+    return @get('progress') / @get('duration')
+  ).property('progress', 'duration')
