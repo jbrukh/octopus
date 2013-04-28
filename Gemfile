@@ -37,4 +37,10 @@ gem 'jbuilder', '~> 1.0.1'
 # Use unicorn as the app server
 gem 'unicorn'
 
-gem 'quiet_assets', :group => :development
+group :development do
+  gem 'quiet_assets'
+end
+
+group :test, :development do
+  gem "rspec-rails", "~> 2.0"
+end
