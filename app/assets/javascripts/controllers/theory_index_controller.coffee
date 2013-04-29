@@ -1,1 +1,0 @@
-App.TheoryIndexController = Ember.ObjectController.extend()
