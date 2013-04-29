@@ -6,3 +6,5 @@ App.Router.map ->
   @resource 'status', -> null
   @resource 'theories', ->
     @route 'new'
+
+  @resource 'theory', { path: '/theory/:theory_id' }, -> null

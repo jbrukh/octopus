@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(version: 20130429035019) do
 
   create_table "theories", force: true do |t|
     t.string   "name",        null: false
-    t.text     "description", null: false
+    t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
