@@ -1,47 +1,40 @@
 App.WebSocketDataAdapter = Em.Object.extend
   ws: null
-  isStreaming: false
   frame: null
 
   start: ->
+    connector = @get('connector')
+    connector.send('connect', {connect: true, pps: 50, batch_size: 1})
+      .then(() => @startStreaming())
+
+    @set 'resolution', 50
+    @set 'channels', 2
+
+  startStreaming: ->
+    console.log 'start streaming'
     url = @get('url');
     @ws = new WebSocket(url);
 
-    @set('resolution', 50);
-    @set('channels', 2);
-
     @ws.onopen = () =>
-      console.log('websocket open');
-      initialize = {
-        connect: true,
-        frequency: _this.get('resolution'),
-        average: false
-      }
-      @ws.send(JSON.stringify(initialize));
+      console.log('data socket open');
 
     @ws.onmessage = (evt) =>
-      data = JSON.parse(evt.data);
+      data = JSON.parse(evt.data).data;
+      newFrame = [];
+      newFrame.push(data[i]) for i in [0...data.length]
+      @frame = newFrame
 
-      if @isStreaming
-        rec = data.data;
-        newFrame = [];
-        newFrame.push(rec[i]) for i in [0..@fastChannels]
-        @frame = newFrame;
-      else
-        @fastChannels = data.channels;
-        @set('channels', @fastChannels);
-        @isStreaming = true;
-        @frame = [];
+    @ws.onclose = () =>
+      console.log "data socket closed"
 
-    @ws.onclose = () ->
-      console.log("socket closed");
+    @ws.onerror = () =>
+      console.log "data socket error"
 
   stop: ->
-    terminate = {
-      connect: false
-    };
-    @ws.send(JSON.stringify(terminate));
-    @isStreaming = false;
+    console.log 'stopping streaming'
+    connector = @get('connector')
+    connector.send('connect', {connect: false})
+      .then(() => @ws.close())
 
   sample: ->
     if @frame != null

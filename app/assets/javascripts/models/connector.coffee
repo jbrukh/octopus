@@ -34,13 +34,13 @@ App.Connector = Em.Object.extend
     @connect() if(@ws.readyState == 0 || @ws.readyState == 3)
 
   createWebsocket: (url) ->
-    console.debug "creating new websocket"
+    console.debug "creating new websocket: #{url}"
     ws = new WebSocket(url)
     @set 'state', 'connecting'
     ws.onopen = () =>
       console.log "connector socket open"
       @set 'state', 'connected'
-      @send({ message_type: 'info' }).then((d) => @onUpdateInfo(d))
+      @send('info').then((d) => @onUpdateInfo(d))
 
     ws.onmessage = (evt) =>
       response = JSON.parse(evt.data)
@@ -57,10 +57,19 @@ App.Connector = Em.Object.extend
       setTimeout((() => @checkConnected()), 2000)
     ws
 
-  send: (object) ->
+  send: (message_type, object = {}) ->
+    console.log "sending #{message_type}"
+    # create a deferred callback which will be used
+    # as the response handler for the correlated message
+    # id
     deferred = Ember.Deferred.create()
+
+    #cast messageid as a string and build the serialized message
     object.id = "" + @currentMessageId++
+    object.message_type = message_type
     serialized = JSON.stringify(object)
+
+    # stash the deferred and send the message
     @callbacks[object.id] = deferred
     @ws.send(serialized)
     deferred
