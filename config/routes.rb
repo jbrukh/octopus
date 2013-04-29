@@ -2,7 +2,7 @@ Ruby::Application.routes.draw do
 
   # api routes
   namespace :api do
-    resource :theories
+    resources :theories
   end
 
   # websites routes
