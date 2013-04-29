@@ -14,6 +14,7 @@
 //= require handlebars
 //= require vendor/d3.v3
 //= require ember
+//= require vendor/ember-latest
 //= require vendor/ember-data-latest
 //= require_self
 //= require brain

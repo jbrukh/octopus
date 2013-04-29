@@ -6,7 +6,10 @@ gem 'rails', '4.0.0.beta1'
 
 gem 'pg'
 
-gem 'ember-source', '1.0.0.rc3'
+# use the vendor ember for now, reinstate this
+# when ember is released
+#gem 'ember-source', '1.0.0.rc3'
+
 # ember data isn't up to date
 # once it is, re-add this and remove the vendor reference
 # gem 'ember-data-source'

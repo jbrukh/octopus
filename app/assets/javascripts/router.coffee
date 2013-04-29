@@ -4,3 +4,4 @@ App.Router.map ->
   @resource 'videos', -> null
 
   @resource 'status', -> null
+  @resource 'theories', -> null
