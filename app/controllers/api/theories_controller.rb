@@ -14,6 +14,11 @@ class Api::TheoriesController < ApplicationController
     redirect_to api_theory_url(@theory)
   end
 
+  def destroy
+    @theory = Theory.find(params[:id])
+    render json: @theory.destroy()
+  end
+
   private
     def theory_params
       params.require(:theory).permit(:name, :description)

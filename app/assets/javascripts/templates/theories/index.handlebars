@@ -22,6 +22,11 @@ There are {{controller.length}} theories
       <tr>
         <td>{{#linkTo 'theory' this}}{{name}}{{/linkTo}}</td>
         <td>{{timeSince created_at}}</td>
+        <td>
+          <div class="pull-right">
+            <button class="btn btn-mini btn-danger" {{action destroy this}}>Delete</button>
+          </div>
+        </td>
       </tr>
     {{/each}}
   </tbody>
