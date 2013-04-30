@@ -38,6 +38,7 @@ App.Settings.reopenClass
     record
 
   save: (settings) ->
+    console.log 'persisting settings'
     localStorage['octopus.settings'] = JSON.stringify(settings)
     @instance = settings
     settings

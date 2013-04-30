@@ -25,3 +25,7 @@ path.channel-0 {
 path.channel-1 {
   stroke: green;
 }
+
+#graphs-container{
+  border: solid 1px #c0c0c0;
+}

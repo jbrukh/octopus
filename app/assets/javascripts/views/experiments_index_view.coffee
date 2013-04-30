@@ -3,6 +3,7 @@ App.ExperimentsIndexView = Ember.View.extend
   graphDurationInSeconds: 30
   graphWidth: 940
   graphHeight: 60
+  graphPadding: 10
 
   dataPoints: null
   handle: null
@@ -53,8 +54,21 @@ App.ExperimentsIndexView = Ember.View.extend
     @buffers = [0...@numChannels].map () =>
       d3.range(@graphWidth).map(-> 0)
 
+    # create an svg element to contain all
+    # the graphs, it should be big enough
+    # to contain all the buffers, plus some
+    # padding
+
+    totalHeight = (@graphHeight * @numChannels) + (@graphPadding * @numChannels)
+
+    svg = d3.select('#graphs-container')
+      .append("svg:svg")
+        .attr('class', 'graph-streaming')
+        .attr("width", @graphWidth)
+        .attr("height", totalHeight)
+
     @graphs = [0...@numChannels].map (i) =>
-      @createGraph(i)
+      @createGraph(svg, i)
 
     @startUpdateLoop()
 
@@ -62,22 +76,17 @@ App.ExperimentsIndexView = Ember.View.extend
     console.debug 'clearing current graph'
     this.$('#graphs-container').html ''
 
-  createGraph: (bufferIndex) ->
-    margins = [1, 1, 1, 1]
-
-    svg = d3.select('#graphs-container')
-      .append("svg:svg")
-        .attr('class', 'graph-streaming')
-        .attr("width", @graphWidth + margins[1] + margins[3])
-        .attr("height", @graphHeight + margins[0] + margins[2])
-      .append("svg:g")
-        .attr("transform", "translate(" + margins[3] + "," + margins[0] + ")")
+  createGraph: (svg, bufferIndex) ->
+    graphOffset = bufferIndex * @graphHeight + ((bufferIndex + 1) * @graphPadding)
+    g = svg.append("svg:g")
+      .attr("transform", "translate(0," + graphOffset + ")")
 
     buffer = @buffers[bufferIndex]
-    path = svg.append("path")
+    path = g.append("path")
       .data([buffer])
       .attr("class", "line channel-" + bufferIndex);
-    return {svg: svg, path: path}
+
+    return { svg: g, path: path }
 
   startUpdateLoop: ->
     updateFrequency = Math.round((@graphDurationInSeconds * 1000) / @graphWidth)
