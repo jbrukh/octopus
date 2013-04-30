@@ -1,0 +1,1 @@
+App.Video = App.Media.extend()

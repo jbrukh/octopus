@@ -1,8 +1,13 @@
 App.TheoriesNewRoute = Ember.Route.extend
-  model: -> null
-
-  setupController: (controller) ->
-    controller.startEditing()
+  model: ->
+    @transaction = @get('store').transaction()
+    return @transaction.createRecord(App.Theory, {})
 
   deactivate: ->
-    @controllerFor('theories.new').stopEditing()
+    @transaction.rollback() if @transaction
+
+  events:
+    save: ->
+      @currentModel.on 'didCreate', =>
+        @transitionTo 'theory', @currentModel
+      @transaction.commit()

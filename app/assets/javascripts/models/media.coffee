@@ -1,0 +1,1 @@
+App.Media = DS.Model.extend()

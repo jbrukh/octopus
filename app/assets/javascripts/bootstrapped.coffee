@@ -1,0 +1,1 @@
+$(document).on(".dropdown-toggle").dropdown()
