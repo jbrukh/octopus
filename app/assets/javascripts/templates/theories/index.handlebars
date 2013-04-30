@@ -14,14 +14,14 @@ There are {{controller.length}} theories
   <thead>
     <tr>
       <th>Name</th>
-      <th>Description</th>
+      <th>Created At</th>
     </tr>
   </thead>
   <tbody>
     {{#each controller}}
       <tr>
         <td>{{#linkTo 'theory' this}}{{name}}{{/linkTo}}</td>
-        <td>{{description}}</td>
+        <td>{{timeSince created_at}}</td>
       </tr>
     {{/each}}
   </tbody>

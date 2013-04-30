@@ -17,6 +17,7 @@
 //= require ember
 //= require vendor/ember-latest
 //= require vendor/ember-data-latest
+//= require vendor/moment
 //= require_self
 //= require brain
 App = Ember.Application.create({LOG_TRANSITIONS: true});

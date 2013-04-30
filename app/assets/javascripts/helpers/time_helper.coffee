@@ -8,3 +8,6 @@ Ember.Handlebars.registerBoundHelper 'secondsToTime', (value, options) ->
   seconds = rounded % 60;
   minutes = Math.floor(value / 60);
   "#{pad(minutes)}:#{pad(seconds)}"
+
+Ember.Handlebars.registerBoundHelper 'timeSince', (value, options) ->
+  moment(value).fromNow()
