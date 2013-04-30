@@ -11,7 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130429035019) do
+ActiveRecord::Schema.define(version: 20130430022255) do
+
+  create_table "media", force: true do |t|
+    t.string   "type",       null: false
+    t.string   "name",       null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "theories", force: true do |t|
     t.string   "name",        null: false

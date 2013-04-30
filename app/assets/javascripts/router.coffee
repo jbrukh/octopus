@@ -2,9 +2,9 @@ App.Router.map ->
   @resource 'experiments', -> null
   @resource 'settings', -> null
 
-  @resource 'media', -> null
   @resource 'videos', ->
     @route 'new'
+  @route 'video', { path: '/video/:video_id' }
 
   @resource 'status', -> null
   @resource 'theories', ->

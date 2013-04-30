@@ -1,5 +1,21 @@
 <div class="page-header">
+  <div class="pull-right">
+    {{#linkTo 'videos.new' class="btn btn-success"}}Upload Video{{/linkTo}}
+  </div>
   <h3>Videos</h3>
 </div>
 
-{{view App.VideoPlayerView src='/videos/dizzy.mp4'}}
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <td>Name</td>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each controller}}
+      <tr>
+        <td>{{#linkTo 'video' this}}{{name}}{{/linkTo}}</td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>

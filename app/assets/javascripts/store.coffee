@@ -3,6 +3,7 @@ App.Store = DS.Store.extend
 
 DS.RESTAdapter.configure "plurals",
   theory: "theories"
+  video: "videos"
 
 DS.RESTAdapter.reopen
   namespace: 'api'

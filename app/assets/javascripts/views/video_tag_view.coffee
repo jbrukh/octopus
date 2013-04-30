@@ -1,4 +1,4 @@
-App.VideoView = Ember.View.extend
+App.VideoTagView = Ember.View.extend
   tagName: 'video'
   preload: "metadata"
   attributeBindings: 'src controls width height preload'.w()

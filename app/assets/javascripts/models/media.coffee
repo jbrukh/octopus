@@ -1,1 +1,2 @@
-App.Media = DS.Model.extend()
+App.Media = DS.Model.extend
+  name: DS.attr 'string'
