@@ -10,7 +10,9 @@ class Api::TheoriesController < ApplicationController
   end
 
   def create
-    @theory = Theory.create!(theory_params)
+    @theory = Theory.new(theory_params)
+    @theory.media = Media.find(params[:theory][:media_id])
+    @theory.save!
     redirect_to api_theory_url(@theory)
   end
 

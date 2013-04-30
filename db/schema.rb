@@ -23,6 +23,8 @@ ActiveRecord::Schema.define(version: 20130430022255) do
   create_table "theories", force: true do |t|
     t.string   "name",        null: false
     t.text     "description"
+    t.integer  "media_id",    null: false
+    t.string   "media_type",  null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

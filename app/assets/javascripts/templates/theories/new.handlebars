@@ -34,7 +34,9 @@
     <label class="control-label">Media</label>
     <div class="controls">
       {{view Ember.Select
+        prompt="Choose some media"
         contentBinding="availableMedia"
+        valueBinding="selectedMedia"
         optionValuePath="content.id"
         optionLabelPath="content.name" }}
     </div>
