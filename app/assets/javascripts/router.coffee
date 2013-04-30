@@ -1,5 +1,8 @@
 App.Router.map ->
   @resource 'experiments', -> null
+  @resource 'experiment', ->
+    @route 'start', { path: '/start/:theory_id' }
+
   @resource 'settings', -> null
 
   @resource 'videos', ->
