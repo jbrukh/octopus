@@ -32,3 +32,6 @@ path.channel-1 {
   stroke: #000;
   shape-rendering: crispEdges;
 }
+.y-axis text{
+  font-size: 7pt;
+}

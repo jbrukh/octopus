@@ -74,9 +74,11 @@ App.ExperimentsIndexView = Ember.View.extend
       .x((d, i) => x(@graphWidth - i - @currentBufferSize))
       .y((d, i) => y(d))
 
+    format = d3.format(",.1f")
     yAxis = d3.svg.axis()
       .scale(y)
-      .ticks(2)
+      .ticks(3)
+      .tickFormat((d, i) -> format(d * 1000))
       .orient("left");
 
     # create a new graphic element for this graph, and position
@@ -87,7 +89,7 @@ App.ExperimentsIndexView = Ember.View.extend
 
     graphic.append("g")
       .attr("class", "y-axis")
-      .attr("transform", "translate(" + 30 + ",0)")
+      .attr("transform", "translate(" + 50 + ",0)")
       .call(yAxis);
 
     # grab the buffer for this graph and
