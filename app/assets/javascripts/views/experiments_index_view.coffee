@@ -4,6 +4,7 @@ App.ExperimentsIndexView = Ember.View.extend
   graphWidth: 940
   graphHeight: 60
   graphPadding: 10
+  currentBufferSize: null
 
   dataPoints: null
   handle: null
@@ -24,6 +25,8 @@ App.ExperimentsIndexView = Ember.View.extend
     console.log "creating graph (#{@graphWidth}x#{@graphHeight})"
     console.log " - duration #{@graphDurationInSeconds} seconds"
 
+    @currentBufferSize = @graphWidth
+
     # create the d3 primitives we're going to be using
     # to draw the graphs
     @x = d3.scale.linear()
@@ -39,7 +42,7 @@ App.ExperimentsIndexView = Ember.View.extend
 
     @line = d3.svg.line()
       .interpolate('none')
-      .x((d, i) => @x(@graphWidth - i))
+      .x((d, i) => @x(@graphWidth - i - @currentBufferSize))
       .y((d, i) => @y(d));
 
   startGraphing: ->
@@ -51,8 +54,7 @@ App.ExperimentsIndexView = Ember.View.extend
     console.log "creating #{@numChannels} graph buffers"
 
     # create the buffers we're going to be charting
-    @buffers = [0...@numChannels].map () =>
-      d3.range(@graphWidth).map(-> 0)
+    @buffers = [0...@numChannels].map () => d3.range(0)
 
     # create an svg element to contain all
     # the graphs, it should be big enough
@@ -77,16 +79,20 @@ App.ExperimentsIndexView = Ember.View.extend
     this.$('#graphs-container').html ''
 
   createGraph: (svg, bufferIndex) ->
+    # create a new graphic element for this graph, and position
+    # it correctly
     graphOffset = bufferIndex * @graphHeight + ((bufferIndex + 1) * @graphPadding)
-    g = svg.append("svg:g")
+    graphic = svg.append("svg:g")
       .attr("transform", "translate(0," + graphOffset + ")")
 
+    # grab the buffer for this graph and
+    # create a new line for it
     buffer = @buffers[bufferIndex]
-    path = g.append("path")
+
+    graphic.append("path")
       .data([buffer])
       .attr("class", "line channel-" + bufferIndex);
-
-    return { svg: g, path: path }
+    graphic
 
   startUpdateLoop: ->
     updateFrequency = Math.round((@graphDurationInSeconds * 1000) / @graphWidth)
@@ -95,15 +101,18 @@ App.ExperimentsIndexView = Ember.View.extend
 
   onUpdateInterval: (updateFrequency) ->
     sample = @dataAdapter.sample()
+
+    # update the current buffer size, this is used to
+    # offset the channels so they start from the right
+    --@currentBufferSize if @currentBufferSize > 0
+
     for i in [0...@numChannels]
       buffer = @buffers[i]
       buffer.push sample[i]
-      buffer.shift()
-      svg = @graphs[i].svg
-      path = @graphs[i].path
+      buffer.shift() if buffer.length > @graphWidth
 
       @y.domain [d3.min(buffer), d3.max(buffer)]
-      svg.select(".line").attr("d", @line)
+      @graphs[i].select(".line").attr("d", @line)
 
   stopGraphing: ->
     clearInterval(@handle)
