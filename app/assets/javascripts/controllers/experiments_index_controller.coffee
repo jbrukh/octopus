@@ -8,5 +8,17 @@ App.ExperimentsIndexController = Ember.Controller.extend Ember.Evented,
   stop: ->
     console.log 'stopping experiment'
     @set 'isRunning', false
-    @get('dataAdapter').stop()
-    @trigger 'didStop'
+    isRecording = @get('isRecording')
+    if isRecording
+      @get('connector').send('record', {record: false}).then =>
+        @get('dataAdapter').stop()
+        @trigger 'didStop'
+        @set 'isRecording', false
+    else
+      @get('dataAdapter').stop()
+      @trigger 'didStop'
+
+  record: ->
+    console.log 'start recording'
+    @get('connector').send('record', {record: true}).then =>
+      @set 'isRecording', true

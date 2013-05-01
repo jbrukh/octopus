@@ -3,6 +3,11 @@
     {{#unless isRunning}}
       <a {{action start}} class="btn btn-success">Start</a>
     {{else}}
+      {{#unless isRecording}}
+        <a {{action record}} class="btn btn-success">
+          <i class="icon-download-alt"></i> Record
+        </a>
+      {{/unless}}
       <a {{action stop}} class="btn btn-danger">Stop</a>
     {{/unless}}
   </div>
