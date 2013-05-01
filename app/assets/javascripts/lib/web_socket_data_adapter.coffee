@@ -12,15 +12,15 @@ App.WebSocketDataAdapter = Em.Object.extend
 
   startStreaming: ->
     console.log 'start streaming'
-    url = @get('url');
-    @ws = new WebSocket(url);
+    url = @get('url')
+    @ws = new WebSocket(url)
 
     @ws.onopen = () =>
-      console.log('data socket open');
+      console.log('data socket open')
 
     @ws.onmessage = (evt) =>
-      data = JSON.parse(evt.data).data;
-      newFrame = [];
+      data = JSON.parse(evt.data).data
+      newFrame = []
       newFrame.push(data[i]) for i in [0...data.length]
       @frame = newFrame
 
@@ -37,7 +37,4 @@ App.WebSocketDataAdapter = Em.Object.extend
       .then(() => @ws.close())
 
   sample: ->
-    if @frame != null
-      return @frame
-    else
-      return null
+    @frame

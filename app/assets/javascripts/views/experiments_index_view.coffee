@@ -41,12 +41,12 @@ App.ExperimentsIndexView = Ember.View.extend
     @line = d3.svg.line()
       .interpolate('none')
       .x((d, i) => @x(@graphWidth - i - @currentBufferSize))
-      .y((d, i) => @y(d));
+      .y((d, i) => @y(d))
 
   startGraphing: ->
     console.log 'start graphing'
     @clearCurrentGraph()
-    @dataAdapter = @get('controller.dataAdapter');
+    @dataAdapter = @get('controller.dataAdapter')
 
     @currentBufferSize = @graphWidth
     @numChannels = @dataAdapter.get('channels')
@@ -82,7 +82,7 @@ App.ExperimentsIndexView = Ember.View.extend
     # it correctly
     graphOffset = bufferIndex * @graphHeight + ((bufferIndex + 1) * @graphPadding)
     graphic = svg.append("svg:g")
-      .attr("transform", "translate(0," + graphOffset + ")")
+      .attr("transform", "translate(0,#{graphOffset})")
 
     # grab the buffer for this graph and
     # create a new line for it
@@ -90,7 +90,7 @@ App.ExperimentsIndexView = Ember.View.extend
 
     graphic.append("path")
       .data([buffer])
-      .attr("class", "line channel-" + bufferIndex);
+      .attr("class", "line channel-" + bufferIndex)
     graphic
 
   startUpdateLoop: ->
