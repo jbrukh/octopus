@@ -4,11 +4,11 @@
       <a {{action start}} class="btn btn-success">Start</a>
     {{else}}
       {{#unless isRecording}}
-        <a {{action record}} class="btn btn-success">
+        <a {{action record}} class="btn btn-danger">
           <i class="icon-download-alt"></i> Record
         </a>
       {{/unless}}
-      <a {{action stop}} class="btn btn-danger">Stop</a>
+      <a {{action stop}} class="btn btn-warning">Stop</a>
     {{/unless}}
   </div>
   <h2>
