@@ -4,6 +4,7 @@ Ruby::Application.routes.draw do
   namespace :api do
     resources :theories
     resources :videos
+    resources :recordings
   end
 
   # websites routes
