@@ -25,3 +25,10 @@ path.channel-0 {
 path.channel-1 {
   stroke: green;
 }
+
+.y-axis line,
+.y-axis path {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}

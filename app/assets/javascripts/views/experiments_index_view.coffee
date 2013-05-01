@@ -25,24 +25,6 @@ App.ExperimentsIndexView = Ember.View.extend
     console.log "creating graph (#{@graphWidth}x#{@graphHeight})"
     console.log " - duration #{@graphDurationInSeconds} seconds"
 
-    # create the d3 primitives we're going to be using
-    # to draw the graphs
-    @x = d3.scale.linear()
-      .range([0, @graphWidth])
-      .domain([@graphWidth, 0])
-
-    @y = d3.scale.linear()
-      .range([@graphHeight, 0])
-
-    # x scale will have the resolution of the width of the graph
-    # because there is no scaling the location is just the width
-    # of the graph less the index into the buffer
-
-    @line = d3.svg.line()
-      .interpolate('none')
-      .x((d, i) => @x(@graphWidth - i - @currentBufferSize))
-      .y((d, i) => @y(d))
-
   startGraphing: ->
     console.log 'start graphing'
     @clearCurrentGraph()
@@ -78,11 +60,35 @@ App.ExperimentsIndexView = Ember.View.extend
     this.$('#graphs-container').html ''
 
   createGraph: (svg, bufferIndex) ->
+    # create the d3 primitives we're going to be using
+    # to draw the graphs
+    x = d3.scale.linear()
+      .range([0, @graphWidth])
+      .domain([@graphWidth, 0])
+
+    y = d3.scale.linear()
+      .range([@graphHeight, 0])
+
+    line = d3.svg.line()
+      .interpolate('none')
+      .x((d, i) => x(@graphWidth - i - @currentBufferSize))
+      .y((d, i) => y(d))
+
+    yAxis = d3.svg.axis()
+      .scale(y)
+      .ticks(2)
+      .orient("left");
+
     # create a new graphic element for this graph, and position
     # it correctly
     graphOffset = bufferIndex * @graphHeight + ((bufferIndex + 1) * @graphPadding)
     graphic = svg.append("svg:g")
       .attr("transform", "translate(0,#{graphOffset})")
+
+    graphic.append("g")
+      .attr("class", "y-axis")
+      .attr("transform", "translate(" + 30 + ",0)")
+      .call(yAxis);
 
     # grab the buffer for this graph and
     # create a new line for it
@@ -91,7 +97,8 @@ App.ExperimentsIndexView = Ember.View.extend
     graphic.append("path")
       .data([buffer])
       .attr("class", "line channel-" + bufferIndex)
-    graphic
+
+    return { graphic: graphic, y: y, line: line, yAxis: yAxis }
 
   startUpdateLoop: ->
     updateFrequency = Math.round((@graphDurationInSeconds * 1000) / @graphWidth)
@@ -111,8 +118,10 @@ App.ExperimentsIndexView = Ember.View.extend
       buffer.push sample[i]
       buffer.shift() if buffer.length > @graphWidth
 
-      @y.domain [d3.min(buffer), d3.max(buffer)]
-      @graphs[i].select(".line").attr("d", @line)
+      graph = @graphs[i]
+      graph.y.domain [d3.min(buffer), d3.max(buffer)]
+      graph.graphic.select(".line").attr("d", graph.line)
+      graph.graphic.select('.y-axis').call(graph.yAxis)
 
   stopGraphing: ->
     clearInterval(@handle)
