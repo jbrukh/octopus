@@ -5,6 +5,8 @@ Ruby::Application.routes.draw do
     resources :theories
     resources :videos
     resources :recordings
+
+    devise_for :users
   end
 
   # websites routes
