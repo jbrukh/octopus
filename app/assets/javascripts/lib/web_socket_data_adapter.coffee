@@ -40,4 +40,4 @@ App.WebSocketDataAdapter = Em.Object.extend
     if @frame != null
       return @frame
     else
-      return [0, 0]
+      return null

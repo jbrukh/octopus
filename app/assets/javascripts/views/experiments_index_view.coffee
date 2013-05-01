@@ -101,6 +101,7 @@ App.ExperimentsIndexView = Ember.View.extend
 
   onUpdateInterval: (updateFrequency) ->
     sample = @dataAdapter.sample()
+    return unless sample
 
     # update the current buffer size, this is used to
     # offset the channels so they start from the right
