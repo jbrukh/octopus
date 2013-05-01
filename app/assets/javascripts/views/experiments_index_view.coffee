@@ -10,7 +10,6 @@ App.ExperimentsIndexView = Ember.View.extend
   handle: null
 
   didInsertElement: ->
-    @setupGraphs()
     controller = @get 'controller'
     controller.on 'didStart', => @startGraphing()
     controller.on 'didStop', => @stopGraphing()
@@ -20,10 +19,6 @@ App.ExperimentsIndexView = Ember.View.extend
     controller = @get 'controller'
     controller.off 'didStart'
     controller.off 'didStop'
-
-  setupGraphs: ->
-    console.log "creating graph (#{@graphWidth}x#{@graphHeight})"
-    console.log " - duration #{@graphDurationInSeconds} seconds"
 
   startGraphing: ->
     console.log 'start graphing'
@@ -41,7 +36,6 @@ App.ExperimentsIndexView = Ember.View.extend
     # the graphs, it should be big enough
     # to contain all the buffers, plus some
     # padding
-
     totalHeight = (@graphHeight * @numChannels) + (@graphPadding * @numChannels)
 
     svg = d3.select('#graphs-container')

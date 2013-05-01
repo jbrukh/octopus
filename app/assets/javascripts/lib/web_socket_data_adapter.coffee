@@ -2,7 +2,7 @@ App.WebSocketDataAdapter = Em.Object.extend
   ws: null
   frame: null
 
-  start: ->
+  start: ()->
     connector = @get('connector')
     connector.send('connect', {connect: true, pps: 50, batch_size: 1})
       .then(() => @startStreaming())
@@ -19,6 +19,7 @@ App.WebSocketDataAdapter = Em.Object.extend
       console.log('data socket open')
 
     @ws.onmessage = (evt) =>
+      # data is an array of arrays, channel major
       data = JSON.parse(evt.data).data
       newFrame = []
       newFrame.push(data[i]) for i in [0...data.length]
