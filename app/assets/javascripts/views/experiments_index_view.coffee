@@ -25,8 +25,6 @@ App.ExperimentsIndexView = Ember.View.extend
     console.log "creating graph (#{@graphWidth}x#{@graphHeight})"
     console.log " - duration #{@graphDurationInSeconds} seconds"
 
-    @currentBufferSize = @graphWidth
-
     # create the d3 primitives we're going to be using
     # to draw the graphs
     @x = d3.scale.linear()
@@ -50,6 +48,7 @@ App.ExperimentsIndexView = Ember.View.extend
     @clearCurrentGraph()
     @dataAdapter = @get('controller.dataAdapter');
 
+    @currentBufferSize = @graphWidth
     @numChannels = @dataAdapter.get('channels')
     console.log "creating #{@numChannels} graph buffers"
 
