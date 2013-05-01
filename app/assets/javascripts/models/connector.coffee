@@ -18,20 +18,7 @@ App.Connector = Em.Object.extend
 
   connect: ->
     console.log "connecting to websocket: #{this.url}"
-
-    # set the state to connected and
-    # create a new websocket
     @ws = @createWebsocket(this.url)
-
-    # schedule a check to make sure we're connected
-    # in the future
-    setTimeout((() => @checkConnected()), 2000)
-
-  checkConnected: ->
-    # ready state 0 is not yet established
-    # ready state 3 is error or cannot connect
-    return if @get('isConnecting')
-    @connect() if(@ws.readyState == 0 || @ws.readyState == 3)
 
   createWebsocket: (url) ->
     console.debug "creating new websocket: #{url}"
@@ -54,7 +41,6 @@ App.Connector = Em.Object.extend
     ws.onclose = () =>
       console.warn "connector socket close"
       @set 'state', 'disconnected'
-      setTimeout((() => @checkConnected()), 2000)
     ws
 
   send: (message_type, object = {}) ->

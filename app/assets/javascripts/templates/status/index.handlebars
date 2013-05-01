@@ -1,4 +1,10 @@
 <div class="page-header">
+  <div class="pull-right">
+    {{#unless connector.isConnected}}
+      <a class="btn btn-success" {{action connect}}>Reconnect</a>
+    {{/unless}}
+  </div>
+
   <h2>{{connector.state}}</h2>
 </div>
 
