@@ -20,5 +20,7 @@ module Ruby
     # config.i18n.default_locale = :de
 
     config.railties_order = [:main_app, :all, Ember::Rails::Engine]
+
+    config.assets.precompile += ['octopus.js', 'octopus.css']
   end
 end
