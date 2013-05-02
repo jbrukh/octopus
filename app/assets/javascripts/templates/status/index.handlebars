@@ -5,7 +5,7 @@
     {{/unless}}
   </div>
 
-  <h2>{{connector.state}}</h2>
+  <h2>Octopus Connector</h2>
 </div>
 
 {{#unless connector.isConnected}}
@@ -14,19 +14,29 @@
     Have you started the connector? Once it's running this message will go away.
   </div>
 {{else}}
-  <table class="table">
+  <table class="table table-striped">
     <thead>
       <tr>
-        <th>Connector settings</th>
+        <th>Connector Information</th>
       </tr>
     </thead>
     <tbody>
+      <tr>
+        <td>Status</td>
+        <td>
+             {{#unless connector.isConnected}}
+                <span class="label label-warning">{{connector.state}}</span>
+             {{else}}
+                <span class="label label-success">{{connector.state}}</span>
+             {{/unless}}
+        </td>
+      </tr>
       <tr>
         <td>Device Name</td>
         <td>{{connector.device_name}}</td>
       </tr>
       <tr>
-        <td>Device Version</td>
+        <td>Connector Version</td>
         <td>{{connector.version}}</td>
       </tr>
     </tbody>
