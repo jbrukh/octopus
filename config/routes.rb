@@ -1,6 +1,10 @@
 Ruby::Application.routes.draw do
 
-  devise_for :users
+  scope '/api' do
+    devise_for :users, :controllers => {
+      :registrations => "api/registrations" 
+    }
+  end
 
   # api routes
   namespace :api do

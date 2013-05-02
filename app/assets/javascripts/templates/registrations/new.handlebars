@@ -1,0 +1,34 @@
+<div class="page-header">
+  <h3>Register</h3>
+</div>
+
+<form class="form-horizontal">
+  <fieldset>
+    <legend>Register</legend>
+
+    <div class="control-group">
+      <label class="control-label">Email</label>
+      <div class="controls">
+       {{input value=model.email type=text}}
+      </div>
+    </div>
+
+    <div class="control-group">
+      <label class="control-label">Password</label>
+      <div class="controls">
+       {{input value=model.password type=password}}
+      </div>
+    </div>
+
+    <div class="control-group">
+      <label class="control-label">Password Confirmation</label>
+      <div class="controls">
+       {{input value=model.passwordConfirmation type=password}}
+      </div>
+    </div>
+
+    <div class="form-actions">
+      <button type="submit" class="btn btn-primary" {{action register}}>Register</button>
+    </div>
+  </fieldset>
+</form>
