@@ -9,7 +9,24 @@
   </head>
   <body>
 
-  <%= yield %>
+    <div class="navbar navbar-static-top navbar-inverse">
+      <div class="navbar-inner">
+        <%= link_to 'Octopus', root_url, class: 'brand' %>
+        <ul class="nav">
+          <% if user_signed_in? %>
+            <li>
+              <%= link_to 'sign out', destroy_user_session_url(), :method => :delete  %>
+            </li>
+          <% else %>
+            <li>
+              <%= link_to 'sign up', new_user_registration_url  %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+
+    <%= yield %>
 
   </body>
 </html>
