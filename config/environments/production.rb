@@ -81,4 +81,8 @@ Ruby::Application.configure do
   config.ember.variant = :production
 
   config.action_mailer.default_url_options = { :host => 'octopus-staging.herokuapp.com' }
+
+  # required to get unicorn to log on heroku
+  config.logger = Logger.new(STDOUT)
+  config.logger.level = Logger.const_get(ENV['LOG_LEVEL'] ? ENV['LOG_LEVEL'].upcase : 'INFO')
 end
