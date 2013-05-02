@@ -11,3 +11,8 @@
  *= require bootstrap.css
  *= require_self
  */
+
+
+.flash {
+  margin-top: 10px;
+}
