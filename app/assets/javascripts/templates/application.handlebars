@@ -32,6 +32,12 @@
   </div>
 </div>
 
+{{#if currentUser.isSignedIn}}
+  <div class="alert alert-info">
+    signed in <strong>{{currentUser.email}} / {{currentUser.authenticationToken}}</strong>
+  </div>
+{{/if}}
+
 <div class="container">
   {{outlet}}
 </div>

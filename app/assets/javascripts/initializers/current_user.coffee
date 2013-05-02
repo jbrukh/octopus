@@ -6,8 +6,7 @@ Ember.Application.initializer
     attributes = $('meta[name="current-user"]').attr('content')
 
     if attributes
-      console.log 'found attribute'
-      #object = store.load(App.User, JSON.parse(attributes))
-      #user = App.User.find(object.id)
-      #controller = container.lookup('controller:currentUser').set('content', user)
-      #container.typeInjection('controller', 'currentUser', 'controller:currentUser')
+      object = store.load(App.User, JSON.parse(attributes))
+      user = App.User.find(object.id)
+      controller = container.lookup('controller:currentUser').set('content', user)
+      container.typeInjection('controller', 'currentUser', 'controller:currentUser')

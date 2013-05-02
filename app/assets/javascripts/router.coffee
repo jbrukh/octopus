@@ -14,6 +14,3 @@ App.Router.map ->
     @route 'new'
 
   @route 'theory', { path: '/theory/:theory_id' }
-
-  @resource 'registrations', ->
-    @route 'new'

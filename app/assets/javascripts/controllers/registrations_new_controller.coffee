@@ -1,1 +1,0 @@
-App.RegistrationsNewController = Em.ObjectController.extend()
