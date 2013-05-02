@@ -80,7 +80,16 @@ Ruby::Application.configure do
 
   config.ember.variant = :production
 
+  # stuff for email sending
   config.action_mailer.default_url_options = { :host => 'octopus-staging.herokuapp.com' }
+  ActionMailer::Base.smtp_settings = {
+    :address        => "smtp.sendgrid.net",
+    :port           => "25",
+    :authentication => :plain,
+    :user_name      => ENV['SENDGRID_USERNAME'],
+    :password       => ENV['SENDGRID_PASSWORD'],
+    :domain         => ENV['SENDGRID_DOMAIN']
+  }
 
   # required to get unicorn to log on heroku
   config.logger = Logger.new(STDOUT)
