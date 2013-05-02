@@ -12,5 +12,14 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require handlebars
+//= require vendor/d3.v3
+//= require vendor/ember-latest
+//= require vendor/ember-data-latest
+//= require vendor/moment
 //= require vendor/bootstrap
+//= require bootstrapped
 //= require_self
+//= require brain
+App = Ember.Application.create({LOG_TRANSITIONS: true});
+//= require_tree .

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Octopus</title>
+    <%= stylesheet_link_tag    "octopus", media: "all" %>
+    <%= javascript_include_tag "octopus" %>
+
+    <%= csrf_meta_tags %>
+
+    <%- if user_signed_in? %>
+      <meta
+        name="current-user"
+        content="<%= UserSerializer.new(current_user).to_json(root: false) %>" />
+    <% end %>
+  </head>
+  <body>
+
+  <%= yield %>
+
+  <%= javascript_include_tag "templates/all" %>
+
+  </body>
+</html>

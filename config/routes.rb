@@ -9,6 +9,8 @@ Ruby::Application.routes.draw do
     resources :recordings
   end
 
+  resources :octopus
+
   # websites routes
   root to: 'welcome#index'
 end

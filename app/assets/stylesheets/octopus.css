@@ -11,3 +11,27 @@
  *= require bootstrap.css
  *= require_self
  */
+
+path.line {
+  stroke: steelblue;
+  stroke-width: 1;
+  fill: none;
+}
+
+path.channel-0 {
+  stroke: steelblue;
+}
+
+path.channel-1 {
+  stroke: green;
+}
+
+.y-axis line,
+.y-axis path {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+.y-axis text{
+  font-size: 7pt;
+}
