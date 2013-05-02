@@ -79,4 +79,6 @@ Ruby::Application.configure do
   config.log_formatter = ::Logger::Formatter.new
 
   config.ember.variant = :production
+
+  config.action_mailer.default_url_options = { :host => 'octopus-staging.herokuapp.com' }
 end
