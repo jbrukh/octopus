@@ -1,27 +1,35 @@
 <div class="page-header">
-  <h3>Start Experiment <small>{{name}}</small></h3>
+  <h3>Experiment <small>{{name}}</small></h3>
 </div>
 
-<form class="form-horizontal">
-  <fieldset>
-    <legend>Subject</legend>
-  </fieldset>
+{{#if model.isSetup}}
+  <form class="form-horizontal">
+    <fieldset>
+      <legend>Subject</legend>
+    </fieldset>
 
-  <div class="control-group">
-    <label class="control-label">First Name</label>
-    <div class="controls">
-     {{input value=model.experiment.firstname type=text}}
+    <div class="control-group">
+      <label class="control-label">First Name</label>
+      <div class="controls">
+       {{input value=model.firstname type=text}}
+      </div>
     </div>
-  </div>
 
-  <div class="control-group">
-    <label class="control-label">Last Name</label>
-    <div class="controls">
-     {{input value=model.experiment.firstname type=text}}
+    <div class="control-group">
+      <label class="control-label">Last Name</label>
+      <div class="controls">
+       {{input value=model.lastname type=text}}
+      </div>
     </div>
-  </div>
 
-  <div class="form-actions">
-    <button type="submit" class="btn btn-primary" {{action save}}>Calibrate</button>
-  </div>
-</form>
+    <div class="form-actions">
+      <button type="submit" class="btn btn-primary" {{action calibrate}}>Calibrate</button>
+    </div>
+  </form>
+{{else}}
+  {{model.firstname}} / {{model.lastname}}
+{{/if}}
+
+{{#if model.isCalibrating}}
+  <h4>Calibrating</h4>
+{{/if}}

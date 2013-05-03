@@ -10,7 +10,10 @@ App.Router.map ->
   @route 'video', { path: '/video/:video_id' }
 
   @resource 'status', -> null
+
   @resource 'theories', ->
     @route 'new'
-
   @route 'theory', { path: '/theory/:theory_id' }
+
+  @resource 'recordings', ->
+    @route 'new'
