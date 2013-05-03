@@ -1,8 +1,8 @@
-App.WebSocketDataAdapter = Em.Object.extend
+App.WebSocketDataAdapter = App.DataAdapter.extend
   ws: null
   frame: null
 
-  start: ()->
+  _start: ()->
     connector = @get('connector')
     connector.send('connect', {connect: true, pps: 50, batch_size: 1})
       .then(() => @startStreaming())
@@ -31,11 +31,10 @@ App.WebSocketDataAdapter = Em.Object.extend
     @ws.onerror = () =>
       console.log "data socket error"
 
-  stop: ->
+  _stop: ->
     console.log 'stopping streaming'
     connector = @get('connector')
     connector.send('connect', {connect: false})
       .then(() => @ws.close())
 
-  sample: ->
-    @frame
+  sample: -> @frame

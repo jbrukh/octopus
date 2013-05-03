@@ -1,9 +1,9 @@
 <div class="page-header">
   <div class="pull-right">
-    {{#unless isRunning}}
+    {{#unless dataAdapter.isRunning}}
       <a {{action start}} class="btn btn-success">Start</a>
     {{else}}
-      {{#unless isRecording}}
+      {{#unless dataAdapter.isRecording}}
         <a {{action record}} class="btn btn-danger">
           <i class="icon-download-alt"></i> Record
         </a>
@@ -14,13 +14,13 @@
   <h2>
     Experiments
 
-    {{#if isRunning}}
+    {{#if dataAdapter.isRunning}}
       <small>
-        Reading {{dataAdapter.channels}} channels @ 
+        Reading {{dataAdapter.channels}} channels @
         resolution of {{dataAdapter.resolution}}ms {{pointsDrawn}}
       </small>
     {{/if}}
   </h2>
 </div>
 
-<div id="graphs-container"></div>
+{{view App.DataAdapterGraphView dataAdapterBinding=dataAdapter}}

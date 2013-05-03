@@ -7,4 +7,4 @@ App.ExperimentsIndexRoute = Ember.Route.extend
     properties = settings.get("adapters.#{adapter}")
 
     connector = controller.get('connector')
-    controller.set 'dataAdapter', App.DataAdapter.create(connector, adapter, properties)
+    controller.set 'dataAdapter', App.DataAdapter.build(connector, adapter, properties)
