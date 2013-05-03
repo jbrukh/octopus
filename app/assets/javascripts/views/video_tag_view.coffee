@@ -24,6 +24,19 @@ App.VideoTagView = Ember.View.extend
     this.$().on 'timeupdate', =>
       @set 'progress', this.$video.currentTime
 
+    remote = @get 'remote'
+    return unless remote
+    remote.on 'onPlay', () => @play()
+    remote.on 'onPause', () => @pause()
+    remote.on 'onFullscreen', () => @fullscreen()
+
+  willDestroyElement: ->
+    remote = @get 'remote'
+    return unless remote
+    remote.off 'onPlay'
+    remote.off 'onPause'
+    remote.off 'onFullscreen'
+
   loadMetaData: ->
     console.log "loading video meta data"
     @set 'ready', true

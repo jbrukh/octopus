@@ -1,15 +1,17 @@
-{{view App.VideoTagView srcBinding='view.src' viewName="videoView"}}
+<div>
+  {{view App.VideoTagView srcBinding='view.src' viewName="videoView" remoteBinding=view}}
+</div>
 
 {{#unless view.videoView.isPlaying}}
-  <a href="#" class="btn btn-small btn-success" {{action play target=view.videoView}}>
+  <a href="#" class="btn btn-small btn-success" {{action play target=view}}>
     <i class="icon-play"></i> Play</a>
 {{else}}
-  <a href="#" class="btn btn-small btn-warning" {{action pause target=view.videoView}}>
+  <a href="#" class="btn btn-small btn-warning" {{action pause target=view}}>
     <i class="icon-pause"></i> Pause</a>
 {{/unless}}
 
 {{#if view.videoView.supportsFullscreen}}
-  <a href="#" class="btn btn-small" {{action fullscreen target=view.videoView}}>
+  <a href="#" class="btn btn-small" {{action fullscreen target=view}}>
     <i class="icon-fullscreen"></i> Fullscreen</a>
 {{/if}}
 

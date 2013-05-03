@@ -1,6 +1,12 @@
-App.VideoPlayerView = Ember.View.extend
+App.VideoPlayerView = Ember.View.extend Ember.Evented,
   templateName: 'shared/player'
   attributeBindings: 'src width height'.w()
 
   play: ->
-    video.play();
+    @trigger 'onPlay'
+
+  fullscreen: ->
+    @trigger 'onFullscren'
+
+  pause: ->
+    @trigger 'onPause'
