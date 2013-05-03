@@ -28,3 +28,8 @@ App.DataAdapter.reopenClass
       else throw "unknown data adapter type #{type}"
     dataAdapter.set 'connector', connector
     dataAdapter
+
+  buildFromSettings: (connector, settings) ->
+    adapter = settings.get('adapters.selected')
+    properties = settings.get("adapters.#{adapter}")
+    App.DataAdapter.build(connector, adapter, properties)

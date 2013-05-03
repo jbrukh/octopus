@@ -7,8 +7,15 @@ App.Experiment = Em.Object.extend
     @get('state') == 'calibrating'
   ).property('state')
 
+  isRunning: (->
+    @get('state') == 'running'
+  ).property('state')
+
   calibrate: ->
     @set 'state', 'calibrating'
+
+  run: ->
+    @set 'state', 'running'
 
 App.Experiment.reopenClass
   begin: ->

@@ -32,4 +32,10 @@
 
 {{#if model.isCalibrating}}
   <h4>Calibrating</h4>
+  <a href="#" class="btn btn-success" {{action run}}>Run</a>
+  {{view App.DataAdapterGraphView dataAdapterBinding=dataAdapter}}
+{{/if}}
+
+{{#if model.isRunning}}
+  {{view App.VideoTagView src='/videos/dizzy.mp4'}}
 {{/if}}
