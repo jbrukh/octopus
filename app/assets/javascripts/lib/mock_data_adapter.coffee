@@ -10,6 +10,7 @@ App.MockDataAdapter = App.DataAdapter.extend
     @frame.push(Math.floor((Math.random()*100)+1)) for num in [0..channels]
     console.log "starting data adapter @ #{resolution}"
     @handle = setInterval((=> @tick()), resolution)
+    @manager.send 'run', this
 
   _stop: ->
     clearInterval @handle

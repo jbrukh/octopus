@@ -1,21 +1,36 @@
 App.DataAdapter = Em.Object.extend Ember.Evented,
-  init: ->
-    @set 'state', 'stopped'
+
+  manager: Ember.StateManager.create
+    initialState: 'stopped'
+
+    # state manager begins in the stopped state
+    stopped: Ember.State.create()
+    negotiating: Ember.State.create()
+    running:  Ember.State.create()
+
+    start: (manager, adapter) ->
+      console.log 'starting data adapter'
+      manager.send 'negotiate', adapter
+
+    negotiate: (manager, adapter) ->
+      manager.transitionTo 'negotiating'
+      adapter._start()
+
+    run: (manager, adapter) ->
+      adapter.trigger 'didStart'
+      manager.transitionTo 'running'
 
   isRunning: (->
-    @get('state') == 'running'
-  ).property('state')
+    @get('manager.currentState.name') == 'running'
+  ).property('manager.currentState')
 
   start: ->
-    console.log 'starting data adapter'
-    @set 'state', 'running'
-    @trigger 'didStart'
-    @_start()
+    @manager.send 'start', this
 
   stop: ->
     @_stop()
     @trigger 'didStop'
-    @set 'state', 'stopped'
+    @manager.transitionTo 'stopped'
 
 App.DataAdapter.reopenClass
   available: ['live', 'mock']

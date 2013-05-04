@@ -3,12 +3,11 @@ App.WebSocketDataAdapter = App.DataAdapter.extend
   frame: null
 
   _start: ()->
+    @set 'resolution', 50
+
     connector = @get('connector')
     connector.send('connect', {connect: true, pps: 50, batch_size: 1})
       .then(() => @startStreaming())
-
-    @set 'resolution', 50
-    @set 'channels', 2
 
   startStreaming: ->
     console.log 'start streaming'
@@ -23,6 +22,14 @@ App.WebSocketDataAdapter = App.DataAdapter.extend
       data = JSON.parse(evt.data).data
       newFrame = []
       newFrame.push(data[i]) for i in [0...data.length]
+
+      # if we have no frame set, use it to complete the
+      # negotiation state and transition to runnnig state
+      if @frame == null
+        @set 'channels', data.length
+        @manager.send 'run', this
+
+      # stash this frame away for sampling
       @frame = newFrame
 
     @ws.onclose = () =>
