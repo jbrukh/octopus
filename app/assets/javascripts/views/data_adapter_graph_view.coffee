@@ -78,7 +78,7 @@ App.DataAdapterGraphView = Em.View.extend
     yAxis = d3.svg.axis()
       .scale(y)
       .ticks(1)
-      .tickSize(0)
+      .tickSize(2)
       .tickFormat((d, i) -> format(d))
       .orient("left");
 
