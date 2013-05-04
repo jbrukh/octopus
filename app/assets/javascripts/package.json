@@ -1,0 +1,25 @@
+{
+  "name": "octopus",
+  "version": "0.0.1",
+  "description": "octopus client",
+  "main": "octopus.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "karma"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jbrukh/octopus"
+  },
+  "keywords": [
+    "octopus"
+  ],
+  "author": "",
+  "license": "BSD",
+  "dependencies": {
+    "karma": "~0.8.5",
+    "sinon": "~1.6.0"
+  }
+}

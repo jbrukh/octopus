@@ -16,3 +16,6 @@
 /tmp
 
 brain.sublime-workspace
+
+app/assets/javascripts/node_modules/
+app/assets/javascripts/npm-debug.log
