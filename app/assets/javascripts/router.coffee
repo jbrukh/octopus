@@ -1,15 +1,10 @@
 App.Router.map ->
+  @resource 'settings', -> null
+  @resource 'status', -> null
+
   @resource 'experiments', -> null
   @resource 'experiment', ->
     @route 'start', { path: '/start/:theory_id' }
-
-  @resource 'settings', -> null
-
-  @resource 'videos', ->
-    @route 'new'
-  @route 'video', { path: '/video/:video_id' }
-
-  @resource 'status', -> null
 
   @resource 'theories', ->
     @route 'new'
@@ -17,3 +12,12 @@ App.Router.map ->
 
   @resource 'recordings', ->
     @route 'new'
+
+  # media
+  @resource 'videos', ->
+    @route 'new'
+  @route 'video', { path: '/video/:video_id' }
+
+  @resource 'slideshows', ->
+    @route 'new'
+  @route 'slideshow', { path: '/slideshow/:slideshow_id' }
