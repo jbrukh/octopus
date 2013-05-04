@@ -49,6 +49,10 @@ end
 group :test, :development do
   gem "shoulda-matchers"
   gem "rspec-rails", "~> 2.0"
-  gem 'watchr'
-  gem 'ruby-fsevent'
+
+  gem 'rb-inotify', :require => false
+  gem 'rb-fsevent', :require => false
+  gem 'rb-fchange', :require => false
+  gem 'guard'
+  gem 'guard-rspec'
 end
