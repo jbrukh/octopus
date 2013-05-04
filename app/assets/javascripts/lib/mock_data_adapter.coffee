@@ -1,5 +1,4 @@
 App.MockDataAdapter = App.DataAdapter.extend
-  frame:  null
   handle: null
 
   _start: ->
@@ -24,6 +23,4 @@ App.MockDataAdapter = App.DataAdapter.extend
       val = Math.min(@frame[i] + delta, 100)
       val = Math.max(val, 0)
       newFrame.push(val)
-    @frame = newFrame;
-
-  sample: -> this.frame
+    @frameReceived(newFrame)

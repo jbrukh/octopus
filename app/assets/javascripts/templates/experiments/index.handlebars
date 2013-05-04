@@ -17,12 +17,10 @@
     {{#if dataAdapter.isRunning}}
       <small>
         Reading {{dataAdapter.channels}} channels @
-        resolution of {{dataAdapter.resolution}}ms {{pointsDrawn}}
+        resolution of {{dataAdapter.resolution}}ms {{dataAdapter.receivedFrames}}
       </small>
     {{/if}}
   </h2>
 </div>
-
-{{dataAdapter.manager.currentState.name}}
 
 {{view App.DataAdapterGraphView dataAdapterBinding=dataAdapter}}

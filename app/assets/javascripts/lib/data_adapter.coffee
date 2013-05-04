@@ -1,4 +1,5 @@
 App.DataAdapter = Em.Object.extend Ember.Evented,
+  frame: null
 
   manager: Ember.StateManager.create
     initialState: 'stopped'
@@ -31,6 +32,19 @@ App.DataAdapter = Em.Object.extend Ember.Evented,
     @_stop()
     @trigger 'didStop'
     @manager.transitionTo 'stopped'
+
+  sample: ->
+    @frame
+
+  frameReceived: (f) ->
+    # if we have no frame set, use it to complete the
+    # negotiation state and transition to runnnig state
+    if @frame == null
+      @set 'channels', f.length
+      @manager.send 'run', this
+
+    @frame = f
+    @incrementProperty('receivedFrames')
 
 App.DataAdapter.reopenClass
   available: ['live', 'mock']
