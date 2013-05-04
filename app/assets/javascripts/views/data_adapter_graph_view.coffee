@@ -74,11 +74,12 @@ App.DataAdapterGraphView = Em.View.extend
       .x((d, i) => x(@graphWidth - i - @currentBufferSize))
       .y((d, i) => y(d))
 
-    format = d3.format(",.1f")
+    format = d3.format(",.4f")
     yAxis = d3.svg.axis()
       .scale(y)
-      .ticks(3)
-      .tickFormat((d, i) -> format(d * 1000))
+      .ticks(1)
+      .tickSize(0)
+      .tickFormat((d, i) -> format(d))
       .orient("left");
 
     # create a new graphic element for this graph, and position
