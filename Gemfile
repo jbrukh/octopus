@@ -49,4 +49,6 @@ end
 group :test, :development do
   gem "shoulda-matchers"
   gem "rspec-rails", "~> 2.0"
+  gem 'watchr'
+  gem 'ruby-fsevent'
 end
