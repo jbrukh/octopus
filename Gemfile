@@ -55,5 +55,4 @@ group :test, :development do
   gem 'rb-fchange', :require => false
   gem 'guard'
   gem 'guard-rspec'
-  gem 'guard-spork'
 end
