@@ -1,11 +1,22 @@
 <div class="page-header">
   <div class="pull-right">
+
+    {{#if model.canUpload}}
+      <a {{action upload}} class="btn btn-success">
+        <i class="icon-upload"></i> Upload
+      </a>
+    {{/if}}
+
     {{#unless dataAdapter.isRunning}}
       <a {{action start}} class="btn btn-success">Start</a>
     {{else}}
-      {{#unless dataAdapter.isRecording}}
-        <a {{action record}} class="btn btn-danger">
-          <i class="icon-download-alt"></i> Record
+      {{#unless model.isRecording}}
+        <a {{action beginRecord}} class="btn btn-danger">
+          <i class="icon-circle"></i> Record
+        </a>
+      {{else}}
+        <a {{action endRecord}} class="btn btn-danger">
+          <i class="icon-circle"></i> End
         </a>
       {{/unless}}
       <a {{action stop}} class="btn btn-warning">Stop</a>
@@ -13,7 +24,6 @@
   </div>
   <h2>
     New Recording
-
     {{#if dataAdapter.isRunning}}
       <small>
         Reading {{dataAdapter.channels}} channels @

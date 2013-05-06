@@ -6,17 +6,23 @@ App.RecordingsNewController = Ember.Controller.extend Ember.Evented,
   stop: ->
     console.log 'stopping experiment'
     @set 'isRunning', false
-    isRecording = @get('dataAdapter.isRecording')
+    isRecording = @get('model.isRecording')
     if isRecording
-      @get('connector').send('record', {record: false}).then =>
+      @get('connector').send('record', {record: false}).then (data) =>
         @get('dataAdapter').stop()
         @trigger 'didStop'
-        @set 'isRecording', false
+        @get('model').stop(data)
     else
       @get('dataAdapter').stop()
       @trigger 'didStop'
 
-  record: ->
+  beginRecord: ->
     console.log 'start recording'
     @get('connector').send('record', {record: true}).then =>
-      @set 'isRecording', true
+      @get('model').start()
+
+  endRecord: ->
+    console.log 'end recording'
+    @get('connector').send('record', {record: false}).then (data) =>
+      console.log data
+      @get('model').finish(data)
