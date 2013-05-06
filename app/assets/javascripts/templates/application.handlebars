@@ -24,15 +24,18 @@
           {{/linkTo}}
         </ul>
       </li>
-
-      {{#linkTo 'settings.index' tagName='li'}}
-        {{#linkTo 'settings.index'}}Settings{{/linkTo}}
-      {{/linkTo}}
     </ul>
 
     <div class="pull-right">
       {{render "shared/connector_widget" connector}}
     </div>
+
+    <ul class="nav pull-right">
+      {{#linkTo 'settings.index' tagName='li'}}
+        {{#linkTo 'settings.index'}}Settings{{/linkTo}}
+      {{/linkTo}}
+
+    </ul>
   </div>
 </div>
 
