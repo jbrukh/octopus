@@ -1,26 +1,6 @@
 <div class="page-header">
   <div class="pull-right">
-    {{#unless dataAdapter.isRunning}}
-      <a {{action start}} class="btn btn-success">Start</a>
-    {{else}}
-      {{#unless dataAdapter.isRecording}}
-        <a {{action record}} class="btn btn-danger">
-          <i class="icon-download-alt"></i> Record
-        </a>
-      {{/unless}}
-      <a {{action stop}} class="btn btn-warning">Stop</a>
-    {{/unless}}
+    {{#linkTo 'recordings.new' class='btn btn-success'}}New Recording{{/linkTo}}
   </div>
-  <h2>
-    Recordings
-
-    {{#if dataAdapter.isRunning}}
-      <small>
-        Reading {{dataAdapter.channels}} channels @
-        resolution of {{dataAdapter.resolution}}ms {{dataAdapter.receivedFrames}}
-      </small>
-    {{/if}}
-  </h2>
+  <h2>Recordings</h2>
 </div>
-
-{{view App.DataAdapterGraphView dataAdapterBinding=dataAdapter}}

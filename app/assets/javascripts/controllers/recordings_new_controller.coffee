@@ -1,4 +1,4 @@
-App.RecordingsIndexController = Ember.Controller.extend Ember.Evented,
+App.RecordingsNewController = Ember.Controller.extend Ember.Evented,
   start: ->
     console.log 'starting experiment'
     @get('dataAdapter').start()
