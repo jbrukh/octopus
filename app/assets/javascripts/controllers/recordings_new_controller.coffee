@@ -30,7 +30,7 @@ App.RecordingsNewController = Ember.Controller.extend Ember.Evented,
       @get('model').finish(data)
 
   upload: ->
-    token = @currentUser.get('authenticationToken')
+    token = @get('currentUser.authenticationToken')
     resourceId = @get 'model.resourceId'
     @get('connector').send('upload', {token: token, resource_id: resourceId}).then (data) =>
       console.log 'finished uploading'
