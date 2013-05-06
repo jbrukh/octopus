@@ -4,5 +4,5 @@ App.Recording = Em.Object.extend
 
   finish: (response) ->
     @set 'isRecording', false
-    @set 'resource_id', response.resource_id
+    @set 'resourceId', response.resource_id
     @set 'canUpload', true
