@@ -27,15 +27,12 @@
     </ul>
 
     <div class="pull-right">
-      {{render "shared/connector_widget" connector}}
+        {{#linkTo 'settings.index' class='btn btn-inverse'}}
+          <i class="icon-cog icon-inverse"></i>
+        {{/linkTo}}
+        {{render "shared/connector_widget" connector}}
     </div>
 
-    <ul class="nav pull-right">
-      {{#linkTo 'settings.index' tagName='li'}}
-        {{#linkTo 'settings.index'}}Settings{{/linkTo}}
-      {{/linkTo}}
-
-    </ul>
   </div>
 </div>
 

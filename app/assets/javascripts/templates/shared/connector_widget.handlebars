@@ -1,9 +1,9 @@
 {{#if model.isConnected}}
-  {{#linkTo 'status.index' class="btn btn-success"}}
+  {{#linkTo 'status.index' class="btn btn-success" tagName="button"}}
     <i class="icon-thumbs-up"></i>&nbsp;&nbsp;{{model.device_name}}
   {{/linkTo}}
 {{else}}
-  {{#linkTo 'status.index' class="btn btn-warning"}}
+  {{#linkTo 'status.index' class="btn btn-warning" tagName="button"}}
     <i class="icon-thumbs-down"></i>&nbsp;Octopus Connector
   {{/linkTo}}
 {{/if}}
