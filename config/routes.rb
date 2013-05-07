@@ -5,8 +5,11 @@ Ruby::Application.routes.draw do
   # api routes
   namespace :api do
     resources :theories
-    resources :videos
     resources :recordings
+
+    # media
+    resources :videos
+    resources :slideshows
   end
 
   resources :octopus

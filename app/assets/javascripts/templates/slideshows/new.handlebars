@@ -1,0 +1,20 @@
+<div class="page-header">
+  <h3>New Slideshow</h3>
+</div>
+
+<form class="form-horizontal">
+  <fieldset>
+    <legend>New Slideshow</legend>
+  </fieldset>
+
+  <div class="control-group">
+    <label class="control-label">Name</label>
+    <div class="controls">
+     {{input value=model.name type=text}}
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <button type="submit" class="btn btn-primary" {{action save}}>Save</button>
+  </div>
+</form>

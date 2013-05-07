@@ -1,0 +1,21 @@
+<div class="page-header">
+  <div class="pull-right">
+    {{#linkTo 'slideshows.new' class="btn btn-success"}}Upload Slideshow{{/linkTo}}
+  </div>
+  <h3>Slideshow</h3>
+</div>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <td>Name</td>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each controller}}
+      <tr>
+        <td>{{#linkTo 'slideshow' this}}{{name}}{{/linkTo}}</td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>
