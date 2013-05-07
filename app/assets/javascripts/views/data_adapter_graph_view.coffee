@@ -1,6 +1,6 @@
 App.DataAdapterGraphView = Em.View.extend
   graphDurationInSeconds: 30
-  graphWidth: 940
+  graphWidth: 820
   graphHeight: 60
   graphPadding: 10
   currentBufferSize: null
@@ -44,7 +44,7 @@ App.DataAdapterGraphView = Em.View.extend
     element = this.$()[0].id
     svg = d3.select("##{element}")
       .append("svg:svg")
-        .attr('class', 'graph-streaming')
+        .attr('class', 'graph-streaming hero-unit')
         .attr("width", @graphWidth)
         .attr("height", totalHeight)
 

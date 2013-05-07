@@ -1,6 +1,6 @@
 App.DataAdapter = Em.Object.extend Ember.Evented,
   frame: null
-
+ 
   manager: Ember.StateManager.create
     initialState: 'stopped'
 
@@ -27,7 +27,7 @@ App.DataAdapter = Em.Object.extend Ember.Evented,
 
   start: ->
     @manager.send 'start', this
-
+  
   stop: ->
     @_stop()
     @trigger 'didStop'
