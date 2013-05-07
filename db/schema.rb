@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 20130507115554) do
   end
 
   create_table "recordings", force: true do |t|
+    t.string   "state",      null: false
     t.integer  "user_id",    null: false
     t.datetime "created_at"
     t.datetime "updated_at"
