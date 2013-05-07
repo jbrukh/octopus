@@ -52,6 +52,8 @@ group :test, :development do
   gem "shoulda-matchers"
   gem "rspec-rails", "~> 2.0"
 
+  gem 'factory_girl_rails'
+
   gem 'rb-inotify', :require => false
   gem 'rb-fsevent', :require => false
   gem 'rb-fchange', :require => false
