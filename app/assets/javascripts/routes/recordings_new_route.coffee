@@ -10,6 +10,11 @@ App.RecordingsNewRoute = Ember.Route.extend
     controller.set 'dataAdapter', App.DataAdapter.buildFromSettings(connector, settings)
 
   deactivate: ->
+    # if we have are currently recording then just stop the
+    # recording, we should probably prompt here.
+    controller = @controllerFor('recordings.new')
+    controller.stop()
+
     @transaction.rollback() if @transaction
 
   events:
