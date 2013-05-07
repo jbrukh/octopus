@@ -44,10 +44,17 @@
       You must be <a href="/users/sign_in">signed in</a> to use octopus.
     </div>
   {{else}}
-    <div class="alert alert-info">
-      signed in <strong>{{currentUser.email}} / {{currentUser.authenticationToken}}</strong>
-    </div>
-
     {{outlet}}
   {{/unless}}
 </div>
+
+{{#if currentUser.isSignedIn}}
+  <div class="container">
+    <footer>
+      <small>
+        signed in as {{currentUser.email}}/{{currentUser.authenticationToken}}<br/>
+        &copy; octopus 2013
+      </small>
+    </footer>
+</div>
+{{/if}}

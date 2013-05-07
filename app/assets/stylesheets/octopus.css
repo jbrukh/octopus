@@ -53,3 +53,9 @@ i.icon-inverse {
 .container .alert{
   margin-top: 10px;
 }
+
+footer{
+  border-top: solid 1px #eee;
+  padding: 10px;
+  color: #c0c0c0;
+}
