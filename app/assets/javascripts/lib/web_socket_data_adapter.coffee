@@ -1,12 +1,14 @@
 App.WebSocketDataAdapter = App.DataAdapter.extend
   ws: null
   frame: null
+  didRun: false
 
   _start: ()->
-    @set 'resolution', 50
-
+    res = 50
+    @set 'resolution', res
+    @set 'didRun', true
     connector = @get('connector')
-    connector.send('connect', {connect: true, pps: 50, batch_size: 1})
+    connector.send('connect', {connect: true, pps: res, batch_size: 1})
       .then(() => @startStreaming())
 
   startStreaming: ->
