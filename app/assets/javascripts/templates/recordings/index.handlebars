@@ -1,6 +1,12 @@
 <div class="page-header">
   <div class="pull-right">
-    {{#linkTo 'recordings.new' class='btn btn-success'}}New Recording{{/linkTo}}
+    {{#if canRecord}}
+      {{#linkTo 'recordings.new' class='btn btn-success'}}New Recording{{/linkTo}}
+    {{else}}
+      <a id="cant-record" class="btn disabled" title="You cannot record, unless the collector is running.">
+        New Recording
+      </a>
+    {{/if}}
   </div>
   <h3>Recordings</h3>
 </div>
