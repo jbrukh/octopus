@@ -1,6 +1,6 @@
 App.DataAdapterGraphView = Em.View.extend
   graphDurationInSeconds: 30
-  graphWidth: 940
+  graphWidth: 820
   graphHeight: 60
   graphPadding: 10
   currentBufferSize: null
@@ -11,6 +11,7 @@ App.DataAdapterGraphView = Em.View.extend
   classNames: ['graph-view']
 
   didInsertElement: ->
+    $('.graph-streaming').fadeIn 'slow'
     console.log 'inserting graph view'
     dataAdapter = @get 'dataAdapter'
     throw 'you have to set a data adapter on the data adapter graph view' unless dataAdapter
@@ -44,7 +45,7 @@ App.DataAdapterGraphView = Em.View.extend
     element = this.$()[0].id
     svg = d3.select("##{element}")
       .append("svg:svg")
-        .attr('class', 'graph-streaming')
+        .attr('class', 'graph-streaming hero-unit')
         .attr("width", @graphWidth)
         .attr("height", totalHeight)
 
