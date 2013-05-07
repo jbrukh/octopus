@@ -1,6 +1,6 @@
 App.RecordingsNewRoute = Ember.Route.extend
   model: () ->
-    App.Recording.create()
+    App.Recording.createRecord()
 
   activate: ->
     controller = @controllerFor('recordings.new')

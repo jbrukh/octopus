@@ -4,3 +4,11 @@
   </div>
   <h2>Recordings</h2>
 </div>
+
+{{#unless controller.length}}
+    <div class="alert alert-info">
+      There are no recordings.
+    </div>
+{{else}}
+  {{controller.length}}
+{{/unless}}

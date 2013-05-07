@@ -1,4 +1,8 @@
-App.Recording = Em.Object.extend
+App.Recording = DS.Model.extend
+
+  created_at:   DS.attr 'date'
+  updated_at:   DS.attr 'date'
+
   start: ->
     @set 'isRecording', true
 
