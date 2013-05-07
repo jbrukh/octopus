@@ -49,3 +49,7 @@ path.channel-1 {
 i.icon-inverse {
   font-color: white;
 }
+
+.container .alert{
+  margin-top: 10px;
+}
