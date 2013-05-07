@@ -20,11 +20,35 @@ path.line {
 }
 
 path.channel-0 {
-  stroke: steelblue;
+  stroke: white;
 }
 
 path.channel-1 {
-  stroke: green;
+  stroke: white;
+}
+
+path.channel-2 {
+  stroke: white;
+}
+
+path.channel-3 {
+  stroke: white;
+}
+
+path.channel-4 {
+  stroke: white;
+}
+
+path.channel-5 {
+  stroke: white;
+}
+
+path.channel-6 {
+  stroke: white;
+}
+
+path.channel-7 {
+  stroke: white;
 }
 
 .y-axis line,
@@ -40,6 +64,10 @@ path.channel-1 {
 #hero {
 	margin-top: 100px;
 	background-color: lightblue;
+}
+
+.graph-streaming {
+  background-color: lightskyblue;
 }
 
 .label {
