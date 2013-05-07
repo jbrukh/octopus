@@ -1,6 +1,8 @@
 require 'spec_helper'
 
 describe Api::TheoriesController do
+  fixtures :users
+
   describe 'as a guest' do
     describe '#index' do
       before :each do
@@ -12,7 +14,7 @@ describe Api::TheoriesController do
 
   describe 'as a user' do
     before :each do
-      sign_in users(:bob)
+      sign_in users(:user)
     end
 
     describe '#index' do
@@ -20,7 +22,7 @@ describe Api::TheoriesController do
         get :index
       end
 
-      it { should_respond_with :success }
+      it { should respond_with :found }
     end
   end
 end
