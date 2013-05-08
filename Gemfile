@@ -16,7 +16,10 @@ gem 'pg'
 gem 'handlebars-source', '1.0.0.rc3'
 gem "ember-rails"
 
+# authentication/authorization
 gem 'devise', github: 'plataformatec/devise', branch: 'rails4'
+gem 'cancan'
+
 gem 'state_machine'
 gem 'paperclip'
 

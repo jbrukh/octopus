@@ -8,6 +8,7 @@ class Api::TheoriesController < ApplicationController
 
   def show
     @theory = Theory.find(params[:id])
+    authorize! :read, @theory
     render json: @theory
   end
 
