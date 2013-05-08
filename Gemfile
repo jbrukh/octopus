@@ -17,7 +17,7 @@ gem 'handlebars-source', '1.0.0.rc3'
 gem "ember-rails"
 
 gem 'devise', github: 'plataformatec/devise', branch: 'rails4'
-gem 'state_machine', :require => 'state_machine/core'
+gem 'state_machine'
 gem 'paperclip'
 
 # Gems used only for assets and not required

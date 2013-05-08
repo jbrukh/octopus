@@ -4,7 +4,7 @@ class Api::ResultsController < ApplicationController
 
   def create
     @result = @recording.build_result(result_params)
-    @result.save!
+    @recording.save!
     redirect_to api_recording_result_url(@recording, @result)
   end
 
@@ -14,6 +14,6 @@ class Api::ResultsController < ApplicationController
     end
 
     def result_params
-      params.require(:result).permit()
+      params.require(:result).permit(:duration)
     end
 end

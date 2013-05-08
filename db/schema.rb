@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 20130508002815) do
   end
 
   create_table "results", force: true do |t|
+    t.integer  "duration",   null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

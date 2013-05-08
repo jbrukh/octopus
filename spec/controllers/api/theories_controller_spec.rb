@@ -22,7 +22,7 @@ describe Api::TheoriesController do
         get :index
       end
 
-      it { should respond_with :found }
+      it { should respond_with :ok }
     end
   end
 end

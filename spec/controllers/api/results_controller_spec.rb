@@ -9,7 +9,7 @@ describe Api::ResultsController do
   context 'when guest' do
     context '#create' do
       before :each do
-        post :create, recording_id: recording.id
+        post :create, :recording_id => recording.id
       end
       it { should redirect_to new_user_session_url }
     end
@@ -22,9 +22,9 @@ describe Api::ResultsController do
 
     context '#create' do
       before :each do
-        post :create, recording_id: recording.id, result: {}
+        post :create, :recording_id => recording.id, :result => { :duration => 3000 }
       end
-      it { should respond_with :found }
+      it { should respond_with :redirect }
       it { recording.reload.result.should_not be_nil }
     end
   end
