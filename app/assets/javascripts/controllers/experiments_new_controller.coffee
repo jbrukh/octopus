@@ -1,4 +1,4 @@
-App.TheoriesNewController = Em.ObjectController.extend
+App.ExperimentsNewController = Em.ObjectController.extend
 
   availableMedia: (->
     mediaType = @get 'selectedMediaType'

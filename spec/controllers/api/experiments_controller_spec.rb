@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Api::TheoriesController do
+describe Api::ExperimentsController do
   fixtures :users
 
   describe 'as a guest' do

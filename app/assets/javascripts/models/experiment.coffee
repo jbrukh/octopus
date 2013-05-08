@@ -1,4 +1,4 @@
-App.Theory = DS.Model.extend
+App.Experiment = DS.Model.extend
   media: DS.belongsTo('App.Media')
 
   name:         DS.attr 'string'

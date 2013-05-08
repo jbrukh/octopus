@@ -13,6 +13,15 @@
 
 ActiveRecord::Schema.define(version: 20130508010522) do
 
+  create_table "experiments", force: true do |t|
+    t.string   "name",        null: false
+    t.text     "description"
+    t.integer  "media_id",    null: false
+    t.string   "media_type",  null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "media", force: true do |t|
     t.string   "type",       null: false
     t.string   "name",       null: false
@@ -36,15 +45,6 @@ ActiveRecord::Schema.define(version: 20130508010522) do
     t.string   "data_content_type"
     t.integer  "data_file_size"
     t.datetime "data_updated_at"
-  end
-
-  create_table "theories", force: true do |t|
-    t.string   "name",        null: false
-    t.text     "description"
-    t.integer  "media_id",    null: false
-    t.string   "media_type",  null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
   end
 
   create_table "users", force: true do |t|

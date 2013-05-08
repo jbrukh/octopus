@@ -4,11 +4,11 @@ App.Router.map ->
 
   @resource 'trials', -> null
   @resource 'trial', ->
-    @route 'start', { path: '/start/:theory_id' }
+    @route 'start', { path: '/start/:experiment_id' }
 
-  @resource 'theories', ->
+  @resource 'experiments', ->
     @route 'new'
-  @route 'theory', { path: '/theory/:theory_id' }
+  @route 'experiment', { path: '/experiment/:experiment_id' }
 
   @resource 'recordings', ->
     @route 'new'

@@ -1,13 +1,13 @@
 <div class="page-header">
   <div class="pull-right">
-    {{#linkTo theories.new class="btn btn-success"}}
-      <i class="icon-plus"></i> New Theory
+    {{#linkTo experiments.new class="btn btn-success"}}
+      <i class="icon-plus"></i> New Experiment
     {{/linkTo}}
   </div>
-  <h3>Theories</h3>
+  <h3>Experiments</h3>
 </div>
 
-There are {{controller.length}} theories
+There are {{controller.length}} experiments
 
 <table class="table table-striped">
   <thead>
@@ -19,7 +19,7 @@ There are {{controller.length}} theories
   <tbody>
     {{#each controller}}
       <tr>
-        <td>{{#linkTo 'theory' this}}{{name}}{{/linkTo}}</td>
+        <td>{{#linkTo 'experiment' this}}{{name}}{{/linkTo}}</td>
         <td>{{timeSince created_at}}</td>
         <td>
           <div class="pull-right">
