@@ -1,4 +1,4 @@
-App.Experiment = Em.Object.extend
+App.Trial = Em.Object.extend
   isSetup: (->
     @get('state') == 'setup'
   ).property('state')
@@ -17,7 +17,7 @@ App.Experiment = Em.Object.extend
   run: ->
     @set 'state', 'running'
 
-App.Experiment.reopenClass
+App.Trial.reopenClass
   begin: ->
-    App.Experiment.create
+    App.Trial.create
       state: 'setup'

@@ -1,5 +1,5 @@
-App.ExperimentStartRoute = Em.Route.extend
-  model: -> App.Experiment.begin()
+App.TrialStartRoute = Em.Route.extend
+  model: -> App.Trial.begin()
 
   setupController: (controller, params) ->
     settings = App.Settings.find()

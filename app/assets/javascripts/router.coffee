@@ -2,8 +2,8 @@ App.Router.map ->
   @resource 'settings', -> null
   @resource 'status', -> null
 
-  @resource 'experiments', -> null
-  @resource 'experiment', ->
+  @resource 'trials', -> null
+  @resource 'trial', ->
     @route 'start', { path: '/start/:theory_id' }
 
   @resource 'theories', ->

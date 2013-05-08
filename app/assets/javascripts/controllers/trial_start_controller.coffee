@@ -1,4 +1,4 @@
-App.ExperimentStartController = Em.ObjectController.extend Ember.Evented,
+App.TrialStartController = Em.ObjectController.extend Ember.Evented,
   calibrate: ->
     @get('model').calibrate()
     Ember.run.next this, () -> @get('dataAdapter').start()
