@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130508002815) do
+ActiveRecord::Schema.define(version: 20130508010522) do
 
   create_table "media", force: true do |t|
     t.string   "type",       null: false
@@ -29,9 +29,13 @@ ActiveRecord::Schema.define(version: 20130508002815) do
   end
 
   create_table "results", force: true do |t|
-    t.integer  "duration",   null: false
+    t.integer  "duration",          null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "data_file_name"
+    t.string   "data_content_type"
+    t.integer  "data_file_size"
+    t.datetime "data_updated_at"
   end
 
   create_table "theories", force: true do |t|
