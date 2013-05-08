@@ -23,5 +23,6 @@ module Ruby
 
     config.assets.paths << "#{Rails.root}/app/assets/font"
     config.assets.precompile += ['octopus.js', 'octopus.css']
+    config.assets.precompile += %w(.svg .eot .woff .ttf)
   end
 end
