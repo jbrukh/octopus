@@ -34,9 +34,8 @@
     </p>    
   </div>
   {{/unless}}
-{{else}}
-  <div class="well-small">
+{{/unless}}
+<div class="well-small">
     Channels: <span class="label label-info">{{dataAdapter.channels}}</span> Graph Resolution:  <span class="label label-info">{{dataAdapter.resolution}} hz</span> Frames: <span class="label label-info">{{dataAdapter.receivedFrames}}</span>
   </div>
-{{/unless}}
 {{view App.DataAdapterGraphView dataAdapterBinding=dataAdapter}}
