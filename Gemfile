@@ -18,6 +18,7 @@ gem "ember-rails"
 
 gem 'devise', github: 'plataformatec/devise', branch: 'rails4'
 gem 'state_machine', :require => 'state_machine/core'
+gem 'paperclip'
 
 # Gems used only for assets and not required
 # in production environments by default.

@@ -24,11 +24,8 @@ describe Api::ResultsController do
       before :each do
         post :create, recording_id: recording.id, result: {}
       end
-
-      it {
-        should assign_to(:recording)
-        should respond_with :created
-      }
+      it { should respond_with :found }
+      it { recording.reload.result.should_not be_nil }
     end
   end
 end

@@ -3,7 +3,9 @@ class Api::ResultsController < ApplicationController
   before_filter :find_recording
 
   def create
-
+    @result = @recording.build_result(result_params)
+    @result.save!
+    redirect_to api_recording_result_url(@recording, @result)
   end
 
   private
@@ -11,4 +13,7 @@ class Api::ResultsController < ApplicationController
       @recording = Recording.find(params[:recording_id])
     end
 
+    def result_params
+      params.require(:result).permit()
+    end
 end
