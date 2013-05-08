@@ -24,6 +24,11 @@ describe Api::ResultsController do
       before :each do
         post :create, recording_id: recording.id, result: {}
       end
+
+      it {
+        should assign_to(:recording)
+        should respond_with :created
+      }
     end
   end
 end

@@ -177,6 +177,7 @@ GEM
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       sprockets (~> 2.8)
+    state_machine (1.2.0)
     thor (0.18.1)
     thread_safe (0.1.0)
       atomic
@@ -222,6 +223,7 @@ DEPENDENCIES
   rspec-rails (~> 2.0)
   sass-rails (~> 4.0.0.rc1)
   shoulda-matchers
+  state_machine
   uglifier (>= 1.0.3)
   unicorn
   xray-rails
