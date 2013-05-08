@@ -15,7 +15,12 @@
 /log/*.log
 /tmp
 
+# sublime things
 brain.sublime-workspace
 
+# npm stuff
 app/assets/javascripts/node_modules/
 app/assets/javascripts/npm-debug.log
+
+# local paperclip uploads
+public/system
