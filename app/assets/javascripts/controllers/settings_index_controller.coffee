@@ -1,7 +1,7 @@
 App.SettingsIndexController = Ember.Controller.extend
   save: ->
       @get('model').save().then =>
-        @transitionToRoute 'experiments'
+        @transitionToRoute 'recordings.new'
 
   reset: ->
     @set 'model', App.Settings.createRecord()
