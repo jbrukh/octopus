@@ -7,14 +7,9 @@ class Api::RecordingsController < ApplicationController
   end
 
   def create
-    @recording = Recording.new(recording_params)
+    @recording = Recording.new
     @recording.user = current_user
     @recording.save!
     redirect_to api_recordings_url(@recording)
   end
-
-  private
-    def recording_params
-      params.require(:recording).permit(:name)
-    end
 end

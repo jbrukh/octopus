@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Api::ExperimentsController do
   fixtures :users
 
-  describe 'as a guest' do
+  context 'as a guest' do
     describe '#index' do
       before :each do
         get :index
@@ -12,7 +12,7 @@ describe Api::ExperimentsController do
     end
   end
 
-  describe 'as a user' do
+  context 'as a user' do
     before :each do
       sign_in users(:user)
     end
