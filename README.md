@@ -1,18 +1,28 @@
-== README
+README
+======
 
 This project is the web application and front end API for Octopus. It consists of a vanilla Rails application and an
 Ember application located in `/app/assets/javascripts/octopus`.
 
-== Getting Started
+Getting Started
+===============
 
 You will need to install the following:
 
- * (RVM)[https://rvm.io/]
+ * [Homebrew](http://mxcl.github.io/homebrew/)
+ * [RVM](https://rvm.io/)
+ * Ruby 2.0.0
 
-How to run locally:
+To run the site locally:
 
-install rvm
-install ruby 2.0.0
-check out code
-bundle install
-rails server
+ * `bundle install`
+ * `rails s`
+
+To run the specs:
+
+ * `guard`
+
+To deploy to heroku:
+
+ * `heroku pg:reset` (if a database RESET is required)
+ * git push heroku
