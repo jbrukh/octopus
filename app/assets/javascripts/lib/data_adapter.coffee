@@ -33,6 +33,7 @@ App.DataAdapter = Em.Object.extend Ember.Evented,
 
   stop: ->
     @_stop()
+    @frame = null
     @trigger 'didStop'
     @manager.transitionTo 'stopped'
 
