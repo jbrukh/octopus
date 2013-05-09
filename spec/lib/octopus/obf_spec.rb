@@ -1,10 +1,10 @@
 require 'spec_helper'
 
-describe Octopus::ObfReader do
+describe Octopus::Obf do
   describe '#read' do
     let(:file) {  File.new("#{Rails.root}/spec/fixtures/files/obf.data") }
     it 'reads the obf file' do
-      result = Octopus::ObfReader.read(file)
+      result = Octopus::Obf.read(file)
 
       expect(result.data_type).to eq(1)
       expect(result.version).to eq(1)
