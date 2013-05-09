@@ -1,7 +1,7 @@
 App.DataAdapterGraphView = Em.View.extend
   graphDurationInSeconds: 30
   graphWidth: 820
-  graphHeight: 60
+  graphHeight: 50
   graphPadding: 10
   currentBufferSize: null
 
