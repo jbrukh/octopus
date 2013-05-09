@@ -12,3 +12,12 @@ App.Recording = DS.Model.extend
     @set 'isRecording', false
     @set 'resourceId', response.resource_id
     @set 'canUpload', true
+
+  isUploading: (->
+    @get('state') == 'waiting_for_data'
+  ).property('state')
+
+  result: (->
+    resultId = @get('resultId')
+    App.Result.find(this, resultId)
+  ).property('resultId')

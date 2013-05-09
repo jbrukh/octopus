@@ -30,7 +30,7 @@
         <tr>
           <td>{{timeSince created_at}}</td>
           <td>
-            {{#if state}}
+            {{#if isUploading}}
               <div class="progress progress-striped active">
                 <div class="bar bar-success" style="width: 100%">
                   <i class="icon-upload"></i> uploading
@@ -40,6 +40,9 @@
           </td>
           <td>
             <div class="pull-right">
+              {{#unless isUploading}}
+                {{#linkTo 'recording' this class='btn btn-mini btn-success'}}Explore{{/linkTo}}
+              {{/unless}}
             </div>
           </td>
         </tr>

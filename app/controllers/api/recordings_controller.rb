@@ -6,6 +6,11 @@ class Api::RecordingsController < ApplicationController
     render json: @recordings
   end
 
+  def show
+    @recording = Recording.find(params[:id])
+    render json: @recording
+  end
+
   def create
     @recording = Recording.new
     @recording.user = current_user

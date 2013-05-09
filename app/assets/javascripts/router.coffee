@@ -12,6 +12,7 @@ App.Router.map ->
 
   @resource 'recordings', ->
     @route 'new'
+  @resource 'recording', { path: '/recording/:recording_id' }
 
   # media
   @resource 'videos', ->

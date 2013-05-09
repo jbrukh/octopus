@@ -1,0 +1,31 @@
+<div class="page-header">
+  <h3>Recording</h3>
+</div>
+
+{{#unless result.isLoaded}}
+  <div class="alert alert-info">
+    Loading results, please wait...
+  </div>
+{{else}}
+  <table class="table">
+    <thead>
+      <tr>
+        <th colspan="2">Properties</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Duration</td>
+        <td>{{result.duration}}</td>
+      </tr>
+      <tr>
+        <td>Name</td>
+        <td>{{result.data_file_name}}</td>
+      </tr>
+      <tr>
+        <td>Size</td>
+        <td>{{result.data_file_size}}</td>
+      </tr>
+    </tbody>
+  </table>
+{{/unless}}

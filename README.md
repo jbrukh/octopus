@@ -17,6 +17,7 @@ To run the site locally:
 
  * `bundle install`
  * `rails s`
+ * `rake db:setup`
 
 To run the specs:
 
