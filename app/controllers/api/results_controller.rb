@@ -3,9 +3,7 @@ class Api::ResultsController < ApplicationController
   before_filter :find_recording
 
   def create
-    @result = @recording.build_result(result_params)
-    @result.duration = 3000
-    @recording.save!
+    @result = @recording.upload(result_params)
     redirect_to api_recording_result_url(@recording, @result)
   end
 

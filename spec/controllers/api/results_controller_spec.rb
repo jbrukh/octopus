@@ -27,7 +27,12 @@ describe Api::ResultsController do
         post :create, :recording_id => recording.id, :result => { :data => file }
       end
       it { should respond_with :redirect }
-      it { recording.reload.result.should_not be_nil }
+      it 'updates the recording' do
+        recording.reload
+        expect(recording.result).not_to eq(nil)
+        expect(recording.result.data).not_to eq(nil)
+        expect(recording.uploaded?).to eq(true)
+      end
     end
   end
 end
