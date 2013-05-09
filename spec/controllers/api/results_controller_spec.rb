@@ -16,7 +16,7 @@ describe Api::ResultsController do
   end
 
   context 'when authenticated' do
-    let(:file) { fixture_file_upload('files/odf.data', 'application/octet-stream') }
+    let(:file) { fixture_file_upload('files/obf.data', 'application/octet-stream') }
 
     before :each do
       sign_in users(:user)

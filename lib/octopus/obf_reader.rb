@@ -1,5 +1,5 @@
 module Octopus
-  class OdfDataFile < BinData::Record
+  class ObfDataFile < BinData::Record
     endian :big
 
     int8    :data_type
@@ -10,7 +10,7 @@ module Octopus
     uint16  :sample_rate
   end
 
-  class Odf
+  class Obf
     extend Forwardable
 
     attr_accessor :data
@@ -37,10 +37,10 @@ module Octopus
     end
   end
 
-  class OdfReader
+  class ObfReader
     def self.read(file)
-      data_file = OdfDataFile.read(file)
-      Odf.new(data_file)
+      data_file = ObfDataFile.read(file)
+      Octopus::Obf.new(data_file)
     end
   end
 end

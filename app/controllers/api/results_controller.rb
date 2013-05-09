@@ -9,7 +9,7 @@ class Api::ResultsController < ApplicationController
 
   def create
     @result = @recording.upload(result_params)
-    redirect_to api_recording_result_url(@recording, @result)
+    redirect_to api_recording_results_url(@recording)
   end
 
   private

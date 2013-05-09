@@ -5,8 +5,8 @@ class Result < ActiveRecord::Base
 
   protected
     def update_duration
-      raw_odf = self.data.queued_for_write[:original]
-      odf = Octopus::OdfReader.read(raw_odf)
+      raw_obf = self.data.queued_for_write[:original]
+      odf = Octopus::ObfReader.read(raw_obf)
       self.duration = odf.duration_ms
     end
 end
