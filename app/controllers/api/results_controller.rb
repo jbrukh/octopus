@@ -2,6 +2,11 @@ class Api::ResultsController < ApplicationController
   before_filter :authenticate_user!
   before_filter :find_recording
 
+  def show
+    @result = @recording.result
+    render json: @result
+  end
+
   def create
     @result = @recording.upload(result_params)
     redirect_to api_recording_result_url(@recording, @result)
