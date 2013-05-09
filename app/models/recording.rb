@@ -12,7 +12,6 @@ class Recording < ActiveRecord::Base
 
   def upload(result_params)
     build_result(result_params).tap do |r|
-      r.duration = 3000
       on_build_result
     end
   end
