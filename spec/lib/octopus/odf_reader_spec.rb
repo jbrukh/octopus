@@ -5,7 +5,7 @@ describe Octopus::OdfReader do
     let(:file) {  File.new("#{Rails.root}/spec/fixtures/files/odf.data") }
     it 'reads the odf file' do
       result = Octopus::OdfReader.read(file)
-      
+
       expect(result.data_type).to eq(1)
       expect(result.version).to eq(1)
       expect(result.storage_mode).to eq(:parallel)

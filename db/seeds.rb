@@ -5,3 +5,20 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+user = User.create!({
+  :email => 'me@jonnii.com',
+  :password => 'password',
+  :password_confirmation => 'password',
+  :confirmed_at => DateTime.now
+})
+
+result = Result.create!({
+  :data => File.new("#{Rails.root}/spec/fixtures/files/odf.data")
+})
+
+Recording.create({
+  :state => 'uploaded',
+  :user => user,
+  :result => result
+})
