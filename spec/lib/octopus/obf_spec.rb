@@ -10,9 +10,11 @@ describe Octopus::Obf do
       expect(result.version).to eq(1)
       expect(result.storage_mode).to eq(:parallel)
       expect(result.channels).to eq(2)
-      expect(result.samples).to eq(960)
+      expect(result.samples).to eq(688)
       expect(result.sample_rate).to eq(250)
-      expect(result.duration_ms).to eq(3000)
+      expect(result.duration_ms).to eq(2000)
+      expect(result.measurements.length).to eq(688*2)
+      expect(result.timestamps.length).to eq(688)
     end
   end
 end
