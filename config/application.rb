@@ -19,8 +19,13 @@ module Ruby
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
 
+    # autoload everything in lib
+    config.autoload_paths += Dir["#{config.root}/lib/**/"]
+
+    # required to get handlebars assets compiling
     config.railties_order = [:main_app, :all, Ember::Rails::Engine]
 
+    # additional asset to precompile
     config.assets.paths << "#{Rails.root}/app/assets/font"
     config.assets.precompile += ['octopus.js', 'octopus.css']
     config.assets.precompile += %w(.svg .eot .woff .ttf)

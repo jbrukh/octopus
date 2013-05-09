@@ -20,8 +20,11 @@ gem "ember-rails"
 gem 'devise', github: 'plataformatec/devise', branch: 'rails4'
 gem 'cancan'
 
+# models
 gem 'state_machine'
 gem 'paperclip'
+
+gem 'bindata'
 
 # Gems used only for assets and not required
 # in production environments by default.
