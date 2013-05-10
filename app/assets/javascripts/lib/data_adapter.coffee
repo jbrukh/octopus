@@ -23,6 +23,10 @@ App.DataAdapter = Em.Object.extend Ember.Evented,
       adapter.trigger 'didStart'
       manager.transitionTo 'running'
 
+  isNegotiating: (->
+    @get('manager.currentState.name') == 'negotiating'
+  ).property('manager.currentState')
+
   isRunning: (->
     @get('manager.currentState.name') == 'running'
   ).property('manager.currentState')

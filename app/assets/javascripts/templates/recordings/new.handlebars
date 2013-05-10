@@ -26,18 +26,26 @@
     New Recording
   </h2>
 </div>
-{{#unless dataAdapter.isRunning}}
-  {{#unless dataAdapter.didRun}}
-  <div class="hero-unit text-center">
-    <p>
-      Press Start to begin streaming.
-    </p>    
-  </div>
-  {{/unless}}
-{{else}}
-  <div class="well-small">
-  Channels: <span class="label label-info">{{dataAdapter.channels}}</span> Graph Resolution:  <span class="label label-info">{{dataAdapter.resolution}} hz</span> Frames: <span class="label label-info">{{dataAdapter.receivedFrames}}</span>
-  </div>
-{{/unless}}
 
-{{view App.DataAdapterGraphView dataAdapterBinding=dataAdapter}}
+<div class="graph-container">
+
+  {{#if dataAdapter.isNegotiating}}
+    <p>negotiating</p>
+  {{/if}}
+
+  {{#unless dataAdapter.isRunning}}
+    {{#unless dataAdapter.didRun}}
+      <p>Press Start to begin streaming.</p>
+    {{/unless}}
+  {{else}}
+  {{/unless}}
+
+  {{#if dataAdapter.didRun}}
+    <div class="well-small">
+      Channels: <span class="label label-info">{{dataAdapter.channels}}</span> Graph Resolution:  <span class="label label-info">{{dataAdapter.resolution}} hz</span> Frames: <span class="label label-info">{{dataAdapter.receivedFrames}}</span>
+    </div>
+  {{/if}}
+
+  {{view App.DataAdapterGraphView dataAdapterBinding=dataAdapter}}
+
+</div>

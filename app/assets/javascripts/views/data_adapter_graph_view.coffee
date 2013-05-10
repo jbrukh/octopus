@@ -1,6 +1,6 @@
 App.DataAdapterGraphView = Em.View.extend
   graphDurationInSeconds: 30
-  graphWidth: 820
+  graphWidth: 920
   graphHeight: 50
   graphPadding: 10
   currentBufferSize: null
@@ -39,12 +39,12 @@ App.DataAdapterGraphView = Em.View.extend
     # the graphs, it should be big enough
     # to contain all the buffers, plus some
     # padding
-    totalHeight = (@graphHeight * @numChannels) + (@graphPadding * @numChannels)
+    totalHeight = (@graphHeight * @numChannels) + (@graphPadding * @numChannels) + @graphPadding
 
     element = this.$()[0].id
     svg = d3.select("##{element}")
       .append("svg:svg")
-        .attr('class', 'graph-streaming hero-unit')
+        .attr('class', 'graph-streaming')
         .attr("width", @graphWidth)
         .attr("height", totalHeight)
 

@@ -57,7 +57,8 @@ path.channel-7 {
   stroke: #000;
   shape-rendering: crispEdges;
 }
-.y-axis text{
+
+.y-axis text {
   font-size: 7pt;
 }
 
@@ -66,27 +67,30 @@ path.channel-7 {
 	background-color: lightblue;
 }
 
-.graph-streaming {
-  background-color: lightsalmon;
+.graph-container {
+  border-radius: 5px;
+  background-color: #eee;
+  padding: 10px;
+}
+
+.graph-container p {
+  padding: 80px;
+  text-align: center;
 }
 
 .label {
 	vertical-align: middle;
 }
 
-i.icon-inverse {
-  font-color: white;
-}
-
-.flash{
+.flash {
   margin-top: 10px;
 }
 
-.upload-progress{
+.upload-progress {
   margin-bottom: 0;
 }
 
-footer{
+footer {
   border-top: solid 1px #eee;
   padding: 10px;
   color: #c0c0c0;
