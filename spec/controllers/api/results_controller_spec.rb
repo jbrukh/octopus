@@ -26,7 +26,7 @@ describe Api::ResultsController do
           "#{Rails.root}/spec/fixtures/files/obf.data", 'application/octet-stream')
         post :create, :recording_id => recording.id, :result => { :data => data }
       end
-      it { should respond_with :redirect }
+      it { should respond_with :created }
       it 'updates the recording' do
         recording.reload
         expect(recording.result).not_to eq(nil)

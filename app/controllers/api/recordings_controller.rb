@@ -2,7 +2,7 @@ class Api::RecordingsController < ApplicationController
   before_filter :authenticate_user!
 
   def index
-    @recordings = Recording.all
+    @recordings = Recording.all.order('created_at desc')
     render json: @recordings
   end
 

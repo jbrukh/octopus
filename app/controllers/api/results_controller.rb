@@ -11,7 +11,7 @@ class Api::ResultsController < ApplicationController
 
   def create
     @result = @recording.upload(result_params)
-    render json: @recording
+    render json: @recording, :status => :created
   end
 
   private
