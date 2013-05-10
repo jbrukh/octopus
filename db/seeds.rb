@@ -14,7 +14,7 @@ user = User.create!({
 })
 
 result = Result.create!({
-  :data => File.new("#{Rails.root}/spec/fixtures/files/odf.data")
+  :data => File.new("#{Rails.root}/spec/fixtures/files/obf.data")
 })
 
 Recording.create({

@@ -1,7 +1,7 @@
 class Api::ResultsController < ApplicationController
   skip_before_filter :verify_authenticity_token
 
-  before_filter :authenticate_user!
+  #before_filter :authenticate_user!
   before_filter :find_recording
 
   def show

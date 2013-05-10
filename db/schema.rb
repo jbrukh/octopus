@@ -38,7 +38,6 @@ ActiveRecord::Schema.define(version: 20130508010522) do
   end
 
   create_table "results", force: true do |t|
-    t.integer  "duration",          null: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "data_file_name"
