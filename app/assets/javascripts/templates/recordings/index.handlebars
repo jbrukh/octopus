@@ -16,9 +16,10 @@
       There are no recordings.
     </div>
 {{else}}
-  There are {{controller.length}} recordings
 
-  <table class="table table-striped">
+  <small>There are {{controller.length}} recordings</small>
+
+  <table class="table table-striped table-condensed">
     <thead>
       <tr>
         <th>Created At</th>
@@ -31,7 +32,7 @@
           <td>{{timeSince created_at}}</td>
           <td>
             {{#if isUploading}}
-              <div class="progress progress-striped active">
+              <div class="upload-progress progress progress-striped active">
                 <div class="bar bar-success" style="width: 100%">
                   <i class="icon-upload"></i> uploading
                 </div>
@@ -43,6 +44,7 @@
               {{#unless isUploading}}
                 {{#linkTo 'recording' this class='btn btn-mini btn-success'}}Explore{{/linkTo}}
               {{/unless}}
+              <a href="#" class="btn btn-mini btn-danger" {{action destroy this}}>Delete</a>
             </div>
           </td>
         </tr>

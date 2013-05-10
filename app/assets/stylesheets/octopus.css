@@ -82,6 +82,10 @@ i.icon-inverse {
   margin-top: 10px;
 }
 
+.upload-progress{
+  margin-bottom: 0;
+}
+
 footer{
   border-top: solid 1px #eee;
   padding: 10px;
