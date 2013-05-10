@@ -1,12 +1,12 @@
 GIT
   remote: git://github.com/plataformatec/devise.git
-  revision: c6189696772925ae0c608fdd8d535f735e8e114e
+  revision: 6b5988d756d780903bf8c9ccb3e2b3b724ccebe8
   branch: rails4
   specs:
-    devise (2.2.3)
+    devise (2.2.4)
       bcrypt-ruby (~> 3.0)
       orm_adapter (~> 0.1)
-      railties (~> 4.0.0.beta)
+      railties (>= 3.2.6, < 5)
       warden (~> 1.2.1)
 
 GEM
@@ -21,7 +21,7 @@ GEM
       erubis (~> 2.7.0)
       rack (~> 1.5.2)
       rack-test (~> 0.6.2)
-    active_model_serializers (0.7.0)
+    active_model_serializers (0.8.1)
       activemodel (>= 3.0)
     activemodel (4.0.0.rc1)
       activesupport (= 4.0.0.rc1)
@@ -39,7 +39,7 @@ GEM
       thread_safe (~> 0.1)
       tzinfo (~> 0.3.37)
     arel (4.0.0)
-    atomic (1.1.8)
+    atomic (1.1.9)
     barber (0.4.2)
       ember-source
       execjs
@@ -70,7 +70,7 @@ GEM
       ember-source (>= 1.0.0.rc2.2)
       execjs (>= 1.2)
       railties (>= 3.1)
-    ember-source (1.0.0.rc3.2)
+    ember-source (1.0.0.rc3.3)
       handlebars-source (>= 1.0.0.rc3, < 1.0.0.rc4)
     erubis (2.7.0)
     execjs (1.4.0)
@@ -90,7 +90,7 @@ GEM
       lumberjack (>= 1.0.2)
       pry (>= 0.9.10)
       thor (>= 0.14.6)
-    guard-rspec (2.6.0)
+    guard-rspec (3.0.0)
       guard (>= 1.8)
       rspec (~> 2.13)
     handlebars-source (1.0.0.rc3)
@@ -114,8 +114,8 @@ GEM
     method_source (0.8.1)
     mime-types (1.23)
     minitest (4.7.4)
-    multi_json (1.7.2)
-    newrelic_rpm (3.6.1.88)
+    multi_json (1.7.3)
+    newrelic_rpm (3.6.2.96)
     orm_adapter (0.4.0)
     paperclip (3.4.1)
       activemodel (>= 3.0.0)
@@ -177,7 +177,7 @@ GEM
       sass (>= 3.1.10)
       sprockets-rails (~> 2.0.0.rc0)
       tilt (~> 1.3)
-    shoulda-matchers (2.0.0)
+    shoulda-matchers (2.1.0)
       activesupport (>= 3.0.0)
     slop (3.4.4)
     sprockets (2.9.3)
@@ -193,12 +193,12 @@ GEM
     thor (0.18.1)
     thread_safe (0.1.0)
       atomic
-    tilt (1.4.0)
+    tilt (1.4.1)
     treetop (1.4.12)
       polyglot
       polyglot (>= 0.3.1)
     tzinfo (0.3.37)
-    uglifier (2.0.1)
+    uglifier (2.1.0)
       execjs (>= 0.3.0)
       multi_json (~> 1.0, >= 1.0.2)
     unicorn (4.6.2)
@@ -207,9 +207,9 @@ GEM
       raindrops (~> 0.7)
     warden (1.2.1)
       rack (>= 1.0)
-    xray-rails (0.1.3)
+    xray-rails (0.1.5)
       coffee-rails
-      rails (>= 3.2.0)
+      rails (>= 3.1.0)
 
 PLATFORMS
   ruby
