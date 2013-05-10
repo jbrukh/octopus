@@ -2,7 +2,7 @@ App.DataAdapter = Em.Object.extend Ember.Evented,
   frame: null
   didRun: false
   receivedFrames: 0
-  
+
   manager: Ember.StateManager.create
     initialState: 'stopped'
 

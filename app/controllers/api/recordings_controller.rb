@@ -15,6 +15,6 @@ class Api::RecordingsController < ApplicationController
     @recording = Recording.new
     @recording.user = current_user
     @recording.save!
-    redirect_to api_recordings_url(@recording)
+    render json: @recording
   end
 end

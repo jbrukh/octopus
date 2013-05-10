@@ -26,5 +26,4 @@ App.RecordingsNewController = Ember.Controller.extend Ember.Evented,
   endRecord: ->
     console.log 'end recording'
     @get('connector').send('record', {record: false}).then (data) =>
-      console.log data
       @get('model').finish(data)
