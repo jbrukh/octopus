@@ -16,7 +16,7 @@ class Api::ExperimentsController < ApplicationController
     @experiment = Experiment.new(experiment_params)
     @experiment.media = Media.find(params[:experiment][:media_id])
     @experiment.save!
-    redirect_to api_experiment_url(@experiment)
+    render json: @experiment
   end
 
   def destroy

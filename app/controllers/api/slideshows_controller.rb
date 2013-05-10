@@ -11,7 +11,7 @@ class Api::SlideshowsController < ApplicationController
 
   def create
     @slideshow = Slideshow.create!(slideshow_params)
-    redirect_to api_slideshow_url(@slideshow)
+    render json: @slideshow
   end
 
   private

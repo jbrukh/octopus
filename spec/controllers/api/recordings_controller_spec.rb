@@ -30,7 +30,7 @@ describe Api::RecordingsController do
         post :create
       end
 
-      it { should respond_with :redirect }
+      it { should respond_with :created }
     end
   end
 end

@@ -15,6 +15,6 @@ class Api::RecordingsController < ApplicationController
     @recording = Recording.new
     @recording.user = current_user
     @recording.save!
-    render json: @recording
+    render json: @recording, :status => :created
   end
 end

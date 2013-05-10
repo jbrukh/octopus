@@ -1,4 +1,6 @@
 class Api::ResultsController < ApplicationController
+  skip_before_filter :verify_authenticity_token
+
   before_filter :authenticate_user!
   before_filter :find_recording
 
@@ -9,7 +11,7 @@ class Api::ResultsController < ApplicationController
 
   def create
     @result = @recording.upload(result_params)
-    redirect_to api_recording_results_url(@recording)
+    render json: @recording
   end
 
   private

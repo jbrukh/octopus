@@ -11,7 +11,7 @@ class Api::VideosController < ApplicationController
 
   def create
     @video = Video.create!(video_params)
-    redirect_to api_video_url(@video)
+    render json: @video
   end
 
   private
