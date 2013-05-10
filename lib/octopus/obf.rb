@@ -8,12 +8,8 @@ module Octopus
     int8    :channels
     uint32  :samples
     uint16  :sample_rate
-    array   :measurements,  :type => :double, :initial_length => :num_measurements
-    array   :timestamps,    :type => :uint64, :initial_length => :samples
-
-    def num_measurements
-      samples * channels
-    end
+    array   :measurements,  :type => :double, :initial_length => -> () { samples * channels }
+    array   :timestamps,    :type => :uint64, :initial_length => -> () { samples }
 
     def storage_mode
       case storage_mode_raw
