@@ -1,0 +1,1 @@
+App.RecordingRoute = Em.Route.extend()

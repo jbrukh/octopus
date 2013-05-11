@@ -1,0 +1,1 @@
+App.RecordingController = Em.ObjectController.extend()

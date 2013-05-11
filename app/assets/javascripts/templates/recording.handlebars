@@ -24,4 +24,37 @@
       </tr>
     </tbody>
   </table>
+
+  {{#if result.data.isLoaded}}
+
+    <table class="table">
+      <tbody>
+        <tr>
+          <td>data type</td>
+          <td>{{result.data.dataType}}
+        </tr>
+        <tr>
+          <td>format version</td>
+          <td>{{result.data.formatVersion}}
+        </tr>
+        <tr>
+          <td>storage mode</td>
+          <td>{{result.data.storageMode}}
+        </tr>
+        <tr>
+          <td>channels</td>
+          <td>{{result.data.channels}}
+        </tr>
+        <tr>
+          <td>samples</td>
+          <td>{{result.data.samples}}
+        </tr>
+        <tr>
+          <td>sample rate</td>
+          <td>{{result.data.sampleRate}}
+        </tr>
+      </tbody>
+    </table>
+
+  {{/if}}
 {{/unless}}
