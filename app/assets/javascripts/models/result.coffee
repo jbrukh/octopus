@@ -28,7 +28,7 @@ App.Result = Ember.Object.extend
 
       # create a buffer for each channel
       channelBuffers = [0...numChannels].map () =>
-        new Float64Array(numChannels * numSamples)
+        new Float64Array(numSamples)
 
       headerSize = 10
 

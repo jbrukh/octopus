@@ -32,14 +32,14 @@ App.ResultDataGraphView = Em.View.extend
       @drawGraph(svg, i, buffers[i])
 
   drawGraph: (svg, bufferIndex, buffer) ->
-    # create the d3 primitives we're going to be using
-    # to draw the graphs
+
     x = d3.scale.linear()
       .range([0, @graphWidth])
+      .domain([0, buffer.length])
 
     y = d3.scale.linear()
-      .range([@graphHeight, 0])
-      .domain [d3.min(buffer), d3.max(buffer)]
+      .range([0, @graphHeight])
+      .domain([d3.min(buffer), d3.max(buffer)])
 
     line = d3.svg.line()
       .interpolate('none')
