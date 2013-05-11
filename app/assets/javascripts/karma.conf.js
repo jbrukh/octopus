@@ -1,34 +1,30 @@
 // Karma configuration
-// Generated on Sat May 04 2013 17:44:21 GMT+0100 (BST)
+// Generated on Sat May 11 2013 16:24:51 GMT-0400 (EDT)
 
 
 // base path, that will be used to resolve files and exclude
 basePath = '';
 
-frameworks = ['sinon-qunit'];
 
 // list of files / patterns to load in the browser
 files = [
-  QUNIT,
-  QUNIT_ADAPTER,
   'vendor/jquery-1.9.1.js',
   'vendor/handlebars.js',
   'vendor/ember-latest.js',
   'vendor/ember-data-latest.js',
-  'vendor/moment.js',
 
-  'test/**/*_test.coffee',
-
-  'brain.js',
   'octopus.js',
-  'models/**/*.coffee'
+  'lib/web_socket_factory.coffee',
+  'models/connector.coffee',
+
+  JASMINE,
+  JASMINE_ADAPTER,
+  'test/**/*_specs.coffee',
 ];
 
 
 // list of files to exclude
-exclude = [
-  
-];
+exclude = [ ];
 
 
 // test results reporter to use
@@ -65,15 +61,15 @@ autoWatch = true;
 // - Safari (only Mac)
 // - PhantomJS
 // - IE (only Windows)
-browsers = ['PhantomJS'];
+browsers = [
+  'PhantomJS'
+  //, 'Chrome'
+];
 
 
 // If browser does not capture in given timeout [ms], kill it
 captureTimeout = 60000;
 
-preprocessors = {
-  '**/*.coffee': 'coffee'
-};
 
 // Continuous Integration mode
 // if true, it capture browsers, run tests and exit

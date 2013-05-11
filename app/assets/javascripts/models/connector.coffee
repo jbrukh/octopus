@@ -5,7 +5,6 @@ App.Connector = Em.Object.extend
 
   init: ->
     @set 'state', 'disconnected'
-    @connect()
 
   isConnected: (->
     return @get('state') == 'connected'
@@ -20,7 +19,7 @@ App.Connector = Em.Object.extend
     @ws = @createWebsocket(this.url)
 
   createWebsocket: (url) ->
-    ws = new WebSocket(url)
+    ws = App.WebSocketFactory.createWebSocket(url)
     @set 'state', 'connecting'
     ws.onopen = () =>
       console.log "Connector socket open"

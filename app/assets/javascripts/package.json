@@ -19,7 +19,6 @@
   "author": "",
   "license": "BSD",
   "dependencies": {
-    "karma": "~0.8.5",
-    "sinon": "~1.6.0"
+    "karma": "~0.8.5"
   }
 }

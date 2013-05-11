@@ -4,7 +4,6 @@ Ember.Application.initializer
   initialize: (container) ->
     store = container.lookup('store:main')
     curretUserAttributes = $('meta[name="current-user"]').attr('content')
-    csrfToken = $('meta[name="csrf-token"]').attr('content')
 
     if curretUserAttributes
       # parsed the current-user meta tag
@@ -13,9 +12,6 @@ Ember.Application.initializer
       # load and fetch the logged in user
       object = store.load(App.User, parsed)
       user = App.User.find(object.id)
-
-      # also set csrf token for authenticating post requests
-      user.set 'csrfToken', csrfToken
 
       # set an auth_token header on every request
       # which will be used by the API to authenticate

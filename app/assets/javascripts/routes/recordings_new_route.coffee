@@ -19,15 +19,21 @@ App.RecordingsNewRoute = Ember.Route.extend
 
   events:
     upload: ->
-      token = @controllerFor('currentUser').get('authenticationToken')
+      authToken = @controllerFor('currentUser').get('authenticationToken')
       resourceId = @currentModel.get 'resourceId'
 
       @currentModel.one 'didCreate', =>
         # wait until the model has an id
         Ember.run.next this, =>
           recordingId = @currentModel.get('id')
-          endpoint = "http://localhost:3000/api/recordings/#{recordingId}/results"
-          @get('connector').send('upload', {token: token, resource_id: resourceId, endpoint: endpoint}).then (data) =>
+
+          payload = {
+            token: authToken,
+            resource_id: resourceId,
+            endpoint: "http://localhost:3000/api/recordings/#{recordingId}/results"
+          }
+
+          @get('connector').send('upload', payload).then (data) =>
             @transitionTo 'recordings.index'
             @transaction = null
       @transaction.commit()
