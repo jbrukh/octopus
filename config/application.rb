@@ -26,7 +26,6 @@ module Ruby
     config.railties_order = [:main_app, :all, Ember::Rails::Engine]
 
     # additional asset to precompile
-    config.assets.paths << "#{Rails.root}/app/assets/font"
     config.assets.precompile += ['octopus.js', 'octopus.css']
     config.assets.precompile += %w(.svg .eot .woff .ttf)
   end
