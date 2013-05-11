@@ -4,7 +4,6 @@ App.Connector = Em.Object.extend
   callbacks: []
 
   init: ->
-    console.log 'creating connector'
     @set 'state', 'disconnected'
     @connect()
 
@@ -17,15 +16,14 @@ App.Connector = Em.Object.extend
   ).property('state')
 
   connect: ->
-    console.log "connecting to websocket: #{this.url}"
+    console.log "Connecting to websocket: #{this.url}"
     @ws = @createWebsocket(this.url)
 
   createWebsocket: (url) ->
-    console.debug "creating new websocket: #{url}"
     ws = new WebSocket(url)
     @set 'state', 'connecting'
     ws.onopen = () =>
-      console.log "connector socket open"
+      console.log "Connector socket open"
       @set 'state', 'connected'
       @send('info').then((d) => @onUpdateInfo(d))
 
@@ -35,16 +33,16 @@ App.Connector = Em.Object.extend
       deferred.resolve(response)
 
     ws.onerror = () =>
-      console.error "Connector socket error..."
+      console.error "!!! Connector socket error..."
       @set 'state', 'disconnected'
 
     ws.onclose = () =>
-      console.warn "connector socket close"
+      console.warn "!!! Connector socket close"
       @set 'state', 'disconnected'
     ws
 
   send: (message_type, object = {}) ->
-    console.log "sending #{message_type}"
+    console.log "Sending #{message_type}"
     # create a deferred callback which will be used
     # as the response handler for the correlated message
     # id

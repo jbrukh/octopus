@@ -1,15 +1,16 @@
 App.Result = Ember.Object.extend
 
   data: (->
-    console.info 'loading result data'
+    dataUrl = @get 'data_url'
+    console.info "Loading result data: #{dataUrl}"
     resultData = App.ResultData.create()
 
     xhr = new XMLHttpRequest()
-    xhr.open 'GET', @get('data_url'), true
-    xhr.responseType = 'arraybuffer';
+    xhr.open 'GET', dataUrl, true
+    xhr.responseType = 'arraybuffer'
 
     xhr.onload = (e) =>
-      dataView = new DataView(xhr.response)
+      dataView = new DataView xhr.response
 
       resultData.set 'dataType',       dataView.getUint8(0, false)
       resultData.set 'formatVersion',  dataView.getUint8(1, false)
@@ -22,7 +23,8 @@ App.Result = Ember.Object.extend
       resultData.set 'samples',        numSamples
       resultData.set 'sampleRate',     dataView.getUint16(8, false)
 
-      throw 'unsupported format' unless resultData.get('storageMode') == 'parallel'
+      storageMode = resultData.get('storageMode')
+      throw "unsupported format #{storageMode}" unless storageMode == 'parallel'
 
       # create a buffer for each channel
       channelBuffers = [0...numChannels].map () =>
@@ -30,7 +32,7 @@ App.Result = Ember.Object.extend
 
       headerSize = 10
 
-      # sequential
+      # sequential (one day)
       #for c in [0...numChannels]
       #  for s in [0...numSamples]
       #    offset = headerSize +
@@ -53,6 +55,7 @@ App.Result = Ember.Object.extend
       # can't read timestamps (yet), but they will eventually go in here
       # timeStamps = new Int32Array(numSamples)
 
+      resultData.set 'channelBuffers', channelBuffers
       resultData.set 'isLoaded', true
     xhr.send()
     resultData
