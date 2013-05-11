@@ -1,11 +1,8 @@
 App.Result = Ember.Object.extend
-  cachedData: null
 
   data: (->
-    return @cachedData if @cachedData != null
-
-    console.log 'loading result data'
-    @cachedData = App.ResultData.create()
+    console.info 'loading result data'
+    resultData = App.ResultData.create()
 
     xhr = new XMLHttpRequest()
     xhr.open 'GET', @get('data_url'), true
@@ -14,18 +11,18 @@ App.Result = Ember.Object.extend
     xhr.onload = (e) =>
       dataView = new DataView(xhr.response)
 
-      @cachedData.set 'dataType',       dataView.getUint8(0, false)
-      @cachedData.set 'formatVersion',  dataView.getUint8(1, false)
-      @cachedData.set 'rawStorageMode', dataView.getUint8(2, false)
+      resultData.set 'dataType',       dataView.getUint8(0, false)
+      resultData.set 'formatVersion',  dataView.getUint8(1, false)
+      resultData.set 'rawStorageMode', dataView.getUint8(2, false)
 
       numChannels = dataView.getUint8(3, false)
-      @cachedData.set 'channels',       numChannels
+      resultData.set 'channels',       numChannels
 
       numSamples = dataView.getUint32(4, false)
-      @cachedData.set 'samples',        numSamples
-      @cachedData.set 'sampleRate',     dataView.getUint16(8, false)
+      resultData.set 'samples',        numSamples
+      resultData.set 'sampleRate',     dataView.getUint16(8, false)
 
-      throw 'unsupported format' unless @cachedData.get('storageMode') == 'parallel'
+      throw 'unsupported format' unless resultData.get('storageMode') == 'parallel'
 
       # create a buffer for each channel
       channelBuffers = [0...numChannels].map () =>
@@ -56,10 +53,10 @@ App.Result = Ember.Object.extend
       # can't read timestamps (yet), but they will eventually go in here
       # timeStamps = new Int32Array(numSamples)
 
-      @cachedData.set 'isLoaded', true
+      resultData.set 'isLoaded', true
     xhr.send()
-    @cachedData
-  ).property()
+    resultData
+  ).property().cacheable()
 
 App.Result.reopenClass
   find: (recording, id) ->

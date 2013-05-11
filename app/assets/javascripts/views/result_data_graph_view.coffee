@@ -1,0 +1,1 @@
+App.ResultDataGraphView = Em.View.extend()

@@ -53,7 +53,6 @@ gem 'newrelic_rpm'
 
 group :development do
   gem 'quiet_assets'
-  gem 'xray-rails'
 end
 
 group :test, :development do

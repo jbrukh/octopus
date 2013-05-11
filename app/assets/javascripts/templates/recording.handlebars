@@ -26,7 +26,6 @@
   </table>
 
   {{#if result.data.isLoaded}}
-
     <table class="table">
       <tbody>
         <tr>
@@ -56,5 +55,6 @@
       </tbody>
     </table>
 
+    {{view App.ResultDataGraphView resultDataBinding=result.data}}
   {{/if}}
 {{/unless}}
