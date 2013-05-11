@@ -1,7 +1,9 @@
 App.ResultDataGraphView = Em.View.extend
   graphWidth: 920
-  graphHeight: 50
+  graphHeight: 100
   graphPadding: 10
+
+  classNames: ['graph-view']
 
   didInsertElement: ->
     data = @get('resultData')
@@ -46,11 +48,24 @@ App.ResultDataGraphView = Em.View.extend
       .x((d, i) => x(i))
       .y((d, i) => y(d))
 
+    format = d3.format(",.4f")
+    yAxis = d3.svg.axis()
+      .scale(y)
+      .ticks(2)
+      .tickSize(2)
+      .tickFormat((d, i) -> format(d))
+      .orient("left")
+
     # create a new graphic element for this graph, and position
     # it correctly
     graphOffset = bufferIndex * @graphHeight + ((bufferIndex + 1) * @graphPadding)
     graphic = svg.append("svg:g")
       .attr("transform", "translate(0,#{graphOffset})")
+
+    graphic.append("g")
+      .attr("class", "y-axis")
+      .attr("transform", "translate(" + 50 + ",0)")
+      .call(yAxis)
 
     graphic.append("path")
       .data([buffer])

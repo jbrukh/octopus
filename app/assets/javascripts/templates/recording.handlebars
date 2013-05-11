@@ -7,6 +7,11 @@
     Loading results, please wait...
   </div>
 {{else}}
+
+  {{#if result.data.isLoaded}}
+    {{view App.ResultDataGraphView resultDataBinding=result.data}}
+  {{/if}}
+
   <table class="table table-condensed">
     <thead>
       <tr>
@@ -52,8 +57,4 @@
 
     </tbody>
   </table>
-
-  {{#if result.data.isLoaded}}
-    {{view App.ResultDataGraphView resultDataBinding=result.data}}
-  {{/if}}
 {{/unless}}

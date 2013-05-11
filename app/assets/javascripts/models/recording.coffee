@@ -1,7 +1,7 @@
 App.Recording = DS.Model.extend
 
-  created_at:   DS.attr 'date'
-  updated_at:   DS.attr 'date'
+  createdAt:   DS.attr 'date'
+  updatedAt:   DS.attr 'date'
 
   state:        DS.attr 'string'
 

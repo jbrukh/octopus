@@ -80,7 +80,7 @@ App.DataAdapterGraphView = Em.View.extend
       .ticks(1)
       .tickSize(2)
       .tickFormat((d, i) -> format(d))
-      .orient("left");
+      .orient("left")
 
     # create a new graphic element for this graph, and position
     # it correctly
@@ -91,7 +91,7 @@ App.DataAdapterGraphView = Em.View.extend
     graphic.append("g")
       .attr("class", "y-axis")
       .attr("transform", "translate(" + 50 + ",0)")
-      .call(yAxis);
+      .call(yAxis)
 
     # grab the buffer for this graph and
     # create a new line for it
