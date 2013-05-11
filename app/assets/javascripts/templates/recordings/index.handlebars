@@ -29,7 +29,9 @@
     <tbody>
       {{#each controller}}
         <tr>
-          <td>{{timeSince created_at}}</td>
+          <td>
+            <small>{{timeSince created_at}}</small>
+          </td>
           <td>
             {{#if isUploading}}
               <div class="upload-progress progress progress-striped active">

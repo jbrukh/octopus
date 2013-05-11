@@ -8,7 +8,6 @@ App.Result.reopenClass
       dataType: "json",
       url: "/api/recordings/#{recordingId}/results",
     }).success (data) ->
-      console.log data
-      result.setProperties data
+      result.setProperties data.result
       result.set 'isLoaded', true
     result
