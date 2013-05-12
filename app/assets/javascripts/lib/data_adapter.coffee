@@ -32,6 +32,10 @@ App.DataAdapter = Em.Object.extend Ember.Evented,
     @get('manager.currentState.name') == 'running'
   ).property('manager.currentState')
 
+  isFailed: (->
+    @get('manager.currentState.name') == 'failed'
+  ).property('manager.currentState')
+
   start: ->
     @manager.send 'start', this
     @set 'didRun', true

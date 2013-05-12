@@ -13,7 +13,7 @@ App.WebSocketDataAdapter = App.DataAdapter.extend
     if response.success
       @startStreaming()
     else
-      console.log 'didnt connect'
+      @set 'lastErrorMessage', response.err
       @manager.transitionTo 'failed'
 
   startStreaming: ->

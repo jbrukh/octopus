@@ -33,6 +33,10 @@
     <p>negotiating</p>
   {{/if}}
 
+  {{#if dataAdapter.isFailed}}
+    <p>{{dataAdapter.lastErrorMessage}}</p>
+  {{/if}}
+
   {{#unless dataAdapter.isRunning}}
     {{#unless dataAdapter.didRun}}
       <p>Press Start to begin streaming.</p>

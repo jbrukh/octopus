@@ -14,5 +14,9 @@ describe "App.WebSocketDataAdapter", ->
       }
       @adapter.onConnect(response)
 
-    it 'has state in use', ->
+    it 'is in failed state', ->
       expect(@adapter.get('manager.currentState.name')).toEqual('failed')
+      expect(@adapter.get('isFailed')).toBe(true)
+
+    it 'has last error message', ->
+      expect(@adapter.get('lastErrorMessage')).toEqual('device is already armed')
