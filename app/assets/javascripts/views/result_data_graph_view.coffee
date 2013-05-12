@@ -13,9 +13,10 @@ App.ResultDataGraphView = Em.View.extend
   drawGraphs: (data) ->
     console.debug 'Drawing result data graph'
 
-    samples  = data.get('samples')
-    channels = data.get('channels')
-    buffers  = data.get('channelBuffers')
+    samples     = data.get('samples')
+    channels    = data.get('channels')
+    buffers     = data.get('channelBuffers')
+    timestamps  = data.get('timestamps')
 
     # create an svg element to contain all
     # the graphs, it should be big enough
@@ -31,13 +32,13 @@ App.ResultDataGraphView = Em.View.extend
         .attr("height", totalHeight)
 
     [0...channels].map (i) =>
-      @drawGraph(svg, i, buffers[i])
+      @drawGraph(svg, i, buffers[i], timestamps)
 
-  drawGraph: (svg, bufferIndex, buffer) ->
+  drawGraph: (svg, bufferIndex, buffer, timestamps) ->
 
     x = d3.scale.linear()
       .range([0, @graphWidth])
-      .domain([0, buffer.length])
+      .domain([d3.min(timestamps), d3.max(timestamps)])
 
     y = d3.scale.linear()
       .range([0, @graphHeight])
@@ -45,7 +46,7 @@ App.ResultDataGraphView = Em.View.extend
 
     line = d3.svg.line()
       .interpolate('none')
-      .x((d, i) => x(i))
+      .x((d, i) => x(timestamps[i]))
       .y((d, i) => y(d))
 
     format = d3.format(",.4f")
