@@ -9,14 +9,18 @@ App.ResultData = Em.Object.extend
   populateFromArrayBuffer: (arrayBuffer) ->
     dataView = new DataView arrayBuffer
 
+    start = new Date().getTime()
+
     header = @readHeader(dataView)
-    channelBuffers = @readBody(
+    @readBody(
       dataView,
       header.headerSize,
       header.numChannels,
       header.numSamples)
+    elapsed = new Date().getTime() - start
 
-    @set 'channelBuffers', channelBuffers
+    console.log "Parsed and loaded #{header.numSamples} samples in #{elapsed}ms"
+
     @set 'isLoaded', true
 
   readHeader: (dataView) ->
@@ -46,7 +50,7 @@ App.ResultData = Em.Object.extend
       when 'sequential' then @readSequential(dataView, headerSize, numChannels, numSamples, channelBuffers)
       else throw 'unsupported storage mode'
 
-    channelBuffers
+    @set 'channelBuffers', channelBuffers
 
   readParallel: (dataView, headerSize, numChannels, numSamples, channelBuffers) ->
     skip = 0
