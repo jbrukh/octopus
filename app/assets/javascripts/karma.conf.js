@@ -14,8 +14,8 @@ files = [
   'vendor/ember-data-latest.js',
 
   'octopus.js',
-  'lib/web_socket_factory.coffee',
-  'models/connector.coffee',
+  'lib/*',
+  'models/*',
 
   JASMINE,
   JASMINE_ADAPTER,

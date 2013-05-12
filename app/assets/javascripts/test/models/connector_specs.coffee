@@ -1,4 +1,4 @@
-describe "a connector", ->
+describe "App.Connector", ->
   beforeEach ->
     @connector = App.Connector.create()
 

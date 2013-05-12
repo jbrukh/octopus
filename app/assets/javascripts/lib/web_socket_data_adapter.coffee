@@ -1,18 +1,25 @@
 App.WebSocketDataAdapter = App.DataAdapter.extend
   ws: null
   frame: null
- 
+
   _start: ()->
     res = 50
     @set 'resolution', res
     connector = @get('connector')
     connector.send('connect', {connect: true, pps: res, batch_size: 1})
-      .then(() => @startStreaming())
+      .then((data) => @onConnect(data))
+
+  onConnect: (response) ->
+    if response.success
+      @startStreaming()
+    else
+      console.log 'didnt connect'
+      @manager.transitionTo 'failed'
 
   startStreaming: ->
     console.log 'start streaming'
     url = @get('url')
-    @ws = new WebSocket(url)
+    @ws = App.WebSocketFactory.createWebSocket(url)
 
     @ws.onopen = () =>
       console.log('data socket open')

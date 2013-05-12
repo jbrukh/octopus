@@ -7,9 +7,10 @@ App.DataAdapter = Em.Object.extend Ember.Evented,
     initialState: 'stopped'
 
     # state manager begins in the stopped state
-    stopped: Ember.State.create()
-    negotiating: Ember.State.create()
-    running:  Ember.State.create()
+    stopped:      Ember.State.create()
+    negotiating:  Ember.State.create()
+    running:      Ember.State.create()
+    failed:       Ember.State.create()
 
     start: (manager, adapter) ->
       console.log 'starting data adapter'
