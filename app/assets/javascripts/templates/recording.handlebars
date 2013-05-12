@@ -1,6 +1,26 @@
 <div class="page-header">
-  <h3>Recording</h3>
+  <div class="pull-right">
+    <button class="btn btn-info" {{action edit}}>Edit</button>
+  </div>
+
+  <h3>Recording {{description}}</h3>
 </div>
+
+{{#if isEditing}}
+  {{#view App.ModalView}}
+    <div class="modal-header">
+      <button type="button" class="close" aria-hidden="true" {{action cancelEdit}}>&times;</button>
+      <h3>Modal header</h3>
+    </div>
+    <div class="modal-body">
+      <p>One fine body…</p>
+    </div>
+    <div class="modal-footer">
+      <a href="#" class="btn" {{action cancelEdit}}>Close</a>
+      <a href="#" class="btn btn-primary" {{action saveEdit}}>Save changes</a>
+    </div>
+  {{/view}}
+{{/if}}
 
 {{#unless result.isLoaded}}
   <div class="alert alert-info">
