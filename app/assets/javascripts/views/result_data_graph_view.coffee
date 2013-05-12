@@ -37,7 +37,7 @@ App.ResultDataGraphView = Em.View.extend
   drawGraph: (svg, bufferIndex, buffer, timestamps) ->
 
     x = d3.scale.linear()
-      .range([0, @graphWidth])
+      .range([50, @graphWidth])
       .domain([d3.min(timestamps), d3.max(timestamps)])
 
     y = d3.scale.linear()

@@ -63,7 +63,7 @@ App.DataAdapterGraphView = Em.View.extend
     # create the d3 primitives we're going to be using
     # to draw the graphs
     x = d3.scale.linear()
-      .range([0, @graphWidth])
+      .range([50, @graphWidth])
       .domain([@graphWidth, 0])
 
     y = d3.scale.linear()
