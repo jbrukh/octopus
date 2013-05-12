@@ -1,6 +1,5 @@
 App.Connector = Em.Object.extend
   url: 'ws://localhost:8000/control'
-  currentMessageId: 1
   callbacks: []
 
   init: ->
@@ -48,7 +47,7 @@ App.Connector = Em.Object.extend
     deferred = Ember.Deferred.create()
 
     #cast messageid as a string and build the serialized message
-    object.id = "" + @currentMessageId++
+    object.id = "" + new Date().getTime()
     object.message_type = message_type
     serialized = JSON.stringify(object)
 
