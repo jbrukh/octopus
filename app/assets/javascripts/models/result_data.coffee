@@ -47,25 +47,35 @@ App.ResultData = Em.Object.extend
     channelBuffers = [0...numChannels].map () =>
       new Float64Array(numSamples)
 
+    timestamps = new Uint32Array(numSamples)
+
+    params = [dataView, headerSize, numChannels, numSamples, channelBuffers, timestamps]
+
     switch @get('storageMode')
-      when 'parallel' then @readParallel(dataView, headerSize, numChannels, numSamples, channelBuffers)
-      when 'sequential' then @readSequential(dataView, headerSize, numChannels, numSamples, channelBuffers)
+      when 'parallel' then @readParallel.apply(this, params)
+      when 'sequential' then @readSequential.apply(this, params)
       else throw 'unsupported storage mode'
 
     @set 'channelBuffers', channelBuffers
+    @set 'timestamps', timestamps
 
-  readParallel: (dataView, headerSize, numChannels, numSamples, channelBuffers) ->
-    skip = 0
+  readParallel: (dataView, headerSize, numChannels, numSamples, channelBuffers, timestamps) ->
     for s in [0...numSamples]
-      for c in [0...numChannels]
-        offset = headerSize +
-          (s * numChannels * Float64Array.BYTES_PER_ELEMENT) +
-          (c * Float64Array.BYTES_PER_ELEMENT) +
-          (skip * Float64Array.BYTES_PER_ELEMENT)
-        channelBuffers[c][s] = dataView.getFloat64(offset, false)
-      ++skip
+      # seek to the sample
+      sampleStart = headerSize +
+        (s * numChannels * Float64Array.BYTES_PER_ELEMENT) +
+        (s * Uint32Array.BYTES_PER_ELEMENT)
 
-  readSequential: (dataView, headerSize, numChannels, numSamples, channelBuffers) ->
+      # read channel data
+      for c in [0...numChannels]
+        offset = sampleStart + (c * Float64Array.BYTES_PER_ELEMENT)
+        channelBuffers[c][s] = dataView.getFloat64(offset, false)
+
+      # read timestamp
+      timestampOffset = sampleStart + (numChannels * Float64Array.BYTES_PER_ELEMENT)
+      timestamps[s] = dataView.getUint32(timestampOffset, false)
+
+  readSequential: (dataView, headerSize, numChannels, numSamples, channelBuffers, timestamps) ->
     for c in [0...numChannels]
       for s in [0...numSamples]
         offset = headerSize +
