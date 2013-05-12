@@ -24,22 +24,24 @@ App.ResultData = Em.Object.extend
     @set 'isLoaded', true
 
   readHeader: (dataView) ->
-    @set 'dataType',       dataView.getUint8(0, false)
-    @set 'formatVersion',  dataView.getUint8(1, false)
+    @set 'dataType', dataView.getUint8(0, false)
+    formatVersion = dataView.getUint8(1, false)
+    @set 'formatVersion', formatVersion
+
     @set 'rawStorageMode', dataView.getUint8(2, false)
 
     numChannels = dataView.getUint8(3, false)
-    @set 'channels',       numChannels
+    @set 'channels', numChannels
 
     numSamples = dataView.getUint32(4, false)
-    @set 'samples',        numSamples
-    @set 'sampleRate',     dataView.getUint16(8, false)
+    @set 'samples', numSamples
+    @set 'sampleRate', dataView.getUint16(8, false)
 
-    return {
-      headerSize: 10,
-      numSamples: numSamples,
-      numChannels: numChannels
-    }
+    headerSize = switch formatVersion
+      when 1 then 10
+      else 31
+
+    return { headerSize, numSamples, numChannels }
 
   readBody: (dataView, headerSize, numChannels, numSamples) ->
     channelBuffers = [0...numChannels].map () =>
