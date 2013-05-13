@@ -1,7 +1,9 @@
 App.ResultDataGraphView = Em.View.extend
-  graphWidth: 920
+  canvasWidth:  920
+  margins:      [5, 45, 5, 5]
+
   graphHeight: 100
-  graphPadding: 10
+  graphSpacing: 10
 
   classNames: ['graph-view']
 
@@ -13,6 +15,8 @@ App.ResultDataGraphView = Em.View.extend
   drawGraphs: (data) ->
     console.debug 'Drawing result data graph'
 
+    @graphWidth = @canvasWidth - @margins[1] - @margins[3]
+
     samples     = data.get('samples')
     channels    = data.get('channels')
     buffers     = data.get('channelBuffers')
@@ -22,13 +26,17 @@ App.ResultDataGraphView = Em.View.extend
     # the graphs, it should be big enough
     # to contain all the buffers, plus some
     # padding
-    totalHeight = (@graphHeight * channels) + (@graphPadding * channels) + @graphPadding
+    totalHeight =
+      (@graphHeight * channels) +
+      (@graphSpacing * (channels - 1)) +
+      @margins[0] +
+      @margins[2]
 
     element = this.$()[0].id
     svg = d3.select("##{element}")
       .append("svg:svg")
         .attr('class', 'graph-recording')
-        .attr("width", @graphWidth)
+        .attr("width", @canvasWidth)
         .attr("height", totalHeight)
 
     [0...channels].map (i) =>
@@ -37,7 +45,7 @@ App.ResultDataGraphView = Em.View.extend
   drawGraph: (svg, bufferIndex, buffer, timestamps) ->
 
     x = d3.scale.linear()
-      .range([50, @graphWidth])
+      .range([0, @graphWidth])
       .domain([d3.min(timestamps), d3.max(timestamps)])
 
     y = d3.scale.linear()
@@ -53,19 +61,19 @@ App.ResultDataGraphView = Em.View.extend
     yAxis = d3.svg.axis()
       .scale(y)
       .ticks(2)
-      .tickSize(2)
+      .tickSize(3)
       .tickFormat((d, i) -> format(d))
-      .orient("left")
+      .orient("right")
 
     # create a new graphic element for this graph, and position
     # it correctly
-    graphOffset = bufferIndex * @graphHeight + ((bufferIndex + 1) * @graphPadding)
+    graphOffset = bufferIndex * @graphHeight + (bufferIndex * @graphSpacing) + @margins[0]
     graphic = svg.append("svg:g")
-      .attr("transform", "translate(0,#{graphOffset})")
+      .attr("transform", "translate(#{@margins[3]},#{graphOffset})")
 
     graphic.append("g")
       .attr("class", "y-axis")
-      .attr("transform", "translate(" + 50 + ",0)")
+      .attr("transform", "translate(" + @graphWidth + ",0)")
       .call(yAxis)
 
     graphic.append("path")
