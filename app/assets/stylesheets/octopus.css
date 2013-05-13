@@ -11,67 +11,8 @@
  *= require vendor/bootstrap.css
  *= require font-awesome
  *= require_self
+ *= require_tree ./graphs
  */
-
-path.line {
-  stroke: steelblue;
-  stroke-width: 1;
-  fill: none;
-}
-
-path.channel-0 {
-  stroke: black;
-}
-
-path.channel-1 {
-  stroke: black;
-}
-
-path.channel-2 {
-  stroke: black;
-}
-
-path.channel-3 {
-  stroke: black;
-}
-
-path.channel-4 {
-  stroke: black;
-}
-
-path.channel-5 {
-  stroke: black;
-}
-
-path.channel-6 {
-  stroke: black;
-}
-
-path.channel-7 {
-  stroke: black;
-}
-
-.y-axis line,
-.y-axis path {
-  fill: none;
-  stroke: #000;
-  shape-rendering: crispEdges;
-}
-
-.y-axis text {
-  font-size: 7pt;
-}
-
-.x-axis line,
-.x-axis path {
-  fill: none;
-  stroke: #000;
-  shape-rendering: crispEdges;
-}
-
-.x-axis text {
-  font-size: 7pt;
-}
 
 #hero {
 	margin-top: 100px;

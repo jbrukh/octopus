@@ -44,18 +44,18 @@ App.ResultDataGraphView = Em.View.extend
       .range([0, @graphWidth])
       .domain([d3.min(timestamps), d3.max(timestamps)])
 
-    [0...channels].map (i) =>
-      @drawGraph(svg, i, buffers[i], timestamps, x)
-
     xAxis = d3.svg.axis()
       .scale(x)
-      .tickSize(5)
+      .tickSize(-(totalHeight))
       .tickSubdivide(1)
 
     svg.append("g")
-      .attr("class", "x-axis")
+      .attr("class", "x axis")
       .attr("transform", "translate(#{@margins[3]}," + (totalHeight - @margins[2] + @graphSpacing) + ")")
       .call(xAxis)
+
+    [0...channels].map (i) =>
+      @drawGraph(svg, i, buffers[i], timestamps, x)
 
   drawGraph: (svg, bufferIndex, buffer, timestamps, x) ->
     y = d3.scale.linear()
@@ -82,7 +82,7 @@ App.ResultDataGraphView = Em.View.extend
       .attr("transform", "translate(#{@margins[3]},#{graphOffset})")
 
     graphic.append("g")
-      .attr("class", "y-axis")
+      .attr("class", "y axis")
       .attr("transform", "translate(" + @graphWidth + ",0)")
       .call(yAxis)
 

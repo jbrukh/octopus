@@ -1,0 +1,67 @@
+path.line {
+  stroke: steelblue;
+  stroke-width: 1;
+  fill: none;
+}
+
+path.channel-0 {
+  stroke: green;
+}
+
+path.channel-1 {
+  stroke: orange;
+}
+
+path.channel-2 {
+  stroke: black;
+}
+
+path.channel-3 {
+  stroke: black;
+}
+
+path.channel-4 {
+  stroke: black;
+}
+
+path.channel-5 {
+  stroke: black;
+}
+
+path.channel-6 {
+  stroke: black;
+}
+
+path.channel-7 {
+  stroke: black;
+}
+
+.axis {
+  shape-rendering: crispEdges;
+}
+
+.x.axis line {
+  stroke: lightgrey;
+}
+
+.x.axis .minor {
+  stroke-opacity: .5;
+}
+
+.x.axis path {
+  display: none;
+}
+
+.x.axis text {
+  font-size: 10px;
+}
+
+.y.axis line,
+.y.axis path {
+  fill: none;
+  stroke: #000;
+}
+
+.y.axis text {
+  font-size: 7pt;
+}
