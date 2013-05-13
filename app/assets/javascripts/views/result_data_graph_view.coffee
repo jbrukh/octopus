@@ -1,6 +1,6 @@
 App.ResultDataGraphView = Em.View.extend
   canvasWidth:  920
-  margins:      [5, 45, 5, 5]
+  margins:      [5, 45, 50, 5]
 
   graphHeight: 100
   graphSpacing: 10
@@ -27,8 +27,9 @@ App.ResultDataGraphView = Em.View.extend
     # to contain all the buffers, plus some
     # padding
     totalHeight =
-      (@graphHeight * channels) +
-      (@graphSpacing * (channels - 1)) +
+      (@graphHeight * channels) +         # space for each graph
+      (@graphSpacing * (channels - 1)) +  # space for padding between each graph
+      @graphSpacing +                     # spacing for the axis
       @margins[0] +
       @margins[2]
 
@@ -39,15 +40,24 @@ App.ResultDataGraphView = Em.View.extend
         .attr("width", @canvasWidth)
         .attr("height", totalHeight)
 
-    [0...channels].map (i) =>
-      @drawGraph(svg, i, buffers[i], timestamps)
-
-  drawGraph: (svg, bufferIndex, buffer, timestamps) ->
-
     x = d3.scale.linear()
       .range([0, @graphWidth])
       .domain([d3.min(timestamps), d3.max(timestamps)])
 
+    [0...channels].map (i) =>
+      @drawGraph(svg, i, buffers[i], timestamps, x)
+
+    xAxis = d3.svg.axis()
+      .scale(x)
+      .tickSize(5)
+      .tickSubdivide(1)
+
+    svg.append("g")
+      .attr("class", "x-axis")
+      .attr("transform", "translate(#{@margins[3]}," + (totalHeight - @margins[2] + @graphSpacing) + ")")
+      .call(xAxis)
+
+  drawGraph: (svg, bufferIndex, buffer, timestamps, x) ->
     y = d3.scale.linear()
       .range([0, @graphHeight])
       .domain([d3.min(buffer), d3.max(buffer)])
@@ -65,11 +75,6 @@ App.ResultDataGraphView = Em.View.extend
       .tickFormat((d, i) -> format(d))
       .orient("right")
 
-    xAxis = d3.svg.axis()
-      .scale(x)
-      .tickSize(5)
-      .tickSubdivide(1)
-
     # create a new graphic element for this graph, and position
     # it correctly
     graphOffset = bufferIndex * @graphHeight + (bufferIndex * @graphSpacing) + @margins[0]
@@ -80,11 +85,6 @@ App.ResultDataGraphView = Em.View.extend
       .attr("class", "y-axis")
       .attr("transform", "translate(" + @graphWidth + ",0)")
       .call(yAxis)
-
-    graphic.append("g")
-      .attr("class", "x-axis")
-      .attr("transform", "translate(0, " + @height + ")")
-      .call(xAxis)
 
     graphic.append("path")
       .data([buffer])
