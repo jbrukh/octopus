@@ -1,4 +1,4 @@
-describe "App.Connector", ->
+describe 'App.Connector', ->
   beforeEach ->
     @connector = App.Connector.create()
 
@@ -11,5 +11,5 @@ describe "App.Connector", ->
       spyOn(App.WebSocketFactory, 'createWebSocket').andReturn({})
       @connector.connect()
 
-    it 'should be connecting', ->
+    it 'is connecting', ->
       expect(@connector.get('state')).toEqual('connecting')

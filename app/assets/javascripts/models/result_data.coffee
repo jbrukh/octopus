@@ -76,9 +76,14 @@ App.ResultData = Em.Object.extend
       timestamps[s] = dataView.getUint32(timestampOffset, false)
 
   readSequential: (dataView, headerSize, numChannels, numSamples, channelBuffers, timestamps) ->
+    #r read the samples, each channel is sequential
     for c in [0...numChannels]
       for s in [0...numSamples]
         offset = headerSize +
           (c * Float64Array.BYTES_PER_ELEMENT * numSamples) +
           (s * Float64Array.BYTES_PER_ELEMENT)
         channelBuffers[c][s] = dataView.getFloat64(offset, false)
+
+    for s in [0...numSamples]
+      timestampOffset = headerSize + (s * Uint32Array.BYTES_PER_ELEMENT)
+      timestamps[s] = dataView.getUint32(timestampOffset, false)
