@@ -89,7 +89,7 @@ App.DataAdapterGraphView = Em.View.extend
       .attr("transform", "translate(0,#{graphOffset})")
 
     graphic.append("g")
-      .attr("class", "y-axis")
+      .attr("class", "y axis")
       .attr("transform", "translate(" + 50 + ",0)")
       .call(yAxis)
 
@@ -124,7 +124,7 @@ App.DataAdapterGraphView = Em.View.extend
       graph = @graphs[i]
       graph.y.domain [d3.min(buffer), d3.max(buffer)]
       graph.graphic.select(".line").attr("d", graph.line)
-      graph.graphic.select('.y-axis').call(graph.yAxis)
+      graph.graphic.select('.y.axis').call(graph.yAxis)
 
   stopGraphing: ->
     clearInterval(@handle)
