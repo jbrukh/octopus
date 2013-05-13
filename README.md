@@ -16,12 +16,13 @@ You will need to install the following:
 To run the site locally:
 
  * `bundle install`
- * `rails s`
  * `rake db:setup`
+ * `foreman start`
 
 To run the specs:
 
- * `guard`
+ * `guard` (rails specs)
+ * `karma start` (js specs, run from js-app)
 
 To deploy to heroku:
 

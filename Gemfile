@@ -5,6 +5,9 @@ source 'https://rubygems.org'
 gem 'rails', '4.0.0.rc1'
 
 gem 'pg'
+gem 'sidekiq'
+gem "slim", "~> 2.0.0.pre.8"
+gem 'sinatra', '>= 1.3.0', :require => nil
 
 # use the vendor ember for now, reinstate this
 # when ember is released
@@ -23,8 +26,8 @@ gem 'cancan'
 # models
 gem 'state_machine'
 gem 'paperclip'
-
 gem 'bindata'
+gem 'protected_attributes'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -58,6 +61,7 @@ end
 group :test, :development do
   gem "shoulda-matchers"
   gem "rspec-rails", "~> 2.0"
+  gem 'mocha', :require => false
 
   gem 'factory_girl_rails'
 

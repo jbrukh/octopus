@@ -1,6 +1,9 @@
+require 'sidekiq/web'
+
 Ruby::Application.routes.draw do
 
   devise_for :users
+  mount Sidekiq::Web => '/sidekiq'
 
   # api routes
   namespace :api do

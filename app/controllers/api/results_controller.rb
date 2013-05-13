@@ -12,6 +12,7 @@ class Api::ResultsController < ApplicationController
   def create
     @result = @recording.upload(result_params)
     render json: @recording, :status => :created
+    ProcessResultWorker.perform_async(@result.id)
   end
 
   private

@@ -22,6 +22,7 @@ describe Api::ResultsController do
 
     context '#create' do
       before :each do
+        ProcessResultWorker.expects(:perform_async).once
         data = Rack::Test::UploadedFile.new(
           "#{Rails.root}/spec/fixtures/files/obf.data", 'application/octet-stream')
         post :create, :recording_id => recording.id, :result => { :data => data }
