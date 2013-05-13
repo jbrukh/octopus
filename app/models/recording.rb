@@ -15,4 +15,9 @@ class Recording < ActiveRecord::Base
       on_build_result
     end
   end
+
+  def update_from_obf!(obf)
+    self.duration_ms = obf.duration_ms
+    self.save!
+  end
 end

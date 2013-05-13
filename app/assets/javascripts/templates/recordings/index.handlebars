@@ -23,6 +23,7 @@
     <thead>
       <tr>
         <th>Created At</th>
+        <th>Duration</th>
         <th>State</th>
       </tr>
     </thead>
@@ -32,6 +33,7 @@
           <td>
             <small>{{timeSince createdAt}}</small>
           </td>
+          <td>{{durationMs}}ms</td>
           <td>
             {{#if isUploading}}
               <div class="upload-progress progress progress-striped active">

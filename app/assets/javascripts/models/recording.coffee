@@ -4,6 +4,7 @@ App.Recording = DS.Model.extend
   updatedAt:   DS.attr 'date'
 
   state:        DS.attr 'string'
+  durationMs:   DS.attr 'number'
 
   start: ->
     @set 'isRecording', true
