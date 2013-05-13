@@ -27,7 +27,6 @@ gem 'cancan'
 gem 'state_machine'
 gem 'paperclip'
 gem 'bindata'
-gem 'protected_attributes'
 
 # Gems used only for assets and not required
 # in production environments by default.
