@@ -15,6 +15,7 @@ You will need to install the following:
 
 To run the site locally:
 
+ * `gem install foreman`
  * `bundle install`
  * `rake db:setup`
  * `foreman start`
