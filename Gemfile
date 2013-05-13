@@ -4,7 +4,10 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.0.rc1'
 
+# db
 gem 'pg'
+
+# tasks
 gem 'sidekiq'
 gem "slim", "~> 2.0.0.pre.8"
 gem 'sinatra', '>= 1.3.0', :require => nil
@@ -50,7 +53,11 @@ gem 'jbuilder', '~> 1.0.1'
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
-gem 'unicorn'
+# web server
+gem 'rainbows'
+gem 'em-http-request'
+
+# heroku plogins
 gem 'newrelic_rpm'
 
 group :development do
