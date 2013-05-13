@@ -65,6 +65,11 @@ App.ResultDataGraphView = Em.View.extend
       .tickFormat((d, i) -> format(d))
       .orient("right")
 
+    xAxis = d3.svg.axis()
+      .scale(x)
+      .tickSize(5)
+      .tickSubdivide(1)
+
     # create a new graphic element for this graph, and position
     # it correctly
     graphOffset = bufferIndex * @graphHeight + (bufferIndex * @graphSpacing) + @margins[0]
@@ -75,6 +80,11 @@ App.ResultDataGraphView = Em.View.extend
       .attr("class", "y-axis")
       .attr("transform", "translate(" + @graphWidth + ",0)")
       .call(yAxis)
+
+    graphic.append("g")
+      .attr("class", "x-axis")
+      .attr("transform", "translate(0, " + @height + ")")
+      .call(xAxis)
 
     graphic.append("path")
       .data([buffer])
