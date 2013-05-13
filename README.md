@@ -29,3 +29,7 @@ To deploy to heroku:
 
  * `heroku pg:reset` (if a database RESET is required)
  * git push heroku
+
+To see background worker status:
+
+ * http://localhost:port/sidekiq
