@@ -12,6 +12,7 @@ You will need to install the following:
  * [Homebrew](http://mxcl.github.io/homebrew/)
  * [RVM](https://rvm.io/)
  * Ruby 2.0.0
+ * Redis `brew install redis`
 
 To run the site locally:
 
