@@ -5,6 +5,9 @@ App.Connector = Em.Object.extend
   init: ->
     @set 'state', 'disconnected'
 
+  numCallbacks: ->
+    Object.keys(@callbacks).length
+
   isConnected: (->
     return @get('state') == 'connected'
   ).property('state')
@@ -27,16 +30,7 @@ App.Connector = Em.Object.extend
 
     ws.onmessage = (evt) =>
       response = JSON.parse(evt.data)
-      console.debug "Connector response: #{response}"
-      deferred = @callbacks[response.id]
-      # if we get a message from the connector which we
-      # have no callback for, for example it might send us
-      # a message without an ID for any reason, we should log
-      # that fact and then not resolve a response handler
-      if deferred == undefined
-        console.warn "Could not find deferred for: #{evt.data}"
-        return
-      deferred.resolve(response)
+      @onResponse(response)
 
     ws.onerror = () =>
       console.error "!!! Connector socket error..."
@@ -54,8 +48,9 @@ App.Connector = Em.Object.extend
     # id
     deferred = Ember.Deferred.create()
 
-    #cast messageid as a string and build the serialized message
-    object.id = "" + new Date().getTime()
+    # cast messageid as a string and build the serialized message
+    # only assign an id if hasn't already been set for testing
+    object.id = "" + new Date().getTime() if object.id == undefined
     object.message_type = message_type
     serialized = JSON.stringify(object)
 
@@ -63,6 +58,19 @@ App.Connector = Em.Object.extend
     @callbacks[object.id] = deferred
     @ws.send(serialized)
     deferred
+
+  onResponse: (response) ->
+    console.debug "Connector response: #{response}"
+    deferred = @callbacks[response.id]
+    # if we get a message from the connector which we
+    # have no callback for, for example it might send us
+    # a message without an ID for any reason, we should log
+    # that fact and then not resolve a response handler
+    if deferred == undefined
+      console.warn "Could not find deferred for: #{response}"
+      return
+    delete @callbacks[response.id]
+    deferred.resolve(response)
 
   onUpdateInfo: (response) ->
     @set 'device_name', response.device_name
