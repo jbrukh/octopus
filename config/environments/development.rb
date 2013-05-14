@@ -28,4 +28,7 @@ Ruby::Application.configure do
   config.ember.variant = :development
 
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+
+  # don't lock in dev, it causes badness with websockets
+  config.middleware.delete Rack::Lock
 end
