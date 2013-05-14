@@ -16,6 +16,7 @@ Ruby::Application.routes.draw do
     # media
     resources :videos
     resources :slideshows
+    resources :events
   end
 
   resources :octopus
