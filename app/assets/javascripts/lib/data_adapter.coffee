@@ -63,7 +63,7 @@ App.DataAdapter.reopenClass
   available: ['live', 'mock']
 
   build: (connector, type, properties) ->
-    console.log "create data adapter: #{type}"
+    console.log "Create data adapter: #{type}"
     dataAdapter = switch type
       when 'mock' then App.MockDataAdapter.create(properties)
       when 'live' then  App.WebSocketDataAdapter.create(properties)

@@ -29,16 +29,16 @@ App.Settings.reopenClass
           duration: 10
 
   load: ->
-    console.log 'loading settings'
+    console.log 'Loading settings'
     record = @createRecord()
     settings = localStorage['octopus.settings']
     if settings
-      console.log ' - loading stored settings'
+      console.debug ' - Loading stored settings'
       record.setProperties(JSON.parse(settings))
     record
 
   save: (settings) ->
-    console.log 'persisting settings'
+    console.log 'Persisting settings'
     localStorage['octopus.settings'] = JSON.stringify(settings)
     @instance = settings
     settings

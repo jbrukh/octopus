@@ -4,7 +4,7 @@ class Api::EventsController < ApplicationController
   def index
     hijack do |tubesock|
       tubesock.onopen do
-        tubesock.send_data message: "Hello, friend"
+        tubesock.send_data message: "streaming"
 
         redis = Redis.new(:host => 'localhost', :port => 6379)
         redis.subscribe('recording.updated') do |on|

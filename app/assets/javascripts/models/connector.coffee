@@ -14,7 +14,7 @@ App.Connector = Em.Object.extend
   ).property('state')
 
   connect: ->
-    console.log "Connecting to websocket: #{this.url}"
+    console.log "Connecting to connector: #{this.url}"
     @ws = @createWebsocket(this.url)
 
   createWebsocket: (url) ->
@@ -27,7 +27,15 @@ App.Connector = Em.Object.extend
 
     ws.onmessage = (evt) =>
       response = JSON.parse(evt.data)
+      console.debug "Connector response: #{response}"
       deferred = @callbacks[response.id]
+      # if we get a message from the connector which we
+      # have no callback for, for example it might send us
+      # a message without an ID for any reason, we should log
+      # that fact and then not resolve a response handler
+      if deferred == undefined
+        console.warn "Could not find deferred for: #{evt.data}"
+        return
       deferred.resolve(response)
 
     ws.onerror = () =>
@@ -40,7 +48,7 @@ App.Connector = Em.Object.extend
     ws
 
   send: (message_type, object = {}) ->
-    console.log "Sending #{message_type}"
+    console.log "Sending connector message: #{message_type}"
     # create a deferred callback which will be used
     # as the response handler for the correlated message
     # id
