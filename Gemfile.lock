@@ -1,10 +1,4 @@
 GIT
-  remote: git://github.com/ngauthier/websocket-ruby.git
-  revision: f873a3126b5ac321ccede44e87da9e6461dba3d3
-  specs:
-    websocket (1.0.7)
-
-GIT
   remote: git://github.com/plataformatec/devise.git
   revision: 6b5988d756d780903bf8c9ccb3e2b3b724ccebe8
   branch: rails4
@@ -244,9 +238,6 @@ GEM
     treetop (1.4.12)
       polyglot
       polyglot (>= 0.3.1)
-    tubesock (0.1.2)
-      rack (> 1.5.0)
-      websocket
     tzinfo (0.3.37)
     uglifier (2.1.0)
       execjs (>= 0.3.0)
@@ -293,6 +284,4 @@ DEPENDENCIES
   sinatra (>= 1.3.0)
   slim (~> 2.0.0.pre.8)
   state_machine
-  tubesock
   uglifier (>= 1.0.3)
-  websocket!

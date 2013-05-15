@@ -4,6 +4,6 @@ App.MessageBus = Em.Object.extend
 
     console.log "Connecting to message bus: #{url}"
 
-    socket = new WebSocket(url)
-    socket.onmessage = (event) ->
-      console.log JSON.parse(event.data)
+    #socket = new WebSocket(url)
+    #socket.onmessage = (event) ->
+    #  console.log JSON.parse(event.data)

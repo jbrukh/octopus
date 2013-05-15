@@ -12,4 +12,3 @@ describe 'App.RecordingsIndexController', ->
 
     it 'deletes record', ->
       expect(@recording.deleteRecord).toHaveBeenCalled()
-      #expect(@connector.get('state')).toEqual('connecting')

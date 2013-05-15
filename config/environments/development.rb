@@ -29,6 +29,10 @@ Ruby::Application.configure do
 
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
 
-  # don't lock in dev, it causes badness with websockets
-  config.middleware.delete Rack::Lock
+  # turbodev makes loading assets much quicker
+  config.middleware.insert 0, Middleware::TurboDev
+
+  # required to get rainbows to log
+  config.logger = Logger.new(STDOUT)
+  config.logger.level = Logger.const_get(ENV['LOG_LEVEL'] ? ENV['LOG_LEVEL'].upcase : 'INFO')
 end
