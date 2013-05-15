@@ -60,17 +60,20 @@ App.Connector = Em.Object.extend
     deferred
 
   onResponse: (response) ->
-    console.debug "Connector response: #{response}"
+    console.group 'Connector response'
+    console.debug response
+
     deferred = @callbacks[response.id]
     # if we get a message from the connector which we
     # have no callback for, for example it might send us
     # a message without an ID for any reason, we should log
     # that fact and then not resolve a response handler
     if deferred == undefined
-      console.warn "Could not find deferred for: #{response}"
-      return
-    delete @callbacks[response.id]
-    deferred.resolve(response)
+      console.warn "Could not find deferred callback for response..."
+    else
+      delete @callbacks[response.id]
+      deferred.resolve(response)
+    console.groupEnd()
 
   onUpdateInfo: (response) ->
     @set 'device_name', response.device_name
