@@ -23,6 +23,7 @@
     <thead>
       <tr>
         <th>Created At</th>
+        <th>Owner</th>
         <th>Duration</th>
         <th>State</th>
       </tr>
@@ -33,6 +34,7 @@
           <td>
             <small>{{timeSince createdAt}}</small>
           </td>
+          <td>{{owner}}</td>
           <td>{{durationMs}}ms</td>
           <td>
             {{#if isUploading}}
