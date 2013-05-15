@@ -17,4 +17,9 @@ class Api::RecordingsController < ApplicationController
     @recording.save!
     render json: @recording, :status => :created
   end
+
+  def destroy
+    @recording = Recording.find(params[:id])
+    render json: @recording.trash!
+  end
 end

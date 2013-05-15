@@ -32,5 +32,19 @@ describe Api::RecordingsController do
 
       it { should respond_with :created }
     end
+
+    context 'with recording' do
+      before :each do
+        @recording = mock()
+        Recording.expects(:find).returns(@recording)
+      end
+
+      describe '#destroy' do
+        it 'trashes record' do
+          @recording.expects(:trash!).at_least_once
+          post :destroy, :id => 5
+        end
+      end
+    end
   end
 end

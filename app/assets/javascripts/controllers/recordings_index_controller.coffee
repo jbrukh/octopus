@@ -5,3 +5,7 @@ App.RecordingsIndexController = Em.ArrayController.extend
   canRecord: (->
     @get('connector.isConnected')
   ).property('connector.isConnected')
+
+  destroy: (recording) ->
+    recording.deleteRecord();
+    recording.get("transaction").commit()

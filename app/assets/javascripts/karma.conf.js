@@ -16,10 +16,11 @@ files = [
   'octopus.js',
   'lib/*',
   'models/*',
+  'controllers/*',
 
   JASMINE,
   JASMINE_ADAPTER,
-  'test/**/*_specs.coffee',
+  'test/**/*_specs.coffee'
 ];
 
 
