@@ -3,6 +3,7 @@ App.ResultData = Em.Object.extend
     switch @get('rawStorageMode')
       when 1 then 'parallel'
       when 2 then 'sequential'
+      when 3 then 'combined'
       else throw 'unknown storage mode'
   ).property('rawStorageMode')
 
@@ -54,6 +55,7 @@ App.ResultData = Em.Object.extend
     switch @get('storageMode')
       when 'parallel' then @readParallel.apply(this, params)
       when 'sequential' then @readSequential.apply(this, params)
+      when 'combined' then @readParallel.apply(this, params)
       else throw 'unsupported storage mode'
 
     @set 'channelBuffers', channelBuffers
