@@ -22,4 +22,15 @@ class Api::RecordingsController < ApplicationController
     @recording = Recording.find(params[:id])
     render json: @recording.trash!
   end
+
+  def update
+    @recording = Recording.find(params[:id])
+    @recording.update_attributes!(recording_params)
+    render json: @recording
+  end
+
+  private
+    def recording_params
+      params.require(:recording).permit(:description)
+    end
 end

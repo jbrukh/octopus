@@ -35,7 +35,7 @@ describe Api::RecordingsController do
 
     context 'with recording' do
       before :each do
-        @recording = mock()
+        @recording = users(:user).recordings.build
         Recording.expects(:find).returns(@recording)
       end
 
@@ -43,6 +43,13 @@ describe Api::RecordingsController do
         it 'trashes record' do
           @recording.expects(:trash!).at_least_once
           post :destroy, :id => 5
+        end
+      end
+
+      describe '#update' do
+        it 'updates teh recording' do
+          @recording.expects(:update_attributes!).once
+          put :update, :id => 5, :recording => {:description => 'foo'}
         end
       end
     end
