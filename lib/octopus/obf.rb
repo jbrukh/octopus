@@ -39,6 +39,8 @@ class Obf < BinData::Record
       :parallel
     when 2
       :sequential
+    when 3
+      :combined
     else
       raise "unknown storage mode: #{@data.storage_mode}"
     end
