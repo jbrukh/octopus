@@ -21,5 +21,5 @@
 //= require bootstrapped
 //= require_self
 //= require brain
-App = Ember.Application.create({LOG_TRANSITIONS: true});
+App = Ember.Application.create();
 //= require_tree .
