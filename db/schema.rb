@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(version: 20130508010522) do
     t.string   "state",       null: false
     t.text     "description"
     t.integer  "duration_ms"
+    t.datetime "trashed_at"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

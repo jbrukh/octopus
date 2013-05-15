@@ -1,4 +1,6 @@
 class Recording < ActiveRecord::Base
+  include Trashable
+
   belongs_to :user
   belongs_to :result
 
