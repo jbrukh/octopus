@@ -73,8 +73,7 @@ App.ResultData = Em.Object.extend
 
       # read timestamp
       timestampOffset = sampleStart + (numChannels * Float64Array.BYTES_PER_ELEMENT)
-      timestamps[s] = s#dataView.getUint32(timestampOffset, false)
-      console.log timestamps[s]
+      timestamps[s] = dataView.getUint32(timestampOffset, false)
 
   readSequential: (dataView, headerSize, numChannels, numSamples, channelBuffers, timestamps) ->
     #r read the samples, each channel is sequential
