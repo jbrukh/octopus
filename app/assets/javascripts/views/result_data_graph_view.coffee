@@ -1,6 +1,6 @@
 App.ResultDataGraphView = Em.View.extend
   canvasWidth:  920
-  margins:      [5, 45, 50, 5]
+  margins:      [5, 45, 250, 5]
 
   graphHeight: 100
   graphSpacing: 10
@@ -49,13 +49,18 @@ App.ResultDataGraphView = Em.View.extend
       .tickSize(-(totalHeight))
       .tickSubdivide(1)
 
+    xAxisPosition = channels * @graphHeight + (channels * @graphSpacing) + @margins[0]
     svg.append("g")
       .attr("class", "x axis")
-      .attr("transform", "translate(#{@margins[3]}," + (totalHeight - @margins[2] + @graphSpacing) + ")")
+      .attr("transform", "translate(#{@margins[3]}," + xAxisPosition + ")")
       .call(xAxis)
 
+    # draw each channel as a separate graph, stacked on top of each other
     [0...channels].map (i) =>
       @drawGraph(svg, i, buffers[i], timestamps, x)
+
+    overviewPosition = xAxisPosition + 10
+    @drawOverview(overviewPosition, svg, channels, buffers, x, timestamps)
 
   drawGraph: (svg, bufferIndex, buffer, timestamps, x) ->
     y = d3.scale.linear()
@@ -90,3 +95,60 @@ App.ResultDataGraphView = Em.View.extend
       .data([buffer])
       .attr("class", "line channel-" + bufferIndex)
       .attr("d", line)
+
+  drawOverview: (position, svg, channels, buffers, x, timestamps) ->
+    # under the graph show all the channels combined into one
+    overviewPosition = position + 40
+    overview = svg.append("svg:g")
+      .attr("transform", "translate(#{@margins[3]}," + overviewPosition + ")")
+
+    min = d3.min buffers.map((buffer) -> d3.min(buffer))
+    max = d3.max buffers.map((buffer) -> d3.max(buffer))
+
+    y = d3.scale.linear()
+      .range([0, 30])
+      .domain([min, max])
+
+    x2Position = position + 20
+
+    xAxis = d3.svg.axis()
+      .scale(x)
+      .tickSize(60)
+      .tickSubdivide(1)
+
+    brush = d3.svg.brush()
+      .x(x)
+      .on("brush", () =>
+          @brushed()
+      )
+
+    svg.append("g")
+      .attr("class", "x axis")
+      .attr("transform", "translate(#{@margins[3]}," + x2Position + ")")
+      .call(xAxis)
+
+    [0...channels].map (i) =>
+      buffer = buffers[i]
+
+      line = d3.svg.line()
+        .interpolate('none')
+        .x((d, i) => x(timestamps[i]))
+        .y((d, i) => y(d))
+
+      overview.append("path")
+        .data([buffer])
+        .attr("class", "line channel-" + i)
+        .attr("d", line)
+
+    overview.append("g")
+      .attr("class", "x brush")
+      .call(brush)
+    .selectAll("rect")
+      .attr("y", 0)
+      .attr("height", 30);
+
+  brushed: ->
+    console.log 'brushed'
+    #x.domain(brush.empty() ? x2.domain() : brush.extent());
+    #focus.select("path").attr("d", area);
+    #focus.select(".x.axis").call(xAxis);
