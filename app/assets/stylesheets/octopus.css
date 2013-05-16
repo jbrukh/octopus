@@ -42,6 +42,18 @@
   margin-bottom: 0;
 }
 
+.file-target{
+  border: dashed 2px #c0c0c0;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.droppable-indicator{
+  color: #468847;
+  background-color: #dff0d8;
+  border: dashed 2px #d6e9c6;
+}
+
 footer {
   border-top: solid 1px #eee;
   padding: 10px;

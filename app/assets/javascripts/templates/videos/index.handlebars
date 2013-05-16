@@ -9,12 +9,14 @@
   <thead>
     <tr>
       <td>Name</td>
+      <td>Created At</td>
     </tr>
   </thead>
   <tbody>
     {{#each controller}}
       <tr>
         <td>{{#linkTo 'video' this}}{{name}}{{/linkTo}}</td>
+        <td>{{timeSince createdAt}}</td>
       </tr>
     {{/each}}
   </tbody>
