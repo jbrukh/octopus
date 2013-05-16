@@ -1,9 +1,11 @@
 App.ResultDataGraphView = Em.View.extend
   canvasWidth:  920
-  margins:      [5, 45, 250, 5]
+  margins:      [5, 45, 50, 5]
 
   graphHeight: 100
   graphSpacing: 10
+  overviewHeight: 30
+  overviewSpacing: 40
 
   classNames: ['graph-view']
 
@@ -30,6 +32,7 @@ App.ResultDataGraphView = Em.View.extend
       (@graphHeight * channels) +         # space for each graph
       (@graphSpacing * (channels - 1)) +  # space for padding between each graph
       @graphSpacing +                     # spacing for the axis
+      @overviewHeight + @overviewSpacing +
       @margins[0] +
       @margins[2]
 
@@ -59,7 +62,7 @@ App.ResultDataGraphView = Em.View.extend
     [0...channels].map (i) =>
       @drawGraph(svg, i, buffers[i], timestamps, x)
 
-    overviewPosition = xAxisPosition + 10
+    overviewPosition = xAxisPosition + @overviewSpacing
     @drawOverview(overviewPosition, svg, channels, buffers, x, timestamps)
 
   drawGraph: (svg, bufferIndex, buffer, timestamps, x) ->
@@ -98,42 +101,43 @@ App.ResultDataGraphView = Em.View.extend
 
   drawOverview: (position, svg, channels, buffers, x, timestamps) ->
     # under the graph show all the channels combined into one
-    overviewPosition = position + 40
+    overviewPosition = position
     overview = svg.append("svg:g")
       .attr("transform", "translate(#{@margins[3]}," + overviewPosition + ")")
 
     min = d3.min buffers.map((buffer) -> d3.min(buffer))
     max = d3.max buffers.map((buffer) -> d3.max(buffer))
 
-    y = d3.scale.linear()
-      .range([0, 30])
+    x2 = d3.scale.linear()
+      .range([0, @graphWidth])
+      .domain([d3.min(timestamps), d3.max(timestamps)])
+
+    y2 = d3.scale.linear()
+      .range([0, @overviewHeight])
       .domain([min, max])
 
-    x2Position = position + 20
+    x2Position = position - 10
 
     xAxis = d3.svg.axis()
-      .scale(x)
-      .tickSize(60)
+      .scale(x2)
+      .tickSize(50)
       .tickSubdivide(1)
-
-    brush = d3.svg.brush()
-      .x(x)
-      .on("brush", () =>
-          @brushed()
-      )
 
     svg.append("g")
       .attr("class", "x axis")
       .attr("transform", "translate(#{@margins[3]}," + x2Position + ")")
       .call(xAxis)
 
+    brush = d3.svg.brush()
+    brush.x(x2).on("brush", () => @onBrush(x, x2, brush))
+
     [0...channels].map (i) =>
       buffer = buffers[i]
 
       line = d3.svg.line()
         .interpolate('none')
-        .x((d, i) => x(timestamps[i]))
-        .y((d, i) => y(d))
+        .x((d, i) => x2(timestamps[i]))
+        .y((d, i) => y2(d))
 
       overview.append("path")
         .data([buffer])
@@ -147,8 +151,17 @@ App.ResultDataGraphView = Em.View.extend
       .attr("y", 0)
       .attr("height", 30);
 
-  brushed: ->
-    console.log 'brushed'
-    #x.domain(brush.empty() ? x2.domain() : brush.extent());
-    #focus.select("path").attr("d", area);
-    #focus.select(".x.axis").call(xAxis);
+  onBrush: (x, x2, brush)->
+    x.domain = if brush.empty()
+      @set 'hasExtent', false
+      @set 'extent', null
+      x2.domain()
+    else
+      @set 'hasExtent', true
+      @set 'extent', brush.extent
+      brush.extent()
+
+    # this is where we'll eventually resize the main graph for
+    # focusing.
+    #graph.select("path").attr("d", area);
+    #graph.select(".x.axis").call(xAxis);
