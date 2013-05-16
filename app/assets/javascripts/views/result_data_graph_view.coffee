@@ -7,6 +7,8 @@ App.ResultDataGraphView = Em.View.extend
   overviewHeight: 30
   overviewSpacing: 40
 
+  drawCallbacks: []
+
   classNames: ['graph-view']
 
   tag: null
@@ -55,10 +57,14 @@ App.ResultDataGraphView = Em.View.extend
       .tickSubdivide(1)
 
     xAxisPosition = channels * @graphHeight + (channels * @graphSpacing) + @margins[0]
-    svg.append("g")
+    axis = svg.append("g")
       .attr("class", "x axis")
       .attr("transform", "translate(#{@margins[3]}," + xAxisPosition + ")")
       .call(xAxis)
+
+    @drawCallbacks.push(() =>
+      axis.call(xAxis)
+    )
 
     # draw each channel as a separate graph, stacked on top of each other
     [0...channels].map (i) =>
@@ -96,10 +102,14 @@ App.ResultDataGraphView = Em.View.extend
       .attr("transform", "translate(" + @graphWidth + ",0)")
       .call(yAxis)
 
-    graphic.append("path")
+    path = graphic.append("path")
       .data([buffer])
       .attr("class", "line channel-" + bufferIndex)
       .attr("d", line)
+
+    @drawCallbacks.push(() =>
+      path.attr("d", line)
+    )
 
   drawOverview: (position, svg, channels, buffers, x, timestamps) ->
     # under the graph show all the channels combined into one
@@ -131,7 +141,7 @@ App.ResultDataGraphView = Em.View.extend
       .call(xAxis)
 
     brush = d3.svg.brush()
-    brush.x(x2).on("brush", () => @onBrush(x, x2, brush))
+    brush.x(x2).on("brush", () => @onBrush(svg, x, x2, brush))
 
     [0...channels].map (i) =>
       buffer = buffers[i]
@@ -151,17 +161,16 @@ App.ResultDataGraphView = Em.View.extend
       .call(brush)
     .selectAll("rect")
       .attr("y", 0)
-      .attr("height", 30);
+      .attr("height", 30)
 
-  onBrush: (x, x2, brush)->
-    x.domain = if brush.empty()
+  onBrush: (svg, x, x2, brush) ->
+    domain = if brush.empty()
       @set 'tag.extent', null
       x2.domain()
     else
       @set 'tag.extent', brush.extent()
       brush.extent()
 
-    # this is where we'll eventually resize the main graph for
-    # focusing.
-    #graph.select("path").attr("d", area);
-    #graph.select(".x.axis").call(xAxis);
+    x.domain(domain)
+
+    @drawCallbacks.forEach (d) -> d()
