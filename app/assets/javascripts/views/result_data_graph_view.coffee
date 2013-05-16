@@ -9,6 +9,8 @@ App.ResultDataGraphView = Em.View.extend
 
   classNames: ['graph-view']
 
+  tag: null
+
   didInsertElement: ->
     data = @get('resultData')
     throw 'result data not loaded' unless data.get('isLoaded')
@@ -153,12 +155,10 @@ App.ResultDataGraphView = Em.View.extend
 
   onBrush: (x, x2, brush)->
     x.domain = if brush.empty()
-      @set 'hasExtent', false
-      @set 'extent', null
+      @set 'tag.extent', null
       x2.domain()
     else
-      @set 'hasExtent', true
-      @set 'extent', brush.extent
+      @set 'tag.extent', brush.extent()
       brush.extent()
 
     # this is where we'll eventually resize the main graph for
