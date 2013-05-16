@@ -54,6 +54,10 @@
   border: dashed 2px #d6e9c6;
 }
 
+.textarea-modal-full{
+  width: 515px;
+}
+
 footer {
   border-top: solid 1px #eee;
   padding: 10px;
