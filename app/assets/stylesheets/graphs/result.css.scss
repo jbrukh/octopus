@@ -1,2 +1,7 @@
 // *= require ./shared.css
 
+.brush .extent {
+  stroke: steelblue;
+  fill-opacity: .125;
+  shape-rendering: crispEdges;
+}
