@@ -1,4 +1,4 @@
-App.ResultData = Em.Object.extend
+App.RecordingData = Em.Object.extend
   storageMode: (->
     switch @get('rawStorageMode')
       when 1 then 'parallel'

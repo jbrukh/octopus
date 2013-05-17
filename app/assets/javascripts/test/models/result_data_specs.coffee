@@ -1,6 +1,6 @@
-describe 'App.ResultData', ->
+describe 'App.RecordingData', ->
   beforeEach ->
-    @resultData = App.ResultData.create()
+    @resultData = App.RecordingData.create()
 
   #describe 'with parallel data', ->
   #  beforeEach ->

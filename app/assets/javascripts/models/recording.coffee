@@ -30,7 +30,7 @@ App.Recording = DS.Model.extend
   recordingData: (->
     dataUrl = @get 'dataUrl'
     console.info "Loading result data: #{dataUrl}"
-    resultData = App.ResultData.create()
+    resultData = App.RecordingData.create()
 
     xhr = new XMLHttpRequest()
     xhr.open 'GET', dataUrl, true
