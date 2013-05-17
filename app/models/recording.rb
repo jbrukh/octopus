@@ -2,6 +2,7 @@ class Recording < ActiveRecord::Base
   include Trashable
 
   belongs_to :user
+  has_many :taggings
   has_attached_file :data
 
   state_machine :state, :initial => :waiting_for_data do
