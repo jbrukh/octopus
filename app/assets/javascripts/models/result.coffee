@@ -22,7 +22,7 @@ App.Result.reopenClass
     result = App.Result.create { id: id }
     $.ajax({
       dataType: "json",
-      url: "/api/recordings/#{recordingId}/results",
+      url: "/api/recordings/#{recordingId}",
     }).success (data) ->
       result.setProperties data.result
       result.set 'isLoaded', true

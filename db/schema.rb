@@ -30,17 +30,12 @@ ActiveRecord::Schema.define(version: 20130508010522) do
   end
 
   create_table "recordings", force: true do |t|
-    t.integer  "user_id",     null: false
+    t.integer  "user_id",           null: false
     t.integer  "result_id"
-    t.string   "state",       null: false
+    t.string   "state",             null: false
     t.text     "description"
     t.integer  "duration_ms"
     t.datetime "trashed_at"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "results", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "data_file_name"

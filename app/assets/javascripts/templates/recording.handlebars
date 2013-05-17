@@ -28,14 +28,14 @@
   {{/view}}
 {{/if}}
 
-{{#unless result.isLoaded}}
+{{#unless isLoaded}}
   <div class="alert alert-info">
     Loading results, please wait...
   </div>
 {{else}}
 
-  {{#if result.data.isLoaded}}
-    {{view App.ResultDataGraphView resultDataBinding=result.data tagBinding=tag}}
+  {{#if recordingData.isLoaded}}
+    {{view App.ResultDataGraphView resultDataBinding=recordingData tagBinding=tag}}
   {{/if}}
 
   {{#if tag.extent}}
@@ -66,37 +66,37 @@
     <tbody>
       <tr>
         <td>Name</td>
-        <td>{{result.data_file_name}}</td>
+        <td>{{dataFileName}}</td>
       </tr>
       <tr>
         <td>Size</td>
-        <td>{{result.data_file_size}}</td>
+        <td>{{dataFileSize}}</td>
       </tr>
 
-      {{#if result.data.isLoaded}}
+      {{#if recordingData.isLoaded}}
         <tr>
           <td>data type</td>
-          <td>{{result.data.dataType}}
+          <td>{{recordingData.dataType}}
         </tr>
         <tr>
           <td>format version</td>
-          <td>{{result.data.formatVersion}}
+          <td>{{recordingData.formatVersion}}
         </tr>
         <tr>
           <td>storage mode</td>
-          <td>{{result.data.storageMode}}
+          <td>{{recordingData.storageMode}}
         </tr>
         <tr>
           <td>channels</td>
-          <td>{{result.data.channels}}
+          <td>{{recordingData.channels}}
         </tr>
         <tr>
           <td>samples</td>
-          <td>{{result.data.samples}}
+          <td>{{recordingData.samples}}
         </tr>
         <tr>
           <td>sample rate</td>
-          <td>{{result.data.sampleRate}}
+          <td>{{recordingData.sampleRate}}
         </tr>
       {{/if}}
 

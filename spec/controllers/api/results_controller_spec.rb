@@ -30,8 +30,7 @@ describe Api::ResultsController do
       it { should respond_with :created }
       it 'updates the recording' do
         recording.reload
-        expect(recording.result).not_to eq(nil)
-        expect(recording.result.data).not_to eq(nil)
+        expect(recording.data).not_to eq(nil)
         expect(recording.uploaded?).to eq(true)
       end
     end

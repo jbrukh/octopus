@@ -2,7 +2,7 @@ class Recording < ActiveRecord::Base
   include Trashable
 
   belongs_to :user
-  belongs_to :result
+  has_attached_file :data
 
   state_machine :state, :initial => :waiting_for_data do
     after_transition :on => :uploaded, :do => :save!
@@ -13,9 +13,8 @@ class Recording < ActiveRecord::Base
   end
 
   def upload(result_params)
-    build_result(result_params).tap do |r|
-      on_build_result
-    end
+    self.data = result_params[:data]
+    on_build_result
   end
 
   def update_from_obf!(obf)

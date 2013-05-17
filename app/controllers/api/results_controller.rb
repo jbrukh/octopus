@@ -4,15 +4,10 @@ class Api::ResultsController < ApplicationController
   before_filter :authenticate_user!
   before_filter :find_recording
 
-  def show
-    @result = @recording.result
-    render json: @result
-  end
-
   def create
-    @result = @recording.upload(result_params)
+    @recording.upload(result_params)
     render json: @recording, :status => :created
-    ProcessResultWorker.perform_async(@result.id)
+    ProcessResultWorker.perform_async(@recording.id)
   end
 
   private
@@ -21,6 +16,6 @@ class Api::ResultsController < ApplicationController
     end
 
     def result_params
-      params.require(:result).permit(:duration, :data)
+      params.require(:result).permit(:data)
     end
 end

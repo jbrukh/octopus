@@ -13,12 +13,8 @@ user = User.create!({
   :confirmed_at => DateTime.now
 })
 
-result = Result.create!({
-  :data => File.new("#{Rails.root}/spec/fixtures/files/obf.data")
-})
-
 Recording.create({
   :state => 'uploaded',
   :user => user,
-  :result => result
+  :data => File.new("#{Rails.root}/spec/fixtures/files/obf.data")
 })
