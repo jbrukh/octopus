@@ -17,3 +17,5 @@ App.RecordingController = Em.ObjectController.extend
 
   createTag: ->
     console.log 'create tag'
+    tagging = @get 'tagging'
+    tagging.save()

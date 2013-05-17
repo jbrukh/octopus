@@ -1,19 +1,19 @@
 App.Recording = DS.Model.extend
 
-  createdAt:    DS.attr 'date'
-  updatedAt:    DS.attr 'date'
+  createdAt:            DS.attr 'date'
+  updatedAt:            DS.attr 'date'
 
-  state:        DS.attr 'string'
-  description:  DS.attr 'string'
-  owner:        DS.attr 'string'
-  durationMs:   DS.attr 'number'
+  state:                DS.attr 'string'
+  description:          DS.attr 'string'
+  owner:                DS.attr 'string'
+  durationMs:           DS.attr 'number'
 
-  dataContentType:        DS.attr 'string'
-  dataFileName:        DS.attr 'string'
-  dataContentType:        DS.attr 'string'
-  dataFileSize:        DS.attr 'string'
+  dataContentType:      DS.attr 'string'
+  dataFileName:         DS.attr 'string'
+  dataContentType:      DS.attr 'string'
+  dataFileSize:         DS.attr 'string'
   dataUpdatedAt:        DS.attr 'string'
-  dataUrl:        DS.attr 'string'
+  dataUrl:              DS.attr 'string'
 
   start: ->
     @set 'isRecording', true

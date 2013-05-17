@@ -11,7 +11,7 @@ App.ResultDataGraphView = Em.View.extend
 
   classNames: ['graph-view']
 
-  tag: null
+  tagging: null
 
   didInsertElement: ->
     data = @get('resultData')
@@ -165,10 +165,10 @@ App.ResultDataGraphView = Em.View.extend
 
   onBrush: (svg, x, x2, brush) ->
     domain = if brush.empty()
-      @set 'tag.extent', null
+      @set 'tagging.extent', null
       x2.domain()
     else
-      @set 'tag.extent', brush.extent()
+      @set 'tagging.extent', brush.extent()
       brush.extent()
 
     x.domain(domain)

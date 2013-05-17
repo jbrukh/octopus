@@ -4,6 +4,7 @@ preload_app true
 
 Rainbows! do
   use :EventMachine
+  client_max_body_size(100 * 1024 * 1024) # 100 mb
 end
 
 before_fork do |server, worker|

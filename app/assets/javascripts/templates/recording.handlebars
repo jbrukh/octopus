@@ -35,18 +35,18 @@
 {{else}}
 
   {{#if recordingData.isLoaded}}
-    {{view App.ResultDataGraphView resultDataBinding=recordingData tagBinding=tag}}
+    {{view App.ResultDataGraphView resultDataBinding=recordingData taggingBinding=tagging}}
   {{/if}}
 
-  {{#if tag.extent}}
+  {{#if tagging.extent}}
     <div class="well">
       <form class="form-horizontal">
         <fieldset>
-          <legend>Tag {{tag.from}} - {{tag.to}}</legend>
+          <legend>Tag {{tagging.from_ms}} - {{tagging.to_ms}}</legend>
           <div class="control-group">
             <label class="control-label">Tag Name</label>
             <div class="controls">
-              {{input value=tag.name type=text}}
+              {{input value=tagging.name type=text}}
             </div>
           </div>
         </fieldset>
