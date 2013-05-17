@@ -10,6 +10,13 @@ user = User.create!({
   :email => 'user@example.com',
   :password => 'password',
   :password_confirmation => 'password',
-  :confirmed_at => DateTime.now
+  :confirmed_at => DateTime.now,
   :role => 'admin'
+})
+
+user = User.create!({
+  :email => 'guest@example.com',
+  :password => 'password',
+  :password_confirmation => 'password',
+  :confirmed_at => DateTime.now
 })
