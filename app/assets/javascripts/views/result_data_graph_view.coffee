@@ -141,7 +141,7 @@ App.ResultDataGraphView = Em.View.extend
       .call(xAxis)
 
     brush = d3.svg.brush()
-    brush.x(x2).on("brush", () => @onBrush(svg, x, x2, brush))
+    brush.x(x2).on("brushend", () => @onBrush(svg, x, x2, brush))
 
     [0...channels].map (i) =>
       buffer = buffers[i]
