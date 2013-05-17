@@ -11,6 +11,7 @@ Ruby::Application.routes.draw do
 
     resources :recordings do
       resource :results
+      resource :taggings
     end
 
     # media
