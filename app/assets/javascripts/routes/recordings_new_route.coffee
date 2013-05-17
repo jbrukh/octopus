@@ -13,6 +13,10 @@ App.RecordingsNewRoute = Ember.Route.extend
     # if we have are currently recording then just stop the
     # recording, we should probably prompt here.
     controller = @controllerFor('recordings.new')
+
+    # if controller.get('model.isRecording') && !confirm('Are you sure you want to stop recording?')
+    # somehow stop the transition from taking place
+
     controller.stop()
 
     @transaction.rollback() if @transaction

@@ -31,7 +31,10 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.datetime :locked_at
 
       ## Token authenticatable
-      t.string :authentication_token
+      t.string   :authentication_token
+
+      ## the role of this user
+      t.string   :role, :null => false, :default => 'guest'
 
       t.timestamps
     end

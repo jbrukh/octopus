@@ -11,10 +11,5 @@ user = User.create!({
   :password => 'password',
   :password_confirmation => 'password',
   :confirmed_at => DateTime.now
-})
-
-Recording.create({
-  :state => 'uploaded',
-  :user => user,
-  :data => File.new("#{Rails.root}/spec/fixtures/files/obf.data")
+  :role => 'admin'
 })
