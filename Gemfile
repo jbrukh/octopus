@@ -79,4 +79,8 @@ group :test, :development do
   gem 'rb-fchange', :require => false
   gem 'guard'
   gem 'guard-rspec'
+
+  gem 'jazz_hands'
+  gem 'better_errors'
+  gem "binding_of_caller"
 end
