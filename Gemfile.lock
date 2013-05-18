@@ -1,4 +1,11 @@
 GIT
+  remote: git://github.com/jonnii/font-awesome-rails.git
+  revision: f85487313a0d5e6cba74cfc2b875125fad0e01f9
+  specs:
+    font-awesome-rails (3.1.1.1)
+      railties (>= 3.2, < 5.0)
+
+GIT
   remote: git://github.com/plataformatec/devise.git
   revision: 6b5988d756d780903bf8c9ccb3e2b3b724ccebe8
   branch: rails4
@@ -111,8 +118,6 @@ GEM
       factory_girl (~> 4.2.0)
       railties (>= 3.0.0)
     ffi (1.8.1)
-    font-awesome-rails (3.1.1.1)
-      railties (>= 3.2, < 5.0)
     formatador (0.2.4)
     grit (2.5.0)
       diff-lcs (~> 1.1)
@@ -317,7 +322,7 @@ DEPENDENCIES
   em-http-request
   ember-rails
   factory_girl_rails
-  font-awesome-rails
+  font-awesome-rails!
   guard
   guard-rspec
   handlebars-source (= 1.0.0.rc3)
