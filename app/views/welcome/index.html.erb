@@ -3,7 +3,7 @@
     <% if user_signed_in? && current_user.role == 'admin' %>
       <%= link_to 'Launch Octopus', octopus_index_url, class: 'btn btn-primary btn-large' %>
     <% else %>
-      Coming soon.
+      <i class="icon-rocket"></i> Coming soon...
     <% end %>
   </p>
 </div>
