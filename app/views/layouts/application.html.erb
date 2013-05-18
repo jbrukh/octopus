@@ -43,10 +43,6 @@
       <% end %>
 
       <%= yield %>
-
-      <% if user_signed_in? %>
-        <small>role: <%= current_user.role %></small>
-      <% end %>
     </div>
   </body>
 </html>

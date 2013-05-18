@@ -1,5 +1,9 @@
 <div class="hero-unit">
   <p>
-    <%= link_to 'Launch Octopus', octopus_index_url, class: 'btn btn-primary btn-large' %>
+    <% if user_signed_in? && current_user.role == 'admin' %>
+      <%= link_to 'Launch Octopus', octopus_index_url, class: 'btn btn-primary btn-large' %>
+    <% else %>
+      Coming soon.
+    <% end %>
   </p>
 </div>
