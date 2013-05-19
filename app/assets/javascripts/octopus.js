@@ -18,6 +18,7 @@
 //= require vendor/ember-data-latest
 //= require vendor/moment
 //= require vendor/bootstrap
+//= require vendor/showdown
 //= require bootstrapped
 //= require_self
 //= require brain
