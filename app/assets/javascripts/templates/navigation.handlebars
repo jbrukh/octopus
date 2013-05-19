@@ -1,5 +1,9 @@
 {{#if canNavigate}}
   <ul class="nav">
+    {{#linkTo 'participants.index' tagName='li'}}
+      <a href="#">Participants</a>
+    {{/linkTo}}
+
     {{#linkTo 'experiments.index' tagName='li'}}
       <a href="#">Experiments</a>
     {{/linkTo}}
