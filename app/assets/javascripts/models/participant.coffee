@@ -3,4 +3,4 @@ App.Participant = DS.Model.extend
   lastName:   DS.attr 'string'
   email:      DS.attr 'string'
   gender:     DS.attr 'string'
-  birthday:   DS.attr 'datetime'
+  birthday:   DS.attr 'date'

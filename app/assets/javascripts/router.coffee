@@ -4,6 +4,7 @@ App.Router.map ->
 
   @resource 'participants', ->
     @route 'new'
+  @route 'participant', { path: '/participant/:participant_id' }
 
   @resource 'trials', -> null
   @resource 'trial', ->
