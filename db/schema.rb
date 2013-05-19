@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 20130517010945) do
     t.integer  "user_id",           null: false
     t.integer  "result_id"
     t.string   "state",             null: false
+    t.text     "name"
     t.text     "description"
     t.integer  "duration_ms"
     t.datetime "trashed_at"

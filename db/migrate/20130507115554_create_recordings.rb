@@ -6,6 +6,7 @@ class CreateRecordings < ActiveRecord::Migration
 
       t.string      :state,   null: false
 
+      t.text        :name
       t.text        :description
       t.integer     :duration_ms
 

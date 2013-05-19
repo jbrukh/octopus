@@ -3,7 +3,7 @@
     <button class="btn btn-info" {{action edit}}>Edit</button>
   </div>
 
-  <h3>Recording</h3>
+  <h3>Recording <small>{{name}}</small></h3>
 </div>
 
 {{#if isEditing}}
@@ -14,12 +14,18 @@
     </div>
     <div class="modal-body">
       <div class="control-group">
+        <label class="control-label">Name</label>
+        <div class="controls">
+          {{input value=newName type=text}}
+        </div>
+      </div>
+
+      <div class="control-group">
         <label class="control-label">Description</label>
         <div class="controls">
           {{view Ember.TextArea valueBinding=newDescription class="textarea-modal-full"}}
         </div>
       </div>
-
     </div>
     <div class="modal-footer">
       <a href="#" class="btn" {{action cancelEdit}}>Close</a>

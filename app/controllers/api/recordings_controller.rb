@@ -31,6 +31,6 @@ class Api::RecordingsController < ApplicationController
 
   private
     def recording_params
-      params.require(:recording).permit(:description)
+      params.require(:recording).permit(:name, :description)
     end
 end

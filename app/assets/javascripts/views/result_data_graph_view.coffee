@@ -79,7 +79,6 @@ App.ResultDataGraphView = Em.View.extend
       .domain([d3.min(buffer), d3.max(buffer)])
 
     line = d3.svg.line()
-      .interpolate('none')
       .x((d, i) => x(timestamps[i]))
       .y((d, i) => y(d))
 
@@ -147,7 +146,6 @@ App.ResultDataGraphView = Em.View.extend
       buffer = buffers[i]
 
       line = d3.svg.line()
-        .interpolate('none')
         .x((d, i) => x2(timestamps[i]))
         .y((d, i) => y2(d))
 

@@ -1,6 +1,7 @@
 App.RecordingController = Em.ObjectController.extend
   edit: ->
     @set 'isEditing', true
+    @set 'newName', @get('name')
     @set 'newDescription', @get('description')
 
   cancelEdit: ->
@@ -9,11 +10,11 @@ App.RecordingController = Em.ObjectController.extend
   saveEdit: ->
     @set 'isEditing', false
 
-    newDescription = @get 'newDescription'
     model = @get 'model'
 
     transaction = model.get('transaction')
-    model.set 'description', newDescription
+    model.set 'name', @get('newName')
+    model.set 'description', @get('newDescription')
     transaction.commit()
 
   createTag: ->

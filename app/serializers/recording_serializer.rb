@@ -5,6 +5,7 @@ class RecordingSerializer < ActiveModel::Serializer
     :result_id,
     :duration_ms,
     :owner,
+    :name,
     :description,
     :data_file_name,
     :data_content_type,
