@@ -5,6 +5,12 @@ App.Participant = DS.Model.extend
   gender:     DS.attr 'string'
   birthday:   DS.attr 'string'
 
+  fullName: (->
+    first = @get('firstName')
+    last = @get('lastName')
+    "#{last}, #{first}"
+  ).property('firstName', 'lastName')
+
 App.Participant.reopenClass
   genders: [
     Em.Object.create({id: 'm', gender: 'Male'}),
