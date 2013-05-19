@@ -1,11 +1,11 @@
 {{#if canNavigate}}
   <ul class="nav">
     {{#linkTo 'experiments.index' tagName='li'}}
-      {{#linkTo 'experiments.index'}}Experiments{{/linkTo}}
+      <a href="#">Experiments</a>
     {{/linkTo}}
 
     {{#linkTo 'recordings.index' tagName='li'}}
-      {{#linkTo 'recordings.index'}}Recordings{{/linkTo}}
+      <a href="#">Recordings</a>
     {{/linkTo}}
 
     <li class="dropdown">
@@ -14,11 +14,11 @@
       </a>
       <ul class="dropdown-menu">
         {{#linkTo 'videos.index' tagName='li'}}
-          {{#linkTo 'videos.index'}}Videos{{/linkTo}}
+          <a href="#">Videos</a>
         {{/linkTo}}
 
         {{#linkTo 'slideshows.index' tagName='li'}}
-          {{#linkTo 'slideshows.index'}}Slideshows{{/linkTo}}
+          <a href="#">Slidshows</a>
         {{/linkTo}}
       </ul>
     </li>

@@ -3,8 +3,8 @@ Ember.Application.initializer
 
   initialize: (container) ->
     messageBus = App.MessageBus.create()
-    messageBus.start()
+    #messageBus.start()
 
-    container.register 'message_bus:instance', messageBus, {'instantiate': false}
-    container.typeInjection 'controller', 'message_bus', 'message_bus:instance'
-    container.typeInjection 'route', 'message_bus', 'message_bus:instance'
+    #container.register 'message_bus:instance', messageBus, {'instantiate': false}
+    #container.typeInjection 'controller', 'message_bus', 'message_bus:instance'
+    #container.typeInjection 'route', 'message_bus', 'message_bus:instance'
