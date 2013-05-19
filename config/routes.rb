@@ -7,6 +7,7 @@ Ruby::Application.routes.draw do
 
   # api routes
   namespace :api do
+    resources :participants
     resources :experiments
 
     resources :recordings do
