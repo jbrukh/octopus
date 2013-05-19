@@ -40,7 +40,7 @@ group :assets do
   gem 'sass-rails',   '~> 4.0.0.rc1'
   gem 'coffee-rails', '~> 4.0.0.rc1'
 
-  gem "font-awesome-rails", github: 'jonnii/font-awesome-rails'
+  gem "font-awesome-rails"
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer', platforms: :ruby
