@@ -3,7 +3,7 @@
     <button class="btn btn-info" {{action edit}}>Edit</button>
   </div>
 
-  <h3>Recording <small>{{description}}</small></h3>
+  <h3>Recording</h3>
 </div>
 
 {{#if isEditing}}
@@ -55,6 +55,12 @@
         </div>
       </form>
     </div>
+  {{/if}}
+
+  {{#if description}}
+    <blockquote>
+      {{markdown description}}
+    </blockquote>
   {{/if}}
 
   <table class="table table-condensed">

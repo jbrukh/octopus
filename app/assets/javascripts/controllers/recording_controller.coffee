@@ -1,6 +1,7 @@
 App.RecordingController = Em.ObjectController.extend
   edit: ->
     @set 'isEditing', true
+    @set 'newDescription', @get('description')
 
   cancelEdit: ->
     @set 'isEditing', false
