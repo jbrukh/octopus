@@ -19,6 +19,7 @@
 //= require vendor/moment
 //= require vendor/bootstrap
 //= require vendor/showdown
+//= require vendor/bootstrap-datepicker
 //= require bootstrapped
 //= require_self
 //= require brain

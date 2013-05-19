@@ -26,6 +26,25 @@
         {{input value=model.email type=text}}
       </div>
     </div>
+
+    <div class="control-group">
+      <label class="control-label">Gender</label>
+      <div class="controls">
+        {{view Ember.Select
+          valueBinding=model.gender
+          contentBinding="App.Participant.genders"
+          optionValuePath="content.id"
+          optionLabelPath="content.gender"
+        }}
+      </div>
+    </div>
+
+    <div class="control-group">
+      <label class="control-label">Birthday</label>
+      <div class="controls">
+        {{view App.DatePicker valueBinding=model.birthday}}
+      </div>
+    </div>
   </fieldset>
 
   <div class="form-actions">

@@ -9,6 +9,7 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require vendor/bootstrap.css
+ *= require vendor/datepicker.css
  *= require font-awesome
  *= require_self
  *= require_tree ./graphs
