@@ -6,6 +6,11 @@ class Api::ParticipantsController < ApplicationController
     render json: @participants
   end
 
+  def show
+    @participant = Participant.find(params[:id])
+    render json: @participant
+  end
+
   def create
     @participant = Participant.new(participant_params)
     @participant.user = current_user

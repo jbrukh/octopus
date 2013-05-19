@@ -40,6 +40,8 @@ ActiveRecord::Schema.define(version: 20130519200913) do
     t.datetime "updated_at"
   end
 
+  add_index "participants", ["email"], name: "index_participants_on_email", unique: true, using: :btree
+
   create_table "recordings", force: true do |t|
     t.integer  "user_id",           null: false
     t.integer  "result_id"

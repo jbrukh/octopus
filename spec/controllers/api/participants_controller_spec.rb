@@ -14,12 +14,20 @@ describe Api::ParticipantsController do
 
   context 'as a user' do
     before :each do
+      @participant = create :participant
       sign_in users(:user)
     end
 
     describe '#index' do
       before :each do
         get :index
+      end
+      it { should respond_with :ok }
+    end
+
+    describe '#show' do
+      before :each do
+        get :show, :id => @participant.id
       end
       it { should respond_with :ok }
     end
@@ -35,7 +43,7 @@ describe Api::ParticipantsController do
       end
       it { should respond_with :success }
       it 'creates a participant' do
-        expect(Participant.count).to be(1)
+        expect(Participant.where(:email => 'bob@example.com').count).to eq(1)
       end
     end
   end

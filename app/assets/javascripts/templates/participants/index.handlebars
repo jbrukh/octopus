@@ -14,12 +14,20 @@
     <thead>
       <tr>
         <th>Name</th>
+        <th>Email</th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
       {{#each controller}}
         <tr>
           <td>{{fullName}}</td>
+          <td>{{email}}</td>
+          <td>
+            <div class="pull-right">
+              {{#linkTo 'participant' this class="btn btn-mini btn-success"}}Details{{/linkTo}}
+            </div>
+          </td>
         </tr>
       {{/each}}
     </tbody>

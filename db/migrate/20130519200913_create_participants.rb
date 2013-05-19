@@ -11,5 +11,7 @@ class CreateParticipants < ActiveRecord::Migration
 
       t.timestamps
     end
+
+    add_index :participants, [:email], :unique => true
   end
 end
