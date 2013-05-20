@@ -7,6 +7,5 @@ FactoryGirl.define do
     birthday 24.years.ago
     email 'james@example.com'
     gender 'm'
-    user { User.first }
   end
 end

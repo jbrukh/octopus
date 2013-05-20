@@ -13,8 +13,9 @@ describe Api::ParticipantsController do
   end
 
   context 'as a user' do
+    let(:participant) { create :participant, :user => users(:user) }
+
     before :each do
-      @participant = create :participant
       sign_in users(:user)
     end
 
@@ -27,7 +28,7 @@ describe Api::ParticipantsController do
 
     describe '#show' do
       before :each do
-        get :show, :id => @participant.id
+        get :show, :id => participant.id
       end
       it { should respond_with :ok }
     end
@@ -52,6 +53,20 @@ describe Api::ParticipantsController do
       it 'creates properties' do
         participant = Participant.find_by_email('bob@example.com')
         expect(participant.properties.length).to eq(2)
+      end
+    end
+
+    context 'with participant' do
+      before :each do
+        @participant = build :participant
+        Participant.expects(:find).returns(@participant)
+      end
+
+      describe '#destroy' do
+        it 'trashes record' do
+          @participant.expects(:trash!).at_least_once
+          post :destroy, :id => 5
+        end
       end
     end
   end

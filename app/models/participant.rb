@@ -1,4 +1,6 @@
 class Participant < ActiveRecord::Base
+  include Trashable
+
   belongs_to :user
 
   validates :first_name,  :presence => true

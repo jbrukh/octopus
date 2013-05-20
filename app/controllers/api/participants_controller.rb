@@ -18,6 +18,11 @@ class Api::ParticipantsController < ApplicationController
     render json: @participant
   end
 
+  def destroy
+    @participant = Participant.find(params[:id])
+    render json: @participant.trash!
+  end
+
   private
     def participant_params
       params.require(:participant).permit(:first_name, :last_name, :email, :gender, :birthday).tap do |whitelisted|

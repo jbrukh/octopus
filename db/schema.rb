@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(version: 20130519200913) do
     t.string   "gender",     null: false
     t.date     "birthday",   null: false
     t.hstore   "properties"
+    t.datetime "trashed_at"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
