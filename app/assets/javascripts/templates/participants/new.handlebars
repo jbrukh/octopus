@@ -75,7 +75,9 @@
       <label class="control-label"></label>
       <div class="controls">
         {{input value=propertyName type=text}}
-        <a href="#" class="btn btn-info" {{bindAttr class="isValidProperty::disabled"}} {{action addProperty}}>Add Field</a>
+        <a href="#" class="btn btn-info" {{bindAttr class="isValidProperty::disabled"}} {{action addProperty}}>
+          <i class="icon-plus"></i> Add Field
+        </a>
       </div>
     </div>
   </fieldset>
