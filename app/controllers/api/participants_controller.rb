@@ -18,10 +18,7 @@ class Api::ParticipantsController < ApplicationController
       @participant.save!
       render json: @participant
     else
-      render json: @participant,
-        :status => :unprocessable_entity,
-        :meta => @participant.errors,
-        :meta_key => 'errors'
+      render json: @participant.errors, :serializer => ErrorsSerializer, :status => :unprocessable_entity
     end
   end
 

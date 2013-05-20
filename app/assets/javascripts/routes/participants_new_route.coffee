@@ -8,6 +8,12 @@ App.ParticipantsNewRoute = Em.Route.extend
 
   events:
     save: ->
-      @currentModel.on 'didCreate', =>
+      console.log 'Saving participant'
+
+      @currentModel.one 'didCreate', =>
         @transitionTo 'participant', @currentModel
+
+      @currentModel.one 'becameInvalid', =>
+        console.log 'Participant is invalid'
+
       @transaction.commit()

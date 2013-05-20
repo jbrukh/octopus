@@ -2,11 +2,12 @@
   <h3>New Participant</h3>
 </div>
 
-{{#if model.isError}}
+{{#unless model.isValid}}
   <div class="alert alert-error">
-    Invalid
+    Record is invalid.
+    {{errors}}
   </div>
-{{/if}}
+{{/unless}}
 
 <form class="form-horizontal">
   <fieldset>
