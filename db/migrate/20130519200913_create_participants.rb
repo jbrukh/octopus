@@ -9,6 +9,8 @@ class CreateParticipants < ActiveRecord::Migration
       t.string  'gender',     :null => false, :length => 1
       t.date    'birthday',   :null => false
 
+      t.hstore  'properties'
+
       t.timestamps
     end
 
