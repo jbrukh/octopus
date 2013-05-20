@@ -20,6 +20,8 @@ class Api::ParticipantsController < ApplicationController
 
   private
     def participant_params
-      params.require(:participant).permit(:first_name, :last_name, :email, :gender, :birthday)
+      params.require(:participant).permit(:first_name, :last_name, :email, :gender, :birthday).tap do |whitelisted|
+        whitelisted[:properties] = params[:participant][:properties]
+      end
     end
 end

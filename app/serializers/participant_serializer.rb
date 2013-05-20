@@ -6,5 +6,6 @@ class ParticipantSerializer < ActiveModel::Serializer
     :email,
     :birthday,
     :created_at,
-    :updated_at
+    :updated_at,
+    :properties
 end

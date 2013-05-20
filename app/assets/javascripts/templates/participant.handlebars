@@ -28,5 +28,13 @@
       <td><strong>Age</strong></td>
       <td>{{age}}</td>
     </tr>
+
+    {{#each properties}}
+      <tr>
+        <td><strong>{{name}}</strong></td>
+        <td>{{value}}</td>
+      </tr>
+    {{/each}}
+
   </tbody>
 </table>

@@ -47,6 +47,22 @@
     </div>
   </fieldset>
 
+  <fieldset>
+    <legend>Extra Detail</legend>
+
+    {{#each model.properties}}
+      <div class="control-group">
+        <label class="control-label">{{name}}</label>
+        <div class="controls">
+          {{input value=value type=text}}
+        </div>
+      </div>
+    {{/each}}
+
+    {{input value=newFieldName type=text}}
+    <a href="#" {{action addProperty}}>Add Field</a>
+  </fieldset>
+
   <div class="form-actions">
     <button type="submit" class="btn btn-primary" {{action save}}>Create Participant</button>
   </div>

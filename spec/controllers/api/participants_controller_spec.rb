@@ -39,11 +39,19 @@ describe Api::ParticipantsController do
           :last_name => 'jones',
           :gender => 'm',
           :birthday => '1983-06-01',
-          :email => 'bob@example.com' }
+          :email => 'bob@example.com',
+          :properties => {
+            :key => 'value', :key2 => 'value2'
+            }
+          }
       end
       it { should respond_with :success }
       it 'creates a participant' do
         expect(Participant.where(:email => 'bob@example.com').count).to eq(1)
+      end
+      it 'creates properties' do
+        participant = Participant.find_by_email('bob@example.com')
+        expect(participant.properties.length).to eq(2)
       end
     end
   end

@@ -19,3 +19,16 @@ describe 'App.Participant', ->
     it 'returns null when birthday is null', ->
       @participant.set 'birthday', null
       expect(@participant.get('age')).toEqual(null)
+
+  describe '#addProperty', ->
+    it 'adds a property', ->
+      property = @participant.addProperty('custom')
+      expect(property.get('name')).toEqual('custom')
+      properties = @participant.get('properties')
+      expect(properties.length).toEqual(1)
+
+    it 'doesnt add duplicate properties', ->
+      @participant.addProperty('custom')
+      @participant.addProperty('custom')
+      properties = @participant.get('properties')
+      expect(properties.length).toEqual(1)
