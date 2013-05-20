@@ -14,8 +14,15 @@ class Api::ParticipantsController < ApplicationController
   def create
     @participant = Participant.new(participant_params)
     @participant.user = current_user
-    @participant.save!
-    render json: @participant
+    if @participant.valid?
+      @participant.save!
+      render json: @participant
+    else
+      render json: @participant,
+        :status => :unprocessable_entity,
+        :meta => @participant.errors,
+        :meta_key => 'errors'
+    end
   end
 
   def destroy

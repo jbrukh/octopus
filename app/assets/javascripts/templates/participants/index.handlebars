@@ -1,3 +1,4 @@
+
 <div class="page-header">
   <div class="pull-right">
     {{#linkTo 'participants.new' class="btn btn-success"}}New Participant{{/linkTo}}
@@ -16,7 +17,7 @@
       {{#linkTo 'participants.new'}}add one now{{/linkTo}}?
     </div>
   {{else}}
-    <table class="table table-striped table-condensed">
+    <table class="table table-striped table-condensed table-hover">
       <thead>
         <tr>
           <th>Name</th>
@@ -26,16 +27,15 @@
       </thead>
       <tbody>
         {{#each controller}}
-          <tr>
+          {{#linkTo 'participant' this tagName='tr'}}
             <td>{{fullName}}</td>
             <td>{{email}}</td>
             <td>
               <div class="pull-right">
-                {{#linkTo 'participant' this class="btn btn-mini btn-success"}}Details{{/linkTo}}
                 <a href="#" class="btn btn-mini btn-danger" {{action destroy this}}>Delete</a>
               </div>
             </td>
-          </tr>
+          {{/linkTo}}
         {{/each}}
       </tbody>
     </table>

@@ -56,6 +56,20 @@ describe Api::ParticipantsController do
       end
     end
 
+    describe '#create (invalid)' do
+      before :each do
+        post :create, :participant => {
+          :gender => 'm',
+          :birthday => '1983-06-01',
+          :email => 'bob@example.com',
+          :properties => {
+            :key => 'value', :key2 => 'value2'
+            }
+          }
+      end
+      it { should respond_with :unprocessable_entity }
+    end
+
     context 'with participant' do
       before :each do
         @participant = build :participant

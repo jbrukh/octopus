@@ -3,6 +3,7 @@
 App.PropertiesTransform =
   serialize: (value) ->
     result = {}
+    return result unless value
     value.forEach (v) ->
       name = v.get('name')
       result[name] = v.get('value')
