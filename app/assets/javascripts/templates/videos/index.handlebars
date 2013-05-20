@@ -5,19 +5,32 @@
   <h3>Videos</h3>
 </div>
 
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <td>Name</td>
-      <td>Created At</td>
-    </tr>
-  </thead>
-  <tbody>
-    {{#each controller}}
-      <tr>
-        <td>{{#linkTo 'video' this}}{{name}}{{/linkTo}}</td>
-        <td>{{timeSince createdAt}}</td>
-      </tr>
-    {{/each}}
-  </tbody>
-</table>
+{{#unless content.isLoaded}}
+  <div class="alert alert-info">
+    Loading videos, please wait...
+  </div>
+{{else}}
+  {{#unless controller.length}}
+    <div class="alert alert-info">
+      There are currently no videos, would you like to
+      {{#linkTo 'videos.new'}}add one now{{/linkTo}}?
+    </div>
+  {{else}}
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <td>Name</td>
+          <td>Created At</td>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each controller}}
+          <tr>
+            <td>{{#linkTo 'video' this}}{{name}}{{/linkTo}}</td>
+            <td>{{timeSince createdAt}}</td>
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  {{/unless}}
+{{/unless}}
