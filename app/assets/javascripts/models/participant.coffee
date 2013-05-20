@@ -30,7 +30,7 @@ App.Participant = DS.Model.extend
       properties = @get 'properties'
 
     # don't add duplicate properties
-    return if properties.findProperty('name', name)
+    return if @hasProperty(name)
 
     property = App.Property.create({name: name})
     properties.pushObject property
@@ -39,6 +39,11 @@ App.Participant = DS.Model.extend
   removeProperty: (property) ->
     properties = @get 'properties'
     properties.removeObject(property)
+
+  hasProperty: (name) ->
+    properties = @get 'properties'
+    return false unless properties
+    properties.findProperty('name', name) != undefined
 
 App.Participant.reopenClass
   genders: [

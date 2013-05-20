@@ -3,6 +3,10 @@ describe 'App.Participant', ->
     App.Store = DS.Store.extend {revision: 12}
     @participant = App.Participant.createRecord()
 
+  describe 'in general', ->
+    it 'has no properties', ->
+      expect(@participant.hasProperty('foo')).toEqual(false)
+
   describe '#fullName', ->
     beforeEach ->
       @participant.set 'firstName', 'Bob'
@@ -38,3 +42,8 @@ describe 'App.Participant', ->
       property = @participant.addProperty('custom')
       @participant.removeProperty(property)
       expect(@participant.get('properties').length).toEqual(0)
+
+  describe '#hasProperty', ->
+    it 'indicates when has property', ->
+      @participant.addProperty('custom')
+      expect(@participant.hasProperty('custom')).toEqual(true)

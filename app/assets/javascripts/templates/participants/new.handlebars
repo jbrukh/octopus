@@ -64,8 +64,13 @@
       </div>
     {{/each}}
 
-    {{input value=newFieldName type=text}}
-    <a href="#" {{action addProperty}}>Add Field</a>
+    <div class="control-group">
+      <label class="control-label"></label>
+      <div class="controls">
+        {{input value=propertyName type=text}}
+        <a href="#" class="btn btn-info" {{bindAttr class="propertyInvalid:disabled"}} {{action addProperty}}>Add Field</a>
+      </div>
+    </div>
   </fieldset>
 
   <div class="form-actions">
