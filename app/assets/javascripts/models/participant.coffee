@@ -21,6 +21,8 @@ App.Participant = DS.Model.extend
   ).property('birthday')
 
   addProperty: (name) ->
+    return unless name
+    return unless name.length > 0
     properties = @get 'properties'
 
     # there's no default value for properties, so we have to

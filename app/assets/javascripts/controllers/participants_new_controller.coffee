@@ -7,9 +7,9 @@ App.ParticipantsNewController = Em.ObjectController.extend
   removeProperty: (property) ->
     @get('model').removeProperty(property)
 
-  propertyInvalid: (->
+  isValidProperty: (->
     name = @get('propertyName')
-    return true unless name
-    return true if name.length == 0
-    @get('model').hasProperty(name)
+    return false unless name
+    return false if name.length == 0
+    !@get('model').hasProperty(name)
   ).property('propertyName')
