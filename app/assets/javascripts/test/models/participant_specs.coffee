@@ -32,3 +32,9 @@ describe 'App.Participant', ->
       @participant.addProperty('custom')
       properties = @participant.get('properties')
       expect(properties.length).toEqual(1)
+
+  describe '#removeProperty', ->
+    it 'removes property', ->
+      property = @participant.addProperty('custom')
+      @participant.removeProperty(property)
+      expect(@participant.get('properties').length).toEqual(0)

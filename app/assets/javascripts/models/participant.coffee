@@ -21,20 +21,24 @@ App.Participant = DS.Model.extend
   ).property('birthday')
 
   addProperty: (name) ->
-    properties = @get('properties')
+    properties = @get 'properties'
 
     # there's no default value for properties, so we have to
     # initialize it to an empty array if it's empty
     unless properties
-      @set 'properties', Em.A([])
-      properties = @get('properties')
+      @set 'properties', Em.A []
+      properties = @get 'properties'
 
     # don't add duplicate properties
     return if properties.findProperty('name', name)
 
     property = App.Property.create({name: name})
-    properties.pushObject(property)
+    properties.pushObject property
     property
+
+  removeProperty: (property) ->
+    properties = @get 'properties'
+    properties.removeObject(property)
 
 App.Participant.reopenClass
   genders: [

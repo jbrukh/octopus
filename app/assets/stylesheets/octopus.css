@@ -55,7 +55,12 @@
   border: dashed 2px #d6e9c6;
 }
 
-.textarea-modal-full{
+.clickable {
+  cursor: hand;
+  cursor: pointer;
+}
+
+.textarea-modal-full {
   width: 515px;
 }
 
