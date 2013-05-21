@@ -7,27 +7,38 @@
   <h3>Experiments</h3>
 </div>
 
-There are {{controller.length}} experiments
-
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Created At</th>
-    </tr>
-  </thead>
-  <tbody>
-    {{#each controller}}
-      <tr>
-        <td>{{#linkTo 'experiment' this}}{{name}}{{/linkTo}}</td>
-        <td>{{timeSince created_at}}</td>
-        <td>
-          <div class="pull-right">
-            {{#linkTo 'trial.start' this class="btn btn-mini btn-success"}}Start Trial{{/linkTo}}
-            <button class="btn btn-mini btn-danger" {{action destroy this}}>Delete</button>
-          </div>
-        </td>
-      </tr>
-    {{/each}}
-  </tbody>
-</table>
+{{#unless content.isLoaded}}
+  <div class="alert alert-info">
+    Loading videos, please wait...
+  </div>
+{{else}}
+  {{#unless controller.length}}
+    <div class="alert alert-info">
+      There are currently no experiments, would you like to
+      {{#linkTo 'experiments.new'}}add one now{{/linkTo}}?
+    </div>
+  {{else}}
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Created At</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each controller}}
+          <tr>
+            <td>{{#linkTo 'experiment' this}}{{name}}{{/linkTo}}</td>
+            <td>{{timeSince created_at}}</td>
+            <td>
+              <div class="pull-right">
+                {{#linkTo 'trial.start' this class="btn btn-mini btn-success"}}Start Trial{{/linkTo}}
+                <button class="btn btn-mini btn-danger" {{action destroy this}}>Delete</button>
+              </div>
+            </td>
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  {{/unless}}
+{{/unless}}

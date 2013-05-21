@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 20130519200913) do
     t.integer  "user_id",           null: false
     t.string   "type",              null: false
     t.string   "name",              null: false
+    t.string   "description"
     t.string   "data_file_name"
     t.string   "data_content_type"
     t.integer  "data_file_size"
