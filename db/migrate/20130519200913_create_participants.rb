@@ -1,7 +1,7 @@
 class CreateParticipants < ActiveRecord::Migration
   def change
     create_table :participants do |t|
-      t.references  :user,    null: false
+      t.references  :user,       :null => false
 
       t.string      :first_name, :null => false
       t.string      :last_name,  :null => false

@@ -15,8 +15,9 @@ class Api::ExperimentsController < ApplicationController
   def create
     @experiment = Experiment.new(experiment_params)
     @experiment.media = Media.find(params[:experiment][:media_id])
+    @experiment.user = current_user
     @experiment.save!
-    render json: @experiment
+    render json: @experiment, :status => :created
   end
 
   def destroy

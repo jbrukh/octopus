@@ -18,17 +18,20 @@
       {{#linkTo 'experiments.new'}}add one now{{/linkTo}}?
     </div>
   {{else}}
-    <table class="table table-striped">
+    <table class="table table-striped table-condensed table-hover">
       <thead>
         <tr>
           <th>Name</th>
+          <th>Owner</th>
           <th>Created At</th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
         {{#each controller}}
-          <tr>
-            <td>{{#linkTo 'experiment' this}}{{name}}{{/linkTo}}</td>
+          {{#linkTo 'experiment' this tagName='tr' class='clickable'}}
+            <td>{{name}}</td>
+            <td>{{owner}}</td>
             <td>{{timeSince created_at}}</td>
             <td>
               <div class="pull-right">
@@ -36,7 +39,7 @@
                 <button class="btn btn-mini btn-danger" {{action destroy this}}>Delete</button>
               </div>
             </td>
-          </tr>
+          {{/linkTo}}
         {{/each}}
       </tbody>
     </table>

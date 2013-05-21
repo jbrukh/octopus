@@ -18,10 +18,11 @@ ActiveRecord::Schema.define(version: 20130519200913) do
   enable_extension "hstore"
 
   create_table "experiments", force: true do |t|
-    t.string   "name",        null: false
-    t.text     "description"
     t.integer  "media_id",    null: false
     t.string   "media_type",  null: false
+    t.integer  "user_id",     null: false
+    t.string   "name",        null: false
+    t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
