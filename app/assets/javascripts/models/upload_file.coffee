@@ -1,0 +1,1 @@
+App.UploadFile = Em.Object.extend()

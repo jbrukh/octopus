@@ -24,9 +24,7 @@
   <div class="control-group">
     <label class="control-label">File</label>
     <div class="controls">
-      {{#view App.FileUpload valueBinding=model.attachment}}
-        Drag video here
-      {{/view}}
+      {{control 'shared/upload' valueBinding=model.attachment}}
     </div>
   </div>
 

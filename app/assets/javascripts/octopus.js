@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require handlebars
 //= require vendor/d3.v3
+//= require vendor/ember-control
 //= require vendor/ember-latest
 //= require vendor/ember-data-latest
 //= require vendor/moment
