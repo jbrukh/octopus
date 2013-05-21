@@ -1,4 +1,6 @@
 class Api::VideosController < ApplicationController
+  before_filter :authenticate_user!
+
   def index
     @videos = Video.all
     render json: @videos
@@ -10,12 +12,14 @@ class Api::VideosController < ApplicationController
   end
 
   def create
-    @video = Video.create!(video_params)
-    render json: @video
+    @video = Video.new(video_params)
+    @video.user = current_user
+    @video.save!
+    render json: @video, :status => :created
   end
 
   private
     def video_params
-      params.require(:video).permit(:name)
+      params.require(:video).permit(:name, :data)
     end
 end
