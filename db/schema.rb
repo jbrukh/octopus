@@ -27,11 +27,17 @@ ActiveRecord::Schema.define(version: 20130519200913) do
   end
 
   create_table "media", force: true do |t|
-    t.string   "type",       null: false
-    t.string   "name",       null: false
+    t.string   "type",              null: false
+    t.string   "name",              null: false
+    t.string   "data_file_name"
+    t.string   "data_content_type"
+    t.integer  "data_file_size"
+    t.datetime "data_updated_at"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "media", ["type"], name: "index_media_on_type", using: :btree
 
   create_table "participants", force: true do |t|
     t.integer  "user_id",    null: false
