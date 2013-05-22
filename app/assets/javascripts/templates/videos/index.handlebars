@@ -32,6 +32,11 @@
             <td>{{name}}</td>
             <td>{{owner}}</td>
             <td>{{timeSince createdAt}}</td>
+            <td>
+              <div class="pull-right">
+                <a href="#" class="btn btn-mini btn-danger" {{action destroy this}}>Delete</a>
+              </div>
+            </td>
           {{/linkTo}}
         {{/each}}
       </tbody>
