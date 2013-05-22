@@ -18,6 +18,11 @@ class Api::VideosController < ApplicationController
     render json: @video, :status => :created
   end
 
+  def destroy
+    @video = Video.find(params[:id])
+    render json: @video.trash!
+  end
+
   private
     def video_params
       params.require(:video).permit(:name, :data)

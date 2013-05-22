@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(version: 20130519200913) do
     t.string   "data_content_type"
     t.integer  "data_file_size"
     t.datetime "data_updated_at"
+    t.datetime "trashed_at"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

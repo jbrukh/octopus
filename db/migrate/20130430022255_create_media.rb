@@ -6,6 +6,8 @@ class CreateMedia < ActiveRecord::Migration
       t.string      :name,        null: false
       t.string      :description
       t.attachment  :data
+
+      t.datetime    :trashed_at
       t.timestamps
     end
 

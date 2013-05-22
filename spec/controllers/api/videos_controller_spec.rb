@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Api::VideosController do
   fixtures :users
 
-  let(:user) { users(:user) }
+  let(:user)  { users(:user) }
 
   context 'when guest' do
     context '#create' do
@@ -19,13 +19,27 @@ describe Api::VideosController do
       sign_in users(:user)
     end
 
-    context '#create' do
+    describe '#create' do
       before :each do
         data = Rack::Test::UploadedFile.new(
           "#{Rails.root}/spec/fixtures/files/dizzy.mp4", 'video/mp4')
         post :create, :video => { :name => 'stupid feline', :data => data }
       end
       it { should respond_with :created }
+    end
+
+    context 'with recording' do
+      before :each do
+        @video = build :video
+        Video.expects(:find).returns(@video)
+      end
+
+      describe '#destroy' do
+        it 'trashes video' do
+          @video.expects(:trash!).at_least_once
+          post :destroy, :id => 5
+        end
+      end
     end
   end
 end
