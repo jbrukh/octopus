@@ -4,7 +4,7 @@
     <form class="form-horizontal">
       <div class="input-append">
         {{input value=query type=text class="span2" type="text"}}
-        <button class="btn" type="button" {{bindAttr class="canSearch::disabled"}} {{action search}}>
+        <button class="btn" type="button" {{bindAttr disabled="cannotSearch"}} {{action search}}>
           <i class="icon-search"></i> Search
         </button>
       </div>
