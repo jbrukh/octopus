@@ -19,7 +19,8 @@ describe 'App.Connector', ->
 
   describe 'when connected', ->
     beforeEach ->
-      spyOn(App.WebSocketFactory, 'createWebSocket').andReturn({send: () -> {}})
+      @socket = {sendJson: () -> {}}
+      spyOn(App.WebSocketFactory, 'createWebSocket').andReturn(@socket)
       @connector.connect()
 
     describe '#onResponse', ->
@@ -29,3 +30,14 @@ describe 'App.Connector', ->
 
       it 'removes registered callback', ->
         expect(@connector.numCallbacks()).toEqual(0)
+
+    describe '#onOpen', ->
+      beforeEach ->
+        spyOn(@socket, 'sendJson')
+        @connector.onOpen()
+
+      it 'sends info message', ->
+        expect(@socket.sendJson.calls[0].args[0].message_type).toEqual('info')
+
+      it 'sends repository message', ->
+        expect(@socket.sendJson.calls[1].args[0].message_type).toEqual('repository')
