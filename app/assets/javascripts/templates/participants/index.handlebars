@@ -20,10 +20,16 @@
   </div>
 {{else}}
   {{#unless controller.length}}
-    <div class="alert alert-info">
-      There are currently no participants, would you like to
-      {{#linkTo 'participants.new'}}add one now{{/linkTo}}?
-    </div>
+    {{#if hasQuery}}
+      <div class="alert alert-info">
+        There were no participants that matched '{{query}}'.
+      </div>
+    {{else}}
+      <div class="alert alert-info">
+        There are currently no participants, would you like to
+        {{#linkTo 'participants.new'}}add one now{{/linkTo}}?
+      </div>
+    {{/if}}
   {{else}}
     <table class="table table-striped table-condensed table-hover">
       <thead>

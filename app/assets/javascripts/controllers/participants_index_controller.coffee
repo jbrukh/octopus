@@ -9,7 +9,11 @@ App.ParticipantsIndexController = Em.ArrayController.extend
     participant.get("transaction").commit()
 
   canSearch: (->
-    return @get('query').length > 0
+    @get('hasQuery')
+  ).property('hasQuery')
+
+  hasQuery: (->
+    @get('query').length > 0
   ).property('query')
 
   cannotSearch: Ember.computed.not('canSearch')
