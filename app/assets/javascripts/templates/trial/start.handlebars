@@ -5,7 +5,9 @@
     <li class="active">New Trial</li>
     <li class="pull-right">
       {{#if participant}}
-        <i class="icon-user"></i> {{participant.fullName}}
+        <span class="label label-success">
+          <i class="icon-user"></i> {{participant.fullName}}
+        </span>
       {{/if}}
     </li>
   </ul>
