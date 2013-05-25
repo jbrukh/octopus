@@ -86,3 +86,8 @@ App.Connector = Em.Object.extend
 
   onRepository: (response) ->
     @set 'resources', Em.A(response.resource_infos)
+
+  clearRepository: () ->
+    @send('repository', {operation: 'clear'}).then(() =>
+      @set 'resources', Em.A([])
+    )

@@ -33,7 +33,7 @@ describe 'App.Connector', ->
 
     describe '#onOpen', ->
       beforeEach ->
-        spyOn(@socket, 'sendJson')
+        spyOn @socket, 'sendJson'
         @connector.onOpen()
 
       it 'sends info message', ->
@@ -50,3 +50,14 @@ describe 'App.Connector', ->
 
       it 'sets resources', ->
         expect(@connector.get('resources.length')).toEqual(2)
+
+    describe '#clearRepository', ->
+      beforeEach ->
+        spyOn @socket, 'sendJson'
+        @connector.clearRepository()
+        @connector.set('resources', Em.A([{}, {}]))
+
+      it 'sends clear repository message', ->
+        args = @socket.sendJson.calls[0].args[0]
+        expect(args.message_type).toEqual('repository')
+        expect(args.operation).toEqual('clear')

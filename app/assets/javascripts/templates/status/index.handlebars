@@ -44,13 +44,18 @@
 
   {{#unless connector.resources.length}}
     <div class="alert alert-notice">
-      There are no recordings.
+      There are no recordings in the repository.
     </div>
   {{else}}
     <table class="table table-condensed table-striped">
       <thead>
         <tr>
-          <th>There are {{connector.resources.length}} recordings.</th>
+          <th colspan="2">There are {{connector.resources.length}} recordings in the repository.</th>
+          <th colspan="2">
+            <div class="pull-right">
+              <a href="#" class="btn btn-mini btn-danger" {{action clear}}>Clear Repository</a>
+            </div>
+          </th>
         </tr>
       </thead>
       <tbody>
@@ -65,5 +70,4 @@
       </tbody>
     </table>
   {{/unless}}
-
 {{/unless}}
