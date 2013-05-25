@@ -1,5 +1,5 @@
 <div class="page-header">
-  <h3>Trial <small>{{experiment.name}}</small></h3>
+  <h3>Trial <small>{{#linkTo 'experiment.index' experiment}}{{experiment.name}}{{/linkTo}}</small></h3>
 </div>
 
 {{#if model.isSetup}}
