@@ -1,6 +1,7 @@
 App.Connector = Em.Object.extend
   url: 'ws://localhost:8000/control'
   callbacks: []
+  resources: Em.A []
 
   init: ->
     @set 'state', 'disconnected'
@@ -23,10 +24,9 @@ App.Connector = Em.Object.extend
   createWebsocket: (url) ->
     ws = App.WebSocketFactory.createWebSocket(url)
     @set 'state', 'connecting'
+
     ws.onopen = () =>
-      console.log "Connector socket open"
-      @set 'state', 'connected'
-      @send('info').then((d) => @onUpdateInfo(d))
+      @onOpen()
 
     ws.onmessage = (evt) =>
       response = JSON.parse(evt.data)
@@ -41,6 +41,11 @@ App.Connector = Em.Object.extend
       @set 'state', 'disconnected'
     ws
 
+  onOpen: () ->
+    console.log "Connector socket open"
+    @set 'state', 'connected'
+    @send('info').then((d) => @onInfo(d))
+
   send: (message_type, object = {}) ->
     console.log "Sending connector message: #{message_type}"
     # create a deferred callback which will be used
@@ -48,15 +53,14 @@ App.Connector = Em.Object.extend
     # id
     deferred = Ember.Deferred.create()
 
-    # cast messageid as a string and build the serialized message
+    # cast message id as a string and set the message type
     # only assign an id if hasn't already been set for testing
     object.id = "" + new Date().getTime() if object.id == undefined
     object.message_type = message_type
-    serialized = JSON.stringify(object)
 
     # stash the deferred and send the message
     @callbacks[object.id] = deferred
-    @ws.send(serialized)
+    @ws.sendJson(object)
     deferred
 
   onResponse: (response) ->
@@ -75,6 +79,17 @@ App.Connector = Em.Object.extend
       deferred.resolve(response)
     console.groupEnd()
 
-  onUpdateInfo: (response) ->
+  onInfo: (response) ->
     @set 'device_name', response.device_name
     @set 'version', response.version
+
+    @send('repository', {operation: 'list'}).then(
+      (d) => @onRepository(d))
+
+  onRepository: (response) ->
+    @set 'resources', Em.A(response.resource_infos)
+
+  clearRepository: () ->
+    @send('repository', {operation: 'clear'}).then(() =>
+      @set 'resources', Em.A([])
+    )
