@@ -31,15 +31,15 @@ describe Participant do
     end
 
     it 'searches on first name' do
-      expect(Participant.search('Kevin').length).to eq(1)
+      expect(Participant.search('kevin').length).to eq(1)
     end
 
     it 'searches on last name' do
-      expect(Participant.search('Jones').length).to eq(1)
+      expect(Participant.search('jones').length).to eq(1)
     end
 
     it 'searches on email' do
-      expect(Participant.search('kevin@example.com').length).to eq(1)
+      expect(Participant.search('KEVIN@example.com').length).to eq(1)
     end
   end
 end

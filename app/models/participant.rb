@@ -2,12 +2,9 @@ class Participant < ActiveRecord::Base
   include Trashable
 
   def self.search(query)
-    t = Participant.arel_table
-    condition = t[:first_name].eq(query)
-      .or(t[:last_name].eq(query))
-      .or(t[:email].eq(query))
-
-    self.where(condition)
+    term = query.downcase
+    self.where('lower(first_name) = ? or lower(last_name) = ? or lower(email) = ? ',
+      term, term, term)
   end
 
   belongs_to :user

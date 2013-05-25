@@ -1,6 +1,9 @@
 App.ParticipantsIndexController = Em.ArrayController.extend
   query: ''
 
+  setupController: (controller, params) ->
+    controller.set 'query', ''
+
   destroy: (participant) ->
     participant.deleteRecord();
     participant.get("transaction").commit()
