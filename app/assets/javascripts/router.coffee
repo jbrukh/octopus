@@ -20,7 +20,8 @@ App.Router.map ->
   # media
   @resource 'videos', ->
     @route 'new'
-  @resource 'video', { path: '/video/:video_id' }
+  @resource 'video', ->
+    @route 'index', { path: '/:video_id' }
 
   @resource 'slideshows', ->
     @route 'new'
