@@ -1,4 +1,12 @@
 App.TrialStartController = Em.ObjectController.extend Ember.Evented,
+  search: ->
+    console.log 'Searching for participant'
+    participants = App.Participant.find { query: @get('query') }
+    @set 'participants', participants
+
+  selectParticipant: (participant) ->
+    @set 'model.participant', participant
+
   calibrate: ->
     @get('model').calibrate()
     Ember.run.next this, () -> @get('dataAdapter').start()

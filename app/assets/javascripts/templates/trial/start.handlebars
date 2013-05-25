@@ -1,34 +1,35 @@
 <div class="page-header">
-  <h3>Trial <small>{{#linkTo 'experiment.index' experiment}}{{experiment.name}}{{/linkTo}}</small></h3>
+  <h3>New Trial <small>{{#linkTo 'experiment.index' experiment}}{{experiment.name}}{{/linkTo}}</small></h3>
 </div>
 
-{{#if model.isSetup}}
-  <form class="form-horizontal">
-    <fieldset>
-      <legend>Subject</legend>
-    </fieldset>
-
-    <div class="control-group">
-      <label class="control-label">First Name</label>
-      <div class="controls">
-       {{input value=model.firstname type=text}}
-      </div>
-    </div>
-
-    <div class="control-group">
-      <label class="control-label">Last Name</label>
-      <div class="controls">
-       {{input value=model.lastname type=text}}
-      </div>
-    </div>
-
-    <div class="form-actions">
-      <button type="submit" class="btn btn-primary" {{action calibrate}}>Calibrate</button>
-    </div>
+{{#unless participant}}
+  <form class="form-inline">
+    {{input value=query type=text}}
+    <button type="submit" class="btn btn-primary" {{action search}}>Search Participant</button>
   </form>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Name</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each participants}}
+        <tr>
+          <td>{{fullName}}</td>
+          <td>
+            <div class="pull-right">
+              <button {{action selectParticipant this}} class="btn btn-mini btn-notice">Select Participant</button>
+            </div>
+          </td>
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
 {{else}}
-  {{model.firstname}} / {{model.lastname}}
-{{/if}}
+  {{participant.fullName}}
+{{/unless}}
 
 {{#if model.isCalibrating}}
   <h4>Calibrating</h4>
