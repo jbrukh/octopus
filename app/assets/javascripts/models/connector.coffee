@@ -45,7 +45,6 @@ App.Connector = Em.Object.extend
     console.log "Connector socket open"
     @set 'state', 'connected'
     @send('info').then((d) => @onInfo(d))
-    @send('repository', {operation: 'list'}).then((d) => @onRepository(d))
 
   send: (message_type, object = {}) ->
     console.log "Sending connector message: #{message_type}"
@@ -83,6 +82,9 @@ App.Connector = Em.Object.extend
   onInfo: (response) ->
     @set 'device_name', response.device_name
     @set 'version', response.version
+
+    @send('repository', {operation: 'list'}).then(
+      (d) => @onRepository(d))
 
   onRepository: (response) ->
     @set 'resources', Em.A(response.resource_infos)

@@ -39,8 +39,19 @@ describe 'App.Connector', ->
       it 'sends info message', ->
         expect(@socket.sendJson.calls[0].args[0].message_type).toEqual('info')
 
+    describe '#onInfo', ->
+      beforeEach ->
+        spyOn @socket, 'sendJson'
+        @connector.onInfo({device_name: 'CARL!', version: '3.0'})
+
+      it 'sets device name',  ->
+        expect(@connector.get('device_name')).toEqual('CARL!')
+
+      it 'sets device version',  ->
+        expect(@connector.get('version')).toEqual('3.0')
+
       it 'sends list repository message', ->
-        args = @socket.sendJson.calls[1].args[0]
+        args = @socket.sendJson.calls[0].args[0]
         expect(args.message_type).toEqual('repository')
         expect(args.operation).toEqual('list')
 
