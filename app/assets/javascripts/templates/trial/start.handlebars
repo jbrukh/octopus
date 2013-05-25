@@ -12,30 +12,44 @@
 </div>
 
 {{#unless participant}}
-  <form class="form-inline">
-    {{input value=query type=text}}
-    <button type="submit" class="btn btn-primary" {{action search}}>Search Participant</button>
-  </form>
+  <div class="well">
+    <h4>Select Participant</h4>
 
-  <table class="table table-striped">
-    <thead>
-      <tr>
-        <th>Name</th>
-      </tr>
-    </thead>
-    <tbody>
-      {{#each participants}}
-        <tr>
-          <td>{{fullName}}</td>
-          <td>
-            <div class="pull-right">
-              <button {{action selectParticipant this}} class="btn btn-mini btn-notice">Select Participant</button>
-            </div>
-          </td>
-        </tr>
-      {{/each}}
-    </tbody>
-  </table>
+    <hr/>
+
+    <form class="form-inline">
+      {{input value=query type=text}}
+      <button type="submit" class="btn btn-primary" {{action search}}>Search</button>
+    </form>
+
+    {{#if participants.length}}
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Gender</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each participants}}
+            <tr>
+              <td>{{fullName}}</td>
+              <td>{{gender}}</td>
+              <td>
+                <div class="pull-right">
+                  <button {{action selectParticipant this}} class="btn btn-mini btn-info">
+                    Select Participant <i class="icon-circle-arrow-right"></i>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    {{/if}}
+
+  </div>
 {{/unless}}
 
 {{#if model.isCalibrating}}
