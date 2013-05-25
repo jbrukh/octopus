@@ -2,7 +2,12 @@ class Api::ParticipantsController < ApplicationController
   before_filter :authenticate_user!
 
   def index
-    @participants = Participant.all
+    @participants = if params[:query]
+      Participant.search(params[:query])
+    else
+      Participant.all
+    end
+
     render json: @participants
   end
 

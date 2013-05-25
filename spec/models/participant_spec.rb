@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Participant do
   fixtures :users
 
-  context 'in general' do
+  describe 'in general' do
     it { should belong_to(:user) }
     it { should validate_presence_of(:first_name) }
     it { should validate_presence_of(:last_name) }
@@ -19,6 +19,27 @@ describe Participant do
       duplicate = build :participant
       expect(duplicate.valid?).to eq(false)
       expect(duplicate.error_on(:email).length).to eq(1)
+    end
+  end
+
+  describe '#search' do
+    let!(:participant) do
+      create :participant, :user => users(:user),
+        :first_name => 'Kevin',
+        :last_name => 'Jones',
+        :email => 'kevin@example.com'
+    end
+
+    it 'searches on first name' do
+      expect(Participant.search('Kevin').length).to eq(1)
+    end
+
+    it 'searches on last name' do
+      expect(Participant.search('Jones').length).to eq(1)
+    end
+
+    it 'searches on email' do
+      expect(Participant.search('kevin@example.com').length).to eq(1)
     end
   end
 end

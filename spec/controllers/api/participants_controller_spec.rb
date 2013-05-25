@@ -26,6 +26,15 @@ describe Api::ParticipantsController do
       it { should respond_with :ok }
     end
 
+    describe '#index (with query param)' do
+      before :each do
+        Participant.expects(:search).with('Bob Jones').returns([])
+        get :index, :query => 'Bob Jones'
+      end
+
+      it { should respond_with :ok }
+    end
+
     describe '#show' do
       before :each do
         get :show, :id => participant.id
