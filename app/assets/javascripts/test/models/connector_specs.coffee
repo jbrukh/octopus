@@ -39,5 +39,14 @@ describe 'App.Connector', ->
       it 'sends info message', ->
         expect(@socket.sendJson.calls[0].args[0].message_type).toEqual('info')
 
-      it 'sends repository message', ->
-        expect(@socket.sendJson.calls[1].args[0].message_type).toEqual('repository')
+      it 'sends list repository message', ->
+        args = @socket.sendJson.calls[1].args[0]
+        expect(args.message_type).toEqual('repository')
+        expect(args.operation).toEqual('list')
+
+    describe '#onRepository', ->
+      beforeEach ->
+        @connector.onRepository {resource_infos: [{},{}]}
+
+      it 'sets resources', ->
+        expect(@connector.get('resources.length')).toEqual(2)

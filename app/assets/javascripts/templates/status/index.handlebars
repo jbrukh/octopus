@@ -42,6 +42,28 @@
     </tbody>
   </table>
 
-  There are {{connector.numRecordings}} recordings.
+  {{#unless connector.resources.length}}
+    <div class="alert alert-notice">
+      There are no recordings.
+    </div>
+  {{else}}
+    <table class="table table-condensed table-striped">
+      <thead>
+        <tr>
+          <th>There are {{connector.resources.length}} recordings.</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each connector.resources}}
+          <tr>
+            <td>{{resource_id}}</td>
+            <td>{{file}}</td>
+            <td>{{last_modified}}</td>
+            <td>{{size_bytes}}</td>
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  {{/unless}}
 
 {{/unless}}
