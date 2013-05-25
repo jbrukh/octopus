@@ -1,0 +1,117 @@
+<div class="page-header">
+  <div class="pull-right">
+    <button class="btn btn-info" {{action edit}}>Edit</button>
+  </div>
+
+  <h3>Recording <small>{{name}}</small></h3>
+</div>
+
+{{#if isEditing}}
+  {{#view App.ModalView tagName="form"}}
+    <div class="modal-header">
+      <button type="button" class="close" aria-hidden="true" {{action cancelEdit}}>&times;</button>
+      <h3>Edit Recording</h3>
+    </div>
+    <div class="modal-body">
+      <div class="control-group">
+        <label class="control-label">Name</label>
+        <div class="controls">
+          {{input value=newName type=text}}
+        </div>
+      </div>
+
+      <div class="control-group">
+        <label class="control-label">Description</label>
+        <div class="controls">
+          {{view Ember.TextArea valueBinding=newDescription class="textarea-modal-full"}}
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <a href="#" class="btn" {{action cancelEdit}}>Close</a>
+      <a href="#" class="btn btn-primary" {{action saveEdit}}>Save changes</a>
+    </div>
+  {{/view}}
+{{/if}}
+
+{{#unless isLoaded}}
+  <div class="alert alert-info">
+    Loading results, please wait...
+  </div>
+{{else}}
+
+  {{#if recordingData.isLoaded}}
+    {{view App.ResultDataGraphView resultDataBinding=recordingData taggingBinding=tagging}}
+  {{/if}}
+
+  {{#if tagging.extent}}
+    <div class="well">
+      <form class="form-horizontal">
+        <fieldset>
+          <legend>Tag {{tagging.from_ms}} - {{tagging.to_ms}}</legend>
+          <div class="control-group">
+            <label class="control-label">Tag Name</label>
+            <div class="controls">
+              {{input value=tagging.name type=text}}
+            </div>
+          </div>
+        </fieldset>
+        <div class="form-actions">
+          <button type="submit" class="btn btn-primary" {{action createTag}}>Create Tag</button>
+        </div>
+      </form>
+    </div>
+  {{/if}}
+
+  {{#if description}}
+    <blockquote>
+      {{markdown description}}
+    </blockquote>
+  {{/if}}
+
+  <table class="table table-condensed">
+    <thead>
+      <tr>
+        <th colspan="2">Properties</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Name</td>
+        <td>{{dataFileName}}</td>
+      </tr>
+      <tr>
+        <td>Size</td>
+        <td>{{dataFileSize}}</td>
+      </tr>
+
+      {{#if recordingData.isLoaded}}
+        <tr>
+          <td>data type</td>
+          <td>{{recordingData.dataType}}
+        </tr>
+        <tr>
+          <td>format version</td>
+          <td>{{recordingData.formatVersion}}
+        </tr>
+        <tr>
+          <td>storage mode</td>
+          <td>{{recordingData.storageMode}}
+        </tr>
+        <tr>
+          <td>channels</td>
+          <td>{{recordingData.channels}}
+        </tr>
+        <tr>
+          <td>samples</td>
+          <td>{{recordingData.samples}}
+        </tr>
+        <tr>
+          <td>sample rate</td>
+          <td>{{recordingData.sampleRate}}
+        </tr>
+      {{/if}}
+
+    </tbody>
+  </table>
+{{/unless}}

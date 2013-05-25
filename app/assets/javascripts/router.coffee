@@ -4,15 +4,14 @@ App.Router.map ->
 
   @resource 'participants', ->
     @route 'new'
-  @route 'participant', { path: '/participant/:participant_id' }
-
-  @resource 'trials', -> null
-  @resource 'trial', ->
-    @route 'start', { path: '/start/:experiment_id' }
+  @resource 'participant', { path: '/participant/:participant_id' }
 
   @resource 'experiments', ->
     @route 'new'
-  @route 'experiment', { path: '/experiment/:experiment_id' }
+
+  @resource 'experiment', { path: '/experiment/:experiment_id' }, ->
+    @resource 'trial', ->
+      @route 'start', { path: '/start' }
 
   @resource 'recordings', ->
     @route 'new'
@@ -21,8 +20,8 @@ App.Router.map ->
   # media
   @resource 'videos', ->
     @route 'new'
-  @route 'video', { path: '/video/:video_id' }
+  @resource 'video', { path: '/video/:video_id' }
 
   @resource 'slideshows', ->
     @route 'new'
-  @route 'slideshow', { path: '/slideshow/:slideshow_id' }
+  @resource 'slideshow', { path: '/slideshow/:slideshow_id' }

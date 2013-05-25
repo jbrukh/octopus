@@ -29,7 +29,7 @@
       </thead>
       <tbody>
         {{#each controller}}
-          {{#linkTo 'experiment' this tagName='tr' class='clickable'}}
+          {{#linkTo 'experiment.index' this tagName='tr' class='clickable'}}
             <td>{{name}}</td>
             <td>{{owner}}</td>
             <td>{{timeSince created_at}}</td>
