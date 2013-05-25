@@ -1,5 +1,14 @@
 <div class="page-header">
-  <h3>New Trial <small>{{#linkTo 'experiment.index' experiment}}{{experiment.name}}{{/linkTo}}</small></h3>
+  <ul class="breadcrumb">
+    <li>{{#linkTo 'experiments.index'}}Experiments{{/linkTo}} <span class="divider">/</span></li>
+    <li>{{#linkTo 'experiment.index' experiment}}{{experiment.name}}{{/linkTo}} <span class="divider">/</span></li>
+    <li class="active">New Trial</li>
+    <li class="pull-right">
+      {{#if participant}}
+        <i class="icon-user"></i> {{participant.fullName}}
+      {{/if}}
+    </li>
+  </ul>
 </div>
 
 {{#unless participant}}
@@ -27,8 +36,6 @@
       {{/each}}
     </tbody>
   </table>
-{{else}}
-  {{participant.fullName}}
 {{/unless}}
 
 {{#if model.isCalibrating}}
