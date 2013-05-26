@@ -5,6 +5,8 @@ class CreateTrials < ActiveRecord::Migration
       t.references  :experiment,    :null => false
       t.references  :participant,   :null => false
 
+      t.text        :description
+
       t.timestamps
     end
   end
