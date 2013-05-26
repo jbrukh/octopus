@@ -1,6 +1,7 @@
 App.Connector = Em.Object.extend
   url: 'ws://localhost:8000/control'
   callbacks: []
+  bufferedMessages: []
   resources: Em.A []
 
   init: ->
@@ -16,6 +17,9 @@ App.Connector = Em.Object.extend
   isConnecting: (->
     return @get('state') == 'connecting'
   ).property('state')
+
+  hasBufferedMessages: ->
+    @bufferedMessages.length > 0
 
   connect: ->
     console.log "Connecting to connector: #{this.url}"
@@ -60,7 +64,13 @@ App.Connector = Em.Object.extend
 
     # stash the deferred and send the message
     @callbacks[object.id] = deferred
-    @ws.sendJson(object)
+
+    if @get('isConnected')
+      @ws.sendJson(object)
+    else
+      console.log "Buffering message: #{message_type}"
+      @bufferedMessages.push(object)
+
     deferred
 
   onResponse: (response) ->
@@ -85,6 +95,15 @@ App.Connector = Em.Object.extend
 
     @send('repository', {operation: 'list'}).then(
       (d) => @onRepository(d))
+
+    @sendBufferedMessages()
+
+  sendBufferedMessages: ->
+    return if @bufferedMessages.length == 0
+    console.log "Sending #{@bufferedMessages.length} buffered message(s)"
+    @bufferedMessages.forEach (m) =>
+      @ws.sendJson(m)
+    @bufferedMessages = []
 
   onRepository: (response) ->
     @set 'resources', Em.A(response.resource_infos)

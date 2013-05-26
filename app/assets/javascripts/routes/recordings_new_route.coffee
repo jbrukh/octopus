@@ -7,7 +7,11 @@ App.RecordingsNewRoute = Ember.Route.extend
     controller = @controllerFor('recordings.new')
     settings = App.Settings.find()
     connector = @get('connector')
-    controller.set 'dataAdapter', App.DataAdapter.buildFromSettings(connector, settings)
+
+    # create and start a data adapter
+    dataAdapter = App.DataAdapter.buildFromSettings(connector, settings)
+    dataAdapter.start()
+    controller.set 'dataAdapter', dataAdapter
 
   deactivate: ->
     # if we have are currently recording then just stop the

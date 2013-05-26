@@ -17,11 +17,20 @@ describe 'App.Connector', ->
     it 'is connecting', ->
       expect(@connector.get('state')).toEqual('connecting')
 
+  describe 'when not connected', ->
+    describe '#send', ->
+      beforeEach ->
+        @connector.send('type', {id: 'abcd'})
+
+      it 'has buffered messages', ->
+        expect(@connector.hasBufferedMessages()).toEqual(true)
+
   describe 'when connected', ->
     beforeEach ->
       @socket = {sendJson: () -> {}}
       spyOn(App.WebSocketFactory, 'createWebSocket').andReturn(@socket)
       @connector.connect()
+      @connector.set 'state', 'connected'
 
     describe '#onResponse', ->
       beforeEach ->
