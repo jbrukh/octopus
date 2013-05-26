@@ -1,26 +1,33 @@
 <div class="page-header">
   <div class="pull-right">
-
-    {{#if model.canUpload}}
-      <a {{action upload}} class="btn btn-success">
-        <i class="icon-upload"></i> Upload
-      </a>
-    {{/if}}
-
-    {{#unless dataAdapter.isRunning}}
-      <a {{action start}} class="btn btn-info">Start</a>
-    {{else}}
-      {{#unless model.isRecording}}
-        <a {{action beginRecord}} class="btn btn-danger">
-          <i class="icon-circle"></i> Record
+    <form class="form-horizontal" {{action beginRecord on="submit"}}>
+      {{#if model.canUpload}}
+        <a {{action upload}} class="btn btn-success">
+          <i class="icon-upload"></i> Upload
         </a>
+      {{/if}}
+
+      {{#unless dataAdapter.isRunning}}
+        <a {{action start}} class="btn btn-info">Start</a>
       {{else}}
-        <a {{action endRecord}} class="btn btn-danger">
-          <i class="icon-circle"></i> End
-        </a>
+        {{#unless model.isRecording}}
+          <div class="input-append">
+            {{input value=duration type=number placeholder="Optional Duration" class="span2" type="text"}}
+            <button class="btn btn-danger" type="button" {{action beginRecord}}>
+              {{#if duration}}}
+                <i class="icon-time"></i> Timed
+              {{else}}
+                <i class="icon-circle"></i> Record
+              {{/if}}
+            </button>
+          </div>
+       {{else}}
+          <a {{action endRecord}} class="btn btn-danger">
+            <i class="icon-circle"></i> End
+          </a>
+        {{/unless}}
       {{/unless}}
-      <a {{action stop}} class="btn btn-warning">Stop</a>
-    {{/unless}}
+    </form>
   </div>
   <h2>
     New Recording

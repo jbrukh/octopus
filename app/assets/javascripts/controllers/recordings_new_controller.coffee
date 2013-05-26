@@ -19,8 +19,13 @@ App.RecordingsNewController = Ember.Controller.extend Ember.Evented,
       @trigger 'didStop'
 
   beginRecord: ->
+    payload = { record: true }
+
+    duration = parseInt @get('duration')
+    payload.seconds = duration if duration > 0
+
     console.log 'start recording'
-    @get('connector').send('record', {record: true}).then =>
+    @get('connector').send('record', payload).then =>
       @get('model').start()
 
   endRecord: ->
