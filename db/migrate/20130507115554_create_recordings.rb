@@ -2,6 +2,7 @@ class CreateRecordings < ActiveRecord::Migration
   def change
     create_table :recordings do |t|
       t.references  :user,    null: false
+      t.references  :participant
 
       t.string      :state,   null: false
 

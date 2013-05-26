@@ -61,6 +61,7 @@ ActiveRecord::Schema.define(version: 20130526035718) do
 
   create_table "recordings", force: true do |t|
     t.integer  "user_id",           null: false
+    t.integer  "participant_id"
     t.string   "state",             null: false
     t.text     "name"
     t.text     "description"
@@ -85,9 +86,9 @@ ActiveRecord::Schema.define(version: 20130526035718) do
   end
 
   create_table "trials", force: true do |t|
-    t.integer  "user_id",        null: false
-    t.integer  "experiment_id",  null: false
-    t.integer  "participant_id", null: false
+    t.integer  "user_id",       null: false
+    t.integer  "experiment_id", null: false
+    t.integer  "recording_id",  null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

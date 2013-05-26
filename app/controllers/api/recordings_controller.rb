@@ -14,6 +14,11 @@ class Api::RecordingsController < ApplicationController
   def create
     @recording = Recording.new
     @recording.user = current_user
+
+    if params[:recording][:participant_id]
+      @recording.participant_id = params[:recording][:participant_id]
+    end
+
     @recording.save!
     render json: @recording, :status => :created
   end

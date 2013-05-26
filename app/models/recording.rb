@@ -2,6 +2,7 @@ class Recording < ActiveRecord::Base
   include Trashable
 
   belongs_to :user
+  belongs_to :participant
   has_many :taggings
 
   has_attached_file :data

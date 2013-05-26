@@ -3,6 +3,10 @@ require 'spec_helper'
 describe Recording do
   fixtures :users
 
+  describe 'in general' do
+    it { should belong_to :participant }
+  end
+
   context 'when new' do
     before :each do
       @recording = Recording.new

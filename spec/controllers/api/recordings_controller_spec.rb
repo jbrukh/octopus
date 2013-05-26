@@ -3,6 +3,8 @@ require 'spec_helper'
 describe Api::RecordingsController do
   fixtures :users
 
+  let (:participant) { create :participant, :user => users(:user) }
+
   context 'as a guest' do
     describe '#index' do
       before :each do
@@ -27,10 +29,21 @@ describe Api::RecordingsController do
 
     describe '#create' do
       before :each do
-        post :create
+        post :create, :recording => { }
       end
 
       it { should respond_with :created }
+    end
+
+    describe '#create (with participant)' do
+      before :each do
+        post :create, :recording => { :participant_id => participant.id }
+      end
+
+      it { should respond_with :created }
+      it 'created a recording with a participant' do
+        expect(Recording.last.participant).not_to eq(nil)
+      end
     end
 
     context 'with recording' do
