@@ -18,34 +18,14 @@
     Loading participants, please wait...
   </div>
 {{else}}
+
   {{#if hasSearchResults}}
     {{#unless searchResults.length}}
       <div class="alert alert-info">
         There were no participants that matched '{{query}}'.
       </div>
     {{else}}
-      <table class="table table-striped table-condensed table-hover">
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Email</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          {{#each searchResults}}
-            {{#linkTo 'participant' this tagName='tr' class='clickable'}}
-              <td>{{fullName}}</td>
-              <td>{{email}}</td>
-              <td>
-                <div class="pull-right">
-                  <a href="#" class="btn btn-mini btn-danger" {{action destroy this}}>Delete</a>
-                </div>
-              </td>
-            {{/linkTo}}
-          {{/each}}
-        </tbody>
-      </table>
+      {{render participants/table searchResults}}
     {{/unless}}
   {{/if}}
 
@@ -56,28 +36,7 @@
         {{#linkTo 'participants.new'}}add one now{{/linkTo}}?
       </div>
     {{else}}
-      <table class="table table-striped table-condensed table-hover">
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Email</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          {{#each controller}}
-            {{#linkTo 'participant' this tagName='tr' class='clickable'}}
-              <td>{{fullName}}</td>
-              <td>{{email}}</td>
-              <td>
-                <div class="pull-right">
-                  <a href="#" class="btn btn-mini btn-danger" {{action destroy this}}>Delete</a>
-                </div>
-              </td>
-            {{/linkTo}}
-          {{/each}}
-        </tbody>
-      </table>
+      {{render participants/table controller}}
     {{/unless}}
   {{/unless}}
 
