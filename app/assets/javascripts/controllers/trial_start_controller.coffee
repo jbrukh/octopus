@@ -6,6 +6,7 @@ App.TrialStartController = Em.ObjectController.extend Ember.Evented,
 
   selectParticipant: (participant) ->
     @set 'model.participant', participant
+    @calibrate()
 
   calibrate: ->
     @get('model').calibrate()

@@ -1,5 +1,6 @@
 App.ParticipantsIndexController = Em.ArrayController.extend
   query: ''
+  searchResults: null
 
   setupController: (controller, params) ->
     controller.set 'query', ''
@@ -18,7 +19,16 @@ App.ParticipantsIndexController = Em.ArrayController.extend
 
   cannotSearch: Ember.computed.not('canSearch')
 
+  hasSearchResults: (->
+    @get('searchResults') != null
+  ).property('searchResults')
+
+  resetSearchResults: (->
+    @set 'searchResults', null unless @get 'hasQuery'
+  ).observes('query')
+
   search: ->
     query = @get 'query'
-    results = @get('store').findQuery App.Participant, { query: query }
-    @set 'model', results
+    console.log "Searching for participants matching: '#{query}'"
+    searchResults = App.Participant.find { query: query }
+    @set 'searchResults', searchResults

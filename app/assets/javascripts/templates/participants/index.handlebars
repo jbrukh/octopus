@@ -1,7 +1,6 @@
-
 <div class="page-header">
   <div class="pull-right">
-    <form class="form-horizontal">
+    <form class="form-horizontal" {{action search on="submit"}}>
       <div class="input-append">
         {{input value=query type=text class="span2" type="text"}}
         <button class="btn" type="button" {{bindAttr disabled="cannotSearch"}} {{action search}}>
@@ -19,39 +18,67 @@
     Loading participants, please wait...
   </div>
 {{else}}
-  {{#unless controller.length}}
-    {{#if hasQuery}}
+  {{#if hasSearchResults}}
+    {{#unless searchResults.length}}
       <div class="alert alert-info">
         There were no participants that matched '{{query}}'.
       </div>
     {{else}}
+      <table class="table table-striped table-condensed table-hover">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each searchResults}}
+            {{#linkTo 'participant' this tagName='tr' class='clickable'}}
+              <td>{{fullName}}</td>
+              <td>{{email}}</td>
+              <td>
+                <div class="pull-right">
+                  <a href="#" class="btn btn-mini btn-danger" {{action destroy this}}>Delete</a>
+                </div>
+              </td>
+            {{/linkTo}}
+          {{/each}}
+        </tbody>
+      </table>
+    {{/unless}}
+  {{/if}}
+
+  {{#unless hasSearchResults}}
+    {{#unless controller.length}}
       <div class="alert alert-info">
         There are currently no participants, would you like to
         {{#linkTo 'participants.new'}}add one now{{/linkTo}}?
       </div>
-    {{/if}}
-  {{else}}
-    <table class="table table-striped table-condensed table-hover">
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Email</th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-        {{#each controller}}
-          {{#linkTo 'participant' this tagName='tr' class='clickable'}}
-            <td>{{fullName}}</td>
-            <td>{{email}}</td>
-            <td>
-              <div class="pull-right">
-                <a href="#" class="btn btn-mini btn-danger" {{action destroy this}}>Delete</a>
-              </div>
-            </td>
-          {{/linkTo}}
-        {{/each}}
-      </tbody>
-    </table>
+    {{else}}
+      <table class="table table-striped table-condensed table-hover">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each controller}}
+            {{#linkTo 'participant' this tagName='tr' class='clickable'}}
+              <td>{{fullName}}</td>
+              <td>{{email}}</td>
+              <td>
+                <div class="pull-right">
+                  <a href="#" class="btn btn-mini btn-danger" {{action destroy this}}>Delete</a>
+                </div>
+              </td>
+            {{/linkTo}}
+          {{/each}}
+        </tbody>
+      </table>
+    {{/unless}}
   {{/unless}}
+
 {{/unless}}
