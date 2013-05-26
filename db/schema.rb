@@ -61,7 +61,6 @@ ActiveRecord::Schema.define(version: 20130526035718) do
 
   create_table "recordings", force: true do |t|
     t.integer  "user_id",           null: false
-    t.integer  "result_id"
     t.string   "state",             null: false
     t.text     "name"
     t.text     "description"

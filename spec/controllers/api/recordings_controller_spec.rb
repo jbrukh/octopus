@@ -47,7 +47,7 @@ describe Api::RecordingsController do
       end
 
       describe '#update' do
-        it 'updates teh recording' do
+        it 'updates the recording' do
           @recording.expects(:update_attributes!).once
           put :update, :id => 5, :recording => {:description => 'foo'}
         end
