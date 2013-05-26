@@ -3,6 +3,7 @@ App.TrialStartController = Em.ObjectController.extend Ember.Evented,
     console.log 'Searching for participant'
     participants = App.Participant.find { query: @get('query') }
     @set 'participants', participants
+    @set 'searched', true
 
   selectParticipant: (participant) ->
     @set 'model.participant', participant

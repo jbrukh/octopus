@@ -47,6 +47,18 @@
           {{/each}}
         </tbody>
       </table>
+    {{else}}
+        {{#if searched}}
+        <small>
+          {{#linkTo 'participants.new'}}
+              {{#if query}}
+                  Create a new participant named {{query}}?
+              {{else}}
+                  Create a new participant?
+              {{/if}}
+          {{/linkTo}}
+        </small>
+        {{/if}}
     {{/if}}
 
   </div>
