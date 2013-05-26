@@ -10,6 +10,8 @@ class CreateRecordings < ActiveRecord::Migration
       t.text        :description
       t.integer     :duration_ms
 
+      t.attachment  :data
+
       t.datetime    :trashed_at
       t.timestamps
     end

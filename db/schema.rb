@@ -66,13 +66,13 @@ ActiveRecord::Schema.define(version: 20130526035718) do
     t.text     "name"
     t.text     "description"
     t.integer  "duration_ms"
-    t.datetime "trashed_at"
-    t.datetime "created_at"
-    t.datetime "updated_at"
     t.string   "data_file_name"
     t.string   "data_content_type"
     t.integer  "data_file_size"
     t.datetime "data_updated_at"
+    t.datetime "trashed_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "taggings", force: true do |t|
