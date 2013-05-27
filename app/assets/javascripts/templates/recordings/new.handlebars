@@ -1,12 +1,6 @@
 <div class="page-header">
   <div class="pull-right">
     <form class="form-horizontal" {{action beginRecord on="submit"}}>
-      {{#if model.canUpload}}
-        <a {{action upload}} class="btn btn-success">
-          <i class="icon-upload"></i> Upload
-        </a>
-      {{/if}}
-
       {{#if dataAdapter.isRunning}}
         {{#unless model.isRecording}}
           <div class="input-append">

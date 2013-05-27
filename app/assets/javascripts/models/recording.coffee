@@ -22,7 +22,6 @@ App.Recording = DS.Model.extend
   finish: (response) ->
     @set 'isRecording', false
     @set 'resourceId', response.resource_id
-    @set 'canUpload', true
 
   isUploading: (->
     @get('state') == 'waiting_for_data'
