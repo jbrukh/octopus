@@ -1,6 +1,5 @@
 App.DataAdapter = Em.Object.extend Ember.Evented,
   frame: null
-  didRun: false
   receivedFrames: 0
 
   manager: Ember.StateManager.create
@@ -38,7 +37,6 @@ App.DataAdapter = Em.Object.extend Ember.Evented,
 
   start: ->
     @manager.send 'start', this
-    @set 'didRun', true
 
   stop: ->
     @_stop()
