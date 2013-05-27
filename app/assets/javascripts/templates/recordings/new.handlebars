@@ -7,9 +7,7 @@
         </a>
       {{/if}}
 
-      {{#unless dataAdapter.isRunning}}
-        <a {{action start}} class="btn btn-info">Start</a>
-      {{else}}
+      {{#if dataAdapter.isRunning}}
         {{#unless model.isRecording}}
           <div class="input-append">
             {{input value=duration type=number placeholder="Optional Duration" class="span2" type="text"}}
@@ -21,12 +19,16 @@
               {{/if}}
             </button>
           </div>
-       {{else}}
+        {{else}}
           <a {{action endRecord}} class="btn btn-danger">
             <i class="icon-circle"></i> End
           </a>
         {{/unless}}
-      {{/unless}}
+      {{/if}}
+
+      <a href="#" class="btn btn-info">
+         <i class="icon-user"></i> Participant
+      </a>
     </form>
   </div>
   <h2>

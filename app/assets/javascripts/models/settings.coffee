@@ -17,10 +17,6 @@ App.Settings.reopenClass
   createRecord: ->
     App.Settings.create
       adapters: Em.Object.create
-        selected: 'mock'
-        mock: Em.Object.create
-          resolution: 10
-          channels: 8
         live: Em.Object.create
           url: 'ws://localhost:8000/device'
       graphs: Em.Object.create

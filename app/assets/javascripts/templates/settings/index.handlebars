@@ -4,40 +4,11 @@
 
 <form class="form-horizontal">
   <fieldset>
-    <legend>Basic</legend>
-    <div class="control-group">
-      <label class="control-label">Data Adapter</label>
-      <div class="controls">
-        {{view Ember.Select
-          contentBinding="dataAdapters"
-          valueBinding="model.adapters.selected"}}
-      </div>
-    </div>
-  </fieldset>
-
-  <fieldset>
-    <legend>Live Data Adapter</legend>
+    <legend>Data Adapter</legend>
     <div class="control-group">
       <label class="control-label">Channels</label>
       <div class="controls">
         {{input value=model.adapters.live.url type=text}}
-      </div>
-    </div>
-  </fieldset>
-
-  <fieldset>
-    <legend>Mock Data Adapter</legend>
-    <div class="control-group">
-      <label class="control-label">Resolution</label>
-      <div class="controls">
-        {{input value=model.adapters.mock.resolution type=number}}
-      </div>
-    </div>
-
-    <div class="control-group">
-      <label class="control-label">Channels</label>
-      <div class="controls">
-        {{input value=model.adapters.mock.channels type=number}}
       </div>
     </div>
   </fieldset>

@@ -1,5 +1,8 @@
 <div class="page-header">
-  <h3>New Participant</h3>
+  <ul class="breadcrumb">
+    <li>{{#linkTo 'participants.index'}}Participants{{/linkTo}} <span class="divider">/</span></li>
+    <li class="active">Add Participant</li>
+  </ul>
 </div>
 
 {{#unless model.isValid}}

@@ -58,14 +58,9 @@ App.DataAdapter = Em.Object.extend Ember.Evented,
     @incrementProperty('receivedFrames')
 
 App.DataAdapter.reopenClass
-  available: ['live', 'mock']
-
   build: (connector, type, properties) ->
     console.log "Create data adapter: #{type}"
-    dataAdapter = switch type
-      when 'mock' then App.MockDataAdapter.create(properties)
-      when 'live' then  App.WebSocketDataAdapter.create(properties)
-      else throw "unknown data adapter type #{type}"
+    dataAdapter = App.WebSocketDataAdapter.create(properties)
     dataAdapter.set 'connector', connector
     dataAdapter
 
