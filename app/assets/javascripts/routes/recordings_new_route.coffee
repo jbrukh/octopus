@@ -3,6 +3,9 @@ App.RecordingsNewRoute = Ember.Route.extend
     @transaction = @get('store').transaction()
     return @transaction.createRecord App.Recording
 
+  setupController: (controller, params) ->
+    controller.set 'duration', ''
+
   activate: ->
     controller = @controllerFor('recordings.new')
     settings = App.Settings.find()

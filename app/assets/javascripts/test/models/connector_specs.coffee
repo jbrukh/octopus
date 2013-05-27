@@ -17,6 +17,13 @@ describe 'App.Connector', ->
     it 'is connecting', ->
       expect(@connector.get('state')).toEqual('connecting')
 
+  describe '#next', ->
+    beforeEach ->
+      @connector.next {id: 'abcd'}
+
+    it 'has callback', ->
+      expect(@connector.numCallbacks()).toEqual(1)
+
   describe 'when not connected', ->
     describe '#send', ->
       beforeEach ->
@@ -32,10 +39,10 @@ describe 'App.Connector', ->
       @connector.connect()
       @connector.set 'state', 'connected'
 
-    describe '#onResponse', ->
+    describe '#onMessage', ->
       beforeEach ->
         @connector.send('type', {id: 'abcd'})
-        @connector.onResponse({id: 'abcd'})
+        @connector.onMessage({id: 'abcd'})
 
       it 'removes registered callback', ->
         expect(@connector.numCallbacks()).toEqual(0)

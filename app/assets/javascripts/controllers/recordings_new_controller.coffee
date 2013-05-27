@@ -1,5 +1,5 @@
 App.RecordingsNewController = Ember.Controller.extend Ember.Evented,
-  needs: ['currentUser']
+  duration: null
 
   start: ->
     console.log 'starting experiment'
@@ -22,8 +22,16 @@ App.RecordingsNewController = Ember.Controller.extend Ember.Evented,
     payload = { record: true }
 
     duration = parseInt @get('duration')
-    payload.seconds = duration if duration > 0
+    if duration > 0
+      console.log "Beginning timed recording of #{duration} seconds"
+      payload.seconds = duration
+
+    connector = @get 'connector'
 
     console.log 'start recording'
-    @get('connector').send('record', payload).then =>
+    connector.send('record', payload).then (d) =>
       @get('model').start()
+
+      connector.next(d).then (r) =>
+        console.log 'timed recording finished'
+        # do something here to stop and upload the timed recording

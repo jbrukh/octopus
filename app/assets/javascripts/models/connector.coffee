@@ -34,7 +34,7 @@ App.Connector = Em.Object.extend
 
     ws.onmessage = (evt) =>
       response = JSON.parse(evt.data)
-      @onResponse(response)
+      @onMessage(response)
 
     ws.onerror = () =>
       console.error "!!! Connector socket error..."
@@ -50,30 +50,25 @@ App.Connector = Em.Object.extend
     @set 'state', 'connected'
     @send('info').then((d) => @onInfo(d))
 
-  send: (message_type, object = {}) ->
+  send: (message_type, message = {}) ->
     console.log "Sending connector message: #{message_type}"
-    # create a deferred callback which will be used
-    # as the response handler for the correlated message
-    # id
-    deferred = Ember.Deferred.create()
 
     # cast message id as a string and set the message type
     # only assign an id if hasn't already been set for testing
-    object.id = "" + new Date().getTime() if object.id == undefined
-    object.message_type = message_type
+    message.id = "" + new Date().getTime() if message.id == undefined
+    message.message_type = message_type
 
-    # stash the deferred and send the message
-    @callbacks[object.id] = deferred
+    deferred = @next(message)
 
     if @get('isConnected')
-      @ws.sendJson(object)
+      @ws.sendJson(message)
     else
       console.log "Buffering message: #{message_type}"
-      @bufferedMessages.push(object)
+      @bufferedMessages.push(message)
 
     deferred
 
-  onResponse: (response) ->
+  onMessage: (response) ->
     console.group 'Connector response'
     console.debug response
 
@@ -88,6 +83,17 @@ App.Connector = Em.Object.extend
       delete @callbacks[response.id]
       deferred.resolve(response)
     console.groupEnd()
+
+  next: (message) ->
+    # create a deferred callback which will be used
+    # as the response handler for the correlated message
+    # id
+    deferred = Ember.Deferred.create()
+
+    # stash the deferred and send the message
+    @callbacks[message.id] = deferred
+
+    deferred
 
   onInfo: (response) ->
     @set 'device_name', response.device_name
@@ -109,6 +115,5 @@ App.Connector = Em.Object.extend
     @set 'resources', Em.A(response.resource_infos)
 
   clearRepository: () ->
-    @send('repository', {operation: 'clear'}).then(() =>
+    @send('repository', {operation: 'clear'}).then () =>
       @set 'resources', Em.A([])
-    )
