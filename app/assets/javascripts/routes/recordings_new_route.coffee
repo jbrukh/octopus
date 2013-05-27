@@ -34,25 +34,28 @@ App.RecordingsNewRoute = Ember.Route.extend
       @get('connector').send('record', {record: false}).then (data) =>
         console.debug 'end record received'
         @currentModel.finish(data)
+        @send('upload')
 
-        authToken = @controllerFor('currentUser').get('authenticationToken')
-        resourceId = @currentModel.get 'resourceId'
+    upload: ->
+      authToken = @controllerFor('currentUser').get('authenticationToken')
+      resourceId = @currentModel.get 'resourceId'
 
-        @currentModel.one 'didCreate', =>
-          console.debug 'created current model'
+      @currentModel.one 'didCreate', =>
+        console.debug 'created current model'
 
-          # wait until the model has an id
-          Ember.run.next this, =>
-            recordingId = @currentModel.get('id')
+        # wait until the model has an id
+        Ember.run.next this, =>
+          recordingId = @currentModel.get('id')
 
-            payload = {
-              token: authToken,
-              resource_id: resourceId,
-              endpoint: "http://localhost:3000/api/recordings/#{recordingId}/results"
-            }
+          payload = {
+            token: authToken,
+            resource_id: resourceId,
+            endpoint: "http://localhost:3000/api/recordings/#{recordingId}/results"
+          }
 
-            @get('connector').send('upload', payload).then (data) =>
-              @transitionTo 'recordings.index'
-              @transaction = null
-        console.debug 'Commiting transaction'
-        @transaction.commit()
+          @get('connector').send('upload', payload).then (data) =>
+            @transitionTo 'recordings.index'
+            @transaction = null
+
+      console.debug 'Commiting transaction'
+      @transaction.commit()

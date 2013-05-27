@@ -32,6 +32,9 @@ App.RecordingsNewController = Ember.Controller.extend Ember.Evented,
     connector.send('record', payload).then (d) =>
       @get('model').start()
 
-      connector.next(d).then (r) =>
-        console.log 'timed recording finished'
-        # do something here to stop and upload the timed recording
+      # if we have a duration, then prepare to get another
+      # message in this correlated message chain
+      if duration > 0
+        connector.next(d).then (data) =>
+          @get('model').finish(data)
+          @send('upload')
