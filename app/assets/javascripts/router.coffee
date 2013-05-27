@@ -33,3 +33,8 @@ App.Router.map ->
     @route 'new'
 
   @resource 'slideshow', { path: '/slideshow/:slideshow_id' }
+
+  @resource 'audios', ->
+    @route 'new'
+
+  @resource 'audio', { path: '/audio/:audio_id' }

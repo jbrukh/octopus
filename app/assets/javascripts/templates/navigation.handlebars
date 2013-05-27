@@ -18,11 +18,15 @@
       </a>
       <ul class="dropdown-menu">
         {{#linkTo 'videos.index' tagName='li'}}
-          <a href="#">Videos</a>
+          <a href="#"><i class="icon-facetime-video"></i> Videos</a>
         {{/linkTo}}
 
         {{#linkTo 'slideshows.index' tagName='li'}}
-          <a href="#">Slidshows</a>
+          <a href="#"><i class="icon-picture"></i> Slideshows</a>
+        {{/linkTo}}
+
+        {{#linkTo 'audios.index' tagName='li'}}
+          <a href="#"><i class="icon-music"></i> Audio</a>
         {{/linkTo}}
       </ul>
     </li>
