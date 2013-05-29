@@ -14,9 +14,11 @@
             </button>
           </div>
         {{else}}
-          <a {{action endRecord}} class="btn btn-danger">
-            <i class="icon-circle"></i> End
-          </a>
+          {{#unless duration}}
+            <a {{action endRecord}} class="btn btn-danger">
+              <i class="icon-circle"></i> End
+            </a>
+          {{/unless}}
         {{/unless}}
       {{/if}}
     </form>
