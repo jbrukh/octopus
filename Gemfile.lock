@@ -1,4 +1,17 @@
 GIT
+  remote: git://github.com/emberjs/ember-rails.git
+  revision: e63ebc6360536b8fbd63521f19cb9fd10433e8d9
+  specs:
+    ember-rails (0.12.0)
+      active_model_serializers
+      barber (>= 0.4.1)
+      ember-data-source
+      ember-source
+      execjs (>= 1.2)
+      handlebars-source
+      railties (>= 3.1)
+
+GIT
   remote: git://github.com/plataformatec/devise.git
   revision: 6b5988d756d780903bf8c9ccb3e2b3b724ccebe8
   branch: rails4
@@ -92,15 +105,8 @@ GEM
       eventmachine (>= 1.0.0.beta.4)
     ember-data-source (0.0.5)
       ember-source
-    ember-rails (0.12.0)
-      active_model_serializers
-      barber (>= 0.4.1)
-      ember-data-source
-      ember-source (>= 1.0.0.rc2.2)
-      execjs (>= 1.2)
-      railties (>= 3.1)
-    ember-source (1.0.0.rc3.3)
-      handlebars-source (>= 1.0.0.rc3, < 1.0.0.rc4)
+    ember-source (0.0.9)
+      handlebars-source (= 1.0.0.rc4)
     erubis (2.7.0)
     eventmachine (1.0.3)
     execjs (1.4.0)
@@ -127,7 +133,7 @@ GEM
     guard-rspec (3.0.0)
       guard (>= 1.8)
       rspec (~> 2.13)
-    handlebars-source (1.0.0.rc3)
+    handlebars-source (1.0.0.rc4)
     hike (1.2.2)
     hirb (0.7.1)
     http_parser.rb (0.5.3)
@@ -166,7 +172,7 @@ GEM
     minitest (4.7.4)
     mocha (0.14.0)
       metaclass (~> 0.0.1)
-    multi_json (1.7.3)
+    multi_json (1.7.4)
     newrelic_rpm (3.6.2.96)
     orm_adapter (0.4.0)
     paperclip (3.4.2)
@@ -315,12 +321,12 @@ DEPENDENCIES
   coffee-rails (~> 4.0.0.rc1)
   devise!
   em-http-request
-  ember-rails
+  ember-rails!
   factory_girl_rails
   font-awesome-rails
   guard
   guard-rspec
-  handlebars-source (= 1.0.0.rc3)
+  handlebars-source (= 1.0.0.rc4)
   jazz_hands
   jbuilder (~> 1.0.1)
   jquery-rails

@@ -10,7 +10,8 @@ App.RecordingsNewRoute = Ember.Route.extend
     recording.set('participant', currentParticipant) if currentParticipant
     recording
 
-  setupController: (controller, params) ->
+  setupController: (controller, model) ->
+    @_super(controller, model)
     controller.set 'duration', ''
 
   activate: ->

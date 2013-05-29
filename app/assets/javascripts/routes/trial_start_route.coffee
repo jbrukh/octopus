@@ -4,6 +4,8 @@ App.TrialStartRoute = Em.Route.extend
     @experiment.startTrial()
 
   setupController: (controller, params) ->
+    @_super(controller, model)
+
     settings = App.Settings.find()
     connector = @get('connector')
     controller.set 'dataAdapter', App.DataAdapter.buildFromSettings(connector, settings)

@@ -19,8 +19,8 @@ gem 'sinatra', '>= 1.3.0', :require => nil
 # ember data isn't up to date
 # once it is, re-add this and remove the vendor reference
 # gem 'ember-data-source'
-gem 'handlebars-source', '1.0.0.rc3'
-gem "ember-rails"
+gem 'handlebars-source', '1.0.0.rc4'
+gem "ember-rails", github: 'emberjs/ember-rails'
 
 # authentication/authorization
 gem 'devise', github: 'plataformatec/devise', branch: 'rails4'

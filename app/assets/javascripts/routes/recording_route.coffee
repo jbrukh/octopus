@@ -1,3 +1,4 @@
 App.RecordingRoute = Em.Route.extend
-  setupController: (params, controller) ->
+  setupController: (controller, model) ->
+    @_super(controller, model)
     controller.set 'tagging', App.Tagging.createRecord()
