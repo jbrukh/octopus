@@ -1,9 +1,15 @@
-{{#if model.isConnected}}
-  {{#linkTo 'status.index' class="btn btn-success" tagName="button"}}
-    <i class="icon-thumbs-up"></i>&nbsp;&nbsp;{{model.device_name}}
-  {{/linkTo}}
-{{else}}
-  {{#linkTo 'status.index' class="btn btn-warning" tagName="button"}}
-    <i class="icon-thumbs-down"></i>&nbsp;Octopus Connector
-  {{/linkTo}}
-{{/if}}
+<div class="btn-group">
+  <a class="btn dropdown-toggle" data-toggle="dropdown" href="#"
+      {{bindAttr class="model.isConnected:btn-success:btn-warning"}}>
+    <i class="icon-cog"></i>
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu pull-right">
+    <li>
+      {{#linkTo 'status.index'}}Status{{/linkTo}}
+    </li>
+    <li>
+      {{#linkTo 'settings.index'}}Settings{{/linkTo}}
+    </li>
+  </ul>
+</div>
