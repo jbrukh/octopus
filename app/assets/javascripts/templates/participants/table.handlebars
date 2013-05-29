@@ -13,7 +13,8 @@
         <td>{{email}}</td>
         <td>
           <div class="pull-right">
-            <a href="#" class="btn btn-mini btn-danger" {{action destroy this}}>Delete</a>
+            <button class="btn btn-mini btn-info" {{action select this bubbles=false}}>Select</button>
+            <a href="#" class="btn btn-mini btn-danger" {{action destroy this bubbles=false}}>Delete</a>
           </div>
         </td>
       {{/linkTo}}

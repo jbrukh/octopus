@@ -1,4 +1,7 @@
 App.ParticipantsIndexController = Em.ArrayController.extend
+  needs: ['participant_selector']
+
+
   query: ''
   searchResults: null
 
@@ -8,6 +11,10 @@ App.ParticipantsIndexController = Em.ArrayController.extend
   destroy: (participant) ->
     participant.deleteRecord();
     participant.get("transaction").commit()
+
+  select: (participant) ->
+    selector = @get('controllers.participant_selector')
+    selector.select participant
 
   canSearch: (->
     @get('hasQuery')
