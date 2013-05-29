@@ -1,4 +1,6 @@
 class RecordingSerializer < ActiveModel::Serializer
+  embed :ids, :include => true
+
   attributes :id,
     :created_at,
     :state,
@@ -19,4 +21,6 @@ class RecordingSerializer < ActiveModel::Serializer
   def data_url
     object.data.url
   end
+
+  has_one :participant
 end

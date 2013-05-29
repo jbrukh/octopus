@@ -23,6 +23,7 @@
         <th>Owner</th>
         <th>Name</th>
         <th>Duration</th>
+        <th>Participant</th>
         <th>State</th>
       </tr>
     </thead>
@@ -35,6 +36,13 @@
           <td>{{owner}}</td>
           <td>{{name}}</td>
           <td>{{durationMs}}ms</td>
+          <td>
+            {{#if participant}}
+              <span class="label label-info">
+                <i class="icon-user"></i> {{participant.fullName}}
+              </span>
+            {{/if}}
+          </td>
           <td>
             {{#if isUploading}}
               <div class="upload-progress progress progress-striped active">

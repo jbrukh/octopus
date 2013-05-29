@@ -1,5 +1,7 @@
 App.Recording = DS.Model.extend
 
+  participant:          DS.belongsTo('App.Participant')
+
   createdAt:            DS.attr 'date'
   updatedAt:            DS.attr 'date'
 
