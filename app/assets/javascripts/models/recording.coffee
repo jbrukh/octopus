@@ -6,6 +6,7 @@ App.Recording = DS.Model.extend
   updatedAt:            DS.attr 'date'
 
   state:                DS.attr 'string'
+  sessionId:            DS.attr 'string'
   name:                 DS.attr 'string'
   description:          DS.attr 'string'
   owner:                DS.attr 'string'
@@ -18,8 +19,9 @@ App.Recording = DS.Model.extend
   dataUpdatedAt:        DS.attr 'string'
   dataUrl:              DS.attr 'string'
 
-  start: ->
+  start: (session_id) ->
     @set 'isRecording', true
+    @set 'sessionId', session_id
 
   finish: (response) ->
     @set 'isRecording', false

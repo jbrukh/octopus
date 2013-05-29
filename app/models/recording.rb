@@ -15,7 +15,8 @@ class Recording < ActiveRecord::Base
     end
   end
 
-  def upload(result_params)
+  def upload(result_params, session_id)
+    # TODO: check the session id against the one already stored
     self.data = result_params[:data]
     on_build_result
   end
