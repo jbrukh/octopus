@@ -5,6 +5,7 @@ describe Recording do
 
   describe 'in general' do
     it { should belong_to :participant }
+    it { should strip_attribute(:name) }
   end
 
   context 'when new' do

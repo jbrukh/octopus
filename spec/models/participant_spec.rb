@@ -14,6 +14,10 @@ describe Participant do
     it { should validate_presence_of(:gender) }
     it { should ensure_inclusion_of(:gender).in_array(['m', 'f']) }
 
+    it { should strip_attribute(:first_name) }
+    it { should strip_attribute(:last_name) }
+    it { should strip_attribute(:email) }
+
     it 'has unique email' do
       existing = create :participant, :user => users(:user)
       duplicate = build :participant

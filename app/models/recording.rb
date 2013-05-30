@@ -1,6 +1,8 @@
 class Recording < ActiveRecord::Base
   include Trashable
 
+  strip_attributes :allow_empty => true, :only => [:name]
+
   belongs_to :user
   belongs_to :participant
   has_many :taggings

@@ -7,6 +7,8 @@ class Participant < ActiveRecord::Base
       term, term, term)
   end
 
+  strip_attributes :allow_empty => true, :only => [:first_name, :last_name, :email]
+
   belongs_to :user
 
   validates :first_name,  :presence => true

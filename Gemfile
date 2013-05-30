@@ -30,6 +30,7 @@ gem 'cancan'
 gem 'state_machine'
 gem 'paperclip'
 gem 'bindata'
+gem 'strip_attributes'
 
 # real time
 gem 'redis'
