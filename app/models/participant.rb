@@ -2,8 +2,8 @@ class Participant < ActiveRecord::Base
   include Trashable
 
   def self.search(query)
-    term = query.downcase
-    self.where('lower(first_name) = ? or lower(last_name) = ? or lower(email) = ? ',
+    term = "%#{query.downcase}%"
+    self.where('lower(first_name) ILIKE ? or lower(last_name) ILIKE ? or lower(email) ILIKE ? ',
       term, term, term)
   end
 

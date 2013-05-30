@@ -45,5 +45,9 @@ describe Participant do
     it 'searches on email' do
       expect(Participant.search('KEVIN@example.com').length).to eq(1)
     end
+
+    it 'matches partial email' do
+      expect(Participant.search('example.com').length).to eq(1)
+    end
   end
 end
