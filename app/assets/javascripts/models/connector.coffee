@@ -98,6 +98,7 @@ App.Connector = Em.Object.extend
   onInfo: (response) ->
     @set 'device_name', response.device_name
     @set 'version', response.version
+    @set 'session_id', response.session_id
 
     @send('repository', {operation: 'list'}).then(
       (d) => @onRepository(d))

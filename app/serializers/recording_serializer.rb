@@ -3,6 +3,7 @@ class RecordingSerializer < ActiveModel::Serializer
 
   attributes :id,
     :created_at,
+    :session_id,
     :state,
     :duration_ms,
     :owner,

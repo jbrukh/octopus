@@ -5,7 +5,7 @@ class Api::ResultsController < ApplicationController
   before_filter :find_recording
 
   def create
-    @recording.upload(result_params)
+    @recording.upload(result_params, params[:session_id])
     render json: @recording, :status => :created
     ProcessResultWorker.perform_async(@recording.id)
   end

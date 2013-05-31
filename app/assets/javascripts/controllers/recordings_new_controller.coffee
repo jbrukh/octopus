@@ -30,7 +30,7 @@ App.RecordingsNewController = Ember.Controller.extend Ember.Evented,
 
     console.log 'start recording'
     connector.send('record', payload).then (d) =>
-      @get('model').start()
+      @get('model').start(d.session_id)
 
       # if we have a duration, then prepare to get another
       # message in this correlated message chain
