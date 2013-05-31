@@ -46,7 +46,7 @@ App.RecordingsNewRoute = Ember.Route.extend
     upload: ->
       authToken = @controllerFor('currentUser').get('authenticationToken')
       resourceId = @currentModel.get 'resourceId'
-
+      console.debug @currentModel
       @currentModel.one 'didCreate', =>
         console.debug 'created current model'
 

@@ -15,8 +15,12 @@ class Api::RecordingsController < ApplicationController
     @recording = Recording.new
     @recording.user = current_user
 
-    if params[:recording][:participant_id]
-      @recording.participant_id = params[:recording][:participant_id]
+    fields = params[:recording]
+    if fields[:participant_id]
+      @recording.participant_id = fields[:participant_id]
+    end
+    if fields[:session_id]
+      @recording.session_id = fields[:session_id]
     end
 
     @recording.save!

@@ -16,7 +16,9 @@ class Recording < ActiveRecord::Base
   end
 
   def upload(result_params, session_id)
-    # TODO: check the session id against the one already stored
+    if !self.session_id || self.session_id != session_id
+      raise 'session_id_mismatch' # TODO do this properly
+    end
     self.data = result_params[:data]
     on_build_result
   end
