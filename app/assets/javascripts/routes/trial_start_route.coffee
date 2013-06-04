@@ -4,7 +4,7 @@ App.TrialStartRoute = Em.Route.extend
     @experiment.startTrial()
 
   setupController: (controller, params) ->
-    @_super(controller, model)
+    @_super(controller, params)
 
     settings = App.Settings.find()
     connector = @get('connector')
