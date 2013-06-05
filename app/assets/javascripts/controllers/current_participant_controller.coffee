@@ -1,4 +1,4 @@
-App.ParticipantSelectorController = Em.ObjectController.extend
+App.CurrentParticipantController = Em.ObjectController.extend
   select: (participant) ->
     @set 'model', participant
 

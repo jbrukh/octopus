@@ -1,6 +1,5 @@
 App.ParticipantsIndexController = Em.ArrayController.extend
-  needs: ['participant_selector']
-
+  needs: ['currentParticipant']
 
   query: ''
   searchResults: null
@@ -13,7 +12,7 @@ App.ParticipantsIndexController = Em.ArrayController.extend
     participant.get("transaction").commit()
 
   select: (participant) ->
-    selector = @get('controllers.participant_selector')
+    selector = @get('controllers.currentParticipant')
     selector.select participant
 
   canSearch: (->

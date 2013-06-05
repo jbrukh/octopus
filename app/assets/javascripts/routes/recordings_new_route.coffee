@@ -1,12 +1,12 @@
 App.RecordingsNewRoute = Ember.Route.extend
-  needs: ['participant_selector']
+  needs: ['currentParticipant']
 
   model: () ->
     @transaction = @get('store').transaction()
     recording = @transaction.createRecord App.Recording
 
     # if we have a selected participant then assign them now
-    currentParticipant = @controllerFor('participant_selector').get('model')
+    currentParticipant = @controllerFor('currentParticipant').get('model')
     recording.set('participant', currentParticipant) if currentParticipant
     recording
 
