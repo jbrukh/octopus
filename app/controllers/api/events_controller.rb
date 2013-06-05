@@ -18,8 +18,8 @@ class Api::EventsController < ApplicationController
     response.stream.close
   end
 
-  private
-    def sse(object, options = {})
-      (options.map{|k,v| "#{k}: #{v}" } << "data: #{JSON.dump object}").join("\n") + "\n\n"
-    end
+private
+  def sse(object, options = {})
+    (options.map{|k,v| "#{k}: #{v}" } << "data: #{JSON.dump object}").join("\n") + "\n\n"
+  end
 end

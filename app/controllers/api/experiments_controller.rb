@@ -25,8 +25,8 @@ class Api::ExperimentsController < ApplicationController
     render json: @experiment.destroy()
   end
 
-  private
-    def experiment_params
-      params.require(:experiment).permit(:name, :description)
-    end
+private
+  def experiment_params
+    params.require(:experiment).permit(:name, :description)
+  end
 end

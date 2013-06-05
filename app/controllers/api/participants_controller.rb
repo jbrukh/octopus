@@ -32,10 +32,10 @@ class Api::ParticipantsController < ApplicationController
     render json: @participant.trash!
   end
 
-  private
-    def participant_params
-      params.require(:participant).permit(:first_name, :last_name, :email, :gender, :birthday).tap do |whitelisted|
-        whitelisted[:properties] = params[:participant][:properties]
-      end
+private
+  def participant_params
+    params.require(:participant).permit(:first_name, :last_name, :email, :gender, :birthday).tap do |whitelisted|
+      whitelisted[:properties] = params[:participant][:properties]
     end
+  end
 end

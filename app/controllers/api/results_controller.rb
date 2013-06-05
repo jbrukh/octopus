@@ -10,12 +10,12 @@ class Api::ResultsController < ApplicationController
     ProcessResultWorker.perform_async(@recording.id)
   end
 
-  private
-    def find_recording
-      @recording = Recording.find(params[:recording_id])
-    end
+private
+  def find_recording
+    @recording = Recording.find(params[:recording_id])
+  end
 
-    def result_params
-      params.require(:result).permit(:data)
-    end
+  def result_params
+    params.require(:result).permit(:data)
+  end
 end

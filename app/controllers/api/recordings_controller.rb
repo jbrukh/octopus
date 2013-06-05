@@ -34,8 +34,8 @@ class Api::RecordingsController < ApplicationController
     render json: @recording.trash!
   end
 
-  private
-    def recording_params
-      params.require(:recording).permit(:name, :description)
-    end
+private
+  def recording_params
+    params.require(:recording).permit(:name, :description)
+  end
 end
