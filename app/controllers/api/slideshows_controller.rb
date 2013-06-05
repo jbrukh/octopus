@@ -18,8 +18,13 @@ class Api::SlideshowsController < ApplicationController
     render json: @slideshow, :status => :created
   end
 
-  private
-    def slideshow_params
-      params.require(:slideshow).permit(:name)
-    end
+  def destroy
+    @slideshow = Slideshow.find(params[:id])
+    render json: @slideshow.trash!
+  end
+
+private
+  def slideshow_params
+    params.require(:slideshow).permit(:name)
+  end
 end

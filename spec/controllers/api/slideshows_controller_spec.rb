@@ -25,5 +25,19 @@ describe Api::SlideshowsController do
       end
       it { should respond_with :created }
     end
+
+    context 'with slideshow' do
+      before :each do
+        @slideshow = build :slideshow
+        Slideshow.expects(:find).returns(@slideshow)
+      end
+
+      describe '#destroy' do
+        it 'trashes slideshow' do
+          @slideshow.expects(:trash!).at_least_once
+          post :destroy, :id => 5
+        end
+      end
+    end
   end
 end

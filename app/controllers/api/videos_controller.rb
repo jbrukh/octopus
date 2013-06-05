@@ -23,8 +23,8 @@ class Api::VideosController < ApplicationController
     render json: @video.trash!
   end
 
-  private
-    def video_params
-      params.require(:video).permit(:name, :data)
-    end
+private
+  def video_params
+    params.require(:video).permit(:name, :data)
+  end
 end
