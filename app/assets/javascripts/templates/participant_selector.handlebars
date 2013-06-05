@@ -1,5 +1,13 @@
 {{#if model.isLoaded}}
-  <button class="btn btn-info">
-    <i class="icon-user"></i> {{fullName}}
-  </button>
+  <div class="btn-group">
+    <a class="btn btn-info dropdown-toggle" data-toggle="dropdown" href="#">
+      <i class="icon-user"></i> {{fullName}}
+      <span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu">
+      <li>
+        <a href="#" {{action clear}}>Clear</a>
+      </li>
+    </ul>
+  </div>
 {{/if}}
