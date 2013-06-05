@@ -9,5 +9,6 @@ App.ExperimentsNewRoute = Ember.Route.extend
   events:
     save: ->
       @currentModel.on 'didCreate', =>
-        @transitionTo 'experiment', @currentModel
+        Ember.run.next this, =>
+          @transitionTo 'experiment', @currentModel
       @transaction.commit()

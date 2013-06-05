@@ -11,7 +11,8 @@ App.ParticipantsNewRoute = Em.Route.extend
       console.log 'Saving participant'
 
       @currentModel.one 'didCreate', =>
-        @transitionTo 'participant', @currentModel
+        Ember.run.next this, =>
+          @transitionTo 'participant', @currentModel
 
       @currentModel.one 'becameInvalid', =>
         console.log 'Participant is invalid'

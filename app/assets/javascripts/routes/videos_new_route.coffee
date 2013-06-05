@@ -9,5 +9,6 @@ App.VideosNewRoute = Ember.Route.extend
   events:
     save: ->
       @currentModel.on 'didCreate', =>
-        @transitionTo 'video', @currentModel
+        Ember.run.next this, =>
+          @transitionTo 'video', @currentModel
       @transaction.commit()

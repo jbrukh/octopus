@@ -9,5 +9,6 @@ App.SlideshowsNewRoute = Ember.Route.extend
   events:
     save: ->
       @currentModel.on 'didCreate', =>
-        @transitionTo 'slideshow', @currentModel
+        Ember.run.next this, =>
+          @transitionTo 'slideshow', @currentModel
       @transaction.commit()
