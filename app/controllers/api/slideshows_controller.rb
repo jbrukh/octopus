@@ -1,4 +1,6 @@
 class Api::SlideshowsController < ApplicationController
+  before_filter :authenticate_user!
+
   def index
     @slideshows = Slideshow.all
     render json: @slideshows
@@ -10,8 +12,10 @@ class Api::SlideshowsController < ApplicationController
   end
 
   def create
-    @slideshow = Slideshow.create!(slideshow_params)
-    render json: @slideshow
+    @slideshow = Slideshow.new(slideshow_params)
+    @slideshow.user = current_user
+    @slideshow.save!
+    render json: @slideshow, :status => :created
   end
 
   private
