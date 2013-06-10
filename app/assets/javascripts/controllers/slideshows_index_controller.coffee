@@ -1,0 +1,1 @@
+App.SlideshowsIndexController = Em.ArrayController.extend()
