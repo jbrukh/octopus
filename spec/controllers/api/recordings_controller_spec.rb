@@ -27,6 +27,14 @@ describe Api::RecordingsController do
       it { should respond_with :ok }
     end
 
+    describe '#index (with participant id)' do
+      before :each do
+        get :index, :participant_id => participant.id
+      end
+
+      it { should respond_with :ok }
+    end
+
     describe '#create' do
       before :each do
         post :create, :recording => { }

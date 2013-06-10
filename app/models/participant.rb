@@ -9,7 +9,8 @@ class Participant < ActiveRecord::Base
 
   strip_attributes :allow_empty => true, :only => [:first_name, :last_name, :email]
 
-  belongs_to :user
+  belongs_to  :user
+  has_many    :recordings
 
   validates :first_name,  :presence => true
   validates :last_name,   :presence => true

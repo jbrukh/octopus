@@ -1,8 +1,13 @@
 class Api::RecordingsController < ApplicationController
-  before_filter :authenticate_user!
+  before_action :authenticate_user!
+  before_action :load_participant, :only => :index, :if => :has_participant_id
 
   def index
-    @recordings = Recording.all.order('created_at desc')
+    @recordings = if params[:participant_id]
+      @participant.recordings
+    else
+      Recording.all.order('created_at desc')
+    end
     render json: @recordings
   end
 
@@ -37,5 +42,13 @@ class Api::RecordingsController < ApplicationController
 private
   def recording_params
     params.require(:recording).permit(:name, :description)
+  end
+
+  def load_participant
+    @participant = Participant.find(params[:participant_id])
+  end
+
+  def has_participant_id
+    !params[:participant_id].blank?
   end
 end
