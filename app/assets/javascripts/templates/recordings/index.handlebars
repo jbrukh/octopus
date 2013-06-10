@@ -38,9 +38,11 @@
           <td>{{durationMs}}ms</td>
           <td>
             {{#if participant}}
-              <span class="label label-info">
-                <i class="icon-user"></i> {{participant.fullName}}
-              </span>
+              {{#linkTo 'participant' participant}}
+                <span class="label label-info">
+                  <i class="icon-user"></i> {{participant.fullName}}
+                </span>
+              {{/linkTo}}
             {{/if}}
           </td>
           <td>
