@@ -41,3 +41,20 @@
     {{/each}}
   </tbody>
 </table>
+
+{{#unless recordings}}
+  <div class="alert alert-info">
+    This participant has no recordings.
+  </div>
+{{else}}
+  <table>
+    <thead></thead>
+    <tbody>
+      {{#each recordings}}
+        <tr>
+          <td>{{timeSince createdAt}}</td>
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+{{/unless}}
