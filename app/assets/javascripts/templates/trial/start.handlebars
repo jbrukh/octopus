@@ -3,13 +3,6 @@
     <li>{{#linkTo 'experiments.index'}}Experiments{{/linkTo}} <span class="divider">/</span></li>
     <li>{{#linkTo 'experiment.index' experiment}}{{experiment.name}}{{/linkTo}} <span class="divider">/</span></li>
     <li class="active">New Trial</li>
-    <li class="pull-right">
-      {{#if participant}}
-        <span class="label label-success">
-          <i class="icon-user"></i> {{participant.fullName}}
-        </span>
-      {{/if}}
-    </li>
   </ul>
 </div>
 

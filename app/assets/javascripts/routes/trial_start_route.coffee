@@ -1,7 +1,11 @@
 App.TrialStartRoute = Em.Route.extend
+  needs: ['currentParticipant']
+
   model: ->
-    @experiment = this.modelFor("experiment")
-    @experiment.startTrial()
+    participant = @controllerFor('currentParticipant').get('model')
+
+    experiment = this.modelFor("experiment")
+    experiment.startTrial(participant)
 
   setupController: (controller, params) ->
     @_super(controller, params)

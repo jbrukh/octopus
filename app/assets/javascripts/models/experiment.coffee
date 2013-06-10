@@ -7,7 +7,9 @@ App.Experiment = DS.Model.extend
   created_at:   DS.attr 'date'
   updated_at:   DS.attr 'date'
 
-  startTrial: ->
-    App.Trial.create
+  startTrial: (participant) ->
+    trial = App.Trial.create
       state: 'setup'
       experiment: this
+
+    return trial
