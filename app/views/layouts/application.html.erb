@@ -19,11 +19,11 @@
 
         <div class="pull-right">
           <% if user_signed_in? %>
-            <%= link_to 'sign out', destroy_user_session_url(), :method => :delete, :class => 'btn btn-info'  %>
+            <%= link_to 'sign out', destroy_user_session_url, :method => :delete, :class => 'btn btn-info'  %>
           <% else %>
             <div class="btn-group">
               <%= link_to 'sign up', new_user_registration_url, :class => "btn" %>
-              <%= link_to 'sign in', new_user_session_url, :class => "btn"  %>
+              <%= link_to 'sign in', new_user_session_url, :class => "btn" %>
             </div>
           <% end %>
         </div>
