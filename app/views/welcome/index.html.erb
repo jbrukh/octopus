@@ -11,6 +11,7 @@
     <%= render :partial => 'feature', :locals => {
       :title => 'Browser Recording',
       :icon => 'icon-play-sign',
+      :url => feature_url(:recording),
       :description => "No complicated client application to install, record right in your web browser."
       } %>
   </div>
@@ -19,6 +20,7 @@
     <%= render :partial => 'feature', :locals => {
       :title => 'Device Drivers',
       :icon => 'icon-bolt',
+      :url => feature_url(:drivers),
       :description => "We support a wide variety of devices with more coming all the time, just plug the device in and we'll do the rest."
       } %>
   </div>
@@ -31,6 +33,7 @@
     <%= render :partial => 'feature', :locals => {
       :title => 'Cloud Storage',
       :icon => 'icon-cloud-download',
+      :url => feature_url(:storage),
       :description => "Don't worry about storing your recordings, we'll do that for you in the cloud and make your data accessible from anywhere."
       } %>
   </div>
@@ -39,6 +42,7 @@
     <%= render :partial => 'feature', :locals => {
       :title => 'Formats You Use',
       :icon => 'icon-copy',
+      :url => feature_url(:formats),
       :description => "Need your data in csv? No problem. We support a variety of download formats so you can continue to use the tools you already use."
       } %>
   </div>
@@ -51,6 +55,7 @@
     <%= render :partial => 'feature', :locals => {
       :title => 'Data Tagging and Searching',
       :icon => 'icon-tag',
+      :url => feature_url(:tagging),
       :description => "Make your recordings searchable with tags and recording meta data."
       } %>
   </div>
@@ -59,6 +64,7 @@
     <%= render :partial => 'feature', :locals => {
       :title => 'Subject Meta Data',
       :icon => 'icon-user',
+      :url => feature_url(:meta_data),
       :description => "Store custom meta data on subjects and cross reference against recordings."
       } %>
   </div>

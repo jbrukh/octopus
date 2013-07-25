@@ -14,3 +14,10 @@
 //= require jquery_ujs
 //= require vendor/bootstrap
 //= require_self
+
+$(function(){
+  // clickable divs
+  $('div.clickable').on('click', function(){
+    window.location = $(this).data('url');
+  });
+});

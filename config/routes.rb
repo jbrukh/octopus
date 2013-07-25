@@ -5,6 +5,9 @@ Ruby::Application.routes.draw do
   devise_for :users
   mount Sidekiq::Web => '/sidekiq'
 
+  # marketing routes
+  resources :features
+
   # api routes
   namespace :api do
     resources :participants
