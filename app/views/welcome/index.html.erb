@@ -1,32 +1,48 @@
-<div class="hero-unit">
-  <p>
-    <% if user_signed_in? && current_user.role == 'admin' %>
+
+<% if user_signed_in? && current_user.role == 'admin' %>
+  <div class="hero-unit">
+    <p>
       <%= link_to 'Launch Octopus', octopus_index_url, class: 'btn btn-primary btn-large' %>
-    <% else %>
-      <i class="icon-rocket"></i> Coming soon...
-    <% end %>
-  </p>
-</div>
+    </p>
+  </div>
+<% end %>
 
 <h3>Features</h3>
 
 <div class="row">
   <div class="span6">
     <%= render :partial => 'feature', :locals => {
-      :title => 'Cloud Storage',
-      :icon => 'icon-cloud',
-      :description => "Don't worry about storing and cataloguing your recordings, we'll
-        do that for you."
+      :title => 'Browser Recording',
+      :icon => 'icon-play-sign',
+      :description => "No complicated client application to install, record right in your web browser."
       } %>
   </div>
 
   <div class="span6">
     <%= render :partial => 'feature', :locals => {
-      :title => 'Formats you use',
+      :title => 'Device Drivers',
+      :icon => 'icon-bolt',
+      :description => "We support a wide variety of devices with more coming all the time, just plug the device in and we'll do the rest."
+      } %>
+  </div>
+</div>
+
+<hr/>
+
+<div class="row">
+  <div class="span6">
+    <%= render :partial => 'feature', :locals => {
+      :title => 'Cloud Storage',
       :icon => 'icon-cloud-download',
-      :description => "Need your data in csv? No problem. We support a variety of
-        download formats so you can continue to use the tools you already
-        use."
+      :description => "Don't worry about storing and cataloguing your recordings, we'll do that for you."
+      } %>
+  </div>
+
+  <div class="span6">
+    <%= render :partial => 'feature', :locals => {
+      :title => 'Formats You Use',
+      :icon => 'icon-copy',
+      :description => "Need your data in csv? No problem. We support a variety of download formats so you can continue to use the tools you already use."
       } %>
   </div>
 </div>
