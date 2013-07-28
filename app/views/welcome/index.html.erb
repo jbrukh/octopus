@@ -1,13 +1,5 @@
-<% if user_signed_in? && current_user.role == 'admin' %>
-  <div class="hero-unit">
-    <p>
-      <%= link_to 'Launch Octopus', octopus_index_url, class: 'btn btn-primary btn-large' %>
-    </p>
-  </div>
-<% end %>
-
 <div class="row">
-  <div class="span6">
+  <div class="col-lg-6">
     <%= render :partial => 'feature', :locals => {
       :title => 'Browser Recording',
       :icon => 'icon-play-sign',
@@ -16,7 +8,7 @@
       } %>
   </div>
 
-  <div class="span6">
+  <div class="col-lg-6">
     <%= render :partial => 'feature', :locals => {
       :title => 'Device Drivers',
       :icon => 'icon-bolt',
@@ -29,7 +21,7 @@
 <hr/>
 
 <div class="row">
-  <div class="span6">
+  <div class="col-lg-6">
     <%= render :partial => 'feature', :locals => {
       :title => 'Cloud Storage',
       :icon => 'icon-cloud-download',
@@ -38,7 +30,7 @@
       } %>
   </div>
 
-  <div class="span6">
+  <div class="col-lg-6">
     <%= render :partial => 'feature', :locals => {
       :title => 'Formats You Use',
       :icon => 'icon-copy',
@@ -51,7 +43,7 @@
 <hr/>
 
 <div class="row">
-  <div class="span6">
+  <div class="col-lg-6">
     <%= render :partial => 'feature', :locals => {
       :title => 'Data Tagging and Searching',
       :icon => 'icon-tag',
@@ -60,7 +52,7 @@
       } %>
   </div>
 
-  <div class="span6">
+  <div class="col-lg-6">
     <%= render :partial => 'feature', :locals => {
       :title => 'Subject Meta Data',
       :icon => 'icon-user',
