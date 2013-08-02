@@ -1,0 +1,12 @@
+.btn-mini [class^="icon-"],
+.btn-mini [class*=" icon-"] {
+  margin-top: -1px;
+}
+
+.btn-mini {
+  padding: 2px 6px;
+  font-size: 10.5px;
+  -webkit-border-radius: 2.5px;
+     -moz-border-radius: 2.5px;
+          border-radius: 2.5px;
+}
