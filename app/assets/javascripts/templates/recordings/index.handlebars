@@ -1,15 +1,17 @@
-<div class="page-header">
-  <div class="pull-right">
+
+<div class="row">
+  <div class="col-offset-10 col-lg-2">
     {{#if canRecord}}
       {{#linkTo 'recordings.new' class='btn btn-success'}}New Recording{{/linkTo}}
     {{else}}
-      <a id="cant-record" class="btn disabled" title="You cannot record, unless the collector is running.">
-        New Recording
-      </a>
+      <button id="cant-record" class="btn" disabled="disabled" title="You cannot record, unless the collector is running.">
+        <i class="icon-ban-circle"></i>&nbsp;New Recording
+      </button>
     {{/if}}
   </div>
-  <h3>Recordings</h3>
 </div>
+
+<hr/>
 
 {{#unless controller.length}}
   <div class="alert alert-info">
