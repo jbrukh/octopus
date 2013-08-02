@@ -11,20 +11,23 @@
   </head>
   <body>
 
-    <div class="navbar navbar-static-top navbar-inverse">
+    <div class="navbar navbar-static-top">
       <div class="navbar-inner">
-        <%= link_to 'Octopus', root_url, class: 'brand' %>
-        <ul class="nav">
-        </ul>
+        <%= link_to 'Octopus', root_url, class: 'navbar-brand' %>
+
+        <ul class="nav navbar-nav"></ul>
 
         <div class="pull-right">
           <% if user_signed_in? %>
-            <%= link_to 'sign out', destroy_user_session_url, :method => :delete, :class => 'btn btn-info'  %>
+
+            <% if current_user.role == 'admin' %>
+              <%= link_to 'Launch Octopus', octopus_index_url, class: 'btn btn-primary navbar-btn' %>
+            <% end %>
+
+            <%= link_to 'sign out', destroy_user_session_url, :method => :delete, :class => 'btn btn-info navbar-btn'  %>
           <% else %>
-            <div class="btn-group">
-              <%= link_to 'sign up', new_user_registration_url, :class => "btn" %>
-              <%= link_to 'sign in', new_user_session_url, :class => "btn" %>
-            </div>
+            <%= link_to 'sign up', new_user_registration_url, :class => "btn btn-default navbar-btn" %>
+            <%= link_to 'sign in', new_user_session_url, :class => "btn btn-default navbar-btn" %>
           <% end %>
         </div>
       </div>

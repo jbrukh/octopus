@@ -1,11 +1,12 @@
-<div class="page-header">
-  <div class="pull-right">
-    {{#linkTo experiments.new class="btn btn-success"}}
+<div class="row">
+  <div class="col-offset-10 col-lg-2">
+    {{#linkTo experiments.new class="btn btn-success pull-right"}}
       <i class="icon-plus"></i> New Experiment
     {{/linkTo}}
   </div>
-  <h3>Experiments</h3>
 </div>
+
+<hr/>
 
 {{#unless canStartTrials}}
   <div class="alert alert-warning">

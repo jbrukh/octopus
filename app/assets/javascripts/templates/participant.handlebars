@@ -1,9 +1,7 @@
-<div class="page-header">
-  <ul class="breadcrumb">
-    <li>{{#linkTo 'participants.index'}}Participants{{/linkTo}} <span class="divider">/</span></li>
-    <li class="active">{{fullName}}</li>
-  </ul>
-</div>
+<ul class="breadcrumb">
+  <li>{{#linkTo 'participants.index'}}Participants{{/linkTo}}</li>
+  <li class="active">{{fullName}}</li>
+</ul>
 
 <h4>Details</h4>
 
@@ -47,7 +45,7 @@
     This participant has no recordings.
   </div>
 {{else}}
-  <table>
+  <table class="table">
     <thead></thead>
     <tbody>
       {{#each recordings}}
