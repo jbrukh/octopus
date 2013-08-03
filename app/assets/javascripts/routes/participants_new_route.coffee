@@ -1,20 +1,10 @@
 App.ParticipantsNewRoute = Em.Route.extend
   model: ->
-    @transaction = @get('store').transaction()
-    return @transaction.createRecord(App.Participant, {})
-
-  deactivate: ->
-    @transaction.rollback() if @transaction
+    App.Participant.create()
 
   events:
     save: ->
       console.log 'Saving participant'
 
-      @currentModel.one 'didCreate', =>
-        Ember.run.next this, =>
-          @transitionTo 'participant', @currentModel
-
-      @currentModel.one 'becameInvalid', =>
-        console.log 'Participant is invalid'
-
-      @transaction.commit()
+      @currentModel.save().then =>
+        @transitionTo 'participant', @currentModel

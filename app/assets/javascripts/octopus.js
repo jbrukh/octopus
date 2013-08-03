@@ -17,6 +17,7 @@
 //= require vendor/ember-control
 //= require vendor/ember-latest
 //= require vendor/ember-data-latest
+//= require vendor/ember-model-latest
 //= require vendor/moment
 //= require vendor/bootstrap
 //= require vendor/showdown
