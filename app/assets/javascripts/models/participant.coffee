@@ -3,6 +3,7 @@ hasMany = Ember.hasMany
 belongsTo = Ember.belongsTo
 
 App.Participant = Ember.Model.extend
+  id:         attr()
   firstName:  attr()
   lastName:   attr()
   email:      attr()
