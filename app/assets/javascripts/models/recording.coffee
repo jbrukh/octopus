@@ -4,7 +4,7 @@ belongsTo = Ember.belongsTo
 
 App.Recording = Ember.Model.extend
 
-  participant:          belongsTo 'App.Participant', key: 'partcipant', embedded: true
+  participant:          belongsTo 'App.Participant', { key: 'partcipant', embedded: true }
 
   createdAt:            attr(Date)
   updatedAt:            attr(Date)

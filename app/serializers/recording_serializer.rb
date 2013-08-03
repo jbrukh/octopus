@@ -1,6 +1,4 @@
 class RecordingSerializer < ActiveModel::Serializer
-  #embed :ids, :include => true
-
   attributes :id,
     :created_at,
     :state,
