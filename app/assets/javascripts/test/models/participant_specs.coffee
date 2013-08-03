@@ -18,7 +18,7 @@ describe 'App.Participant', ->
   describe '#age', ->
     it 'returns age', ->
       @participant.set 'birthday', '1983-06-01'
-      expect(@participant.get('age')).toEqual(29)
+      expect(@participant.get('age')).toEqual(30)
 
     it 'returns null when birthday is null', ->
       @participant.set 'birthday', null
