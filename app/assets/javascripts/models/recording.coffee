@@ -1,22 +1,27 @@
-App.Recording = DS.Model.extend
+attr = Ember.attr
+hasMany = Ember.hasMany
+belongsTo = Ember.belongsTo
 
-  participant:          DS.belongsTo('App.Participant')
+App.Recording = Ember.Model.extend
+  id:                   attr()
 
-  createdAt:            DS.attr 'date'
-  updatedAt:            DS.attr 'date'
+  participant:          belongsTo(App.Participant, { key: 'participant', embedded: true })
 
-  state:                DS.attr 'string'
-  name:                 DS.attr 'string'
-  description:          DS.attr 'string'
-  owner:                DS.attr 'string'
-  durationMs:           DS.attr 'number'
+  createdAt:            attr(Date)
+  updatedAt:            attr(Date)
 
-  dataContentType:      DS.attr 'string'
-  dataFileName:         DS.attr 'string'
-  dataContentType:      DS.attr 'string'
-  dataFileSize:         DS.attr 'string'
-  dataUpdatedAt:        DS.attr 'string'
-  dataUrl:              DS.attr 'string'
+  state:                attr()
+  name:                 attr()
+  description:          attr()
+  owner:                attr()
+  durationMs:           attr(Number)
+
+  dataContentType:      attr()
+  dataFileName:         attr()
+  dataContentType:      attr()
+  dataFileSize:         attr()
+  dataUpdatedAt:        attr()
+  dataUrl:              attr()
 
   start: ->
     @set 'isRecording', true
@@ -44,3 +49,9 @@ App.Recording = DS.Model.extend
 
     resultData
   ).property('dataUrl')
+
+App.Recording.url = "/api/recordings"
+App.Recording.rootKey = 'recording'
+App.Recording.collectionKey = 'recordings'
+App.Recording.camelizeKeys = true
+App.Recording.adapter = Ember.RESTAdapter.create()
