@@ -81,7 +81,7 @@ Ruby::Application.configure do
   config.ember.variant = :production
 
   # stuff for email sending
-  config.action_mailer.default_url_options = { :host => 'octopusmetrics.com' }
+  config.action_mailer.default_url_options = { :host => 'octopus-staging.herokuapp.com' }
   ActionMailer::Base.smtp_settings = {
     :address        => "smtp.sendgrid.net",
     :port           => "25",
