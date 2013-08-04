@@ -16,42 +16,43 @@
   <fieldset>
     <legend>Basic Info</legend>
 
-    <div class="control-group">
-      <label class="control-label">First Name</label>
-      <div class="controls">
-        {{input value=model.firstName type=text}}
+    <div class="form-group">
+      <label class="col-lg-2 control-label">First Name</label>
+      <div class="col-lg-4">
+        {{input value=model.firstName type=text class='form-control'}}
       </div>
     </div>
 
-    <div class="control-group">
-      <label class="control-label">Last Name</label>
-      <div class="controls">
-        {{input value=model.lastName type=text}}
+    <div class="form-group">
+      <label class="col-lg-2 control-label">Last Name</label>
+      <div class="col-lg-4">
+        {{input value=model.lastName type=text class='form-control'}}
       </div>
     </div>
 
-    <div class="control-group">
-      <label class="control-label">Email</label>
-      <div class="controls">
-        {{input value=model.email type=text}}
+    <div class="form-group">
+      <label class="col-lg-2 control-label">Email</label>
+      <div class="col-lg-4">
+        {{input value=model.email type=text class='form-control'}}
       </div>
     </div>
 
-    <div class="control-group">
-      <label class="control-label">Gender</label>
-      <div class="controls">
+    <div class="form-group">
+      <label class="col-lg-2 control-label">Gender</label>
+      <div class="col-lg-4">
         {{view Ember.Select
           valueBinding=model.gender
           contentBinding="App.Participant.genders"
           optionValuePath="content.id"
           optionLabelPath="content.gender"
+          class="form-control"
         }}
       </div>
     </div>
 
-    <div class="control-group">
-      <label class="control-label">Birthday</label>
-      <div class="controls">
+    <div class="form-group">
+      <label class="col-lg-2 control-label">Birthday</label>
+      <div class="col-lg-4">
         {{view App.DatePicker valueBinding=model.birthday}}
       </div>
     </div>
