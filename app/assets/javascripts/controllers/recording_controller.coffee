@@ -12,10 +12,10 @@ App.RecordingController = Em.ObjectController.extend
 
     model = @get 'model'
 
-    transaction = model.get('transaction')
-    model.set 'name', @get('newName')
-    model.set 'description', @get('newDescription')
-    transaction.commit()
+    #transaction = model.get('transaction')
+    #model.set 'name', @get('newName')
+    #model.set 'description', @get('newDescription')
+    #transaction.commit()
 
   createTag: ->
     console.log 'create tag'
