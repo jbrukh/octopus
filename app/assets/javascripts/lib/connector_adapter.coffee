@@ -1,6 +1,13 @@
 get = Ember.get
 
 App.ConnectorAdapter = Ember.Adapter.extend
+  find: (record, id) ->
+    return new Ember.RSVP.Promise (resolve, reject) =>
+      all = findAll()
+      all.then (data) =>
+        result = data.findProperty 'id', id
+        resolve(result)
+
   findAll: (klass, records) ->
     connector = App.ConnectorAdapter.connectorInstance
     connector.send('repository', { operation: 'list' }).then (data) =>

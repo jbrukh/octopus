@@ -10,7 +10,7 @@
  *
  *= require ../vendor/bootstrap.css
  *= require ../vendor/datepicker.css
- *= require ../shared/bootstrap-extensions.css
+ *= require_tree ../shared
  *= require ../shared/navigation.css
  *= require font-awesome
  *= require_self

@@ -7,9 +7,8 @@ App.ParticipantsIndexController = Em.ArrayController.extend
   setupController: (controller, params) ->
     controller.set 'query', ''
 
-  destroy: (participant) ->
-    participant.deleteRecord();
-    participant.get("transaction").commit()
+  destroyParticipant: (participant) ->
+    participant.deleteRecord()
 
   select: (participant) ->
     selector = @get('controllers.currentParticipant')

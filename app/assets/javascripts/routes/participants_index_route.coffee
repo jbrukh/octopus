@@ -1,2 +1,3 @@
 App.ParticipantsIndexRoute = Em.Route.extend
-  model: -> App.Participant.find()
+  model: ->
+    App.Participant.find()

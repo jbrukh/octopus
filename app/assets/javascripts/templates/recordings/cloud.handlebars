@@ -28,10 +28,8 @@
           <td>{{durationMs}}ms</td>
           <td>
             {{#if participant}}
-              {{#linkTo 'participant' participant}}
-                <span class="label label-info">
-                  <i class="icon-user"></i> {{participant.fullName}}
-                </span>
+              {{#linkTo 'participant' participant tagName='span' class='label label-info clickable'}}
+                <i class="icon-user"></i> {{participant.fullName}}
               {{/linkTo}}
             {{/if}}
           </td>
@@ -49,9 +47,9 @@
           <td>
             <div class="pull-right">
               {{#unless isUploading}}
-                {{#linkTo 'recording.cloud' this class='btn btn-mini btn-success'}}Explore{{/linkTo}}
+                {{#linkTo 'recording.cloud' this class='btn btn-table btn-success'}}Explore{{/linkTo}}
               {{/unless}}
-              <a href="#" class="btn btn-mini btn-danger" {{action destroy this}}>Delete</a>
+              <a href="#" class="btn btn-table btn-danger" {{action destroy this}}>Delete</a>
             </div>
           </td>
         </tr>

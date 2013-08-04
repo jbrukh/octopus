@@ -9,8 +9,7 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require ../vendor/bootstrap.css
- *= require ../shared/bootstrap-extensions.css
- *= require ../shared/navigation.css
+ *= require_tree ../shared
  *= require font-awesome
  *= require_tree
  *= require_self

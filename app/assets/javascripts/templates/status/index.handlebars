@@ -1,12 +1,17 @@
-<div class="page-header">
-  <div class="pull-right">
-    {{#unless connector.isConnected}}
-      <a class="btn btn-success" {{action connect}}>Reconnect</a>
-    {{/unless}}
+<div class="row">
+  <div class="col-lg-10">
+    <h3>Connector</h3>
   </div>
-
-  <h3>Connector</h3>
+  <div class="col-lg-2">
+    <div class="pull-right">
+      {{#unless connector.isConnected}}
+        <a class="btn btn-success" {{action connect}}>Reconnect</a>
+      {{/unless}}
+    </div>
+  </div>
 </div>
+
+<hr/>
 
 {{#unless connector.isConnected}}
   <div class="alert alert-error">
