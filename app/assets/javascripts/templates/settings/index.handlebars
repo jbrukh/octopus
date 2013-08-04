@@ -5,16 +5,20 @@
 <form class="form-horizontal">
   <fieldset>
     <legend>Data Adapter</legend>
-    <div class="control-group">
-      <label class="control-label">Channels</label>
-      <div class="controls">
-        {{input value=model.adapters.live.url type=text}}
+
+    <div class="form-group">
+      <label class="col-lg-2 control-label">Channels</label>
+      <div class="col-lg-4">
+        {{input value=model.adapters.live.url type=text class='form-control'}}
       </div>
     </div>
   </fieldset>
 
-  <div class="form-actions">
-    <button type="submit" class="btn btn-primary" {{action save}}>Save changes</button>
-    <button class="btn" {{action reset}}>Reset</button>
+  <div class="form-group">
+    <div class="col-lg-offset-2 col-lg-10">
+      <button type="submit" class="btn btn-primary" {{action save}}>Save changes</button>
+      <button class="btn" {{action reset}}>Reset</button>
+    </div>
   </div>
+
 </form>
