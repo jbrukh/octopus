@@ -1,16 +1,18 @@
-<table class="table table-striped table-condensed table-hover">
+<table class="table table-striped table-hover">
   <thead>
     <tr>
       <th>Name</th>
       <th>Email</th>
+      <th>Created At</th>
       <th></th>
     </tr>
   </thead>
   <tbody>
     {{#each controller}}
       {{#linkTo 'participant' this tagName='tr' class='clickable'}}
-        <td>{{fullName}}</td>
+        <td><i class="icon-user"></i>&nbsp;{{fullName}}</td>
         <td>{{email}}</td>
+        <td>{{timeSince createdAt}}</td>
         <td>
           <div class="pull-right">
             <button class="btn btn-table btn-info" {{action select this bubbles=false}}>Select</button>

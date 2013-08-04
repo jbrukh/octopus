@@ -9,6 +9,7 @@ App.Participant = Ember.Model.extend
   email:      attr()
   gender:     attr()
   birthday:   attr()
+  createdAt:  attr(Date)
 
   #properties: DS.attr 'properties'
 
