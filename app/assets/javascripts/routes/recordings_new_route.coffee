@@ -24,16 +24,16 @@ App.RecordingsNewRoute = Ember.Route.extend
     controller.set 'dataAdapter', dataAdapter
 
   deactivate: ->
-    # if we have are currently recording then just stop the
-    # recording, we should probably prompt here.
+    # if we have are currently recording then just stop the recording
     controller = @controllerFor('recordings.new')
-
-    # if controller.get('model.isRecording') && !confirm('Are you sure you want to stop recording?')
-    # somehow stop the transition from taking place
-
     controller.stop()
 
   events:
+    willTransition: (transition) ->
+      controller = @controllerFor('recordings.new')
+      if controller.get('model.isRecording') && !confirm('Are you sure you want to stop recording?')
+        transition.abort()
+
     endRecord: ->
       console.log 'End Record'
       @get('connector').send('record', {record: false}).then (data) =>
