@@ -5,3 +5,6 @@ App.RecordingsLocalController = Em.ArrayController.extend
   canRecord: (->
     @get('connector.isConnected')
   ).property('connector.isConnected')
+
+  destroy: (recording) ->
+    recording.deleteRecord()

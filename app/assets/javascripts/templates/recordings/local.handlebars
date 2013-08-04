@@ -11,6 +11,7 @@
         <th>File</th>
         <th>Last Modified</th>
         <th>Size</th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
@@ -19,6 +20,11 @@
           <td>{{file}}</td>
           <td>{{lastModified}}</td>
           <td>{{sizeBytes}}</td>
+          <td>
+            <div class="pull-right">
+              <a href="#" class="btn btn-mini btn-danger" {{action destroy this}}>Delete</a>
+            </div>
+          </td>
         </tr>
       {{/each}}
     </tbody>
