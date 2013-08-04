@@ -23,7 +23,7 @@ gem 'handlebars-source', '1.0.0.rc4'
 gem "ember-rails", github: 'emberjs/ember-rails'
 
 # authentication/authorization
-gem 'devise', github: 'plataformatec/devise', branch: 'rails4'
+gem 'devise'
 gem 'cancan'
 
 # models
