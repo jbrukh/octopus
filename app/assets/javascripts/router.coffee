@@ -22,7 +22,8 @@ App.Router.map ->
     @route 'cloud'
     @route 'local'
 
-  @resource 'recording', { path: '/recording/:recording_id' }
+  @resource 'recording.cloud', { path: '/recording/cloud/:recording_id' }
+  @resource 'recording.local', { path: '/recording/local/:local_recording_id' }
 
   # media
   @resource 'videos', ->

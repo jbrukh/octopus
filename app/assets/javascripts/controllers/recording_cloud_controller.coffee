@@ -1,4 +1,4 @@
-App.RecordingController = Em.ObjectController.extend
+App.RecordingCloudController = Em.ObjectController.extend
   edit: ->
     @set 'isEditing', true
     @set 'newName', @get('name')
