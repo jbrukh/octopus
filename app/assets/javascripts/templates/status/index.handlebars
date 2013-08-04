@@ -24,11 +24,11 @@
       <tr>
         <td>Status</td>
         <td>
-             {{#unless connector.isConnected}}
-                <span class="label label-warning">{{connector.state}}</span>
-             {{else}}
-                <span class="label label-success">{{connector.state}}</span>
-             {{/unless}}
+          {{#unless connector.isConnected}}
+            <span class="label label-warning">{{connector.state}}</span>
+          {{else}}
+            <span class="label label-success">{{connector.state}}</span>
+          {{/unless}}
         </td>
       </tr>
       <tr>
@@ -41,6 +41,4 @@
       </tr>
     </tbody>
   </table>
-
-  <a href="#" class="btn btn-mini btn-danger" {{action clear}}>Clear Repository</a>
 {{/unless}}

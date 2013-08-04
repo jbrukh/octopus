@@ -106,7 +106,3 @@ App.Connector = Em.Object.extend
     @bufferedMessages.forEach (m) =>
       @ws.sendJson(m)
     @bufferedMessages = []
-
-  clearRepository: () ->
-    @send('repository', {operation: 'clear'}).then () =>
-      console.log 'cleared resources'
