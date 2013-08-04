@@ -1,4 +1,4 @@
-App.RecordingsIndexController = Em.ArrayController.extend
+App.RecordingsCloudController = Em.ArrayController.extend
   sortProperties: ['createdAt']
   sortAscending:  false
 
@@ -7,5 +7,4 @@ App.RecordingsIndexController = Em.ArrayController.extend
   ).property('connector.isConnected')
 
   destroy: (recording) ->
-    recording.deleteRecord();
-    recording.get("transaction").commit()
+    recording.deleteRecord()

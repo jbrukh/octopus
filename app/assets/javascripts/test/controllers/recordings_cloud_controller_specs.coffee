@@ -1,11 +1,10 @@
-describe 'App.RecordingsIndexController', ->
+describe 'App.RecordingsCloudController', ->
   beforeEach ->
-    App.Store = DS.Store.extend {revision: 12}
-    @controller = App.RecordingsIndexController.create()
+    @controller = App.RecordingsCloudController.create()
 
   describe '#destroy', ->
     beforeEach ->
-      @recording = App.Recording.createRecord()
+      @recording = App.Recording.create()
       spyOn(@recording, 'deleteRecord')
 
       @controller.destroy(@recording)

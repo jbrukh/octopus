@@ -1,0 +1,26 @@
+{{partial 'recordings/header'}}
+
+{{#unless controller.length}}
+  <div class="alert alert-info">
+    There are no recordings.
+  </div>
+{{else}}
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>File</th>
+        <th>Last Modified</th>
+        <th>Size</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each controller}}
+        <tr>
+          <td>{{file}}</td>
+          <td>{{lastModified}}</td>
+          <td>{{sizeBytes}}</td>
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+{{/unless}}

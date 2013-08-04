@@ -12,6 +12,7 @@ files = [
   'vendor/handlebars.js',
   'vendor/ember-latest.js',
   'vendor/ember-data-latest.js',
+  'vendor/ember-model-latest.js',
   'vendor/moment.js',
 
   'octopus.js',

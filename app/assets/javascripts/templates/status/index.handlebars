@@ -42,32 +42,5 @@
     </tbody>
   </table>
 
-  {{#unless connector.resources.length}}
-    <div class="alert alert-notice">
-      There are no recordings in the repository.
-    </div>
-  {{else}}
-    <table class="table table-condensed table-striped">
-      <thead>
-        <tr>
-          <th colspan="2">There are {{connector.resources.length}} recordings in the repository.</th>
-          <th colspan="2">
-            <div class="pull-right">
-              <a href="#" class="btn btn-mini btn-danger" {{action clear}}>Clear Repository</a>
-            </div>
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        {{#each connector.resources}}
-          <tr>
-            <td>{{resource_id}}</td>
-            <td>{{file}}</td>
-            <td>{{last_modified}}</td>
-            <td>{{size_bytes}}</td>
-          </tr>
-        {{/each}}
-      </tbody>
-    </table>
-  {{/unless}}
+  <a href="#" class="btn btn-mini btn-danger" {{action clear}}>Clear Repository</a>
 {{/unless}}

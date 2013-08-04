@@ -2,8 +2,7 @@ App.RecordingsNewRoute = Ember.Route.extend
   needs: ['currentParticipant']
 
   model: () ->
-    @transaction = @get('store').transaction()
-    recording = @transaction.createRecord App.Recording
+    recording = App.Recording.create()
 
     # if we have a selected participant then assign them now
     currentParticipant = @controllerFor('currentParticipant').get('model')
@@ -34,8 +33,6 @@ App.RecordingsNewRoute = Ember.Route.extend
 
     controller.stop()
 
-    @transaction.rollback() if @transaction
-
   events:
     endRecord: ->
       console.log 'End Record'
@@ -48,22 +45,14 @@ App.RecordingsNewRoute = Ember.Route.extend
       authToken = @controllerFor('currentUser').get('authenticationToken')
       resourceId = @currentModel.get 'resourceId'
 
-      @currentModel.one 'didCreate', =>
-        console.debug 'created current model'
+      @currentModel.save().then =>
+        recordingId = @currentModel.get('id')
 
-        # wait until the model has an id
-        Ember.run.next this, =>
-          recordingId = @currentModel.get('id')
+        payload = {
+          token: authToken,
+          resource_id: resourceId,
+          endpoint: "http://localhost:3000/api/recordings/#{recordingId}/results"
+        }
 
-          payload = {
-            token: authToken,
-            resource_id: resourceId,
-            endpoint: "http://localhost:3000/api/recordings/#{recordingId}/results"
-          }
-
-          @get('connector').send('upload', payload).then (data) =>
-            @transitionTo 'recordings.index'
-            @transaction = null
-
-      console.debug 'Commiting transaction'
-      @transaction.commit()
+        @get('connector').send('upload', payload).then (data) =>
+          @transitionTo 'recordings.index'
