@@ -66,18 +66,6 @@ describe 'App.Connector', ->
       it 'sets device version',  ->
         expect(@connector.get('version')).toEqual('3.0')
 
-      it 'sends list repository message', ->
-        args = @socket.sendJson.calls[0].args[0]
-        expect(args.message_type).toEqual('repository')
-        expect(args.operation).toEqual('list')
-
-    describe '#onRepository', ->
-      beforeEach ->
-        @connector.onRepository {resource_infos: [{},{}]}
-
-      it 'sets resources', ->
-        expect(@connector.get('resources.length')).toEqual(2)
-
     describe '#clearRepository', ->
       beforeEach ->
         spyOn @socket, 'sendJson'

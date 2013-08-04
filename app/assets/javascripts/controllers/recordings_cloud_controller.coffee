@@ -7,5 +7,4 @@ App.RecordingsCloudController = Em.ArrayController.extend
   ).property('connector.isConnected')
 
   destroy: (recording) ->
-    recording.deleteRecord();
-    recording.get("transaction").commit()
+    recording.deleteRecord()

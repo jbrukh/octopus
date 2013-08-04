@@ -1,7 +1,6 @@
 describe 'App.Participant', ->
   beforeEach ->
-    App.Store = DS.Store.extend {revision: 12}
-    @participant = App.Participant.createRecord()
+    @participant = App.Participant.create()
 
   describe 'in general', ->
     it 'has no properties', ->
