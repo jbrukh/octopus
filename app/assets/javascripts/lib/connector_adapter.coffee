@@ -16,9 +16,10 @@ App.ConnectorAdapter = Ember.Adapter.extend
 
   deleteRecord: (record) ->
     primaryKey = get record.constructor, 'primaryKey'
+    id = get record, primaryKey
 
     connector = App.ConnectorAdapter.connectorInstance
-    connector.send('repository', { operator: 'delete', resourceId: primaryKey }).then () =>
+    connector.send('repository', { operation: 'delete', resource_id: id }).then () =>
       @didDeleteRecord record
 
   didDeleteRecord: (record) ->
