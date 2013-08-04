@@ -8,51 +8,17 @@
   <table class="table table-striped">
     <thead>
       <tr>
-        <th>Created At</th>
-        <th>Owner</th>
-        <th>Name</th>
-        <th>Duration</th>
-        <th>Participant</th>
-        <th>State</th>
+        <th>File</th>
+        <th>Last Modified</th>
+        <th>Size</th>
       </tr>
     </thead>
     <tbody>
       {{#each controller}}
         <tr>
-          <td>
-            <small>{{timeSince createdAt}}</small>
-          </td>
-          <td>{{owner}}</td>
-          <td>{{name}}</td>
-          <td>{{durationMs}}ms</td>
-          <td>
-            {{#if participant}}
-              {{#linkTo 'participant' participant}}
-                <span class="label label-info">
-                  <i class="icon-user"></i> {{participant.fullName}}
-                </span>
-              {{/linkTo}}
-            {{/if}}
-          </td>
-          <td>
-            {{#if isUploading}}
-              <div class="upload-progress progress progress-striped active">
-                <div class="bar bar-success" style="width: 100%">
-                  <i class="icon-upload"></i> uploading
-                </div>
-              </div>
-            {{else}}
-              <span class="label label-info">{{state}}</span>
-            {{/if}}
-          </td>
-          <td>
-            <div class="pull-right">
-              {{#unless isUploading}}
-                {{#linkTo 'recording' this class='btn btn-mini btn-success'}}Explore{{/linkTo}}
-              {{/unless}}
-              <a href="#" class="btn btn-mini btn-danger" {{action destroy this}}>Delete</a>
-            </div>
-          </td>
+          <td>{{file}}</td>
+          <td>{{lastModified}}</td>
+          <td>{{sizeBytes}}</td>
         </tr>
       {{/each}}
     </tbody>

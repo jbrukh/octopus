@@ -2,7 +2,6 @@ App.Connector = Em.Object.extend
   url: 'ws://localhost:8000/control'
   callbacks: []
   bufferedMessages: []
-  resources: Em.A []
 
   init: ->
     @set 'state', 'disconnected'
@@ -99,9 +98,6 @@ App.Connector = Em.Object.extend
     @set 'device_name', response.device_name
     @set 'version', response.version
 
-    @send('repository', {operation: 'list'}).then(
-      (d) => @onRepository(d))
-
     @sendBufferedMessages()
 
   sendBufferedMessages: ->
@@ -111,9 +107,6 @@ App.Connector = Em.Object.extend
       @ws.sendJson(m)
     @bufferedMessages = []
 
-  onRepository: (response) ->
-    @set 'resources', Em.A(response.resource_infos)
-
   clearRepository: () ->
     @send('repository', {operation: 'clear'}).then () =>
-      @set 'resources', Em.A([])
+      console.log 'cleared resources'
