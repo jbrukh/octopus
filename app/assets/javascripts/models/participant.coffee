@@ -11,7 +11,7 @@ App.Participant = Ember.Model.extend
   birthday:   attr()
   createdAt:  attr(Date)
 
-  #properties: DS.attr 'properties'
+  properties: attr(Properties)
 
   fullName: (->
     first = @get('firstName')
