@@ -9,7 +9,8 @@ Ruby::Application.routes.draw do
   resources :features
   resources :connectors
   resources :contactus
-  
+  resources :faq
+
   # api routes
   namespace :api do
     resources :participants
