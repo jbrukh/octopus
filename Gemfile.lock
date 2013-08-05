@@ -128,6 +128,7 @@ GEM
       guard (>= 1.8)
       rspec (~> 2.13)
     handlebars-source (1.0.0.rc4)
+    high_voltage (1.2.4)
     hike (1.2.3)
     hirb (0.7.1)
     http_parser.rb (0.6.0.beta.2)
@@ -321,6 +322,7 @@ DEPENDENCIES
   guard
   guard-rspec
   handlebars-source (= 1.0.0.rc4)
+  high_voltage
   jazz_hands
   jbuilder (~> 1.0.1)
   jquery-rails

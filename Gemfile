@@ -22,6 +22,8 @@ gem 'sinatra', '>= 1.3.0', :require => nil
 gem 'handlebars-source', '1.0.0.rc4'
 gem "ember-rails", github: 'emberjs/ember-rails'
 
+gem 'high_voltage'
+
 # authentication/authorization
 gem 'devise'
 gem 'cancan'
