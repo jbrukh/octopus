@@ -5,7 +5,7 @@ belongsTo = Ember.belongsTo
 App.LocalRecording = Ember.Model.extend
   id: attr()
   file: attr()
-  lastModified: attr()
+  lastModified: attr(UnixDate)
   sizeBytes: attr()
 
 App.LocalRecording.camelizeKeys = true

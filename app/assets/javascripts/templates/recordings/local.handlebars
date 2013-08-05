@@ -8,8 +8,8 @@
   <table class="table table-striped table-hover table-list">
     <thead>
       <tr>
+        <th>Created At</th>
         <th>File</th>
-        <th>Last Modified</th>
         <th>Size</th>
         <th></th>
       </tr>
@@ -17,8 +17,8 @@
     <tbody>
       {{#each controller}}
         <tr>
+          <td>{{timeSince lastModified}}</td>
           <td>{{file}}</td>
-          <td>{{lastModified}}</td>
           <td>{{sizeBytes}}</td>
           <td>
             <div class="pull-right">
