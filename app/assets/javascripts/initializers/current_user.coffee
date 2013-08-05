@@ -9,9 +9,9 @@ Ember.Application.initializer
       # parsed the current-user meta tag
       parsed = JSON.parse(curretUserAttributes)
 
-      # load and fetch the logged in user
-      object = store.load(App.User, parsed)
-      user = App.User.find(object.id)
+      # create a load the user
+      user = App.User.create()
+      user.load(parsed)
 
       # set an auth_token header on every request
       # which will be used by the API to authenticate
