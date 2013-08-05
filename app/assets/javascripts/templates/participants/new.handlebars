@@ -5,12 +5,12 @@
   </ul>
 </div>
 
-{{#unless model.isValid}}
+{{#if hasValidationErrors}}
   <div class="alert alert-error">
     Record is invalid.
     {{errors}}
   </div>
-{{/unless}}
+{{/if}}
 
 <form class="form-horizontal">
   <fieldset>
