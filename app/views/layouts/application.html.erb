@@ -10,7 +10,6 @@
     <link rel="shortcut icon" href="<%= image_path "favicon.png" %>" />
   </head>
   <body>
-  <div class="wrapper">
     <div class="navbar navbar-static-top">
       <div class="navbar-inner">
         <%= link_to 'Octopus', root_url, class: 'navbar-brand' %>
@@ -47,14 +46,16 @@
       <% end %>
 
       <%= yield %>
+
+      <footer>
+        <div class="pull-right">
+          <%= link_to 'Contact Us', page_path('contact_us') %> |
+          <%= link_to 'FAQ', page_path('faq') %>
+        </div>
+
+        Copyright &copy; 2013. East River Labs. All rights reserved.<br/>
+        AvatarEEG is a registered trademark of Avatar EEG Solutions, Inc.
+      </footer>
     </div>
-  </div>
-     <footer>
-      <div class="container text-center">
-        <span class="footer-text">
-          Copyright (c) 2013. East River Labs. All rights reserved. AvatarEEG is a registered trademark of Avatar EEG Solutions, Inc. <%= link_to 'Contact Us', page_path('contact_us') %>
-        </span>
-      </div
-    </footer>
   </body>
 </html>

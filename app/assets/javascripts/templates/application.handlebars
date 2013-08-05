@@ -16,15 +16,11 @@
   {{else}}
     {{outlet}}
   {{/unless}}
-</div>
 
-{{#if currentUser.isSignedIn}}
-  <div class="container">
+  {{#if currentUser.isSignedIn}}
     <footer>
-      <small>
-        signed in as {{currentUser.email}}/{{currentUser.role}}<br/>
-        &copy; octopus 2013
-      </small>
+      Copyright &copy; East River Labs 2013<br/>
+      AvatarEEG is a registered trademark of Avatar EEG Solutions, Inc.
     </footer>
-  </div>
-{{/if}}
+  {{/if}}
+</div>

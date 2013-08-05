@@ -3,10 +3,13 @@
     <h1>Biometrics at your fingertips.</h1>
   </div>
 </div>
+
 <div class="row">
   <div class="col-lg-4 text-center">
-    <a href="http://www.avatareeg.com" target="_blank"><%= image_tag "avatareeg.jpg", id: "avatareeg-image" %></a>
-   </div>
+    <a href="http://www.avatareeg.com" target="_blank">
+      <%= image_tag "avatareeg.jpg", id: "avatareeg-image" %>
+    </a>
+  </div>
   <div class="col-lg-4 text-center">
     <%= image_tag "data.png", id: "data-image" %>
   </div>
@@ -14,23 +17,27 @@
     <%= image_tag "recordings.png", id: "recordings-image" %>
   </div>
 </div>
+
 <div class="row">
-    <div class="col-lg-4">
-       <h3>Record biometrics right in your browser using the <a href="http://www.avatareeg.com" target="_blank">Avatar EEG</a>.</h3>
-    </div>
-    <div class="col-lg-4">
-      <h3>
-          Observe your data streaming in real time.
-      </h3>
-    </div>
-    <div class="col-lg-4">
-       <h3>
-        Organize and download your data from any computer.
-      </h3>
-    </div>
+  <div class="col-lg-4">
+    <h3>
+      Record biometrics right in your browser using the <a href="http://www.avatareeg.com" target="_blank">Avatar EEG</a>.
+    </h3>
+  </div>
+  <div class="col-lg-4">
+    <h3>
+      Observe your data streaming in real time.
+    </h3>
+  </div>
+  <div class="col-lg-4">
+    <h3>
+      Organize and download your data from any computer.
+    </h3>
+  </div>
 </div>
+
 <div class="row">
-    <div class="col-lg-4">
+  <div class="col-lg-4">
     <p>
       The Avatar EEG is portable Bluetooth device suitable for research-grade EEG, EOG, EMG, and ECG on up to 8 channels. Using the <%= link_to 'Octopus Connector', connectors_url %>, you can stream data from the Avatar onto the Octopus platform, directly from your browser.
     </p>
@@ -38,14 +45,20 @@
       <%= link_to 'See what other devices we support', page_url('faq') %>&nbsp;&nbsp;
       <span class="call-to-action icon-chevron-right"></span>
     </p>
-    </div>
-    <div class="col-lg-4">
-      <p>You can annotate your data with tags or create profiles for the participants of your experiments.</p>
-    </div>
-    <div class="col-lg-4">
-      <p>For data you wish to keep private, use the <%= link_to 'Local storage', page_url('faq') %> mode so that it never leaves your machine.</p>
-    </div>
+  </div>
+  <div class="col-lg-4">
+    <p>
+      You can annotate your data with tags or create profiles for the participants of your experiments.
+    </p>
+  </div>
+  <div class="col-lg-4">
+    <p>
+      For data you wish to keep private, use the <%= link_to 'Local storage', page_url('faq') %>
+      mode so that it never leaves your machine.
+    </p>
+  </div>
 </div>
+
 <hr/>
 
 <div class="row">
@@ -111,6 +124,3 @@
       } %>
   </div>
 </div>
-
-<hr/>
-
