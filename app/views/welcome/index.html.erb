@@ -32,17 +32,18 @@
 <div class="row">
     <div class="col-lg-4">
     <p>
-      The Avatar EEG is portable Bluetooth device suitable for research-grade EEG, EOG, EMG, and ECG on up to 8 channels. Using the <a href="/connectors">Octopus Connector</a>, you can stream data from the Avatar onto the Octopus platform, directly from your browser.
+      The Avatar EEG is portable Bluetooth device suitable for research-grade EEG, EOG, EMG, and ECG on up to 8 channels. Using the <%= link_to 'Octopus Connector', connectors_url %>, you can stream data from the Avatar onto the Octopus platform, directly from your browser.
     </p>
     <p>
-        <a href="/faq">See what other devices we support</a>&nbsp;&nbsp;<span class="call-to-action icon-chevron-right"></span>
+      <%= link_to 'See what other devices we support', page_url('faq') %>&nbsp;&nbsp;
+      <span class="call-to-action icon-chevron-right"></span>
     </p>
     </div>
     <div class="col-lg-4">
       <p>You can annotate your data with tags or create profiles for the participants of your experiments.</p>
     </div>
     <div class="col-lg-4">
-      <p>For data you wish to keep private, use the <a href="/faq">Local Storage</a> mode so that it never leaves your machine.</p>
+      <p>For data you wish to keep private, use the <%= link_to 'Local storage', page_url('faq') %> mode so that it never leaves your machine.</p>
     </div>
 </div>
 <hr/>
