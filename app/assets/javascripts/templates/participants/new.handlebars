@@ -62,31 +62,38 @@
     <legend>Extra Detail</legend>
 
     {{#each model.properties}}
-      <div class="control-group">
-        <label class="control-label">{{name}}</label>
-        <div class="controls">
-          <div class="input-append">
-            {{input value=value type=text}}
-            <span class="add-on">
-              <i class="icon-trash clickable" {{action removeProperty this}}></i>
+      <div class="form-group">
+        <label class="col-lg-2 control-label">{{name}}</label>
+        <div class="col-lg-4">
+          <div class="input-group">
+            {{input value=value type=text class='form-control'}}
+            <span class="input-group-btn">
+            <button class="btn btn-default" type="button" {{action removeProperty this}}>
+             <i class="icon-trash"></i>
+            </button>
             </span>
           </div>
         </div>
       </div>
     {{/each}}
 
-    <div class="control-group">
-      <label class="control-label"></label>
-      <div class="controls">
-        {{input value=propertyName type=text}}
-        <a href="#" class="btn btn-info" {{bindAttr class="isValidProperty::disabled"}} {{action addProperty}}>
-          <i class="icon-plus"></i> Add Field
-        </a>
+    <div class="form-group">
+      <div class="col-lg-offset-2 col-lg-4">
+        <div class="input-group">
+          {{input value=propertyName type=text class='form-control'}}
+          <span class="input-group-btn">
+            <button class="btn btn-default" type="button" {{bindAttr class="isValidProperty::disabled"}} {{action addProperty}}>
+             <i class="icon-plus"></i> Add Field
+            </button>
+          </span>
+        </div>
       </div>
     </div>
   </fieldset>
 
-  <div class="form-actions">
-    <button type="submit" class="btn btn-primary" {{action save}}>Create Participant</button>
+  <div class="form-group">
+    <div class="col-lg-offset-2 col-lg-10">
+      <button type="submit" class="btn btn-primary" {{action save}}>Create Participant</button>
+    </div>
   </div>
 </form>

@@ -15,7 +15,9 @@
   <div class="col-lg-3">
     <div class="pull-right">
       {{#if canRecord}}
-        {{#linkTo 'recordings.new' class='btn btn-success'}}New Recording{{/linkTo}}
+        {{#linkTo 'recordings.new' class='btn btn-success'}}
+          <i class="icon-plus"></i>&nbsp;New Recording
+        {{/linkTo}}
       {{else}}
         <button id="cant-record" class="btn" disabled="disabled" title="You cannot record, unless the collector is running.">
           <i class="icon-ban-circle"></i>&nbsp;New Recording
