@@ -49,7 +49,9 @@
               {{#unless isUploading}}
                 {{#linkTo 'recording.cloud' this class='btn btn-table btn-success'}}Explore{{/linkTo}}
               {{/unless}}
-              <a href="#" class="btn btn-table btn-danger" {{action destroy this}}>Delete</a>
+              <a href="#" class="btn btn-table btn-danger" {{action destroy this}}>
+                <i class="icon-trash"></i>
+              </a>
             </div>
           </td>
         </tr>
