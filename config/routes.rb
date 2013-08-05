@@ -8,7 +8,8 @@ Ruby::Application.routes.draw do
   # marketing routes
   resources :features
   resources :connectors
-
+  resources :contactus
+  
   # api routes
   namespace :api do
     resources :participants
