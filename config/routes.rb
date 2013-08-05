@@ -7,6 +7,9 @@ Ruby::Application.routes.draw do
 
   # marketing routes
   resources :features
+  resources :connectors
+  resources :contactus
+  resources :faq
 
   # api routes
   namespace :api do
