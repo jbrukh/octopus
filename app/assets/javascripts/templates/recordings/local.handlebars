@@ -17,7 +17,9 @@
     <tbody>
       {{#each controller}}
         <tr>
-          <td>{{timeSince lastModified}}</td>
+          <td>
+            <small>{{timeSince lastModified}}</small>
+          </td>
           <td>{{file}}</td>
           <td>{{sizeBytes}}</td>
           <td>
