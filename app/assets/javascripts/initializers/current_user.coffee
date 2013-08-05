@@ -9,9 +9,11 @@ Ember.Application.initializer
       # parsed the current-user meta tag
       parsed = JSON.parse(curretUserAttributes)
 
+      debugger
+
       # create a load the user
       user = App.User.create()
-      user.load(parsed)
+      user.load(parsed.id, parsed)
 
       # set an auth_token header on every request
       # which will be used by the API to authenticate
@@ -22,5 +24,5 @@ Ember.Application.initializer
       });
 
       # set current user on every controller
-      controller = container.lookup('controller:currentUser').set('content', user)
+      container.lookup('controller:currentUser').set('content', user)
       container.typeInjection('controller', 'currentUser', 'controller:currentUser')

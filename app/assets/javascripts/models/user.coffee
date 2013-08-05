@@ -1,6 +1,7 @@
 attr = Ember.attr
 
 App.User = Ember.Model.extend
+  id:                   attr()
   email:                attr()
   role:                 attr()
   password:             attr()
