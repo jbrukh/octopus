@@ -22,7 +22,14 @@ gem 'sinatra', '>= 1.3.0', :require => nil
 gem 'handlebars-source', '1.0.0.rc4'
 gem "ember-rails", github: 'emberjs/ember-rails'
 
+# static site plugins
 gem 'high_voltage'
+
+# active admin
+gem 'activeadmin',         github: 'gregbell/active_admin', branch: 'rails4'
+gem 'ransack',             github: 'ernie/ransack',         branch: 'rails-4'
+gem 'inherited_resources', github: 'josevalim/inherited_resources'
+gem 'formtastic',          github: 'justinfrench/formtastic'
 
 # authentication/authorization
 gem 'devise'
