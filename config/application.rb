@@ -26,6 +26,11 @@ module Ruby
     config.railties_order = [:main_app, :all, Ember::Rails::Engine]
 
     # additional asset to precompile
-    config.assets.precompile += ['octopus.js', 'octopus/octopus.css']
+    config.assets.precompile += [
+        # octopus assets
+        'octopus.js', 'octopus/octopus.css',
+
+        # active admin assets
+        'active_admin.css', 'active_admin/print.css', 'active_admin.js']
   end
 end
