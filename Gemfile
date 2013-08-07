@@ -47,8 +47,8 @@ gem 'redis'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'sass-rails',   '~> 4.0.0.rc1'
-  gem 'coffee-rails', '~> 4.0.0.rc1'
+  gem 'sass-rails'
+  gem 'coffee-rails'
 
   gem "font-awesome-rails"
 

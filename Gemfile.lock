@@ -376,7 +376,7 @@ DEPENDENCIES
   bindata
   binding_of_caller
   cancan
-  coffee-rails (~> 4.0.0.rc1)
+  coffee-rails
   devise
   em-http-request
   ember-rails!
@@ -404,7 +404,7 @@ DEPENDENCIES
   rb-inotify
   redis
   rspec-rails (~> 2.0)
-  sass-rails (~> 4.0.0.rc1)
+  sass-rails
   shoulda-matchers
   sidekiq
   sinatra (>= 1.3.0)
