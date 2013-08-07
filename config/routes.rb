@@ -4,6 +4,7 @@ Ruby::Application.routes.draw do
 
   # register devise routes and add override for registrations
   devise_for :users, :controllers => { :registrations => "registrations" }
+  ActiveAdmin.routes(self)
 
   # register sidekiq for running background tasks
   mount Sidekiq::Web => '/sidekiq'

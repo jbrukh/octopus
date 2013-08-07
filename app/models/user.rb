@@ -9,4 +9,8 @@ class User < ActiveRecord::Base
          :token_authenticatable, :confirmable, :lockable
 
   before_create :reset_authentication_token
+
+  def admin?
+    self.role == 'admin'
+  end
 end
