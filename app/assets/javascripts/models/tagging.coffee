@@ -1,8 +1,10 @@
-App.Tagging = DS.Model.extend
+attr = Ember.attr
 
-  name:         DS.attr 'string'
-  fromMs:       DS.attr 'number'
-  toMs:         DS.attr 'number'
+App.Tagging = Ember.Model.extend
+
+  name:         attr()
+  fromMs:       attr(Number)
+  toMs:         attr(Number)
 
   updateFromTo: (->
     extent = @get('extent')

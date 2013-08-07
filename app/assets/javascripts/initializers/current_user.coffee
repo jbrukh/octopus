@@ -9,8 +9,6 @@ Ember.Application.initializer
       # parsed the current-user meta tag
       parsed = JSON.parse(curretUserAttributes)
 
-      debugger
-
       # create a load the user
       user = App.User.create()
       user.load(parsed.id, parsed)
