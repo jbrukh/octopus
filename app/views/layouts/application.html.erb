@@ -25,7 +25,6 @@
 
             <%= link_to 'sign out', destroy_user_session_url, :method => :delete, :class => 'btn btn-info navbar-btn'  %>
           <% else %>
-            <%= link_to 'sign up', new_user_registration_url, :class => "btn btn-default navbar-btn" %>
             <%= link_to 'sign in', new_user_session_url, :class => "btn btn-default navbar-btn" %>
           <% end %>
         </div>

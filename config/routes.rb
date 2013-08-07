@@ -2,7 +2,10 @@ require 'sidekiq/web'
 
 Ruby::Application.routes.draw do
 
-  devise_for :users
+  # register devise routes and add override for registrations
+  devise_for :users, :controllers => { :registrations => "registrations" }
+
+  # register sidekiq for running background tasks
   mount Sidekiq::Web => '/sidekiq'
 
   # marketing routes
