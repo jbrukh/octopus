@@ -1,7 +1,6 @@
 describe 'App.Tagging', ->
   beforeEach ->
-    App.Store = DS.Store.extend {revision: 12}
-    @tag = App.Tagging.createRecord()
+    @tag = App.Tagging.create()
 
   describe '#extent', ->
     beforeEach ->

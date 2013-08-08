@@ -16,8 +16,7 @@ files = [
   'vendor/moment.js',
 
   'octopus.js',
-  'store.coffee',
-  'lib/*',
+  'lib/**/*',
   'models/*',
   'controllers/*',
 

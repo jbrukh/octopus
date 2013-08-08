@@ -1,4 +1,4 @@
-describe 'App.PropertiesTransform', ->
+describe 'Properties', ->
   it 'serializes properties into an object', ->
     properties = Em.A []
 
@@ -10,16 +10,16 @@ describe 'App.PropertiesTransform', ->
       name: 'property2'
       value: 'value2'
 
-    serialized = App.PropertiesTransform.serialize(properties)
+    serialized = Properties.serialize(properties)
     expect(serialized['property1']).toEqual('value1')
     expect(serialized['property2']).toEqual('value2')
 
   it 'serializes empty object into a blank object', ->
-    serialized = App.PropertiesTransform.serialize(null)
+    serialized = Properties.serialize(null)
     expect(Object.keys(serialized).length).toEqual(0)
 
   it 'deserializes an object into properties', ->
-    deserialized = App.PropertiesTransform.deserialize
+    deserialized = Properties.deserialize
       property1: 'value1'
       property2: 'value2'
     expect(deserialized.length).toEqual(2)

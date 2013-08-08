@@ -4,3 +4,7 @@
 </ul>
 
 local recording {{id}} {{lastModified}}
+
+{{#if recordingData.isLoaded}}
+  {{view App.ResultDataGraphView resultDataBinding=recordingData}}
+{{/if}}
