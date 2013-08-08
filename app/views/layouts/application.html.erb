@@ -23,7 +23,7 @@
           <div class="pull-right">
             <% if user_signed_in? %>
               <p class="navbar-text">
-                Signed in as <strong><%= current_user.email %></strong>
+                Signed in as <strong><%= link_to current_user.email, edit_user_registration_url() %></strong>
               </p>
               <% if current_user.role == 'admin' %>
                 <%= link_to '<span class="icon-rocket"></span>&nbsp;Launch Octopus'.html_safe, octopus_index_url, class: 'btn btn-primary navbar-btn' %>
