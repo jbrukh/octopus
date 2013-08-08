@@ -12,21 +12,25 @@
   <body>
     <div class="navbar navbar-static-top">
       <div class="navbar-inner">
-        <%= link_to 'Octopus', root_url, class: 'navbar-brand' %>
+        <div class="container">
+          <%= link_to 'Octopus', root_url, class: 'navbar-brand' %>
 
-        <ul class="nav navbar-nav"></ul>
+          <ul class="nav navbar-nav">
+          </ul>
 
-        <div class="pull-right">
-          <% if user_signed_in? %>
-
-            <% if current_user.role == 'admin' %>
-              <%= link_to '<span class="icon-rocket"></span>&nbsp;Launch Octopus'.html_safe, octopus_index_url, class: 'btn btn-primary navbar-btn' %>
+          <div class="pull-right">
+            <% if user_signed_in? %>
+              <p class="navbar-text">
+                Signed in as <strong><%= current_user.email %></strong>
+              </p>
+              <% if current_user.role == 'admin' %>
+                <%= link_to '<span class="icon-rocket"></span>&nbsp;Launch Octopus'.html_safe, octopus_index_url, class: 'btn btn-primary navbar-btn' %>
+              <% end %>
+              <%= link_to 'sign out', destroy_user_session_url, :method => :delete, :class => 'btn btn-info navbar-btn'  %>
+            <% else %>
+              <%= link_to 'sign in', new_user_session_url, :class => "btn btn-info navbar-btn" %>
             <% end %>
-
-            <%= link_to 'sign out', destroy_user_session_url, :method => :delete, :class => 'btn btn-info navbar-btn'  %>
-          <% else %>
-            <%= link_to 'sign in', new_user_session_url, :class => "btn btn-default navbar-btn" %>
-          <% end %>
+          </div>
         </div>
       </div>
     </div>
