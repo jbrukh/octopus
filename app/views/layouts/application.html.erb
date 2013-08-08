@@ -30,6 +30,7 @@
               <% end %>
               <%= link_to 'sign out', destroy_user_session_url, :method => :delete, :class => 'btn btn-info navbar-btn'  %>
             <% else %>
+              <%= link_to 'request beta access', page_url('beta'), :class => "btn btn-success navbar-btn" %>
               <%= link_to 'sign in', new_user_session_url, :class => "btn btn-info navbar-btn" %>
             <% end %>
           </div>
