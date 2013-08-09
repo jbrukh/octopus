@@ -8,7 +8,7 @@ App.RecordingLocalController = Em.ObjectController.extend
 
     connector = @get 'connector'
     connector.send('repository', { operation: 'get', resource_id: resourceId }).then (data) =>
-      console.log data
+      resultData.populateFromDataView data
 
     resultData
   ).property('model')

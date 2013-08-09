@@ -9,7 +9,9 @@ App.RecordingData = Em.Object.extend
 
   populateFromArrayBuffer: (arrayBuffer) ->
     dataView = new DataView arrayBuffer
+    @populateFromDataView dataView
 
+  populateFromDataView: (dataView) ->
     start = new Date().getTime()
 
     header = @readHeader(dataView)
