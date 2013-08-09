@@ -2,7 +2,6 @@ Ember.Application.initializer
   name: 'currentUser'
 
   initialize: (container) ->
-    store = container.lookup('store:main')
     curretUserAttributes = $('meta[name="current-user"]').attr('content')
 
     if curretUserAttributes
