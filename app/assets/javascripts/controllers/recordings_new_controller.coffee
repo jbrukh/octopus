@@ -2,11 +2,11 @@ App.RecordingsNewController = Ember.Controller.extend Ember.Evented,
   duration: null
 
   start: ->
-    console.log 'starting experiment'
+    console.log 'starting recording'
     @get('dataAdapter').start()
 
   stop: ->
-    console.log 'stopping experiment'
+    console.log 'stopping recording'
     @set 'isRunning', false
     isRecording = @get('model.isRecording')
     if isRecording

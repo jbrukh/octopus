@@ -4,9 +4,6 @@ App.ApplicationController = Ember.Controller.extend
     window.location = "http://#{window.location.host}/users/sign_in"
 
   routeChanged: (->
-    console.log 'route changed'
-    return unless App.Environment == 'production'
     Em.run.next ->
-      console.log 'tracking pageview'
-      mixpanel.track_pageview()
+      analytics.track_pageview()
   ).observes('currentPath')
