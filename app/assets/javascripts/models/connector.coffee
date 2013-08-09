@@ -70,40 +70,41 @@ App.Connector = Em.Object.extend
   onMessage: (data) ->
     console.group 'Connector response'
 
-    @decode data, (callback, data) =>
-      @dispatch(callback, data)
+    # decode the data and then dispatch it
+    @decode data, (callbackId, data) =>
+      @dispatch(callbackId, data)
 
-  decode: (data, callback) ->
-    return @decodeString(data, callback) if @isString(data)
-    return @decodeBlob(data, callback) if data instanceof Blob
+  decode: (data, onDecode) ->
+    return @decodeString(data, onDecode) if @isString(data)
+    return @decodeBlob(data, onDecode) if data instanceof Blob
 
     type = Object.prototype.toString.call(data)
     throw "No decode available for type #{type}"
 
-  dispatch: (callback, response) ->
-    deferred = @callbacks[callback]
+  dispatch: (callbackId, response) ->
+    deferred = @callbacks[callbackId]
     # if we get a message from the connector which we
     # have no callback for, for example it might send us
     # a message without an ID for any reason, we should log
     # that fact and then not resolve a response handler
     if deferred == undefined
-      console.warn "Could not find deferred callback for id: #{callback}"
+      console.warn "Could not find deferred callback for id: #{callbackId}"
     else
-      delete @callbacks[callback]
+      delete @callbacks[callbackId]
       deferred.resolve(response)
     console.groupEnd()
 
-  decodeString: (string, callback) ->
+  decodeString: (string, onDecode) ->
     parsed = JSON.parse(string)
     console.debug parsed
-    callback(parsed.id, parsed)
+    onDecode(parsed.id, parsed)
 
-  decodeBlob: (blob, callback) ->
+  decodeBlob: (blob, onDecode) ->
     console.log blob
 
     fileReader = new FileReader()
     fileReader.onload = ->
-      callback('1234', @result)
+      onDecode('1234', @result)
 
     fileReader.readAsArrayBuffer blob
 
