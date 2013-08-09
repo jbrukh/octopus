@@ -110,10 +110,16 @@ App.Connector = Em.Object.extend
 
     fileReader = new FileReader()
     fileReader.onload = ->
+      # read the array buffer
       arrayBuffer = @result
-      dataView = new DataView arrayBuffer
+
+      # create a dataview to read the callback id
+      dataView = new DataView(arrayBuffer, 0, 4)
       callbackId = "" + dataView.getUint32(0, false)
-      onDecode(callbackId, @result)
+
+      # execute on decode with callback id, create dataview
+      # offset to actual data we care about
+      onDecode(callbackId, new DataView(arrayBuffer, 4))
 
     fileReader.readAsArrayBuffer blob
 
