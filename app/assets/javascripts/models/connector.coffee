@@ -70,28 +70,42 @@ App.Connector = Em.Object.extend
   onMessage: (data) ->
     console.group 'Connector response'
 
-    [callback, response] = @decode(data)
+    @decode data, (callback, data) =>
+      @dispatch(callback, data)
 
+  decode: (data, callback) ->
+    return @decodeString(data, callback) if @isString(data)
+    return @decodeBlob(data, callback) if data instanceof Blob
+
+    type = Object.prototype.toString.call(data)
+    throw "No decode available for type #{type}"
+
+  dispatch: (callback, response) ->
     deferred = @callbacks[callback]
     # if we get a message from the connector which we
     # have no callback for, for example it might send us
     # a message without an ID for any reason, we should log
     # that fact and then not resolve a response handler
     if deferred == undefined
-      console.warn "Could not find deferred callback for response..."
+      console.warn "Could not find deferred callback for id: #{callback}"
     else
       delete @callbacks[callback]
       deferred.resolve(response)
     console.groupEnd()
 
-  decode: (data) ->
-    if @isString(data)
-      parsed = JSON.parse(data)
-      console.debug parsed
-      return [parsed.id, JSON.parse(data)]
+  decodeString: (string, callback) ->
+    parsed = JSON.parse(string)
+    console.debug parsed
+    callback(parsed.id, parsed)
 
-    type = Object.prototype.toString.call(data)
-    throw "No decode available for type #{type}"
+  decodeBlob: (blob, callback) ->
+    console.log blob
+
+    fileReader = new FileReader()
+    fileReader.onload = ->
+      callback('1234', @result)
+
+    fileReader.readAsArrayBuffer blob
 
   isString: (o) ->
     typeof o == "string" || (typeof o == "object" && o.constructor == String)
