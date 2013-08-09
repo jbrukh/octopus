@@ -32,8 +32,8 @@ App.Connector = Em.Object.extend
       @onOpen()
 
     ws.onmessage = (evt) =>
-      response = JSON.parse(evt.data)
-      @onMessage(response)
+      data = evt.data
+      @onMessage(data)
 
     ws.onerror = () =>
       console.error "!!! Connector socket error..."
@@ -67,11 +67,12 @@ App.Connector = Em.Object.extend
 
     deferred
 
-  onMessage: (response) ->
+  onMessage: (data) ->
     console.group 'Connector response'
-    console.debug response
 
-    deferred = @callbacks[response.id]
+    [callback, response] = @decode(data)
+
+    deferred = @callbacks[callback]
     # if we get a message from the connector which we
     # have no callback for, for example it might send us
     # a message without an ID for any reason, we should log
@@ -79,9 +80,21 @@ App.Connector = Em.Object.extend
     if deferred == undefined
       console.warn "Could not find deferred callback for response..."
     else
-      delete @callbacks[response.id]
+      delete @callbacks[callback]
       deferred.resolve(response)
     console.groupEnd()
+
+  decode: (data) ->
+    if @isString(data)
+      parsed = JSON.parse(data)
+      console.debug parsed
+      return [parsed.id, JSON.parse(data)]
+
+    type = Object.prototype.toString.call(data)
+    throw "No decode available for type #{type}"
+
+  isString: (o) ->
+    typeof o == "string" || (typeof o == "object" && o.constructor == String)
 
   next: (message) ->
     # create a deferred callback which will be used

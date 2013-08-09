@@ -42,7 +42,7 @@ describe 'App.Connector', ->
     describe '#onMessage', ->
       beforeEach ->
         @connector.send('type', {id: 'abcd'})
-        @connector.onMessage({id: 'abcd'})
+        @connector.onMessage(JSON.stringify({id: 'abcd'}))
 
       it 'removes registered callback', ->
         expect(@connector.numCallbacks()).toEqual(0)
