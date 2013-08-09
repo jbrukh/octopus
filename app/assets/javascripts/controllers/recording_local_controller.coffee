@@ -7,10 +7,8 @@ App.RecordingLocalController = Em.ObjectController.extend
     console.log 'before load'
 
     connector = @get 'connector'
-    connector.send('repository', { operation: 'get', resource_id: resourceId }, 'binary').then (data) =>
+    connector.send('repository', { operation: 'get', resource_id: resourceId }).then (data) =>
       console.log data
-
-    #resultData.populateFromArrayBuffer xhr.response
 
     resultData
   ).property('model')

@@ -54,7 +54,13 @@ App.Connector = Em.Object.extend
 
     # cast message id as a string and set the message type
     # only assign an id if hasn't already been set for testing
-    message.id = "" + new Date().getTime() if message.id == undefined
+    # use the number of ms since midnight as the identifier
+
+    d = new Date()
+    d.setHours(0,0,0,0)
+    msSinceMidnight = new Date() - d
+
+    message.id = "" + msSinceMidnight if message.id == undefined
     message.message_type = message_type
 
     deferred = @next(message)
@@ -104,7 +110,10 @@ App.Connector = Em.Object.extend
 
     fileReader = new FileReader()
     fileReader.onload = ->
-      onDecode('1234', @result)
+      arrayBuffer = @result
+      dataView = new DataView arrayBuffer
+      callbackId = "" + dataView.getUint32(0, false)
+      onDecode(callbackId, @result)
 
     fileReader.readAsArrayBuffer blob
 
