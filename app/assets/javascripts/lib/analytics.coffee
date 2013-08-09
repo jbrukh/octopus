@@ -1,7 +1,7 @@
 analytics =
-  track: (event) ->
+  track: (event_name, properties = {}}) ->
     return unless App.Environment == 'production'
-    mixpanel.track(event)
+    mixpanel.track(event_name, properties)
 
   track_pageview: ->
     return unless App.Environment == 'production'
