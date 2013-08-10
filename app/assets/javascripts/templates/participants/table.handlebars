@@ -16,7 +16,9 @@
         <td>
           <div class="pull-right">
             <button class="btn btn-table btn-info" {{action select this bubbles=false}}>Select</button>
-            <a href="#" class="btn btn-table btn-danger" {{action destroyParticipant this bubbles=false}}>Delete</a>
+            <a href="#" class="btn btn-table btn-danger" {{action destroyParticipant this bubbles=false}}>
+              <i class="icon-trash"></i>
+            </a>
           </div>
         </td>
       {{/linkTo}}
