@@ -25,7 +25,7 @@
 //= require_self
 //= require brain
 
-ENV.HELPER_PARAM_LOOKUPS = true;
+Ember.ENV.HELPER_PARAM_LOOKUPS = true;
 
 App = Ember.Application.create({
   LOG_TRANSITIONS: true,

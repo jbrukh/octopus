@@ -1,0 +1,53 @@
+<div class="row">
+  <div class="col-lg-4 col-lg-offset-8">
+    <form class="form-horizontal" {{action beginRecord on="submit"}}>
+      {{#if dataAdapter.isRunning}}
+        {{#unless model.isRecording}}
+          <div class="input-group">
+            {{input value=duration
+                    type=number
+                    placeholder="Optional Duration"
+                    class="form-control"
+                    type="text"}}
+
+            <span class="input-group-btn">
+              <button class="btn btn-danger" type="button" {{action beginRecord}}>
+                {{#if duration}}}
+                  <i class="icon-time"></i> Timed
+                {{else}}
+                  <i class="icon-circle"></i> Record
+                {{/if}}
+              </button>
+            </span>
+          </div>
+        {{else}}
+          {{#unless duration}}
+            <a {{action endRecord}} class="btn btn-danger">
+              <i class="icon-circle"></i> End
+            </a>
+          {{/unless}}
+        {{/unless}}
+      {{/if}}
+    </form>
+  </div>
+</div>
+
+<hr/>
+
+<div class="graph-container">
+  {{#if dataAdapter.isNegotiating}}
+    <p>negotiating</p>
+  {{/if}}
+
+  {{#if dataAdapter.isFailed}}
+    <p>{{dataAdapter.lastErrorMessage}}</p>
+  {{/if}}
+
+  {{#if dataAdapter.isRunning}}
+    <div class="well-small">
+      Channels: <span class="label label-info">{{dataAdapter.channels}}</span> Graph Resolution:  <span class="label label-info">{{dataAdapter.resolution}} hz</span> Frames: <span class="label label-info">{{dataAdapter.receivedFrames}}</span>
+    </div>
+  {{/if}}
+
+  {{view App.DataAdapterGraphView dataAdapterBinding=dataAdapter}}
+</div>

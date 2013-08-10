@@ -11,7 +11,6 @@ files = [
   'vendor/jquery-1.9.1.js',
   'vendor/handlebars.js',
   'vendor/ember-latest.js',
-  'vendor/ember-data-latest.js',
   'vendor/ember-model-latest.js',
   'vendor/moment.js',
 

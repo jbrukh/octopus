@@ -163,10 +163,10 @@ App.ResultDataGraphView = Em.View.extend
 
   onBrush: (svg, x, x2, brush) ->
     domain = if brush.empty()
-      @set 'tagging.extent', null
+      @set 'tagging.extent', null if @tagging != null
       x2.domain()
     else
-      @set 'tagging.extent', brush.extent()
+      @set 'tagging.extent', brush.extent() if @tagging != null
       brush.extent()
 
     x.domain(domain)

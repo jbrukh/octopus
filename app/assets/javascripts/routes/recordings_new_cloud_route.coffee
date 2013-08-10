@@ -55,4 +55,4 @@ App.RecordingsNewCloudRoute = Ember.Route.extend
         }
 
         @get('connector').send('upload', payload).then (data) =>
-          @transitionTo 'recordings.index'
+          @transitionTo 'recordings.cloud'
