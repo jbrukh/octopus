@@ -17,6 +17,7 @@ App.Settings.reopenClass
   createRecord: ->
     App.Settings.create
       adapters: Em.Object.create
+        selected: 'live'
         live: Em.Object.create
           url: 'ws://localhost:8000/device'
       graphs: Em.Object.create
