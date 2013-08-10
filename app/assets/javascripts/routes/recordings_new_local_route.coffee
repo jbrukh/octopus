@@ -32,6 +32,7 @@ App.RecordingsNewLocalRoute = Ember.Route.extend
       @get('connector').send('record', {record: false}).then (data) =>
         console.debug 'end record received'
         @currentModel.finish(data)
+        analytics.track 'create recording', { location: 'local' }
         @send('upload')
 
     upload: ->
