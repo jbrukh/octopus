@@ -1,1 +1,8 @@
 $(document).on(".dropdown-toggle").dropdown()
+
+$(->
+  $('body').tooltip
+    selector: '[rel=tooltip]'
+    placement: 'bottom'
+)
+
