@@ -16,9 +16,6 @@ gem 'sinatra', '>= 1.3.0', :require => nil
 # when ember is released
 #gem 'ember-source', '1.0.0.rc3'
 
-# ember data isn't up to date
-# once it is, re-add this and remove the vendor reference
-# gem 'ember-data-source'
 gem 'handlebars-source', '1.0.0.rc4'
 gem "ember-rails", github: 'emberjs/ember-rails'
 

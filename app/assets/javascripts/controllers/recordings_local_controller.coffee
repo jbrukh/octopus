@@ -8,3 +8,7 @@ App.RecordingsLocalController = Em.ArrayController.extend
 
   destroy: (recording) ->
     recording.deleteRecord()
+
+  newRecordingRoute: (->
+    'recordings.new.local'
+  ).property()

@@ -8,3 +8,7 @@ App.RecordingsCloudController = Em.ArrayController.extend
 
   destroy: (recording) ->
     recording.deleteRecord()
+
+  newRecordingRoute: (->
+    'recordings.new.cloud'
+  ).property()

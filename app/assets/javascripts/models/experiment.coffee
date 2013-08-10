@@ -1,11 +1,14 @@
-App.Experiment = DS.Model.extend
-  media: DS.belongsTo('App.Media')
+attr = Ember.attr
+belongsTo = Ember.belongsTo
 
-  name:         DS.attr 'string'
-  description:  DS.attr 'string'
-  owner:        DS.attr 'string'
-  created_at:   DS.attr 'date'
-  updated_at:   DS.attr 'date'
+App.Experiment = Ember.Model.extend
+  media:        belongsTo('App.Media')
+
+  name:         attr()
+  description:  attr()
+  owner:        attr()
+  created_at:   attr(Date)
+  updated_at:   attr(Date)
 
   startTrial: (participant) ->
     trial = App.Trial.create

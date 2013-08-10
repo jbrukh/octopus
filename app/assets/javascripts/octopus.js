@@ -16,7 +16,6 @@
 //= require vendor/d3.v3
 //= require vendor/ember-control
 //= require vendor/ember-latest
-//= require vendor/ember-data-latest
 //= require vendor/ember-model-latest
 //= require vendor/moment
 //= require vendor/bootstrap
@@ -25,6 +24,8 @@
 //= require bootstrapped
 //= require_self
 //= require brain
+
+ENV.HELPER_PARAM_LOOKUPS = true;
 
 App = Ember.Application.create({
   LOG_TRANSITIONS: true,
