@@ -1,40 +1,46 @@
 {{partial 'recordings/header'}}
 
-{{#unless controller.length}}
-  <div class="alert alert-info">
-    There are no recordings.
+{{#unless connector.isConnected}}
+  <div class="alert alert-warning">
+    You cannot view local recordings unless the connector is running.
   </div>
 {{else}}
-  <table class="table table-striped table-hover table-list">
-    <thead>
-      <tr>
-        <th>Created At</th>
-        <th>File</th>
-        <th>Size</th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
-      {{#each controller}}
+  {{#unless controller.length}}
+    <div class="alert alert-info">
+      There are no recordings.
+    </div>
+  {{else}}
+    <table class="table table-striped table-hover table-list">
+      <thead>
         <tr>
-          <td>
-            <small>{{timeSince lastModified}}</small>
-          </td>
-          <td>{{file}}</td>
-          <td>{{sizeBytes}}</td>
-          <td>
-            <div class="pull-right">
-              {{#linkTo 'recording.local' this class='btn btn-table btn-success'}}Explore{{/linkTo}}
-              <a href="#" class="btn btn-table btn-success">
-                <i class="icon-cloud-upload"></i>
-              </a>
-              <a href="#" class="btn btn-table btn-danger" {{action destroy this}}>
-                <i class="icon-trash"></i>
-              </a>
-            </div>
-          </td>
+          <th>Created At</th>
+          <th>File</th>
+          <th>Size</th>
+          <th></th>
         </tr>
-      {{/each}}
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+        {{#each controller}}
+          <tr>
+            <td>
+              <small>{{timeSince lastModified}}</small>
+            </td>
+            <td>{{file}}</td>
+            <td>{{sizeBytes}}</td>
+            <td>
+              <div class="pull-right">
+                {{#linkTo 'recording.local' this class='btn btn-table btn-success'}}Explore{{/linkTo}}
+                <a href="#" class="btn btn-table btn-success">
+                  <i class="icon-cloud-upload"></i>
+                </a>
+                <a href="#" class="btn btn-table btn-danger" {{action destroy this}}>
+                  <i class="icon-trash"></i>
+                </a>
+              </div>
+            </td>
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  {{/unless}}
 {{/unless}}
