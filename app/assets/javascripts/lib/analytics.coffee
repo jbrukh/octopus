@@ -5,13 +5,13 @@ analytics =
     email = user.get 'email'
     role = user.get 'role'
 
-    mixpanel.identify email
-    mixpanel.name_tag email
-
     mixpanel.people.set
       '$email': email
       '$last_login': new Date()
       'role': role
+
+    mixpanel.name_tag email
+    mixpanel.identify email
 
   track: (event_name, properties = {}) ->
     return unless App.Environment == 'production'
