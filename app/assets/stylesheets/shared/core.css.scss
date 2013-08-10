@@ -26,3 +26,13 @@ footer {
      -moz-border-radius: 2.5px;
           border-radius: 2.5px;
 }
+
+.btn-success {
+  background-color: #5C60B8;
+  border-color: #5C60B8;
+}
+
+.btn-success:hover, .btn-success:active, .btn-success:focus {
+  background-color: #4E529E;
+  border-color: #4E529E;
+}
