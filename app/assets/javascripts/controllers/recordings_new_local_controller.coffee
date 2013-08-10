@@ -37,4 +37,5 @@ App.RecordingsNewLocalController = Ember.Controller.extend Ember.Evented,
       if duration > 0
         connector.next(d).then (data) =>
           @get('model').finish(data)
+          analytics.track 'create recording', { location: 'local', type: 'timed' }
           @send('upload')

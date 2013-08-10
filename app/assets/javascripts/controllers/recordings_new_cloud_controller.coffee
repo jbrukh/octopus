@@ -36,5 +36,6 @@ App.RecordingsNewCloudController = Ember.Controller.extend Ember.Evented,
       # message in this correlated message chain
       if duration > 0
         connector.next(d).then (data) =>
+          analytics.track 'create recording', { location: 'cloud', type: 'timed' }
           @get('model').finish(data)
           @send('upload')
