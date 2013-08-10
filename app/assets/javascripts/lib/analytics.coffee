@@ -1,5 +1,5 @@
 analytics =
-  track: (event_name, properties = {}}) ->
+  track: (event_name, properties = {}) ->
     return unless App.Environment == 'production'
     mixpanel.track(event_name, properties)
 

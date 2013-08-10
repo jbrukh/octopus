@@ -18,7 +18,8 @@ App.Router.map ->
 
   # recordings
   @resource 'recordings', ->
-    @route 'new'
+    @route 'new.cloud', { path: '/new/cloud' }
+    @route 'new.local', { path: '/new/local' }
     @route 'cloud'
     @route 'local'
 

@@ -1,4 +1,4 @@
-App.RecordingsNewRoute = Ember.Route.extend
+App.RecordingsNewCloudRoute = Ember.Route.extend
   needs: ['currentParticipant']
 
   model: () ->
@@ -14,7 +14,7 @@ App.RecordingsNewRoute = Ember.Route.extend
     controller.set 'duration', ''
 
   activate: ->
-    controller = @controllerFor('recordings.new')
+    controller = @controllerFor('recordings.new.cloud')
     settings = App.Settings.find()
     connector = @get('connector')
 
@@ -25,12 +25,12 @@ App.RecordingsNewRoute = Ember.Route.extend
 
   deactivate: ->
     # if we have are currently recording then just stop the recording
-    controller = @controllerFor('recordings.new')
+    controller = @controllerFor('recordings.new.cloud')
     controller.stop()
 
   events:
     willTransition: (transition) ->
-      controller = @controllerFor('recordings.new')
+      controller = @controllerFor('recordings.new.cloud')
       if controller.get('model.isRecording') && !confirm('Are you sure you want to stop recording?')
         transition.abort()
 

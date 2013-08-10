@@ -1,4 +1,4 @@
-App.RecordingsNewController = Ember.Controller.extend Ember.Evented,
+App.RecordingsNewCloudController = Ember.Controller.extend Ember.Evented,
   duration: null
 
   start: ->

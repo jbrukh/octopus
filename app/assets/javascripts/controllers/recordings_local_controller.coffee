@@ -1,5 +1,5 @@
 App.RecordingsLocalController = Em.ArrayController.extend
-  sortProperties: ['createdAt']
+  sortProperties: ['lastModified']
   sortAscending:  false
 
   canRecord: (->
