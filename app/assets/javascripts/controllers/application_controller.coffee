@@ -5,5 +5,5 @@ App.ApplicationController = Ember.Controller.extend
 
   routeChanged: (->
     Em.run.next ->
-      analytics.track_pageview()
+      analytics.track_pageview(window.location.href)
   ).observes('currentPath')
