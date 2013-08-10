@@ -13,7 +13,7 @@ Ember.Application.initializer
       user.load(parsed.id, parsed)
 
       # identify this user with analytics
-      analytics.identify user.get('email')
+      analytics.identify user
 
       # set an auth_token header on every request
       # which will be used by the API to authenticate

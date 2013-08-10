@@ -1,7 +1,17 @@
 analytics =
-  identify: (identity) ->
+  identify: (user) ->
     return unless App.Environment == 'production'
-    mixpanel.identify identity
+
+    email = user.get 'email'
+    role = user.get 'role'
+
+    mixpanel.identify email
+    mixpanel.name_tag email
+
+    mixpanel.people.set
+      '$email': email
+      '$last_login': new Date()
+      'role': role
 
   track: (event_name, properties = {}) ->
     return unless App.Environment == 'production'
