@@ -4,56 +4,68 @@
   </h1>
   <hr/>
   <div class="row">
-    <div class="col-lg-4">
+    <div class="col-lg-3">
         <ul class="nav nav-list">
         <li class="active">
-          <a href="#">Getting Started </a>
+          <a href="#getting-started">Getting Started </a>
         </li>
         <li>
-          <a href="#">Tutorials</a>
+          <a href="#platforms">Supported Platforms and Devices</a>
         </li>
         <li>
-          <a href="#">Practice Editor</a>
+          <a href="#storage">Cloud and Local Storage</a>
         </li>
         <li>
-          <a href="#">Gallery</a>
-        </li>
-        <li>
-          <a href="#">Contact</a>
+          <a href="#contact-us">Contact Us</a>
         </li>
       </ul>
     </div>
-    <div class="col-lg-8">
-      hellos
+    <div class="col-lg-9">
+      <ul class="list-group">
+        <li class="list-group-item">
+          <a name="getting-started"></a>
+          <h2>Getting Started</h2>
+        </li>
+        <li class="list-group-item">
+          <a name="platforms"></a>
+          <h2>Supported Platforms and Devices</h2>
+        </li>
+        <li class="list-group-item">
+          <h3>What platforms does Octopus support?</h3>
+          <p>
+            You can access Octopus from any modern browser on any platform through <a href="http://octopusmetrics.com">http://octopusmetrics.com</a>. To interface hardware devices and create recordings, you will need to install the <a href="#connector">Octopus Connector</a>, which is currently available for <a href="/connectors">Mac OS X</a>.
+          </p>
+          <h3>Can I use Octopus with Windows or Linux?</h3>
+          <p>
+            We currently support Windows and Linux using a command line interface for the <a href="#connector">Octopus Connector</a>. Your machine will also need to have a Bluetooth interface. If you would like to use Octopus from a Windows or Linux machine, <a href="/contactus">let us know</a>.
+          </p>
+            <h3>What devices does Octopus support?</h3>
+          <p>
+            Octopus currently supports the <a href="http://avatareeg.com">Avatar EEG</a> and ThinkGear protocol for <a href="http://neurosky.com/">NeuroSky</a> devices.
+          </p>
+        </li>
+        <li class="list-group-item">
+          <a name="storage"></a>
+          <h2>Cloud and Local Storage</h2>
+        </li>
+        <li class="list-group-item">
+          <a name="contact-us"></a>
+          <h2>Contact Us</h2>
+        </li>
+        <li class="list-group-item">
+          <h3>I have questions about Octopus. Who do I contact?</h3>
+          <p>
+            If you have any questions about Octopus, please <%= link_to 'Contact Us', page_url('contact_us') %>.
+          </p>
+        </li>
+      </ul>
     </div>
   </div>
 </div>
 
 
 <!-- <div class="row">
-<div class="col-lg-4">
-  <ul class="list-group">
-    <li class="list-group-item">
-      <a href="#platforms">Supported Platforms</a>
-    </li>
-    <li class="list-group-item">
-      <a href="#devices">Supported Devices</a>
-    </li>
-    <li class="list-group-item">
-      <a href="#connectors">Octopus Connector</a>
-    </li>
-    <li class="list-group-item">
-      <a href="#setup">Setup</a>
-    </li>
-    <li class="list-group-item">
-      <a href="#storage">Cloud and Local Storage</a>
-    </li>
-    <li class="list-group-item">
-      π
-      <a href="#about">About</a>
-    </li>
-  </ul>
-</div>
+
 <div class="col-lg-8">
   <a name="access"></a>
   <h1>Access</h1>
@@ -66,41 +78,6 @@
   <br/>
   <hr/>
   <br/>
-  <a name="platforms"></a>
-  <h1>Supported Platforms</h1>
-  <h3>What platforms does Octopus support?</h3>
-  <p>
-    You can access Octopus from any modern browser on any platform through
-    <a href="http://octopusmetrics.com">http://octopusmetrics.com</a>
-    . To interface hardware devices and create recordings, you will need to install the
-    <a href="#connector">Octopus Connector</a>
-    , which is currently available for
-    <a href="/connectors">Mac OS X</a>
-    .
-  </p>
-  <h3>Can I use Octopus with Windows or Linux?</h3>
-  <p>
-    We currently support Windows and Linux using a command line interface for the
-    <a href="#connector">Octopus Connector</a>
-    . Your machine will also need to have a Bluetooth interface. If you would like to use Octopus from a Windows or Linux machine,
-    <a href="/contactus">let us know</a>
-    .
-  </p>
-  <br/>
-  <hr/>
-  <br/>
-  <h1>Supported Devices</h1>
-  <a name="devices"></a>
-  <h3>What devices does Octopus support?</h3>
-  <p>
-    Octopus currently supports the
-    <a href="http://avatareeg.com">Avatar EEG</a>
-    and ThinkGear protocol for
-    <a href="http://neurosky.com/">NeuroSky</a>
-    devices.
-  </p>
-  <br/>
-  <hr/>
   <br/>
   <a name="connectors"></a>
   <h3>What is the Octopus Connector?</h3>
