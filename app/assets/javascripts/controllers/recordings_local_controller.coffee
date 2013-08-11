@@ -1,13 +1,6 @@
-App.RecordingsLocalController = Em.ArrayController.extend
+App.RecordingsLocalController = Em.ArrayController.extend App.RecordableController,
   sortProperties: ['lastModified']
   sortAscending:  false
-
-  canRecord: (->
-    @get('connector.isConnected')
-  ).property('connector.isConnected')
-
-  destroy: (recording) ->
-    recording.deleteRecord()
 
   newRecordingRoute: (->
     'recordings.new.local'

@@ -1,13 +1,6 @@
-App.RecordingsCloudController = Em.ArrayController.extend
+App.RecordingsCloudController = Em.ArrayController.extend App.RecordableController,
   sortProperties: ['createdAt']
   sortAscending:  false
-
-  canRecord: (->
-    @get('connector.isConnected')
-  ).property('connector.isConnected')
-
-  destroy: (recording) ->
-    recording.deleteRecord()
 
   newRecordingRoute: (->
     'recordings.new.cloud'
