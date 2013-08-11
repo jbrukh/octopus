@@ -22,10 +22,21 @@ App.RecordingsNewLocalRoute = Ember.Route.extend
     controller.stop()
 
   events:
+    retryEndRecord: ->
+      controller = @controllerFor('recordings.new.local')
+      controller.get('lastTransition').retry()
+
     willTransition: (transition) ->
       controller = @controllerFor('recordings.new.local')
-      if controller.get('model.isRecording') && !confirm('Are you sure you want to stop recording?')
-        transition.abort()
+      # if we're not recording or we've previously confirmed the ability
+      # to transition then let the transition through
+      return if controller.get('confirmTransition')
+      return unless controller.get('model.isRecording')
+
+      console.log 'Currently recording, showing confirm transition message'
+      controller.set('confirmTransition', true)
+      controller.set('lastTransition', transition)
+      transition.abort()
 
     endRecord: ->
       console.log 'End Record'

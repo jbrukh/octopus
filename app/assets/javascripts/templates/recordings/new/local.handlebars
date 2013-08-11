@@ -22,9 +22,13 @@
           </div>
         {{else}}
           {{#unless duration}}
-            <a {{action endRecord}} class="btn btn-danger pull-right">
-              <i class="icon-circle"></i> End
-            </a>
+            {{#if confirmTransition}}
+              <a class="btn btn-default pull-right" {{action retryEndRecord}}>You are recording, are you sure?</a>
+            {{else}}
+              <a {{action endRecord}} class="btn btn-danger pull-right">
+                <i class="icon-circle"></i> End
+              </a>
+            {{/if}}
           {{/unless}}
         {{/unless}}
       {{/if}}
