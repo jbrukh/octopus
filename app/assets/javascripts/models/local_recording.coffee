@@ -8,6 +8,10 @@ App.LocalRecording = Ember.Model.extend App.Recordable,
   lastModified: attr(UnixDate)
   sizeBytes: attr()
 
+  location: (->
+    'local'
+  ).property()
+
 App.LocalRecording.camelizeKeys = true
 App.LocalRecording.adapter = App.ConnectorAdapter.create()
 App.LocalRecording.collectionKey = 'resource_infos'

@@ -1,4 +1,4 @@
-App.RecordableController = Ember.Mixin.create
+App.RecordableList = Ember.Mixin.create
   canRecord: (->
     @get('connector.isConnected')
   ).property('connector.isConnected')

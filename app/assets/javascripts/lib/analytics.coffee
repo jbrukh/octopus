@@ -14,6 +14,9 @@ analytics =
     mixpanel.identify email
 
   track: (event_name, properties = {}) ->
+    console.group "Analytics Track: #{event_name}"
+    console.debug properties
+    console.groupEnd()
     return unless App.Environment == 'production'
     mixpanel.track(event_name, properties)
 

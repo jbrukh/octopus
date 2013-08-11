@@ -28,6 +28,10 @@ App.Recording = Ember.Model.extend App.Recordable,
     @get('state') == 'waiting_for_data'
   ).property('state')
 
+  location: (->
+    'cloud'
+  ).property()
+
 App.Recording.url = "/api/recordings"
 App.Recording.rootKey = 'recording'
 App.Recording.collectionKey = 'recordings'
