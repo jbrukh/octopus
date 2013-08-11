@@ -1,0 +1,25 @@
+<div class="modal-header">
+  <button type="button" class="close" aria-hidden="true" {{action close target="view"}}>&times;</button>
+  <h4 class="modal-title">Edit Recording</h4>
+</div>
+
+<div class="modal-body">
+  <div class="control-group">
+    <label class="control-label">Name</label>
+    <div class="controls">
+      {{input value=newName type=text}}
+    </div>
+  </div>
+
+  <div class="control-group">
+    <label class="control-label">Description</label>
+    <div class="controls">
+      {{view Ember.TextArea valueBinding=newDescription class="textarea-modal-full"}}
+    </div>
+  </div>
+</div>
+
+<div class="modal-footer">
+  <a href="#" class="btn btn-default" {{action close target="view"}}>Close</a>
+  <a href="#" class="btn btn-primary" {{action saveEdit}}>Save changes</a>
+</div>

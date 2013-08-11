@@ -1,5 +1,4 @@
 App.RecordingLocalController = Em.ObjectController.extend
-
   recordingData: (->
     resourceId = @get 'model.id'
     resultData = App.RecordingData.create()

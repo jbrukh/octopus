@@ -1,8 +1,14 @@
-App.ModalView = Em.View.extend
-  classNames: 'modal fade'.w()
+App.ModalView = Ember.View.extend
+  layoutName: 'modal_layout'
 
   didInsertElement: ->
-     @$().modal 'show'
+    this.$('.modal-backdrop').addClass('in')
+    this.$('.modal').modal { backdrop: false }
 
-  willDestroyElement: ->
-    @$().modal 'hide'
+  close: ->
+    # send close to the controller when the modal has transitioned
+    # this wil happen when the close animation has completed
+    this.$('.modal').one "transitionend", (ev) =>
+      @controller.send('close')
+
+    this.$('.modal, .modal-backdrop').removeClass('in')

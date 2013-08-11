@@ -1,8 +1,8 @@
 App.RecordingCloudController = Em.ObjectController.extend
-  edit: ->
-    @set 'isEditing', true
-    @set 'newName', @get('name')
-    @set 'newDescription', @get('description')
+  #edit: ->
+  #  @set 'isEditing', true
+  #  @set 'newName', @get('name')
+  #  @set 'newDescription', @get('description')
 
   cancelEdit: ->
     @set 'isEditing', false
