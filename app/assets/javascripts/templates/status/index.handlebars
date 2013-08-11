@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-lg-10">
-    <h3>Connector</h3>
+    <h3>Status</h3>
   </div>
   <div class="col-lg-2">
     <div class="pull-right">
@@ -12,6 +12,24 @@
 </div>
 
 <hr/>
+
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th>User Information</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="col-lg-4">Email</td>
+        <td>{{currentUser.email}}</td>
+      </tr>
+      <tr>
+        <td>Role</td>
+        <td>{{currentUser.role}}</td>
+      </tr>
+    </tbody>
+</table>
 
 {{#unless connector.isConnected}}
   <div class="alert alert-error">
@@ -27,7 +45,7 @@
     </thead>
     <tbody>
       <tr>
-        <td>Status</td>
+        <td class="col-lg-4">Status</td>
         <td>
           {{#unless connector.isConnected}}
             <span class="label label-warning">{{connector.state}}</span>
