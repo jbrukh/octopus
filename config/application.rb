@@ -32,5 +32,7 @@ module Ruby
 
         # active admin assets
         'active_admin.css', 'active_admin/print.css', 'active_admin.js']
+
+    config.middleware.use "NoWww"
   end
 end
