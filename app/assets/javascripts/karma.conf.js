@@ -16,8 +16,8 @@ files = [
 
   'octopus.js',
   'lib/**/*',
-  'models/*',
-  'controllers/*',
+  'models/**/*',
+  'controllers/**/*',
 
   JASMINE,
   JASMINE_ADAPTER,
