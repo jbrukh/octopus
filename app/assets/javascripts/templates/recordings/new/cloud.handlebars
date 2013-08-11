@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="col-lg-4 col-lg-offset-8">
+  <div class="col-lg-6 col-lg-offset-6">
     <form class="form-horizontal" {{action beginRecord on="submit"}}>
       {{#if dataAdapter.isRunning}}
         {{#unless model.isRecording}}
@@ -21,11 +21,19 @@
             </span>
           </div>
         {{else}}
-          {{#unless duration}}
-            <a {{action endRecord}} class="btn btn-danger pull-right">
-              <i class="icon-circle"></i> End
-            </a>
-          {{/unless}}
+          <div class="pull-right">
+            {{#unless duration}}
+              {{#if confirmTransition}}
+                <a class="btn btn-default" {{action retryEndRecord}}>
+                  You are recording, are you sure?
+                </a>
+              {{/if}}
+
+              <a {{action endRecord}} class="btn btn-danger">
+                <i class="icon-circle"></i> End
+              </a>
+            {{/unless}}
+          </div>
         {{/unless}}
       {{/if}}
     </form>

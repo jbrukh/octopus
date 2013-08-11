@@ -15,6 +15,11 @@ App.RecordingsNewCloudRoute = Ember.Route.extend
 
   activate: ->
     controller = @controllerFor('recordings.new.cloud')
+
+    # reset properties
+    controller.set('lastTransition', null)
+    controller.set('confirmTransition', false)
+
     settings = App.Settings.find()
     connector = @get('connector')
 
@@ -29,10 +34,22 @@ App.RecordingsNewCloudRoute = Ember.Route.extend
     controller.stop()
 
   events:
+    retryEndRecord: ->
+      controller = @controllerFor('recordings.new.cloud')
+      transition = controller.get('lastTransition')
+      transition.retry()
+
     willTransition: (transition) ->
       controller = @controllerFor('recordings.new.cloud')
-      if controller.get('model.isRecording') && !confirm('Are you sure you want to stop recording?')
-        transition.abort()
+      # if we're not recording or we've previously confirmed the ability
+      # to transition then let the transition through
+      return if controller.get('confirmTransition')
+      return unless controller.get('model.isRecording')
+
+      console.log 'Currently recording, showing confirm transition message'
+      controller.set('confirmTransition', true)
+      controller.set('lastTransition', transition)
+      transition.abort()
 
     endRecord: ->
       console.log 'End Record'
