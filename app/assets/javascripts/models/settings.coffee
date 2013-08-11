@@ -24,6 +24,7 @@ App.Settings.reopenClass
         streaming: Em.Object.create
           bufferSize: 800
           duration: 10
+      layout: Em.Object.create()
 
   load: ->
     console.log 'Loading settings'

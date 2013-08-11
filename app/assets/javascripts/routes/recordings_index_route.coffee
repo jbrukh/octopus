@@ -1,3 +1,5 @@
 App.RecordingsIndexRoute = Em.Route.extend
   redirect: ->
-    @transitionTo 'recordings.cloud'
+    settings = App.Settings.find()
+    tab = settings.get('layout.last_recording_tab') || 'cloud'
+    @transitionTo "recordings.#{tab}"
