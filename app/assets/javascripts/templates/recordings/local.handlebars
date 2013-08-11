@@ -29,7 +29,7 @@
             <td>{{sizeBytes}}</td>
             <td>
               <div class="pull-right">
-                <a href="#" class="btn btn-table btn-success">
+                <a href="#" rel="tooltip" title="Upload this recording to the cloud" class="btn btn-table btn-success" {{action upload this bubbles=false}}>
                   <i class="icon-cloud-upload"></i>
                 </a>
                 <a href="#" class="btn btn-table btn-danger" {{action destroy this}}>
