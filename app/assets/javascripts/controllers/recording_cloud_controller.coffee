@@ -13,6 +13,12 @@ App.RecordingCloudController = Em.ObjectController.extend
     tagging.set('recording', @get('model'))
     tagging.save()
 
+  downloadCsv: ->
+    console.log 'downloading as csv'
+    id = @get('model.id')
+    url = "/api/recordings/#{id}/results.csv"
+    file.download(url)
+
   recordingData: (->
     dataUrl = @get 'dataUrl'
     console.info "Loading result data: #{dataUrl}"

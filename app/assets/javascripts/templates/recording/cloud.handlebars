@@ -1,10 +1,18 @@
-<div class="page-header">
-  <div class="pull-right">
-    <button class="btn btn-info" {{action edit}}>Edit</button>
+<div class="row">
+  <div class="col-lg-6">
+    <h3>Recording <small>{{name}}</small></h3>
   </div>
-
-  <h3>Recording <small>{{name}}</small></h3>
+  <div class="col-lg-6">
+    <div class="pull-right">
+      <button class="btn btn-primary" {{action edit}}>Edit</button>
+      <button class="btn btn-info" {{action downloadCsv}}>
+        <i class="icon-download-alt"></i>&nbsp; Download CSV
+      </button>
+    </div>
+  </div>
 </div>
+
+<hr/>
 
 {{#unless isLoaded}}
   <div class="alert alert-info">
