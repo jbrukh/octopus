@@ -28,22 +28,6 @@ App.Recording = Ember.Model.extend App.Recordable,
     @get('state') == 'waiting_for_data'
   ).property('state')
 
-  recordingData: (->
-    dataUrl = @get 'dataUrl'
-    console.info "Loading result data: #{dataUrl}"
-    resultData = App.RecordingData.create()
-
-    xhr = new XMLHttpRequest()
-    xhr.open 'GET', dataUrl, true
-    xhr.responseType = 'arraybuffer'
-
-    xhr.onload = (e) =>
-      resultData.populateFromArrayBuffer xhr.response
-    xhr.send()
-
-    resultData
-  ).property('dataUrl')
-
 App.Recording.url = "/api/recordings"
 App.Recording.rootKey = 'recording'
 App.Recording.collectionKey = 'recordings'

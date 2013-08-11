@@ -12,3 +12,19 @@ App.RecordingCloudController = Em.ObjectController.extend
     tagging = @get 'tagging'
     tagging.set('recording', @get('model'))
     tagging.save()
+
+  recordingData: (->
+    dataUrl = @get 'dataUrl'
+    console.info "Loading result data: #{dataUrl}"
+    resultData = App.RecordingData.create()
+
+    xhr = new XMLHttpRequest()
+    xhr.open 'GET', dataUrl, true
+    xhr.responseType = 'arraybuffer'
+
+    xhr.onload = (e) =>
+      resultData.populateFromArrayBuffer xhr.response
+    xhr.send()
+
+    resultData
+  ).property('model.dataUrl')
