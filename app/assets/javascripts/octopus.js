@@ -18,6 +18,7 @@
 //= require vendor/ember-latest
 //= require vendor/ember-model-latest
 //= require vendor/moment
+//= require vendor/livestamp
 //= require vendor/bootstrap
 //= require vendor/showdown
 //= require vendor/bootstrap-datepicker

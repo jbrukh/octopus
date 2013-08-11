@@ -10,4 +10,5 @@ Ember.Handlebars.registerBoundHelper 'secondsToTime', (value, options) ->
   "#{pad(minutes)}:#{pad(seconds)}"
 
 Ember.Handlebars.registerBoundHelper 'timeSince', (value, options) ->
-  moment(value).fromNow()
+  fromNow = moment(value).fromNow()
+  new Handlebars.SafeString('<span data-livestamp="' + value + '">' + fromNow + '</span>')
