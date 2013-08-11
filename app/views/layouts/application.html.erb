@@ -28,11 +28,11 @@
                 Signed in as <strong><%= link_to current_user.email, edit_user_registration_url() %></strong>
               </p>
               <% if current_user.role == 'admin' %>
-                <%= link_to '<span class="icon-rocket"></span>&nbsp;Launch Octopus'.html_safe, octopus_index_url, class: 'btn btn-primary navbar-btn' %>
+                <%= link_to '<span class="icon-rocket"></span>&nbsp;Launch Octopus'.html_safe, octopus_index_url, class: 'btn btn-action navbar-btn' %>
               <% end %>
               <%= link_to 'sign out', destroy_user_session_url, :method => :delete, :class => 'btn btn-info navbar-btn'  %>
             <% else %>
-              <%= link_to 'request beta access', page_url('beta'), :class => "btn btn-success navbar-btn" %>
+              <%= link_to 'request beta access', page_url('beta'), :class => "btn btn-action navbar-btn" %>
               <%= link_to 'sign in', new_user_session_url, :class => "btn btn-info navbar-btn" %>
             <% end %>
           </div>
