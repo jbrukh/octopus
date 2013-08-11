@@ -2,7 +2,7 @@ attr = Ember.attr
 hasMany = Ember.hasMany
 belongsTo = Ember.belongsTo
 
-App.Recording = Ember.Model.extend
+App.Recording = Ember.Model.extend App.Recordable,
   id:                   attr()
 
   participant:          belongsTo(App.Participant, { key: 'participant', embedded: true })
@@ -23,13 +23,6 @@ App.Recording = Ember.Model.extend
   dataFileSize:         attr()
   dataUpdatedAt:        attr()
   dataUrl:              attr()
-
-  start: ->
-    @set 'isRecording', true
-
-  finish: (response) ->
-    @set 'isRecording', false
-    @set 'resourceId', response.resource_id
 
   isUploading: (->
     @get('state') == 'waiting_for_data'

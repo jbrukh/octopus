@@ -1,4 +1,5 @@
 //= require_tree ./lib
+//= require_tree ./models/mixins
 //= require_tree ./models
 //= require_tree ./initializers
 //= require_tree ./controllers
