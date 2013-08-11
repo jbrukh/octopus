@@ -90,8 +90,4 @@ Ruby::Application.configure do
     :password       => ENV['SENDGRID_PASSWORD'],
     :domain         => ENV['SENDGRID_DOMAIN']
   }
-
-  # required to get rainbows to log
-  config.logger = Logger.new(STDOUT)
-  config.logger.level = Logger.const_get(ENV['LOG_LEVEL'] ? ENV['LOG_LEVEL'].upcase : 'INFO')
 end
