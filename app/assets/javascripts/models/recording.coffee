@@ -6,6 +6,7 @@ App.Recording = Ember.Model.extend
   id:                   attr()
 
   participant:          belongsTo(App.Participant, { key: 'participant', embedded: true })
+  taggings:             hasMany('App.Tagging', { key: 'taggings', embedded: true })
 
   createdAt:            attr(Date)
   updatedAt:            attr(Date)

@@ -10,4 +10,5 @@ App.RecordingCloudController = Em.ObjectController.extend
   createTag: ->
     console.log 'create tag'
     tagging = @get 'tagging'
+    tagging.set('recording', @get('model'))
     tagging.save()

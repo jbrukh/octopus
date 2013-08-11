@@ -20,5 +20,6 @@ class RecordingSerializer < ActiveModel::Serializer
     object.data.url
   end
 
-  has_one :participant
+  has_one   :participant
+  has_many  :taggings
 end
