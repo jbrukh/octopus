@@ -1,21 +1,11 @@
 App.RecordingCloudController = Em.ObjectController.extend
-  #edit: ->
-  #  @set 'isEditing', true
-  #  @set 'newName', @get('name')
-  #  @set 'newDescription', @get('description')
-
-  cancelEdit: ->
-    @set 'isEditing', false
-
-  saveEdit: ->
-    @set 'isEditing', false
-
+  save: ->
     model = @get 'model'
 
-    #transaction = model.get('transaction')
-    #model.set 'name', @get('newName')
-    #model.set 'description', @get('newDescription')
-    #transaction.commit()
+    model.set 'name', @get('newName')
+    model.set 'description', @get('newDescription')
+    model.save().then =>
+      @send('close')
 
   createTag: ->
     console.log 'create tag'

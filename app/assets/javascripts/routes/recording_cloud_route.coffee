@@ -1,6 +1,8 @@
 App.RecordingCloudRoute = Em.Route.extend
   events:
-    editRecording: ->
+    edit: ->
+      @set 'controller.newName', @get('controller.name')
+      @set 'controller.newDescription', @get('controller.description')
       @render 'modal', { into: 'application', outlet: 'modal' }
 
     close: ->

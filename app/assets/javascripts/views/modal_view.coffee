@@ -1,3 +1,6 @@
+# modals are hard, this is adapted from here:
+# http://hawkins.io/2013/06/ember-and-bootstrap-modals/
+
 App.ModalView = Ember.View.extend
   layoutName: 'modal_layout'
 
