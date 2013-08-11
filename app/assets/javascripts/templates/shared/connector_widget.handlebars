@@ -1,7 +1,12 @@
 <div class="btn-group navbar-btn">
   <a class="btn dropdown-toggle" data-toggle="dropdown" href="#"
-      {{bindAttr class="model.isConnected:btn-success:btn-warning"}}>
-    <i class="icon-cog"></i>&nbsp;Connector
+      {{bindAttr class="model.isConnected:btn-action:btn-warning"}}>
+    <i class="icon-cog"></i>&nbsp;
+    {{#if model.isConnected}}
+      {{model.device_name}}
+    {{else}}
+      Connector
+    {{/if}}
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu pull-right">
