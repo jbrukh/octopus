@@ -7,7 +7,7 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 user = User.create!({
-  :email => 'admin@example.com',
+  :email => 'admin@octopusmetrics.com',
   :password => 'password',
   :password_confirmation => 'password',
   :confirmed_at => DateTime.now,
@@ -15,7 +15,7 @@ user = User.create!({
 })
 
 user = User.create!({
-  :email => 'guest@example.com',
+  :email => 'user@octopusmetrics.com',
   :password => 'password',
   :password_confirmation => 'password',
   :confirmed_at => DateTime.now

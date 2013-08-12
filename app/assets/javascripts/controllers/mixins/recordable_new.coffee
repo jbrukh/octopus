@@ -19,7 +19,11 @@ App.RecordableNew = Ember.Mixin.create
       @trigger 'didStop'
 
   beginRecord: ->
-    payload = { record: true }
+    location = @get('model.location')
+
+    payload =
+      record: true
+      local:  (location == 'local')
 
     duration = parseInt @get('duration')
     if duration > 0
@@ -38,7 +42,6 @@ App.RecordableNew = Ember.Mixin.create
           @get('model').finish(data)
 
           # track the kind of recording we just created
-          location = @get('model.location')
           analytics.track 'create recording', { location: location, type: 'timed' }
 
           @send('upload')

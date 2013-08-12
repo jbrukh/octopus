@@ -13,6 +13,7 @@
         <th>Name</th>
         <th>Duration</th>
         <th>Participant</th>
+        <th>Tags</th>
         <th>State</th>
         <th></th>
       </tr>
@@ -31,6 +32,13 @@
               {{#linkTo 'participant' participant tagName='span' class='label label-info clickable'}}
                 <i class="icon-user"></i> {{participant.fullName}}
               {{/linkTo}}
+            {{/if}}
+          </td>
+          <td>
+            {{#if taggings.length}}
+              <span class="label label-info">
+                <i class="icon-tag"></i>&nbsp;{{taggings.length}}
+              </span>
             {{/if}}
           </td>
           <td>
