@@ -1,6 +1,5 @@
 analytics =
   identify: (user) ->
-    debugger
     return unless App.Environment == 'production'
 
     email = user.get 'email'
