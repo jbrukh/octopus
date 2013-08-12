@@ -19,7 +19,8 @@ App.RecordingsLocalController = Em.ArrayController.extend App.RecordableList,
       payload = {
         token: authToken,
         resource_id: resourceId,
-        endpoint: "http://localhost:3000/api/recordings/#{recordingId}/results"
+        endpoint: "http://localhost:3000/api/recordings/#{recordingId}/results",
+        local: true
       }
 
       @get('connector').send('upload', payload).then (data) =>
