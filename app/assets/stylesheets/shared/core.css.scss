@@ -10,6 +10,10 @@ footer {
   color: #c0c0c0;
 }
 
+footer p{
+  padding-top: 2px;
+}
+
 .clickable {
   cursor: hand;
 }
@@ -40,4 +44,8 @@ footer {
   background-color: #4E529E;
   border-color: #4E529E;
   text-decoration: none;
+}
+
+.mixpanel-logo{
+  margin-right: 10px;
 }
