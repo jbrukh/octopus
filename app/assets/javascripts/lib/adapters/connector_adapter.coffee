@@ -21,6 +21,11 @@ App.ConnectorAdapter = Ember.Adapter.extend
       data
     records.load klass, dataToLoad
 
+  createRecord: (record) ->
+    return new Ember.RSVP.Promise (resolve, reject) =>
+      record.didCreateRecord()
+      resolve(record)
+
   deleteRecord: (record) ->
     primaryKey = get record.constructor, 'primaryKey'
     id = get record, primaryKey

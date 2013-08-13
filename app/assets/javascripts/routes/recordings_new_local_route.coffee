@@ -53,4 +53,5 @@ App.RecordingsNewLocalRoute = Ember.Route.extend
         @send('upload')
 
     upload: ->
-      @transitionTo 'recordings.local'
+      @currentModel.save().then =>
+        @transitionTo 'recordings.local'
