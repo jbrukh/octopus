@@ -1,4 +1,4 @@
-App.RecordingCloudController = Em.ObjectController.extend
+App.RecordingCloudController = Em.ObjectController.extend App.RecordableShow,
   save: ->
     model = @get 'model'
 
@@ -12,13 +12,6 @@ App.RecordingCloudController = Em.ObjectController.extend
     tagging = @get 'tagging'
     tagging.set('recording', @get('model'))
     tagging.save()
-
-  exportAsCsv: ->
-    console.log 'Exporting as CSV'
-    recordingData = @get 'recordingData'
-    blob = new Blob [recordingData.exportAsCsv()], {type: 'text/csv'}
-    id = @get 'model.id'
-    saveAs(blob, "octopus_#{id}.csv");
 
   recordingData: (->
     dataUrl = @get 'dataUrl'
