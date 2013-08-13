@@ -1,5 +1,4 @@
 App.Router.map ->
-  @resource 'settings', -> null
   @resource 'status', -> null
 
   # participants
