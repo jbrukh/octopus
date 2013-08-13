@@ -58,13 +58,11 @@ App.DataAdapter = Em.Object.extend Ember.Evented,
     @incrementProperty('receivedFrames')
 
 App.DataAdapter.reopenClass
-  build: (connector, type, properties) ->
-    console.log "Create data adapter: #{type}"
-    dataAdapter = App.WebSocketDataAdapter.create(properties)
+  build: (connector) ->
+    console.log "Create data adapter"
+    dataAdapter = App.WebSocketDataAdapter.create()
     dataAdapter.set 'connector', connector
     dataAdapter
 
   buildFromSettings: (connector, settings) ->
-    adapter = settings.get('adapters.selected')
-    properties = settings.get("adapters.#{adapter}")
-    App.DataAdapter.build(connector, adapter, properties)
+    App.DataAdapter.build(connector)

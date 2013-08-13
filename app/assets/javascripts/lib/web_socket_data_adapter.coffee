@@ -1,6 +1,7 @@
 App.WebSocketDataAdapter = App.DataAdapter.extend
   ws: null
   frame: null
+  url: 'ws://localhost:8000/device'
 
   _start: ()->
     res = 50
@@ -18,8 +19,7 @@ App.WebSocketDataAdapter = App.DataAdapter.extend
 
   startStreaming: ->
     console.log 'start streaming'
-    url = @get('url')
-    @ws = App.WebSocketFactory.createWebSocket(url)
+    @ws = App.WebSocketFactory.createWebSocket(@url)
 
     @ws.onopen = () =>
       console.log('data socket open')
