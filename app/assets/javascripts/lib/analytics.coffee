@@ -4,10 +4,14 @@ analytics =
 
     email = user.get 'email'
     role = user.get 'role'
+    firstName = user.get 'firstName'
+    lastName = user.get 'lastName'
 
     mixpanel.people.set({
       '$email': email,
       '$last_login': new Date(),
+      '$first_name': firstName,
+      '$last_name': lastName,
       'role': role
     })
 
