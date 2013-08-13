@@ -15,9 +15,6 @@ App.RecordingCloudController = Em.ObjectController.extend
 
   downloadCsv: ->
     console.log 'downloading as csv'
-    id = @get('model.id')
-    url = "/api/recordings/#{id}/results.csv"
-    file.download(url)
 
   recordingData: (->
     dataUrl = @get 'dataUrl'

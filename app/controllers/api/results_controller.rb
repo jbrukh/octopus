@@ -4,12 +4,6 @@ class Api::ResultsController < ApplicationController
   before_filter :authenticate_user!
   before_filter :find_recording
 
-  def show
-    respond_to do |format|
-      format.csv { send_data @recording.to_csv, :filename => "octopus_#{@recording.id}.csv" }
-    end
-  end
-
   def create
     @recording.upload(result_params)
     render json: @recording, :status => :created

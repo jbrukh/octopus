@@ -26,19 +26,4 @@ class Recording < ActiveRecord::Base
     self.duration_ms = obf.duration_ms
     self.save!
   end
-
-  def to_csv(options = {})
-    # get the obf data
-    contents = Paperclip.io_adapters.for(self.data).read
-    obf = Obf.read(contents)
-
-    CSV.generate(options) do |csv|
-      # write the headers
-      headers = ['timestamps']
-      (1..obf.channels).each do |channel|
-        headers << "channel#{channel}"
-      end
-      csv << headers
-    end
-  end
 end
