@@ -7,6 +7,9 @@ App.RecordingData = Em.Object.extend
       else throw 'unknown storage mode'
   ).property('rawStorageMode')
 
+  exportAsCsv: () ->
+    return 'timestamps,channel1,channel2'
+
   populateFromArrayBuffer: (arrayBuffer) ->
     dataView = new DataView arrayBuffer
     @populateFromDataView dataView

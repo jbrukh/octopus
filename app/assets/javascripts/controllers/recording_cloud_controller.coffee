@@ -15,7 +15,8 @@ App.RecordingCloudController = Em.ObjectController.extend
 
   exportAsCsv: ->
     console.log 'Exporting as CSV'
-    blob = new Blob ['timestamps,channel1,channel2'], {type: 'text/csv'}
+    recordingData = @get 'recordingData'
+    blob = new Blob [recordingData.exportAsCsv()], {type: 'text/csv'}
     id = @get 'model.id'
     saveAs(blob, "octopus_#{id}.csv");
 
