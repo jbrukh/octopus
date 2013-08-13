@@ -15,3 +15,5 @@ user:
  authentication_token: nil
  created_at: 2011-01-02 08:30:59
  updated_at: 2011-01-02 08:31:23
+ first_name: Bob
+ last_name: Jones

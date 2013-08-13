@@ -10,6 +10,11 @@ class User < ActiveRecord::Base
 
   before_create :reset_authentication_token
 
+  strip_attributes :allow_empty => true, :only => [:first_name, :last_name]
+
+  validates :first_name,  :presence => true
+  validates :last_name,   :presence => true
+
   def admin?
     self.role == 'admin'
   end

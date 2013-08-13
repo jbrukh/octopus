@@ -33,8 +33,10 @@ class DeviseCreateUsers < ActiveRecord::Migration
       ## Token authenticatable
       t.string   :authentication_token
 
-      ## the role of this user
-      t.string   :role, :null => false, :default => 'guest'
+      ## additional user details
+      t.string   :first_name, :null => false
+      t.string   :last_name,  :null => false
+      t.string   :role,       :null => false, :default => 'guest'
 
       t.timestamps
     end

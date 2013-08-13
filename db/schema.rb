@@ -127,6 +127,8 @@ ActiveRecord::Schema.define(version: 20130807005615) do
     t.string   "unlock_token"
     t.datetime "locked_at"
     t.string   "authentication_token"
+    t.string   "first_name",                               null: false
+    t.string   "last_name",                                null: false
     t.string   "role",                   default: "guest", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
