@@ -10,7 +10,7 @@ App.ConnectorAdapter = Ember.Adapter.extend
 
   findAll: (klass, records) ->
     connector = App.ConnectorAdapter.connectorInstance
-    connector.send('repository', { operation: 'list' }).then (data) =>
+    connector.send('repository', { operation: 'list', local: true }).then (data) =>
       @didFindAll klass, records, data
 
   didFindAll: (klass, records, data) ->
@@ -26,7 +26,7 @@ App.ConnectorAdapter = Ember.Adapter.extend
     id = get record, primaryKey
 
     connector = App.ConnectorAdapter.connectorInstance
-    connector.send('repository', { operation: 'delete', resource_id: id }).then () =>
+    connector.send('repository', { operation: 'delete', local: true, resource_id: id }).then () =>
       @didDeleteRecord record
 
   didDeleteRecord: (record) ->
