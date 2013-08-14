@@ -66,10 +66,14 @@ App.RecordingsNewCloudRoute = Ember.Route.extend
       @currentModel.save().then =>
         recordingId = @currentModel.get('id')
 
+        # calculate the current host name
+        arr = window.location.href.split("/")
+        result = arr[0] + "//" + arr[2]
+
         payload = {
           token: authToken,
           resource_id: resourceId,
-          endpoint: "http://localhost:3000/api/recordings/#{recordingId}/results"
+          endpoint: "#{result}/api/recordings/#{recordingId}/results"
         }
 
         @get('connector').send('upload', payload).then (data) =>
