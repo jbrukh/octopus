@@ -90,6 +90,11 @@ GEM
     arel (4.0.0)
     atomic (1.1.12)
     awesome_print (1.1.0)
+    aws-sdk (1.5.8)
+      httparty (~> 0.7)
+      json (~> 1.4)
+      nokogiri (>= 1.4.4)
+      uuidtools (~> 2.1)
     barber (0.4.2)
       ember-source
       execjs
@@ -184,6 +189,9 @@ GEM
     hike (1.2.3)
     hirb (0.7.1)
     http_parser.rb (0.6.0.beta.2)
+    httparty (0.11.0)
+      multi_json (~> 1.0)
+      multi_xml (>= 0.5.2)
     i18n (0.6.4)
     jazz_hands (0.5.1)
       awesome_print (~> 1.1.0)
@@ -222,11 +230,15 @@ GEM
     metaclass (0.0.1)
     method_source (0.8.2)
     mime-types (1.23)
+    mini_portile (0.5.1)
     minitest (4.7.5)
     mocha (0.14.0)
       metaclass (~> 0.0.1)
     multi_json (1.7.8)
+    multi_xml (0.5.5)
     newrelic_rpm (3.6.6.147)
+    nokogiri (1.6.0)
+      mini_portile (~> 0.5.0)
     orm_adapter (0.4.0)
     paperclip (3.5.1)
       activemodel (>= 3.0.0)
@@ -368,6 +380,7 @@ GEM
       kgio (~> 2.6)
       rack
       raindrops (~> 0.7)
+    uuidtools (2.1.4)
     warden (1.2.3)
       rack (>= 1.0)
     yard (0.8.7)
@@ -377,6 +390,7 @@ PLATFORMS
 
 DEPENDENCIES
   activeadmin!
+  aws-sdk (~> 1.5.7)
   better_errors
   bindata
   binding_of_caller

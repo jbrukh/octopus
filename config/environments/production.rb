@@ -80,7 +80,7 @@ Ruby::Application.configure do
 
   config.ember.variant = :production
 
-  # stuff for email sending
+  # email configuration
   config.action_mailer.default_url_options = { :host => 'octopusmetrics.com' }
   ActionMailer::Base.smtp_settings = {
     :address        => "smtp.sendgrid.net",
@@ -90,4 +90,9 @@ Ruby::Application.configure do
     :password       => ENV['SENDGRID_PASSWORD'],
     :domain         => ENV['SENDGRID_DOMAIN']
   }
+
+  # paperclip configuration for s3
+  config.paperclip_defaults.merge!({
+    :storage => :s3
+  })
 end

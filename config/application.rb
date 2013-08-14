@@ -34,5 +34,16 @@ module Ruby
         'active_admin.css', 'active_admin/print.css', 'active_admin.js']
 
     config.middleware.use "NoWww"
+
+    config.paperclip_defaults =
+    {
+      :s3_protocol => "https",
+      :s3_credentials => {
+        :access_key_id => ENV['S3_ACCESS_KEY_ID'],
+        :secret_access_key => ENV['S3_SECRET_ACCESS_KEY']
+      },
+      :bucket => ENV['S3_BUCKET_NAME'],
+      :path => ":hash.:extension"
+    }
   end
 end
