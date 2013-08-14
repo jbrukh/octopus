@@ -7,9 +7,6 @@ App.RecordingData = Em.Object.extend
       else throw 'unknown storage mode'
   ).property('rawStorageMode')
 
-  exportAsCsv: () ->
-    return 'timestamps,channel1,channel2'
-
   populateFromArrayBuffer: (arrayBuffer) ->
     dataView = new DataView arrayBuffer
     @populateFromDataView dataView
@@ -94,3 +91,21 @@ App.RecordingData = Em.Object.extend
     for s in [0...numSamples]
       timestampOffset = headerSize + (s * Uint32Array.BYTES_PER_ELEMENT)
       timestamps[s] = dataView.getUint32(timestampOffset, false)
+
+  exportAsCsv: () ->
+    timestamps = @get 'timestamps'
+    channels = @get 'channels'
+    channelBuffers = @get 'channelBuffers'
+    samples = @get 'samples'
+
+    csv = 'timestamps'
+    for channel in [0...channels]
+      csv += ',' + "channel#{channel}"
+    csv += '\n'
+
+    for sample in [0...samples]
+      csv += timestamps[sample]
+      for channel in [0...channels]
+        csv += ',' + channelBuffers[channel][sample]
+      csv += '\n'
+    csv
