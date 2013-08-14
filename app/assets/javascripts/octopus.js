@@ -22,6 +22,7 @@
 //= require vendor/bootstrap
 //= require vendor/showdown
 //= require vendor/bootstrap-datepicker
+//= require vendor/filesaver
 //= require bootstrapped
 //= require_self
 //= require brain
