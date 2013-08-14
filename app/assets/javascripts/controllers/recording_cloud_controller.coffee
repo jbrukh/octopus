@@ -1,4 +1,4 @@
-App.RecordingCloudController = Em.ObjectController.extend
+App.RecordingCloudController = Em.ObjectController.extend App.RecordableShow,
   save: ->
     model = @get 'model'
 
@@ -12,9 +12,6 @@ App.RecordingCloudController = Em.ObjectController.extend
     tagging = @get 'tagging'
     tagging.set('recording', @get('model'))
     tagging.save()
-
-  downloadCsv: ->
-    console.log 'downloading as csv'
 
   recordingData: (->
     dataUrl = @get 'dataUrl'
