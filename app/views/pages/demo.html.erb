@@ -3,18 +3,56 @@
 		<div class="row">
 			<div class="col-lg-12">
 				<h1>
-					 Have a look at some screenshots.
+					 Don't have access yet? Take a peek at the Octopus Beta user interface.
 				</h1>
 			</div>
 		</div>
 
-		<div class="row top-buffer">
-		<div id="screenshots" class="col-lg-12 text-center">
-			<%= image_tag "macbook.png", id: "macbook-image" %>
-			<%= image_tag "result_view.png", id: "screen-1" %>
-		</div>
-
-
+		<div id="myCarousel" class="carousel slide top-buffer">
+		  <ol class="carousel-indicators badge text-center" style="width:160px;">
+		    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+		    <li data-target="#myCarousel" data-slide-to="1"></li>
+		    <li data-target="#myCarousel" data-slide-to="2"></li>
+		    <li data-target="#myCarousel" data-slide-to="3"></li>
+		    <li data-target="#myCarousel" data-slide-to="4"></li>
+		    <li data-target="#myCarousel" data-slide-to="5"></li>
+		    <li data-target="#myCarousel" data-slide-to="6"></li>
+		    <li data-target="#myCarousel" data-slide-to="7"></li>
+		    <li data-target="#myCarousel" data-slide-to="8"></li>
+		  </ol>
+		  <!-- Carousel items -->
+		  <div class="carousel-inner">
+		    <div class="active item">
+		    	<%= image_tag "screenshots/screen1.png", class: "demo-screenshot" %>
+		    </div>
+		    <div class="item">
+		    	<%= image_tag "screenshots/screen2.png", class: "demo-screenshot" %>
+		    </div>
+		    <div class="item">
+		    	<%= image_tag "screenshots/screen3.png", class: "demo-screenshot" %>
+		    </div>
+		    <div class="item">
+		    	<%= image_tag "screenshots/screen4.png", class: "demo-screenshot" %>
+		    </div>
+		    <div class="item">
+		    	<%= image_tag "screenshots/screen5.png", class: "demo-screenshot" %>
+		    </div>
+		    <div class="item">
+		    	<%= image_tag "screenshots/screen6.png", class: "demo-screenshot" %>
+		    </div>
+		    <div class="item">
+		    	<%= image_tag "screenshots/screen7.png", class: "demo-screenshot" %>
+		    </div>
+		    <div class="item">
+		    	<%= image_tag "screenshots/screen8.png", class: "demo-screenshot" %>
+		    </div>
+		    <div class="item">
+		    	<%= image_tag "screenshots/screen9.png", class: "demo-screenshot" %>
+		    </div>
+		  </div>
+		  <!-- Carousel nav -->
+		  <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+		  <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
 		</div>
 
 		<div class="row top-buffer">
