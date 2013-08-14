@@ -1,9 +1,20 @@
-<div id="hero" class="well">
-  <h1>Octopus</h1>
-  <p>Record, Process, and Analyze EEG Data</p>
-  <p>
-    <a class="btn btn-primary btn-large">
-      Learn more
-    </a>
-  </p>
+<div class="jumbotron">
+	<h1>Welcome to <span class="text-primary">Octopus</span>.</h1>
+	<br/>
+	<div class="row">
+		<div class="col-lg-12">
+			<ul class="list-group top-buffer">
+			  <li class="list-group-item">
+			  	{{#linkTo 'recordings'}}Create a recording{{/linkTo}}
+			  	&nbsp;
+				<span class="call-to-action icon-chevron-right"></span>
+			  </li>
+			  <li class="list-group-item">
+		  		{{#linkTo 'participants'}}Create a participant{{/linkTo}}
+		  		&nbsp;
+					<span class="call-to-action icon-chevron-right"></span>
+			  </li>
+			</ul>
+		</div>
+	</div>
 </div>
