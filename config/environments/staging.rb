@@ -91,6 +91,10 @@ Ruby::Application.configure do
     :domain         => ENV['SENDGRID_DOMAIN']
   }
 
+  # required to get rainbows to log
+  config.logger = Logger.new(STDOUT)
+  config.logger.level = Logger.const_get(ENV['LOG_LEVEL'] ? ENV['LOG_LEVEL'].upcase : 'INFO')
+
   # paperclip configuration for s3
   config.paperclip_defaults.merge!({
     :storage => :s3
