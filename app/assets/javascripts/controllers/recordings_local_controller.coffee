@@ -16,10 +16,14 @@ App.RecordingsLocalController = Em.ArrayController.extend App.RecordableList,
     recording.save().then =>
       recordingId = recording.get('id')
 
+      # calculate the current host name
+      arr = window.location.href.split("/")
+      result = arr[0] + "//" + arr[2]
+
       payload = {
         token: authToken,
         resource_id: resourceId,
-        endpoint: "http://localhost:3000/api/recordings/#{recordingId}/results",
+        endpoint: "#{result}/api/recordings/#{recordingId}/results",
         local: true
       }
 
