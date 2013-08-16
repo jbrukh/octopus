@@ -1,7 +1,7 @@
 class Organization < ActiveRecord::Base
-  belongs_to :owner, class_name: 'User'
-
   validates :name,  :presence => true
+
+  has_many :users
 
   strip_attributes :allow_empty => true, :only => [:name]
 end

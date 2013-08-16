@@ -61,12 +61,9 @@ ActiveRecord::Schema.define(version: 20130814230123) do
 
   create_table "organizations", force: true do |t|
     t.string   "name",       null: false
-    t.integer  "owner_id",   null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  add_index "organizations", ["owner_id"], name: "index_organizations_on_owner_id", using: :btree
 
   create_table "participants", force: true do |t|
     t.integer  "user_id",    null: false
@@ -141,11 +138,13 @@ ActiveRecord::Schema.define(version: 20130814230123) do
     t.string   "role",                   default: "guest", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "organization_id"
   end
 
   add_index "users", ["authentication_token"], name: "index_users_on_authentication_token", unique: true, using: :btree
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["organization_id"], name: "index_users_on_organization_id", using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   add_index "users", ["unlock_token"], name: "index_users_on_unlock_token", unique: true, using: :btree
 
