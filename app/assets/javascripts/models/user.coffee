@@ -9,6 +9,7 @@ App.User = Ember.Model.extend
   password:             attr()
   passwordConfirmation: attr()
   authenticationToken:  attr()
+  organization:         attr()
 
 App.User.url = "/api/users"
 App.User.rootKey = 'user'
