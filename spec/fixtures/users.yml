@@ -1,19 +1,82 @@
 user:
  email: user@example.com
  encrypted_password: $2a$10$PoBe1MvkoGJsjMVTEjKqgeBUp.xdfzWoiDjBzQhtLAj16NqIa2fOy
- reset_password_token: nil
+ reset_password_token: kdjfksjdfks
  sign_in_count: 1
  current_sign_in_at: 2011-01-02 08:31:23
  last_sign_in_at: 2011-01-02 08:31:23
  current_sign_in_ip: 127.0.0.1
  last_sign_in_ip: 127.0.0.1
- confirmation_token: nil
+ confirmation_token: kdjfkdjfksjk
  confirmed_at: 2011-01-02 08:31:23
  confirmation_sent_at: 2011-01-02 08:30:59
  failed_attempts: 0
- unlock_token: nil
- authentication_token: nil
+ unlock_token: 7h7h7h7h7h
+ authentication_token: 987987987
  created_at: 2011-01-02 08:30:59
  updated_at: 2011-01-02 08:31:23
  first_name: Bob
  last_name: Jones
+ organization: east_river_labs
+
+friend:
+ email: friend@example.com
+ encrypted_password: $2a$10$PoBe1MvkoGJsjMVTEjKqgeBUp.xdfzWoiDjBzQhtLAj16NqIa2fOy
+ reset_password_token: 3842hf83h8d
+ sign_in_count: 1
+ current_sign_in_at: 2011-01-02 08:31:23
+ last_sign_in_at: 2011-01-02 08:31:23
+ current_sign_in_ip: 127.0.0.1
+ last_sign_in_ip: 127.0.0.1
+ confirmation_token: knknknknknkdd
+ confirmed_at: 2011-01-02 08:31:23
+ confirmation_sent_at: 2011-01-02 08:30:59
+ failed_attempts: 0
+ unlock_token: 88h8h8h88
+ authentication_token: 0606060678787
+ created_at: 2011-01-02 08:30:59
+ updated_at: 2011-01-02 08:31:23
+ first_name: Jim
+ last_name: Jones
+ organization: east_river_labs
+
+enemy:
+ email: enemy@somewhere.com
+ encrypted_password: $2a$10$PoBe1MvkoGJsjMVTEjKqgeBUp.xdfzWoiDjBzQhtLAj16NqIa2fOy
+ reset_password_token: 3842hf83h8dagag
+ sign_in_count: 1
+ current_sign_in_at: 2011-01-02 08:31:23
+ last_sign_in_at: 2011-01-02 08:31:23
+ current_sign_in_ip: 127.0.0.1
+ last_sign_in_ip: 127.0.0.1
+ confirmation_token: knknknsgsdfs
+ confirmed_at: 2011-01-02 08:31:23
+ confirmation_sent_at: 2011-01-02 08:30:59
+ failed_attempts: 0
+ unlock_token: 88hagag
+ authentication_token: 06060sgsdfs
+ created_at: 2011-01-02 08:30:59
+ updated_at: 2011-01-02 08:31:23
+ first_name: Carl
+ last_name: Crab
+ organization: carls_crab_shack
+
+stranger:
+ email: stranger@somewhere.com
+ encrypted_password: $2a$10$PoBe1MvkoGJsjMVTEjKqgeBUp.xdfzWoiDjBzQhtLAj16NqIa2fOy
+ reset_password_token: agagagsdfsdf
+ sign_in_count: 1
+ current_sign_in_at: 2011-01-02 08:31:23
+ last_sign_in_at: 2011-01-02 08:31:23
+ current_sign_in_ip: 127.0.0.1
+ last_sign_in_ip: 127.0.0.1
+ confirmation_token: slkdfjslkd
+ confirmed_at: 2011-01-02 08:31:23
+ confirmation_sent_at: 2011-01-02 08:30:59
+ failed_attempts: 0
+ unlock_token: algjalksdjfls
+ authentication_token: 8798797d
+ created_at: 2011-01-02 08:30:59
+ updated_at: 2011-01-02 08:31:23
+ first_name: Kevin
+ last_name: Clarke

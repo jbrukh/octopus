@@ -1,9 +1,6 @@
 class Recording < ActiveRecord::Base
   include Trashable
-
-  scope :viewable_by, ->(user) {
-    where("user_id = ?", user.id)
-  }
+  include Viewable
 
   strip_attributes :allow_empty => true, :only => [:name]
 
