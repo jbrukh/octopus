@@ -6,7 +6,7 @@ class Api::RecordingsController < ApplicationController
     @recordings = if params[:participant_id]
       @participant.recordings
     else
-      Recording.all.order('created_at desc')
+      Recording.viewable_by(current_user).order('created_at desc')
     end
     render json: @recordings
   end
