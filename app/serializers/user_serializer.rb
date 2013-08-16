@@ -8,6 +8,6 @@ class UserSerializer < ActiveModel::Serializer
     :organization
 
   def organization
-    object.organization.name
+    object.organization.name if object.organization
   end
 end
