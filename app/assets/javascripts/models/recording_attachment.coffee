@@ -10,7 +10,8 @@ App.RecordingAttachment = Em.Model.extend
   dataUpdatedAt:        attr()
   dataUrl:              attr()
 
+App.RecordingAttachment.url = "/api/results"
 App.RecordingAttachment.rootKey = 'result'
 App.RecordingAttachment.collectionKey = 'results'
 App.RecordingAttachment.camelizeKeys = true
-App.RecordingAttachment.adapter = App.RecordingAttachmentAdapter.create()
+App.RecordingAttachment.adapter = Ember.RESTAdapter.create()

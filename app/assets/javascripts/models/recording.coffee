@@ -41,7 +41,7 @@ App.Recording = Ember.Model.extend App.Recordable,
     payload = {
       token: authToken,
       resource_id: resourceId,
-      endpoint: "#{rootPath}/api/recordings/#{id}/results",
+      endpoint: "#{rootPath}/api/results/#{id}",
       local: true
     }
 

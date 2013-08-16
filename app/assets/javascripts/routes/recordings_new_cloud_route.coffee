@@ -73,7 +73,7 @@ App.RecordingsNewCloudRoute = Ember.Route.extend
         payload = {
           token: authToken,
           resource_id: resourceId,
-          endpoint: "#{result}/api/recordings/#{recordingId}/results"
+          endpoint: "#{result}/api/results/#{recordingId}"
         }
 
         @get('connector').send('upload', payload).then (data) =>

@@ -7,9 +7,9 @@ describe Api::ResultsController do
   let(:recording) { create :recording, user: user }
 
   context 'when guest' do
-    context '#create' do
+    context '#update' do
       before :each do
-        post :create, :recording_id => recording.id
+        post :update, :id => recording.id
       end
       it { should redirect_to new_user_session_url }
     end
@@ -25,7 +25,7 @@ describe Api::ResultsController do
         ProcessResultWorker.expects(:perform_async).once
         data = Rack::Test::UploadedFile.new(
           "#{Rails.root}/spec/fixtures/files/obf.data", 'application/octet-stream')
-        post :create, :recording_id => recording.id, :result => { :data => data }
+        post :update, :id => recording.id, :result => { :data => data }
       end
       it { should respond_with :created }
       it 'updates the recording' do

@@ -9,7 +9,7 @@ class Api::ResultsController < ApplicationController
     render json: @recording, serializer: ResultSerializer
   end
 
-  def create
+  def update
     @recording.upload(result_params)
     render json: @recording, :status => :created
     ProcessResultWorker.perform_async(@recording.id)
@@ -17,7 +17,7 @@ class Api::ResultsController < ApplicationController
 
 private
   def find_recording
-    @recording = Recording.find(params[:recording_id])
+    @recording = Recording.find(params[:id])
   end
 
   def result_params

@@ -21,9 +21,10 @@ Ruby::Application.routes.draw do
     resources :experiments
 
     resources :recordings do
-      resource :results
       resource :taggings
     end
+
+    resources :results
 
     # media
     resources :videos

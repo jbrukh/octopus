@@ -43,8 +43,6 @@ module Ruby
         :secret_access_key => ENV['S3_SECRET_ACCESS_KEY']
       },
       :bucket => ENV['S3_BUCKET_NAME'],
-      :path => ":hash.:extension",
-      :hash_secret => "22cce664d62e4bbe9f0346ada15f21b2",
       :s3_permissions => :private
     }
   end
