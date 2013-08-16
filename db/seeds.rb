@@ -17,13 +17,3 @@ User.create!({
   :first_name => 'Jonathan',
   :last_name => 'Goldman'
 })
-
-User.create!({
-  :email => 'nickyakovenko@gmail.com',
-  :password => 'please_change_me_12345',
-  :password_confirmation => 'please_change_me_12345',
-  :confirmed_at => DateTime.now,
-  :role => 'admin',
-  :first_name => 'Nikolai',
-  :last_name => 'Yakovenko'
-})

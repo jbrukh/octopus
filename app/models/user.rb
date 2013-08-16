@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
-  has_many :recordings
+  has_many    :recordings
+  belongs_to  :organization
 
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
