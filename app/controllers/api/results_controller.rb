@@ -4,6 +4,11 @@ class Api::ResultsController < ApplicationController
   before_filter :authenticate_user!
   before_filter :find_recording
 
+  def show
+    @recording
+    render json: @recording, serializer: ResultSerializer
+  end
+
   def create
     @recording.upload(result_params)
     render json: @recording, :status => :created

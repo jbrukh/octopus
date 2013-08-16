@@ -14,12 +14,14 @@ App.RecordingCloudController = Em.ObjectController.extend App.RecordableShow,
     tagging.save()
 
   recordingData: (->
-    dataUrl = @get 'dataUrl'
-    console.info "Loading result data: #{dataUrl}"
+    return unless @get 'model.attachment.isLoaded'
+    url = @get 'model.attachment.dataUrl'
+
+    console.info "Loading result data: #{url}"
     resultData = App.RecordingData.create()
 
     xhr = new XMLHttpRequest()
-    xhr.open 'GET', dataUrl, true
+    xhr.open 'GET', url, true
     xhr.responseType = 'arraybuffer'
 
     xhr.onload = (e) =>
@@ -27,4 +29,4 @@ App.RecordingCloudController = Em.ObjectController.extend App.RecordableShow,
     xhr.send()
 
     resultData
-  ).property('model.dataUrl')
+  ).property('model.attachment.isLoaded')

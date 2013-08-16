@@ -17,12 +17,10 @@ App.Recording = Ember.Model.extend App.Recordable,
   owner:                attr()
   durationMs:           attr(Number)
 
-  dataContentType:      attr()
-  dataFileName:         attr()
-  dataContentType:      attr()
-  dataFileSize:         attr()
-  dataUpdatedAt:        attr()
-  dataUrl:              attr()
+  attachment: (->
+    id = @get 'id'
+    App.RecordingAttachment.find(id)
+  ).property()
 
   isUploading: (->
     @get('state') == 'waiting_for_data'
