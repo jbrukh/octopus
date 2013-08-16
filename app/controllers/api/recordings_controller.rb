@@ -12,7 +12,7 @@ class Api::RecordingsController < ApplicationController
   end
 
   def show
-    @recording = Recording.find(params[:id])
+    @recording = Recording.viewable_by(current_user).find(params[:id])
     render json: @recording
   end
 
@@ -29,13 +29,13 @@ class Api::RecordingsController < ApplicationController
   end
 
   def update
-    @recording = Recording.find(params[:id])
+    @recording = Recording.viewable_by(current_user).find(params[:id])
     @recording.update_attributes!(recording_params)
     render json: @recording
   end
 
   def destroy
-    @recording = Recording.find(params[:id])
+    @recording = Recording.viewable_by(current_user).find(params[:id])
     render json: @recording.trash!
   end
 
