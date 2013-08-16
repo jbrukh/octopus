@@ -1,6 +1,7 @@
 class Api::RecordingsController < ApplicationController
   before_action :authenticate_user!
   before_action :load_participant, :only => :index, :if => :has_participant_id
+  before_action :load_recording, :only => [:show, :update, :destroy]
 
   def index
     @recordings = if params[:participant_id]
@@ -12,7 +13,6 @@ class Api::RecordingsController < ApplicationController
   end
 
   def show
-    @recording = Recording.viewable_by(current_user).find(params[:id])
     render json: @recording
   end
 
@@ -29,19 +29,21 @@ class Api::RecordingsController < ApplicationController
   end
 
   def update
-    @recording = Recording.viewable_by(current_user).find(params[:id])
     @recording.update_attributes!(recording_params)
     render json: @recording
   end
 
   def destroy
-    @recording = Recording.viewable_by(current_user).find(params[:id])
     render json: @recording.trash!
   end
 
 private
   def recording_params
     params.require(:recording).permit(:name, :description)
+  end
+
+  def load_recording
+    @recording = Recording.viewable_by(current_user).find(params[:id])
   end
 
   def load_participant
