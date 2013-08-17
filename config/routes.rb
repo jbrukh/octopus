@@ -25,6 +25,7 @@ Ruby::Application.routes.draw do
     end
 
     resources :results
+    resources :policies
 
     # media
     resources :videos
