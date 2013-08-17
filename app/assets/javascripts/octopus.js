@@ -12,7 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require handlebars
+//= require vendor/handlebars
 //= require vendor/d3.v3
 //= require vendor/ember-control
 //= require vendor/ember-latest
