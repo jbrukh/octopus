@@ -1,9 +1,8 @@
 App.Uploader = Em.Object.extend
   upload: (recording) ->
-    @uploadS3(recording)
-    #switch App.Environment
-    #  when 'development' then @uploadDirect(recording)
-    #  else @uploadS3(recording)
+    switch App.Environment
+      when 'development' then @uploadDirect(recording)
+      else @uploadS3(recording)
 
   uploadDirect: (recording) ->
     console.log 'uploading recording (direct)'
