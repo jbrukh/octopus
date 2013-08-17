@@ -8,7 +8,9 @@ class Api::ParticipantsController < ApplicationController
       Participant.all
     end
 
-    render json: @participants
+    @participants = @participants.page(params[:page])
+
+    render json: @participants, meta: { page: params[:page], pages: @participants.total_count }
   end
 
   def show

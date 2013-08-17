@@ -79,9 +79,10 @@ end
 group :test, :development do
   gem "shoulda-matchers"
   gem "rspec-rails", "~> 2.0"
-  gem 'mocha', :require => false
 
   gem 'factory_girl_rails'
+  gem 'forgery'
+  gem 'kaminari-rspec', github: 'jonnii/kaminari-rspec', branch: 'remove-noisy-'
 
   gem 'rb-inotify', :require => false
   gem 'rb-fsevent', :require => false

@@ -21,6 +21,7 @@ describe Api::ParticipantsController do
 
     describe '#index' do
       before :each do
+        Participant.stub_chain(:all, :page).and_return(stub_pagination([@participant]))
         get :index
       end
       it { should respond_with :ok }
@@ -28,7 +29,7 @@ describe Api::ParticipantsController do
 
     describe '#index (with query param)' do
       before :each do
-        Participant.expects(:search).with('Bob Jones').returns([])
+        Participant.stub_chain(:search, :page).and_return(stub_pagination([@participant]))
         get :index, :query => 'Bob Jones'
       end
 
@@ -82,12 +83,12 @@ describe Api::ParticipantsController do
     context 'with participant' do
       before :each do
         @participant = build :participant
-        Participant.expects(:find).returns(@participant)
+        Participant.stub(:find).and_return(@participant)
       end
 
       describe '#destroy' do
         it 'trashes record' do
-          @participant.expects(:trash!).at_least_once
+          @participant.should_receive(:trash!).once
           post :destroy, :id => 5
         end
       end
