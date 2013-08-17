@@ -13,6 +13,14 @@
 
 <hr/>
 
+{{#unless connector.isConnected}}
+ <div class="alert alert-error" style="overflow: auto;">
+    <img src="/assets/connector_logo.png" style="width:100px; margin-right: 12px; margin-top:12px;" class="pull-left top-buffer">
+    <h1>Not seeing any data?</h1>
+    <p>Download the Octopus Connector, a lightweight status bar application for Mac OS X that interfaces your hardware devices with the Octopus Platform.</p>
+  </div>
+{{/unless}}
+
 <table class="table table-striped">
     <thead>
       <tr>
@@ -43,12 +51,7 @@
     </tbody>
 </table>
 
-{{#unless connector.isConnected}}
-  <div class="alert alert-error">
-    <strong>Could not find connector.</strong>
-    Have you started the connector? Once it's running this message will go away.
-  </div>
-{{else}}
+{{#if connector.isConnected}}
   <table class="table table-striped">
     <thead>
       <tr>
@@ -76,4 +79,4 @@
       </tr>
     </tbody>
   </table>
-{{/unless}}
+{{/if}}
