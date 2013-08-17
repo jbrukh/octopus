@@ -42,7 +42,8 @@ App.Recording = Ember.Model.extend App.Recordable,
       token: authToken,
       resource_id: resourceId,
       endpoint: "#{rootPath}/api/results/#{id}",
-      local: true
+      local: true,
+      destination: 'direct'
     }
 
     connector.send('upload', payload)
