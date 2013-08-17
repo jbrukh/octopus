@@ -21,7 +21,7 @@ private
         { bucket: ENV['S3_BUCKET_NAME'] },
         { acl: 'private' },
         ["starts-with", "$key", "recordings/"],
-        { success_action_status: 'http://localhost/' },
+        { success_action_redirect: 'http://localhost/' },
         ["content-length-range", 0, 104857600]
       ]
     }
