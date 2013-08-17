@@ -22,31 +22,14 @@ App.Recording = Ember.Model.extend App.Recordable,
     App.RecordingAttachment.find(id)
   ).property()
 
+  policy: (->
+    id = @get 'id'
+    App.Policy.find(id)
+  )
+
   isUploading: (->
     @get('state') == 'waiting_for_data'
   ).property('state')
-
-  location: (->
-    'cloud'
-  ).property()
-
-  upload: (connector, authToken) ->
-    id = @get 'id'
-    resourceId = @get 'resourceId'
-
-    # calculate the current host name
-    arr = window.location.href.split("/")
-    rootPath = arr[0] + "//" + arr[2]
-
-    payload = {
-      token: authToken,
-      resource_id: resourceId,
-      endpoint: "#{rootPath}/api/results/#{id}",
-      local: true,
-      destination: 'direct'
-    }
-
-    connector.send('upload', payload)
 
 App.Recording.url = "/api/recordings"
 App.Recording.rootKey = 'recording'

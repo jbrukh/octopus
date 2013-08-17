@@ -19,11 +19,8 @@ App.RecordableNew = Ember.Mixin.create
       @trigger 'didStop'
 
   beginRecord: ->
-    location = @get('model.location')
-
     payload =
       record: true
-      local:  (location == 'local')
 
     duration = parseInt @get('duration')
     if duration > 0

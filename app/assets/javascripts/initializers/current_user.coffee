@@ -1,5 +1,6 @@
 Ember.Application.initializer
   name: 'currentUser'
+  after: "environment",
 
   initialize: (container) ->
     curretUserAttributes = $('meta[name="current-user"]').attr('content')
