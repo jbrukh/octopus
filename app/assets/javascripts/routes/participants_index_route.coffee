@@ -1,3 +1,3 @@
 App.ParticipantsIndexRoute = Em.Route.extend
   model: ->
-    App.Participant.find()
+    App.Participant.findQuery({page: 4})
