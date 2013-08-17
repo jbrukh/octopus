@@ -22,11 +22,6 @@ App.Recording = Ember.Model.extend App.Recordable,
     App.RecordingAttachment.find(id)
   ).property()
 
-  policy: (->
-    id = @get 'id'
-    App.Policy.find(id)
-  )
-
   isUploading: (->
     @get('state') == 'waiting_for_data'
   ).property('state')

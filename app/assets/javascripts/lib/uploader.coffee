@@ -1,8 +1,9 @@
 App.Uploader = Em.Object.extend
   upload: (recording) ->
-    switch App.Environment
-      when 'development' then @uploadDirect(recording)
-      else @uploadS3(recording)
+    @uploadS3(recording)
+    #switch App.Environment
+    #  when 'development' then @uploadDirect(recording)
+    #  else @uploadS3(recording)
 
   uploadDirect: (recording) ->
     console.log 'uploading recording (direct)'
@@ -10,7 +11,7 @@ App.Uploader = Em.Object.extend
     connector = @get('connector')
     authToken = @get('currentUser').get('authenticationToken')
 
-    id          =  recording.get 'id'
+    id          = recording.get 'id'
     resourceId  = recording.get 'resourceId'
 
     # calculate the current host name
@@ -32,7 +33,29 @@ App.Uploader = Em.Object.extend
   uploadS3: (recording) ->
     console.log 'uploading recording (s3)'
 
-    # siganture
-    # policy
-    # aws_access_key_id
-    # aws_bucket
+    connector = @get('connector')
+
+    id          = recording.get 'id'
+    resourceId  = recording.get 'resourceId'
+
+    # calculate the current host name
+    arr = window.location.href.split("/")
+    rootPath = arr[0] + "//" + arr[2]
+
+    App.Policy.fetch(id).then (policy) =>
+      payload = {
+        resource_id: resourceId,
+        destination: 's3',
+
+        upload_params: {
+          policy:             policy.get('contents'),
+          signature:          policy.get('signature')
+          aws_access_key_id:  'AKIAIRR7ZTVDT3SVRPMQ'
+          aws_bucket:         'erl-octopus-staging'
+        }
+      }
+
+      connector.send('upload', payload).then(data) =>
+        console.log 'finished s3 upload'
+        console.log data
+        # update the server here with the file information
