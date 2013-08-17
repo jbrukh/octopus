@@ -22,6 +22,7 @@ private
         { acl: 'private' },
         ["starts-with", "$key", "recordings/"],
         { success_action_redirect: 'http://localhost/' },
+        { 'content-type': 'application/octet-stream' },
         ["content-length-range", 0, 104857600]
       ]
     }
