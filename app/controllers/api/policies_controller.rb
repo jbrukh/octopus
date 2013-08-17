@@ -20,10 +20,10 @@ private
       conditions: [
         { bucket: ENV['S3_BUCKET_NAME'] },
         { acl: 'private' },
-        ["starts-with", "$key", "recordings/"],
+        [ "starts-with", "$key", "recordings/"],
         { success_action_redirect: 'http://localhost/' },
-        { 'content-type': 'application/octet-stream' },
-        ["content-length-range", 0, 104857600]
+        [ 'content-type': 'application/octet-stream' ],
+        [ "content-length-range", 0, 104857600]
       ]
     }
   end
