@@ -17,7 +17,7 @@ class Api::ResultsController < ApplicationController
 
 private
   def find_recording
-    @recording = Recording.viewable_by(current_user).find(params[:id])
+    @recording = Recording.find(params[:id])
   end
 
   def result_params
