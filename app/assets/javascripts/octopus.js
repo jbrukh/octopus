@@ -12,10 +12,13 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require vendor/handlebars
+
 //= require vendor/d3.v3
 //= require vendor/ember-control
-//= require vendor/ember-latest
+
+//= require handlebars
+//= require ember
+
 //= require vendor/ember-model-latest
 //= require vendor/moment
 //= require vendor/livestamp
