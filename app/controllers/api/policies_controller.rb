@@ -9,7 +9,7 @@ class Api::PoliciesController < ApplicationController
           ENV['S3_SECRET_ACCESS_KEY'], encoded)
       ).gsub("\n","")
 
-    render json: { :policy => {:contents => policy.to_json, :signature => signature} }
+    render json: { :policy => {:contents => encoded, :signature => signature} }
   end
 
 private
