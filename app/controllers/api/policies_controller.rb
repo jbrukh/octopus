@@ -1,12 +1,12 @@
 class Api::PoliciesController < ApplicationController
   def show
-   policy = s3_upload_policy_document
+    policy = s3_upload_policy_document
 
     encoded = Base64.encode64(policy.to_json).gsub("\n","")
     signature = Base64.encode64(
       OpenSSL::HMAC.digest(
           OpenSSL::Digest::Digest.new('sha1'),
-          ENV['S3_SECRET_ACCESS_KEY'] || 'abcd', encoded)
+          ENV['S3_SECRET_ACCESS_KEY'], encoded)
       ).gsub("\n","")
 
     render json: { :policy => {:contents => policy.to_json, :signature => signature} }
@@ -18,7 +18,7 @@ private
     {
       expiration: 30.minutes.from_now.utc.strftime('%Y-%m-%dT%H:%M:%S.000Z'),
       conditions: [
-        { bucket: 'erl-octopus-staging' },
+        { bucket: ENV['S3_BUCKET_NAME'] },
         { acl: 'private' },
         ["starts-with", "$key", "recordings/"],
         { success_action_status: 'http://localhost/' },

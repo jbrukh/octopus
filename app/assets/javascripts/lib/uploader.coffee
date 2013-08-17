@@ -43,17 +43,14 @@ App.Uploader = Em.Object.extend
     rootPath = arr[0] + "//" + arr[2]
 
     App.Policy.fetch(id).then (policy) =>
-      payload = {
-        resource_id: resourceId,
-        destination: 's3',
-
-        upload_params: {
-          policy:             policy.get('contents'),
+      payload =
+        resource_id: resourceId
+        destination: 's3'
+        upload_params:
+          policy:             policy.get('contents')
           signature:          policy.get('signature')
-          aws_access_key_id:  'AKIAIRR7ZTVDT3SVRPMQ'
-          aws_bucket:         'erl-octopus-staging'
-        }
-      }
+          aws_access_key_id:  @get('s3AccessKeyId')
+          aws_bucket:         @get('s3BucketName')
 
       connector.send('upload', payload).then(data) =>
         console.log 'finished s3 upload'

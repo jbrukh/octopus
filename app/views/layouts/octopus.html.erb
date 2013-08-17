@@ -12,6 +12,13 @@
     <%- if user_signed_in? %>
       <meta name="current-user" content="<%= UserSerializer.new(current_user).to_json(root: false) %>" />
       <meta name="environment" content="<%= Rails.env %>" />
+      <% if ENV['S3_BUCKET_NAME'] %>
+        <meta name="s3-bucket-name" content="<%= ENV['S3_BUCKET_NAME'] %>"/>
+      <% end %>
+
+      <% if ENV['S3_ACCESS_KEY_ID'] %>
+        <meta name="s3-access-key-id" content="<%= ENV['S3_ACCESS_KEY_ID'] %>" />
+      <% end %>
     <% end %>
 
     <% if Rails.env.production? %>
