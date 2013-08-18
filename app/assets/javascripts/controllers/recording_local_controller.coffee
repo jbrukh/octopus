@@ -11,9 +11,7 @@ App.RecordingLocalController = Em.ObjectController.extend App.RecordableShow,
   ).property('model')
 
   upload: ->
-    recording = App.Recording.create
-      'resourceId': @get('model.id')
-
-    recording.save().then =>
-      @get('uploader').upload(recording).then (data) =>
-        @transitionToRoute 'recordings.cloud'
+    uploader = @get('uploader')
+    localRecording = @get('model')
+    uploader.uploadLocal(localRecording).then =>
+      @transitionToRoute 'recordings.cloud'

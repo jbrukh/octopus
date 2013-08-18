@@ -1,4 +1,12 @@
 App.Uploader = Em.Object.extend
+  uploadLocal: (localRecording) ->
+    recording = App.Recording.create
+      'resourceId': localRecording.get('id')
+
+    recording.save().then =>
+      @upload(recording).then =>
+        App.LocalRecording.unload(localRecording)
+
   upload: (recording) ->
     switch App.Environment
       when 'development' then @uploadDirect(recording)
