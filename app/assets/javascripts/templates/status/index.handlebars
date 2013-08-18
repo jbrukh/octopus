@@ -9,7 +9,7 @@
 <hr/>
 
 {{#unless connector.isConnected}}
-  {{partial messaging/download_connector}}
+  {{partial 'messaging/download_connector'}}
 {{/unless}}
 
 {{#if connector.isConnected}}
@@ -46,6 +46,11 @@
     <thead>
       <tr>
         <th>User Information</th>
+        <th>
+          <div class="pull-right">
+            <a {{action goToEditUser}} class="clickable">Change my details</a>
+          </div>
+        </th>
       </tr>
     </thead>
     <tbody>
