@@ -1,0 +1,18 @@
+<div class="pull-right">
+  <div class="navbar-btn">
+    {{#if connector.isConnected}}
+      {{#linkTo 'status.index' class="btn btn-action"}}
+        <i class="icon-cog"></i>&nbsp;{{connector.device_name}}
+      {{/linkTo}}
+    {{else}}
+      <div class="btn-group">
+        {{#linkTo 'status.index' class="btn btn-warning"}}
+          <i class="icon-cog"></i>&nbsp;Connector
+        {{/linkTo}}
+        <button type="button" class="btn btn-warning" {{action connect}}>
+          <i class="icon-refresh"></i>
+        </button>
+      </div>
+    {{/if}}
+  </div>
+</div>
