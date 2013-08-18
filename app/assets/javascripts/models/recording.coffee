@@ -18,9 +18,10 @@ App.Recording = Ember.Model.extend App.Recordable,
   durationMs:           attr(Number)
 
   attachment: (->
+    return if @get('isUploading')
     id = @get 'id'
     App.RecordingAttachment.find(id)
-  ).property()
+  ).property('isUploading')
 
   isUploading: (->
     @get('state') == 'waiting_for_data'

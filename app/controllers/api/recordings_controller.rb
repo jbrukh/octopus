@@ -13,6 +13,7 @@ class Api::RecordingsController < ApplicationController
   end
 
   def show
+    return not_found unless current_user.can_view(@recording)
     render json: @recording
   end
 
@@ -43,7 +44,7 @@ private
   end
 
   def load_recording
-    @recording = Recording.viewable_by(current_user).find(params[:id])
+    @recording = Recording.find(params[:id])
   end
 
   def load_participant

@@ -27,7 +27,8 @@ App.Uploader = Em.Object.extend
       }
     }
 
-    connector.send('upload', payload)
+    connector.send('upload', payload).then (data) =>
+      recording.set 'state', 'uploaded'
 
   uploadS3: (recording) ->
     console.log 'uploading recording (s3)'

@@ -65,3 +65,12 @@
 .textarea-modal-full {
   width: 515px;
 }
+
+
+table.table-list tbody tr.waiting_for_data {
+  border-left: solid 3px orange;
+}
+
+table.table-list tbody tr.waiting_for_data:hover {
+  border-left: solid 3px orange;
+}

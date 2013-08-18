@@ -11,22 +11,23 @@
         <th>Created At</th>
         <th>Owner</th>
         <th>Name</th>
-        <th>Duration</th>
         <th>Participant</th>
         <th>Tags</th>
-        <th>State</th>
         <th></th>
       </tr>
     </thead>
     <tbody>
       {{#each controller}}
-        <tr>
+        {{#linkTo 'recording.cloud' this tagName="tr" class="clickable" classNameBindings=this.state}}
           <td>
-            <small>{{timeSince createdAt}}</small>
+            {{#if isUploading}}
+              <img src="/assets/spinner_16.gif" /> <small>uploading</small>
+            {{else}}
+              <small>{{timeSince createdAt}}</small>
+            {{/if}}
           </td>
-          <td>{{owner}}</td>
+          <td><small>{{owner}}</small></td>
           <td>{{name}}</td>
-          <td>{{durationMs}}ms</td>
           <td>
             {{#if participant}}
               {{#linkTo 'participant' participant tagName='span' class='label label-info clickable'}}
@@ -42,27 +43,13 @@
             {{/if}}
           </td>
           <td>
-            {{#if isUploading}}
-              <div class="upload-progress progress progress-striped active">
-                <div class="bar bar-success" style="width: 100%">
-                  <i class="icon-upload"></i> uploading
-                </div>
-              </div>
-            {{else}}
-              <span class="label label-info">{{state}}</span>
-            {{/if}}
-          </td>
-          <td>
             <div class="pull-right">
-              {{#unless isUploading}}
-                {{#linkTo 'recording.cloud' this class='btn btn-table btn-success'}}Explore{{/linkTo}}
-              {{/unless}}
-              <a href="#" class="btn btn-table btn-danger" {{action destroy this}}>
+              <a href="#" class="btn btn-table btn-danger" {{action destroy this bubbles=false}}>
                 <i class="icon-trash"></i>
               </a>
             </div>
           </td>
-        </tr>
+        {{/linkTo}}
       {{/each}}
     </tbody>
   </table>
