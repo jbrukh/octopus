@@ -25,8 +25,8 @@
             <td>
               <small>{{timeSince lastModified}}</small>
             </td>
-            <td>{{file}}</td>
-            <td>{{sizeBytes}}</td>
+            <td><code>{{file}}</code></td>
+            <td><span style="font-family:monospace;">{{sizeBytes}}</span></td>
             <td>
               <div class="pull-right">
                 <a href="#" rel="tooltip" title="Upload this recording to the cloud" class="btn btn-table btn-success" {{action upload this bubbles=false}}>
