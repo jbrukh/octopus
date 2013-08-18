@@ -20,7 +20,7 @@ describe Api::ResultsController do
       sign_in users(:user)
     end
 
-    context '#create (with direct upload)' do
+    context '#update (with direct upload)' do
       before :each do
         ProcessResultWorker.expects(:perform_async).once
         data = Rack::Test::UploadedFile.new(
@@ -35,7 +35,7 @@ describe Api::ResultsController do
       end
     end
 
-    context '#create (with external upload)' do
+    context '#update (with external upload)' do
       before :each do
         ProcessResultWorker.expects(:perform_async).once
 

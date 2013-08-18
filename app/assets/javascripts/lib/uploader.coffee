@@ -37,21 +37,27 @@ App.Uploader = Em.Object.extend
     id          = recording.get 'id'
     resourceId  = recording.get 'resourceId'
 
-    # calculate the current host name
-    arr = window.location.href.split("/")
-    rootPath = arr[0] + "//" + arr[2]
+    return new Ember.RSVP.Promise (resolve, reject) =>
+      console.log 'Fetching policy'
+      App.Policy.fetch(id).then (policy) =>
+        payload = {
+          resource_id: resourceId
+          destination: 's3'
+          upload_params:
+            policy:             policy.get('contents')
+            signature:          policy.get('signature')
+            aws_access_key_id:  @get('s3AccessKeyId')
+            aws_bucket:         @get('s3BucketName')
+        }
 
-    App.Policy.fetch(id).then (policy) =>
-      payload =
-        resource_id: resourceId
-        destination: 's3'
-        upload_params:
-          policy:             policy.get('contents')
-          signature:          policy.get('signature')
-          aws_access_key_id:  @get('s3AccessKeyId')
-          aws_bucket:         @get('s3BucketName')
-
-      connector.send('upload', payload).then(data) =>
-        console.log 'finished s3 upload'
-        console.log data
-        # update the server here with the file information
+        console.log "Sending s3 upload"
+        connector.send('upload', payload).then (data) =>
+          attachment = App.RecordingAttachment.create
+            id: id
+            dataContentType: 'application/octet-stream'
+            dataFileName: data.response_fields.s3_key
+            dataFileSize: data.response_fields.file_bytes
+          attachment.set('isNew', false)
+          attachment.set('isDirty', true)
+          attachment.save().then =>
+            resolve()

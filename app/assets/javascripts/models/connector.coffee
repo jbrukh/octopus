@@ -50,8 +50,6 @@ App.Connector = Em.Object.extend
     @send('info').then((d) => @onInfo(d))
 
   send: (message_type, message = {}) ->
-    console.log "Sending connector message: #{message_type}"
-
     # cast message id as a string and set the message type
     # only assign an id if hasn't already been set for testing
     # use the number of ms since midnight as the identifier
@@ -62,6 +60,8 @@ App.Connector = Em.Object.extend
 
     message.id = "" + msSinceMidnight if message.id == undefined
     message.message_type = message_type
+
+    console.log "Sending connector message: #{message_type} (#{message.id})"
 
     deferred = @next(message)
 
@@ -88,6 +88,8 @@ App.Connector = Em.Object.extend
     throw "No decode available for type #{type}"
 
   dispatch: (callbackId, response) ->
+    console.log "Dispatching #{callbackId}"
+
     deferred = @callbacks[callbackId]
     # if we get a message from the connector which we
     # have no callback for, for example it might send us
