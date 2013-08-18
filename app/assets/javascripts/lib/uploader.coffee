@@ -61,4 +61,5 @@ App.Uploader = Em.Object.extend
           attachment.set('isNew', false)
           attachment.set('isDirty', true)
           attachment.save().then =>
+            recording.set 'state', 'uploaded'
             resolve()
