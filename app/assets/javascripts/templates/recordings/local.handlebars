@@ -1,9 +1,7 @@
 {{partial 'recordings/header'}}
 
 {{#unless connector.isConnected}}
-  <div class="alert alert-warning">
-    You cannot view local recordings unless the connector is running.
-  </div>
+  {{partial messaging/download_connector}}
 {{else}}
   {{#unless controller.length}}
     <div class="alert alert-info">
