@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require vendor/bootstrap
+//= require bootstrapped
 //= require_self
 
 $(function(){
