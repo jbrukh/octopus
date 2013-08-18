@@ -4,15 +4,15 @@
     <legend>Sign in</legend>
 
     <div class="form-group">
-      <label class="col-lg-2 control-label"><%= f.label :email %></label>
-      <div class="col-lg-10">
+      <label class="col-md-2 control-label"><%= f.label :email %></label>
+      <div class="col-md-10">
         <%= f.email_field :email, :autofocus => true, :class => 'form-control' %>
       </div>
     </div>
 
     <div class="form-group">
-      <label class="col-lg-2 control-label"><%= f.label :password %></label>
-      <div class="col-lg-10">
+      <label class="col-md-2 control-label"><%= f.label :password %></label>
+      <div class="col-md-10">
         <%= f.password_field :password, :class => 'form-control' %>
 
         <% if devise_mapping.rememberable? -%>

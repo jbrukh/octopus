@@ -6,8 +6,8 @@
   <%= devise_error_messages! %>
 
   <div class="form-group">
-    <label class="col-lg-2 control-label"><%= f.label :email %></label>
-    <div class="col-lg-10">
+    <label class="col-md-2 control-label"><%= f.label :email %></label>
+    <div class="col-md-10">
       <%= f.email_field :email, :autofocus => true, :class => 'form-control' %>
     </div>
   </div>
@@ -17,10 +17,10 @@
   <% end %>
 
   <div class="form-group">
-    <label class="col-lg-2 control-label">
+    <label class="col-md-2 control-label">
       <%= f.label :password %>
     </label>
-    <div class="col-lg-10">
+    <div class="col-md-10">
       <%= f.password_field :password, :autocomplete => "off", :class => 'form-control' %>
       <p class="help-block">
         leave blank if you don't want to change it.
@@ -29,17 +29,17 @@
   </div>
 
   <div class="form-group">
-    <label class="col-lg-2 control-label"><%= f.label :password_confirmation %></label>
-    <div class="col-lg-10">
+    <label class="col-md-2 control-label"><%= f.label :password_confirmation %></label>
+    <div class="col-md-10">
       <%= f.password_field :password_confirmation, :class => 'form-control' %>
     </div>
   </div>
 
   <div class="form-group">
-    <label class="col-lg-2 control-label">
+    <label class="col-md-2 control-label">
       <%= f.label :current_password %>
     </label>
-    <div class="col-lg-10">
+    <div class="col-md-10">
       <%= f.password_field :current_password, :class => 'form-control' %>
       <p class="help-block">
         we need your current password to confirm your changes.
@@ -47,8 +47,8 @@
     </div>
   </div>
 
-  <div class="col-lg-offset-2">
-    <%= f.submit "Update", :class => 'btn btn-default' %>
+  <div class="col-md-offset-2">
+    <%= f.submit "Update my details", :class => 'btn btn-primary' %>
   </div>
 <% end %>
 

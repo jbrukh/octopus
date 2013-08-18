@@ -1,37 +1,37 @@
 <div class="row">
-  <div class="col-lg-12 title text-center">
+  <div class="col-md-12 title text-center">
     <h1>Biometrics in your browser.</h1>
   </div>
 </div>
 
 <div class="row">
-  <div class="col-lg-4 text-center">
+  <div class="col-md-4 text-center">
     <a href="http://www.avatareeg.com" target="_blank">
       <%= image_tag "avatareeg.jpg", id: "avatareeg-image" %>
     </a>
   </div>
-  <div class="col-lg-4 text-center">
+  <div class="col-md-4 text-center">
     <%= image_tag "data.png", id: "data-image" %>
   </div>
-  <div class="col-lg-4 text-center">
+  <div class="col-md-4 text-center">
     <%= image_tag "recordings.png", id: "recordings-image" %>
   </div>
 </div>
 
 <div class="row">
-  <div class="col-lg-4">
+  <div class="col-md-4">
     <h3>
       Connect biometrics right to your browser using the <a href="http://www.avatareeg.com" target="_blank">Avatar EEG</a>.
     </h3>
     <hr/>
   </div>
-  <div class="col-lg-4">
+  <div class="col-md-4">
     <h3>
       Record your data in real time with millisecond accuracy.
     </h3>
     <hr/>
   </div>
-  <div class="col-lg-4">
+  <div class="col-md-4">
     <h3>
       Organize, share, and download your work from any computer.
     </h3>
@@ -40,36 +40,36 @@
 </div>
 
 <div class="row">
-  <div class="col-lg-4">
+  <div class="col-md-4">
     <p>
       The Avatar EEG is portable Bluetooth device suitable for research-grade EEG, EOG, EMG, and ECG on up to 8 channels. Using the <%= link_to 'Octopus Connector', connectors_url %>, you can stream data from the Avatar onto the Octopus Platform, directly from your browser.
     </p>
   </div>
-  <div class="col-lg-4">
+  <div class="col-md-4">
     <p>
       Using the Octopus Platform, you can observe live data from your device, create precise recordings, and mark up your work with metadata. Annotate your data with tags or associate them with profiles for test subjects.
     </p>
   </div>
-  <div class="col-lg-4">
+  <div class="col-md-4">
     <p>
       Keep your data in the cloud for easy access from any Web-enabled device. If you wish to keep data private, simply use the <%= link_to 'Local Storage', page_url('faq', :anchor => 'storage') %> mode so that it never leaves your machine.
     </p>
   </div>
 </div>
 <div class="row">
-  <div class="col-lg-4">
+  <div class="col-md-4">
     <p>
       <%= link_to 'What devices does Octopus support?', page_url('faq', :anchor => "platforms") %>&nbsp;
       <span class="call-to-action icon-chevron-right"></span>
     </p>
   </div>
-  <div class="col-lg-4">
+  <div class="col-md-4">
      <p>
       <%= link_to 'How do I get started?', page_url('faq', :anchor => "getting-started") %>&nbsp;
       <span class="call-to-action icon-chevron-right"></span>
     </p>
   </div>
-  <div class="col-lg-4">
+  <div class="col-md-4">
      <p>
        <%= link_to 'Have a peek at some screenshots of Octopus', page_url('demo') %>&nbsp;
       <span class="call-to-action icon-chevron-right"></span>
@@ -80,7 +80,7 @@
 <% if false %>
 
 <div class="row">
-  <div class="col-lg-6">
+  <div class="col-md-6">
     <%= render :partial => 'feature', :locals => {
       :title => 'Browser Recording',
       :icon => 'icon-play-sign',
@@ -89,7 +89,7 @@
       } %>
   </div>
 
-  <div class="col-lg-6">
+  <div class="col-md-6">
     <%= render :partial => 'feature', :locals => {
       :title => 'Device Drivers',
       :icon => 'icon-bolt',
@@ -102,7 +102,7 @@
 <hr/>
 
 <div class="row">
-  <div class="col-lg-6">
+  <div class="col-md-6">
     <%= render :partial => 'feature', :locals => {
       :title => 'Cloud Storage',
       :icon => 'icon-cloud-download',
@@ -111,7 +111,7 @@
       } %>
   </div>
 
-  <div class="col-lg-6">
+  <div class="col-md-6">
     <%= render :partial => 'feature', :locals => {
       :title => 'Formats You Use',
       :icon => 'icon-copy',
@@ -124,7 +124,7 @@
 <hr/>
 
 <div class="row">
-  <div class="col-lg-6">
+  <div class="col-md-6">
     <%= render :partial => 'feature', :locals => {
       :title => 'Data Tagging and Searching',
       :icon => 'icon-tag',
@@ -133,7 +133,7 @@
       } %>
   </div>
 
-  <div class="col-lg-6">
+  <div class="col-md-6">
     <%= render :partial => 'feature', :locals => {
       :title => 'Subject Meta Data',
       :icon => 'icon-user',
