@@ -28,14 +28,6 @@ GIT
       sass-rails (>= 3.2.0)
 
 GIT
-  remote: git://github.com/jonnii/kaminari-rspec.git
-  revision: 6f0c9319af91814953d1ea1ee4fbbbb3e31ba66e
-  branch: remove-noisy-
-  specs:
-    kaminari-rspec (0.14.1.b1)
-      kaminari (= 0.14.1)
-
-GIT
   remote: git://github.com/josevalim/inherited_resources.git
   revision: ae1516a3f1a01f98beac3334f76831a1c793c521
   specs:
@@ -221,6 +213,8 @@ GEM
     kaminari (0.14.1)
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
+    kaminari-rspec (0.14.1)
+      kaminari (= 0.14.1)
     kgio (2.8.0)
     listen (1.2.3)
       rb-fsevent (>= 0.9.3)
@@ -412,7 +406,7 @@ DEPENDENCIES
   jbuilder (~> 1.0.1)
   jquery-rails
   kaminari
-  kaminari-rspec!
+  kaminari-rspec
   newrelic_rpm
   paperclip
   pg

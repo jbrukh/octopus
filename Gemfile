@@ -82,7 +82,7 @@ group :test, :development do
 
   gem 'factory_girl_rails'
   gem 'forgery'
-  gem 'kaminari-rspec', github: 'jonnii/kaminari-rspec', branch: 'remove-noisy-'
+  gem 'kaminari-rspec'
 
   gem 'rb-inotify', :require => false
   gem 'rb-fsevent', :require => false
