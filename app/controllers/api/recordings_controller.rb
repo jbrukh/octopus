@@ -12,7 +12,11 @@ class Api::RecordingsController < ApplicationController
 
     @recordings = @recordings.page(params[:page])
 
-    render json: @recordings, meta: { page: params[:page], pages: @recordings.num_pages }
+    render json: @recordings, meta: {
+      page:         @recordings.current_page,
+      total_count:  @recordings.total_count,
+      total_pages:  @recordings.total_pages
+    }
   end
 
   def show

@@ -1,5 +1,6 @@
 App.RecordingsCloudRoute = Em.Route.extend
-  model: -> App.Recording.find()
+  model: ->
+    App.Recording.findQuery({page: 1})
 
   activate: ->
     settings = App.Settings.find()

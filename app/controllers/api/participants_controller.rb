@@ -11,9 +11,9 @@ class Api::ParticipantsController < ApplicationController
     @participants = @participants.page(params[:page])
 
     render json: @participants, meta: {
-      page: @participants.current_page,
-      total_count: @participants.total_count,
-      total_pages: @participants.total_pages
+      page:         @participants.current_page,
+      total_count:  @participants.total_count,
+      total_pages:  @participants.total_pages
     }
   end
 

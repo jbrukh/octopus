@@ -21,6 +21,7 @@ App.Router.map ->
     @route 'new.cloud', { path: '/new/cloud' }
     @route 'new.local', { path: '/new/local' }
     @route 'cloud'
+    @route 'cloud.page', { path: '/cloud/page/:page_id' }
     @route 'local'
 
   @resource 'recording.cloud', { path: '/recording/cloud/:recording_id' }

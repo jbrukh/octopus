@@ -1,15 +1,20 @@
-<ul class="pagination">
-  <li {{bindAttr class="isFirstPage:disabled"}}>
-    {{#linkTo 'participants.page' previousPage}}&laquo;{{/linkTo}}
-  </li>
-
-  {{#each pages}}
-    <li {{bindAttr class="isCurrentPage:active"}}>
-      {{#linkTo 'participants.page' pageNumber}}{{pageNumber}}{{/linkTo}}
+{{#if hasPages}}
+  <ul class="pagination">
+    <li {{bindAttr class="isFirstPage:disabled"}}>
+      {{#linkTo pageRoute previousPage}}&laquo;{{/linkTo}}
     </li>
-  {{/each}}
 
-  <li {{bindAttr class="isLastPage:disabled"}}>
-    {{#linkTo 'participants.page' nextPage}}&raquo;{{/linkTo}}
-  </li>
-</ul>
+    {{#with pageRoute as withRoute}}
+      {{#each pages}}
+        <li {{bindAttr class="isCurrentPage:active"}}>
+          {{#linkTo withRoute pageNumber}}{{pageNumber}}{{/linkTo}}
+        </li>
+      {{/each}}
+
+    {{/with}}
+
+    <li {{bindAttr class="isLastPage:disabled"}}>
+      {{#linkTo pageRoute nextPage}}&raquo;{{/linkTo}}
+    </li>
+  </ul>
+{{/if}}

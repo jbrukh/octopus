@@ -31,4 +31,4 @@ App.Recording.url = "/api/recordings"
 App.Recording.rootKey = 'recording'
 App.Recording.collectionKey = 'recordings'
 App.Recording.camelizeKeys = true
-App.Recording.adapter = Ember.RESTAdapter.create()
+App.Recording.adapter = App.MetaRESTAdapter.create()
