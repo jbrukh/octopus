@@ -1,13 +1,9 @@
-{{content.meta.page}}
-{{content.meta.total_count}}
-{{content.meta.total_pages}}
-
 <ul class="pagination">
-  <li><a href="#">&laquo;</a></li>
-  <li><a href="#">1</a></li>
-  <li><a href="#">2</a></li>
-  <li><a href="#">3</a></li>
-  <li><a href="#">4</a></li>
-  <li><a href="#">5</a></li>
-  <li><a href="#">&raquo;</a></li>
+  <li>{{#linkTo 'participants.page' previousPage}}&laquo;{{/linkTo}}</li>
+  {{#each pages}}
+    <li>
+      {{#linkTo 'participants.page' pageNumber}}{{pageNumber}}{{/linkTo}}
+    </li>
+  {{/each}}
+  <li>{{#linkTo 'participants.page' nextPage}}&raquo;{{/linkTo}}</li>
 </ul>

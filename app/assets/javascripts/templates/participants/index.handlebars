@@ -20,16 +20,11 @@
 
 <hr/>
 
-{{content}}
-{{content.isLoaded}}
-
 {{#unless content.isLoaded}}
   <div class="alert alert-info">
     Loading participants, please wait...
   </div>
 {{else}}
-
-  {{partial 'shared/pager'}}
 
   {{#if hasSearchResults}}
     {{#unless searchResults.length}}
@@ -49,6 +44,7 @@
       </div>
     {{else}}
       {{render participants/table controller}}
+      {{partial 'shared/pager'}}
     {{/unless}}
   {{/unless}}
 
