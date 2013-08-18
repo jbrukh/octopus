@@ -1,8 +1,8 @@
 <div class="row">
   <div class="col-md-9">
     <ul class="nav nav-pills">
-      {{#linkTo 'recordings.cloud' tagName='li'}}
-        {{#linkTo 'recordings.cloud'}}
+      {{#linkTo 'recordings.cloud' tagName='li' classNameBindings=isCloud}}
+        {{#linkTo 'recordings.cloud' classNameBindings=isCloud}}
           <i class="icon-cloud"></i>&nbsp;Cloud
         {{/linkTo}}
       {{/linkTo}}
@@ -12,8 +12,7 @@
           <i class="icon-desktop"></i>&nbsp;Local
         {{/linkTo}}
       {{/linkTo}}
-  </ul>
-
+    </ul>
   </div>
 
   <div class="col-md-3">

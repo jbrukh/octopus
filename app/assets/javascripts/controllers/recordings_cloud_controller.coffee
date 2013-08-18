@@ -9,3 +9,7 @@ App.RecordingsCloudController = Em.ArrayController.extend App.RecordableList, Ap
   pageRoute: (->
     return 'recordings.cloud.page'
   ).property()
+
+  isCloud: (->
+    'active'
+  ).property()

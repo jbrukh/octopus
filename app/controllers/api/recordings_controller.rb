@@ -10,7 +10,7 @@ class Api::RecordingsController < ApplicationController
       Recording.viewable_by(current_user).order('created_at desc')
     end
 
-    @recordings = @recordings.page(params[:page])
+    @recordings = @recordings.page(params[:page]).per(2)
 
     render json: @recordings, meta: {
       page:         @recordings.current_page,
