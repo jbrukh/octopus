@@ -1,13 +1,15 @@
 {{#if model.isLoaded}}
-  <div class="btn-group navbar-btn">
-    <a class="btn btn-info dropdown-toggle" data-toggle="dropdown" href="#">
-      <i class="icon-user"></i> {{fullName}}
-      <span class="caret"></span>
-    </a>
-    <ul class="dropdown-menu">
-      <li>
-        <a href="#" {{action clear}}>Clear</a>
-      </li>
-    </ul>
+  <div class="navbar-btn pull-right nav-action">
+    <div class="btn-group">
+      <a class="btn btn-info dropdown-toggle" data-toggle="dropdown" href="#">
+        <i class="icon-user"></i> {{fullName}}
+        <span class="caret"></span>
+      </a>
+      <ul class="dropdown-menu">
+        <li>
+          <a href="#" {{action clear}}>Clear</a>
+        </li>
+      </ul>
+    </div>
   </div>
 {{/if}}

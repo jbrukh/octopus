@@ -37,7 +37,13 @@
   </ul>
 
   <div class="pull-right">
-      {{render 'current_participant'}}
-      {{render "connector_status"}}
+    <div class="navbar-btn pull-right nav-action">
+      <a class="btn btn-info" rel="tooltip" title="sign out" {{action signOut}}>
+        <i class="icon-signout"></i>
+      </a>
+    </div>
+
+    {{render "connector_status"}}
+    {{render 'current_participant'}}
   </div>
 {{/if}}
