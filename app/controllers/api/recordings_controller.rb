@@ -9,7 +9,10 @@ class Api::RecordingsController < ApplicationController
     else
       Recording.viewable_by(current_user).order('created_at desc')
     end
-    render json: @recordings
+
+    @recordings = @recordings.page(params[:page])
+
+    render json: @recordings, meta: { page: params[:page], pages: @recordings.num_pages }
   end
 
   def show

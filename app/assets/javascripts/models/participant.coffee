@@ -63,4 +63,4 @@ App.Participant.url = "/api/participants"
 App.Participant.rootKey = 'participant'
 App.Participant.collectionKey = 'participants'
 App.Participant.camelizeKeys = true
-App.Participant.adapter = Ember.RESTAdapter.create()
+App.Participant.adapter = App.MetaRESTAdapter.create()

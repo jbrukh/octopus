@@ -31,12 +31,12 @@ describe Api::VideosController do
     context 'with recording' do
       before :each do
         @video = build :video
-        Video.expects(:find).returns(@video)
+        Video.stub(:find).and_return(@video)
       end
 
       describe '#destroy' do
         it 'trashes video' do
-          @video.expects(:trash!).at_least_once
+          @video.should_receive(:trash!).once
           post :destroy, :id => 5
         end
       end

@@ -22,7 +22,7 @@ describe Api::ResultsController do
 
     context '#update (with direct upload)' do
       before :each do
-        ProcessResultWorker.expects(:perform_async).once
+        ProcessResultWorker.should_receive(:perform_async).once
         data = Rack::Test::UploadedFile.new(
           "#{Rails.root}/spec/fixtures/files/obf.data", 'application/octet-stream')
         post :update, :id => recording.id, :result => { :data => data }

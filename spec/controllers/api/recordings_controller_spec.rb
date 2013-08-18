@@ -57,7 +57,7 @@ describe Api::RecordingsController do
     context 'with recording' do
       before :each do
         @recording = users(:user).recordings.build
-        Recording.expects(:viewable_by).returns(stub(:find => @recording))
+        Recording.stub_chain(:viewable_by, :find).and_return(@recording)
       end
 
       describe '#show' do
@@ -68,14 +68,14 @@ describe Api::RecordingsController do
 
       describe '#update' do
         it 'updates the recording' do
-          @recording.expects(:update_attributes!).once
+          @recording.should_receive(:update_attributes!).once
           put :update, :id => 5, :recording => {:description => 'foo'}
         end
       end
 
       describe '#destroy' do
         it 'trashes record' do
-          @recording.expects(:trash!).at_least_once
+          @recording.should_receive(:trash!).once
           post :destroy, :id => 5
         end
       end

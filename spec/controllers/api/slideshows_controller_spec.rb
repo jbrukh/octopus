@@ -29,12 +29,12 @@ describe Api::SlideshowsController do
     context 'with slideshow' do
       before :each do
         @slideshow = build :slideshow
-        Slideshow.expects(:find).returns(@slideshow)
+        Slideshow.stub(:find).and_return(@slideshow)
       end
 
       describe '#destroy' do
         it 'trashes slideshow' do
-          @slideshow.expects(:trash!).at_least_once
+          @slideshow.should_receive(:trash!).once
           post :destroy, :id => 5
         end
       end

@@ -38,6 +38,7 @@ gem 'paperclip'
 gem 'bindata'
 gem 'strip_attributes'
 gem 'aws-sdk', '~> 1.5.7'
+gem 'kaminari'
 
 # real time
 gem 'redis'
@@ -78,9 +79,10 @@ end
 group :test, :development do
   gem "shoulda-matchers"
   gem "rspec-rails", "~> 2.0"
-  gem 'mocha', :require => false
 
   gem 'factory_girl_rails'
+  gem 'forgery'
+  gem 'kaminari-rspec', github: 'jonnii/kaminari-rspec', branch: 'remove-noisy-'
 
   gem 'rb-inotify', :require => false
   gem 'rb-fsevent', :require => false
