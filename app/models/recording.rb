@@ -19,7 +19,15 @@ class Recording < ActiveRecord::Base
   end
 
   def upload(result_params)
-    self.data = result_params[:data]
+    result_data = result_params[:data]
+    if result_data
+      self.data = result_data
+    else
+      self.data_file_name = result_params[:data_file_name]
+      self.data_file_size = result_params[:data_file_size]
+      self.data_content_type = result_params[:data_content_type]
+    end
+
     on_build_result
   end
 

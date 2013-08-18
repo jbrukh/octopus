@@ -20,7 +20,7 @@ describe Api::ResultsController do
       sign_in users(:user)
     end
 
-    context '#create' do
+    context '#create (with direct upload)' do
       before :each do
         ProcessResultWorker.expects(:perform_async).once
         data = Rack::Test::UploadedFile.new(
@@ -32,6 +32,25 @@ describe Api::ResultsController do
         recording.reload
         expect(recording.data).not_to eq(nil)
         expect(recording.uploaded?).to eq(true)
+      end
+    end
+
+    context '#create (with external upload)' do
+      before :each do
+        ProcessResultWorker.expects(:perform_async).once
+
+        post :update, :id => recording.id, :result => {
+          :data_file_name => 'filename',
+          :data_content_type => 'application/octet-stream',
+          :data_file_size => 12345 }
+      end
+      it { should respond_with :created }
+      it 'updates the recording' do
+        recording.reload
+        expect(recording.data).not_to eq(nil)
+        expect(recording.uploaded?).to eq(true)
+        expect(recording.data.original_filename).to eq('filename')
+        expect(recording.data.size).to eq(12345)
       end
     end
   end
