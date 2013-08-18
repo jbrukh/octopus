@@ -97,6 +97,7 @@ Ruby::Application.configure do
 
   # paperclip configuration for s3
   config.paperclip_defaults.merge!({
-    :storage => :s3
+    :storage => :s3,
+    :path => ':filename'
   })
 end
