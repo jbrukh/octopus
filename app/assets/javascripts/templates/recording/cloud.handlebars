@@ -1,18 +1,23 @@
 <div class="row">
-  <div class="col-lg-6">
-    <h3>Recording <small>{{name}}</small></h3>
+  <div class="col-lg-8">
+    <ul class="breadcrumb">
+      <li>{{#linkTo 'recordings.index'}}Recordings{{/linkTo}}</li>
+      <li>{{#linkTo 'recordings.cloud'}}Cloud{{/linkTo}}</li>
+      <li class="active">{{displayName}}</li>
+    </ul>
   </div>
-  <div class="col-lg-6">
+  <div class="col-lg-4">
     <div class="pull-right">
-      <button class="btn btn-primary" {{action edit}}>Edit</button>
+      <button class="btn btn-info" {{action edit}}>
+        <i class="icon-edit"></i>&nbsp;Edit
+      </button>
+
       <button class="btn btn-info" {{action exportAsCsv}}>
-        <i class="icon-download-alt"></i>&nbsp; Export CSV
+        <i class="icon-download-alt"></i>&nbsp;Export CSV
       </button>
     </div>
   </div>
 </div>
-
-<hr/>
 
 {{#unless isLoaded}}
   <div class="alert alert-info">

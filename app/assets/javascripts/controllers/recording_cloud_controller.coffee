@@ -7,6 +7,11 @@ App.RecordingCloudController = Em.ObjectController.extend App.RecordableShow,
     model.save().then =>
       @send('close')
 
+  displayName: (->
+    name = @get 'model.name'
+    name || @get('model.id')
+  ).property('model.name')
+
   createTag: ->
     console.log 'create tag'
     tagging = @get 'tagging'

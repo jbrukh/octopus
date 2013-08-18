@@ -1,11 +1,12 @@
 <div class="row">
-  <div class="col-lg-6">
+  <div class="col-lg-8">
     <ul class="breadcrumb">
-      <li>{{#linkTo 'recordings.local'}}Recordings{{/linkTo}}</li>
+      <li>{{#linkTo 'recordings.index'}}Recordings{{/linkTo}}</li>
+      <li>{{#linkTo 'recordings.local'}}Local{{/linkTo}}</li>
       <li class="active">{{id}}</li>
     </ul>
   </div>
-  <div class="col-lg-6">
+  <div class="col-lg-4">
     <div class="pull-right">
       <button class="btn btn-info" {{action upload}}>
         <i class="icon-cloud-upload"></i>&nbsp;Upload
@@ -17,9 +18,6 @@
     </div>
   </div>
 </div>
-
-
-local recording {{id}} {{lastModified}}
 
 {{#if recordingData.isLoaded}}
   {{view App.ResultDataGraphView resultDataBinding=recordingData}}
