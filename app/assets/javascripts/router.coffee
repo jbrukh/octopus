@@ -4,6 +4,7 @@ App.Router.map ->
   # participants
   @resource 'participants', ->
     @route 'new'
+    @route 'page', { path: 'page/:page_id' }
 
   @resource 'participant', { path: '/participant/:participant_id' }
 

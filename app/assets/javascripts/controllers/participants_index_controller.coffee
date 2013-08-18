@@ -4,6 +4,21 @@ App.ParticipantsIndexController = Em.ArrayController.extend
   query: ''
   searchResults: null
 
+  previousPage: (->
+    @get('content.meta.page') - 1
+  ).property('content.meta.page')
+
+  nextPage: (->
+    @get('content.meta.page') + 1
+  ).property('content.meta.page')
+
+  pages: (->
+    currentPage = @get('content.meta.page')
+    from = currentPage - 3
+    to = currentPage + 3
+    Em.Object.create({pageNumber: page}) for page in [from..to]
+  ).property('content.meta.total_pages', 'content.meta.page')
+
   setupController: (controller, params) ->
     controller.set 'query', ''
 
