@@ -3,17 +3,17 @@ get = Ember.get
 App.ConnectorAdapter = Ember.Adapter.extend
   find: (record, id) ->
     return new Ember.RSVP.Promise (resolve, reject) =>
-      all = findAll()
+      all = @findQuery({})
       all.then (data) =>
         result = data.findProperty 'id', id
         resolve(result)
 
-  findAll: (klass, records) ->
+  findQuery: (klass, records, params) ->
     connector = App.ConnectorAdapter.connectorInstance
     connector.send('repository', { operation: 'list', local: true }).then (data) =>
-      @didFindAll klass, records, data
+      @didFindQuery klass, records, data
 
-  didFindAll: (klass, records, data) ->
+  didFindQuery: (klass, records, data) ->
     collectionKey = get klass, 'collectionKey'
     dataToLoad = if collectionKey
       data[collectionKey]
