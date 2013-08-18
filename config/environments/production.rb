@@ -97,8 +97,6 @@ Ruby::Application.configure do
 
   # paperclip configuration for s3
   config.paperclip_defaults.merge!({
-    :storage => :s3,
-    :path => ":hash.:extension",
-    :hash_secret => "22cce664d62e4bbe9f0346ada15f21b2"
+    :storage => :s3
   })
 end
