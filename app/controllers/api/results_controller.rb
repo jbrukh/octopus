@@ -10,7 +10,6 @@ class Api::ResultsController < ApplicationController
   end
 
   def update
-    sleep 5
     @recording.upload(result_params)
     render json: @recording, :status => :created
     ProcessResultWorker.perform_async(@recording.id)

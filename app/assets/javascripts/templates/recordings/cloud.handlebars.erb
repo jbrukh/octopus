@@ -21,7 +21,7 @@
         {{#linkTo 'recording.cloud' this tagName="tr" class="clickable" classNameBindings=this.state}}
           <td>
             {{#if isUploading}}
-              <img src="/assets/spinner_16.gif" /> <small>uploading</small>
+              <img src="<%= asset_path('spinner_16.gif') %>"/> <small>uploading</small>
             {{else}}
               <small>{{timeSince createdAt}}</small>
             {{/if}}
