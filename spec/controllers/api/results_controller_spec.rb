@@ -37,7 +37,7 @@ describe Api::ResultsController do
 
     context '#update (with external upload)' do
       before :each do
-        ProcessResultWorker.expects(:perform_async).once
+        ProcessResultWorker.should_receive(:perform_async).once
 
         post :update, :id => recording.id, :result => {
           :data_file_name => 'filename',

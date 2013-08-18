@@ -54,10 +54,49 @@ describe Api::RecordingsController do
       end
     end
 
+    context 'with organization recording' do
+      before :each do
+        @recording = users(:friend).recordings.build
+        Recording.stub_chain(:includes, :find).and_return(@recording)
+      end
+
+      describe '#show' do
+        it 'gets record' do
+          post :show, :id => 5
+        end
+      end
+    end
+
+    context 'with enemy recording' do
+      before :each do
+        @recording = users(:enemy).recordings.build
+        Recording.stub_chain(:includes, :find).and_return(@recording)
+      end
+
+      describe '#show' do
+        it 'gets record' do
+          expect { post :show, :id => 5 }.to raise_error
+        end
+      end
+    end
+
+    context 'with stranger recording' do
+      before :each do
+        @recording = users(:stranger).recordings.build
+        Recording.stub_chain(:includes, :find).and_return(@recording)
+      end
+
+      describe '#show' do
+        it 'gets record' do
+          expect { post :show, :id => 5 }.to raise_error
+        end
+      end
+    end
+
     context 'with recording' do
       before :each do
         @recording = users(:user).recordings.build
-        Recording.stub_chain(:viewable_by, :find).and_return(@recording)
+        Recording.stub_chain(:includes, :find).and_return(@recording)
       end
 
       describe '#show' do

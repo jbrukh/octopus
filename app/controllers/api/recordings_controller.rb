@@ -16,7 +16,7 @@ class Api::RecordingsController < ApplicationController
   end
 
   def show
-    return not_found unless current_user.can_view(@recording)
+    authorize! :read, @recording
     render json: @recording
   end
 
@@ -33,11 +33,13 @@ class Api::RecordingsController < ApplicationController
   end
 
   def update
+    authorize! :update, @recording
     @recording.update_attributes!(recording_params)
     render json: @recording
   end
 
   def destroy
+    authorize! :destroy, @recording
     render json: @recording.trash!
   end
 
@@ -47,7 +49,7 @@ private
   end
 
   def load_recording
-    @recording = Recording.find(params[:id])
+    @recording = Recording.includes(:user).find(params[:id])
   end
 
   def load_participant
