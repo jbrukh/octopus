@@ -10,6 +10,7 @@ App.Participant = Ember.Model.extend
   gender:     attr()
   birthday:   attr()
   createdAt:  attr(Date)
+  owner:      attr()
 
   properties: attr(Properties)
 

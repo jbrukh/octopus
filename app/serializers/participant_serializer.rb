@@ -7,5 +7,10 @@ class ParticipantSerializer < ActiveModel::Serializer
     :birthday,
     :created_at,
     :updated_at,
-    :properties
+    :properties,
+    :owner
+
+  def owner
+    object.user.email
+  end
 end

@@ -1,5 +1,6 @@
 class Participant < ActiveRecord::Base
   include Trashable
+  include Viewable
 
   def self.search(query)
     term = "%#{query.downcase}%"

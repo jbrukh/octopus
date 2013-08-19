@@ -4,6 +4,7 @@
       <th>Name</th>
       <th>Email</th>
       <th>Created At</th>
+      <th>Created By</th>
       <th></th>
     </tr>
   </thead>
@@ -13,6 +14,7 @@
         <td><i class="icon-user"></i>&nbsp;{{fullName}}</td>
         <td>{{email}}</td>
         <td>{{timeSince createdAt}}</td>
+        <td>{{owner}}</td>
         <td>
           <div class="pull-right">
             <button class="btn btn-table btn-info" {{action select this bubbles=false}}>Select</button>

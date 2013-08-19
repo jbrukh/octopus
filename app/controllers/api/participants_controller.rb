@@ -8,7 +8,7 @@ class Api::ParticipantsController < ApplicationController
       Participant.all
     end
 
-    @participants = @participants.page(params[:page])
+    @participants = @participants.viewable_by(current_user).page(params[:page])
 
     render json: @participants, meta: {
       page:         @participants.current_page,
@@ -19,6 +19,7 @@ class Api::ParticipantsController < ApplicationController
 
   def show
     @participant = Participant.find(params[:id])
+    authorize! :read, @participant
     render json: @participant
   end
 
@@ -35,6 +36,7 @@ class Api::ParticipantsController < ApplicationController
 
   def destroy
     @participant = Participant.find(params[:id])
+    authorize! :destroy, @participant
     render json: @participant.trash!
   end
 

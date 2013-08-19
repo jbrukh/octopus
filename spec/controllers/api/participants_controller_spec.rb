@@ -21,7 +21,7 @@ describe Api::ParticipantsController do
 
     describe '#index' do
       before :each do
-        Participant.stub_chain(:all, :page).and_return(stub_pagination([@participant]))
+        Participant.stub_chain(:all, :viewable_by, :page).and_return(stub_pagination([@participant]))
         get :index
       end
       it { should respond_with :ok }
@@ -29,7 +29,7 @@ describe Api::ParticipantsController do
 
     describe '#index (with query param)' do
       before :each do
-        Participant.stub_chain(:search, :page).and_return(stub_pagination([@participant]))
+        Participant.stub_chain(:search, :viewable_by, :page).and_return(stub_pagination([@participant]))
         get :index, :query => 'Bob Jones'
       end
 
