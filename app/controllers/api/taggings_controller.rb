@@ -3,6 +3,8 @@ class Api::TaggingsController < ApplicationController
   before_action :load_recording
 
   def create
+    authorize! :update, @recording
+
     @tagging = @recording.taggings.build(tagging_params)
     @tagging.user = current_user
     @tagging.save!
