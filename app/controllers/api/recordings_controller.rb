@@ -58,6 +58,7 @@ private
 
   def load_participant
     @participant = Participant.find(params[:participant_id])
+    authorize! :read, @participant
   end
 
   def has_participant_id

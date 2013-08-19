@@ -5,11 +5,12 @@ class Api::ResultsController < ApplicationController
   before_filter :find_recording
 
   def show
-    @recording
+    authorize! :read, @recording
     render json: @recording, serializer: ResultSerializer
   end
 
   def update
+    authorize! :update, @recording
     @recording.upload(result_params)
     render json: @recording, :status => :created
     ProcessResultWorker.perform_async(@recording.id)

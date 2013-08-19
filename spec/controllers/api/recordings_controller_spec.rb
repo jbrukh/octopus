@@ -4,6 +4,7 @@ describe Api::RecordingsController do
   fixtures :users
 
   let (:participant) { create :participant, :user => users(:user) }
+  let (:participant_unauthorized) { create :participant, :user => users(:stranger) }
 
   context 'as a guest' do
     describe '#index' do
@@ -33,6 +34,12 @@ describe Api::RecordingsController do
       end
 
       it { should respond_with :ok }
+    end
+
+    describe '#index (with unauthorized participant id)' do
+      it do
+        expect { get :index, :participant_id => participant_unauthorized.id }.to raise_error
+      end
     end
 
     describe '#create' do
@@ -74,7 +81,7 @@ describe Api::RecordingsController do
       end
 
       describe '#show' do
-        it 'gets record' do
+        it do
           expect { post :show, :id => 5 }.to raise_error
         end
       end
@@ -87,7 +94,7 @@ describe Api::RecordingsController do
       end
 
       describe '#show' do
-        it 'gets record' do
+        it do
           expect { post :show, :id => 5 }.to raise_error
         end
       end
