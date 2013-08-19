@@ -7,7 +7,9 @@ Ruby::Application.routes.draw do
   ActiveAdmin.routes(self)
 
   # register sidekiq for running background tasks
-  mount Sidekiq::Web => '/sidekiq'
+  authenticate :user, lambda { |u| u.admin? } do
+    mount Sidekiq::Web => '/sidekiq'
+  end
 
   # marketing routes
   resources :features

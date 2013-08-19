@@ -4,7 +4,7 @@
       <th>Name</th>
       <th>Email</th>
       <th>Created At</th>
-      <th>Created By</th>
+      <th>Owner</th>
       <th></th>
     </tr>
   </thead>
@@ -13,8 +13,8 @@
       {{#linkTo 'participant' this tagName='tr' class='clickable'}}
         <td><i class="icon-user"></i>&nbsp;{{fullName}}</td>
         <td>{{email}}</td>
-        <td>{{timeSince createdAt}}</td>
-        <td>{{owner}}</td>
+        <td><small>{{timeSince createdAt}}</small></td>
+        <td><small>{{owner}}</small></td>
         <td>
           <div class="pull-right">
             <button class="btn btn-table btn-info" {{action select this bubbles=false}}>Select</button>
