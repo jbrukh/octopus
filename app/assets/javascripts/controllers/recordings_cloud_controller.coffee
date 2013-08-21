@@ -1,4 +1,4 @@
-App.RecordingsCloudController = Em.ArrayController.extend App.RecordableList, App.Pageable,
+App.RecordingsCloudController = Em.ArrayController.extend App.RecordableList, App.Pageable, App.Spinnable,
   sortProperties: ['createdAt']
   sortAscending:  false
 

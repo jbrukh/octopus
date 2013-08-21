@@ -23,6 +23,7 @@
 //= require vendor/moment
 //= require vendor/livestamp
 //= require vendor/bootstrap
+//= require vendor/nprogress
 //= require vendor/showdown
 //= require vendor/bootstrap-datepicker
 //= require vendor/filesaver

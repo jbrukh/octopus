@@ -1,4 +1,4 @@
-App.RecordingsLocalController = Em.ArrayController.extend App.RecordableList,
+App.RecordingsLocalController = Em.ArrayController.extend App.RecordableList, App.Spinnable,
   sortProperties: ['lastModified']
   sortAscending:  false
 
