@@ -15,10 +15,19 @@
  *= require_self
  */
 
+body {
+  padding-top: 51px;
+}
+
 .flash {
   margin-top: 10px;
 }
 
 .top-buffer {
 	margin-top: 20px;
+}
+
+.navbar{
+  background-color: #5C60B8;
+  border-color: #5C60B8;
 }
