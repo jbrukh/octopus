@@ -1,5 +1,6 @@
 App.RecordingsLocalRoute = Em.Route.extend
-  model: -> App.LocalRecording.findQuery({})
+  model: ->
+    App.LocalRecording.findQuery({})
 
   activate: ->
     settings = App.Settings.find()
