@@ -13,7 +13,6 @@ class Api::ResultsController < ApplicationController
     authorize! :update, @recording
     @recording.upload(result_params)
     render json: @recording, :status => :created
-    ProcessResultWorker.perform_async(@recording.id)
   end
 
 private
@@ -22,6 +21,6 @@ private
   end
 
   def result_params
-    params.require(:result).permit(:data, :data_file_name, :data_file_size, :data_content_type)
+    params.require(:result).permit(:data, :data_file_name, :data_file_size, :data_content_type, :duration_ms)
   end
 end

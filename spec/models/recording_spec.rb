@@ -29,6 +29,16 @@ describe Recording do
         expect(@recording.trashed_at).to_not eq(nil)
       end
     end
+
+    describe '#upload' do
+      before :each do
+        @recording.upload(:duration_ms => 3000)
+      end
+
+      it 'sets the duration of the recording' do
+        expect(@recording.duration_ms).to eq(3000)
+      end
+    end
   end
 
   describe '#viewable_by' do

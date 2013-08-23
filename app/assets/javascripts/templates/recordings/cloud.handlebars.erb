@@ -11,6 +11,7 @@
         <th>Created At</th>
         <th>Owner</th>
         <th>Name</th>
+        <th>Duration</th>
         <th>Participant</th>
         <th>Tags</th>
         <th></th>
@@ -28,6 +29,7 @@
           </td>
           <td><small>{{owner}}</small></td>
           <td>{{name}}</td>
+          <td>{{durationMs}}</td>
           <td>
             {{#if participant}}
               {{#linkTo 'participant' participant tagName='span' class='label label-info clickable'}}

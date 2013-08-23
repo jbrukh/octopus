@@ -28,6 +28,8 @@ class Recording < ActiveRecord::Base
       self.data_content_type = result_params[:data_content_type]
     end
 
+    self.duration_ms = result_params[:duration_ms]
+
     on_build_result
   end
 
