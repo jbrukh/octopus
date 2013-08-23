@@ -24,8 +24,8 @@ App.RecordableNew = Ember.Mixin.create
 
     duration = parseInt @get('duration')
     if duration > 0
-      console.log "Beginning timed recording of #{duration} seconds"
-      payload.seconds = duration
+      console.log "Beginning timed recording of #{duration} second"
+      payload.milliseconds = (duration * 1000)
 
     connector = @get 'connector'
 

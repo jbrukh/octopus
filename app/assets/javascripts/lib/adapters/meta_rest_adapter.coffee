@@ -7,3 +7,9 @@ App.MetaRESTAdapter = Em.RESTAdapter.extend
     meta = data['meta']
     if meta
       records.set('meta', meta)
+
+  ajaxSettings: (url, method) ->
+    settings = @_super(url, method)
+    settings.beforeSend = () -> NProgress.start()
+    settings.complete = () -> NProgress.done()
+    settings

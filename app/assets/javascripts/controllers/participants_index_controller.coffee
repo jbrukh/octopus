@@ -1,4 +1,4 @@
-App.ParticipantsIndexController = Em.ArrayController.extend App.Pageable, App.Spinnable,
+App.ParticipantsIndexController = Em.ArrayController.extend App.Pageable,
   needs: ['currentParticipant']
 
   query: ''
