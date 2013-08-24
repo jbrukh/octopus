@@ -3,6 +3,8 @@ require 'spec_helper'
 describe Api::ParticipantsController do
   fixtures :users
 
+  let(:user) { users(:user) }
+
   context 'as a guest' do
     describe '#index' do
       before :each do
@@ -13,10 +15,10 @@ describe Api::ParticipantsController do
   end
 
   context 'as a user' do
-    let(:participant) { create :participant, :user => users(:user) }
+    let(:participant) { create :participant, :user => user }
 
     before :each do
-      sign_in users(:user)
+      sign_in user
     end
 
     describe '#index' do
@@ -82,7 +84,7 @@ describe Api::ParticipantsController do
 
     context 'with participant' do
       before :each do
-        @participant = build :participant
+        @participant = build :participant, user: user
         Participant.stub(:find).and_return(@participant)
       end
 

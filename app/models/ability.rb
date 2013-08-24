@@ -11,11 +11,11 @@ class Ability
     end
 
     can :update, Recording do |recording|
-      recording.user_id = user.id
+      recording.user_id == user.id
     end
 
     can :destroy, Recording do |recording|
-      recording.user_id = user.id
+      recording.user_id == user.id
     end
 
     can :read, Participant do |recording|
@@ -25,11 +25,11 @@ class Ability
     end
 
     can :update, Participant do |recording|
-      recording.user_id = user.id
+      recording.user_id == user.id
     end
 
     can :destroy, Participant do |recording|
-      recording.user_id = user.id
+      recording.user_id == user.id
     end
   end
 end

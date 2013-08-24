@@ -45,9 +45,9 @@ describe Api::PoliciesController do
       it { should respond_with :bad_request }
     end
 
-    #describe '#show (for enemy recording)' do
-    #  let(:enemy_recording) { create :recording, user: enemy }
-    #  it { expect { get :show, :id => enemy_recording.id }.to raise_error }
-    #end
+    describe '#show (for enemy recording)' do
+      let(:enemy_recording) { create :recording, user: enemy }
+      it { expect { get :show, :id => enemy_recording.id }.to raise_error }
+    end
   end
 end
