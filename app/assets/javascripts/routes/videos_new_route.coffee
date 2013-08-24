@@ -1,14 +1,11 @@
 App.VideosNewRoute = Ember.Route.extend
   model: ->
-    @transaction = @get('store').transaction()
-    return @transaction.createRecord(App.Video, {})
-
-  deactivate: ->
-    @transaction.rollback() if @transaction
+    App.Video.create()
 
   events:
     save: ->
-      @currentModel.on 'didCreate', =>
-        Ember.run.next this, =>
-          @transitionTo 'video', @currentModel
-      @transaction.commit()
+      result = @currentModel.save()
+
+      result.then =>
+        analytics.track 'create video'
+        @transitionTo 'video', @currentModel
