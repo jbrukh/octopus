@@ -11,6 +11,10 @@ App.User = Ember.Model.extend
   authenticationToken:  attr()
   organization:         attr()
 
+  isAdmin: (->
+    @get('role') == 'admin'
+  ).property('role')
+
 App.User.url = "/api/users"
 App.User.rootKey = 'user'
 App.User.camelizeKeys = true

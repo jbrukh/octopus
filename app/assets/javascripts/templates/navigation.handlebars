@@ -4,36 +4,35 @@
       <a href="#">Participants</a>
     {{/linkTo}}
 
-    <!--
-    {{#linkTo 'experiments.index' tagName='li'}}
-      <a href="#">Experiments</a>
-    {{/linkTo}}
-    -->
 
     {{#linkTo 'recordings.index' tagName='li'}}
       <a href="#">Recordings</a>
     {{/linkTo}}
 
-    <!--
-    <li class="dropdown">
-      <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-        Media <b class="caret"></b>
-      </a>
-      <ul class="dropdown-menu">
-        {{#linkTo 'videos.index' tagName='li'}}
-          <a href="#"><i class="icon-facetime-video"></i> Videos</a>
-        {{/linkTo}}
+    {{#if currentUser.isAdmin}}
+      {{#linkTo 'experiments.index' tagName='li'}}
+        <a href="#">Experiments</a>
+      {{/linkTo}}
 
-        {{#linkTo 'slideshows.index' tagName='li'}}
-          <a href="#"><i class="icon-picture"></i> Slideshows</a>
-        {{/linkTo}}
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+          Media <b class="caret"></b>
+        </a>
+        <ul class="dropdown-menu">
+          {{#linkTo 'videos.index' tagName='li'}}
+            <a href="#"><i class="icon-facetime-video"></i> Videos</a>
+          {{/linkTo}}
 
-        {{#linkTo 'audios.index' tagName='li'}}
-          <a href="#"><i class="icon-music"></i> Audio</a>
-        {{/linkTo}}
-      </ul>
-    </li>
-    -->
+          {{#linkTo 'slideshows.index' tagName='li'}}
+            <a href="#"><i class="icon-picture"></i> Slideshows</a>
+          {{/linkTo}}
+
+          {{#linkTo 'audios.index' tagName='li'}}
+            <a href="#"><i class="icon-music"></i> Audio</a>
+          {{/linkTo}}
+        </ul>
+      </li>
+    {{/if}}
   </ul>
 
   <div class="pull-right">
