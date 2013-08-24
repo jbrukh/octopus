@@ -1,6 +1,5 @@
 class Api::PoliciesController < ApplicationController
   before_filter :authenticate_user!
-
   before_filter :find_recording
 
   def show
