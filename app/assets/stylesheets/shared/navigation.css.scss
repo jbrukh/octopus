@@ -1,3 +1,7 @@
+html, body {
+    height: 100%;
+}
+
 footer {
 	color: grey;
 	font-size: 11px;
@@ -9,10 +13,6 @@ footer {
     height: auto !important;
     height: 100%;
     margin-bottom: -40px;
-}
-
-html, body {
-    height: 100%;
 }
 
 .wrapper > .container {
