@@ -25,4 +25,4 @@ app/assets/javascripts/npm-debug.log
 # local paperclip uploads
 public/system
 
-dump.rdb
+dump.rdb/vendor/bundle
