@@ -17,6 +17,10 @@ App.Connector = Em.Object.extend
     return @get('state') == 'connecting'
   ).property('state')
 
+  isDisconnected: (->
+    return @get('state') == 'disconnected'
+  ).property('state')
+
   hasBufferedMessages: ->
     @bufferedMessages.length > 0
 

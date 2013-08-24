@@ -1,6 +1,9 @@
 App.RecordingsNewLocalRoute = Ember.Route.extend
+  beforeModel: ->
+    @transitionTo 'recordings.local' unless @get('connector.isConnected')
+
   model: () ->
-    recording = App.LocalRecording.create()
+    App.LocalRecording.create()
 
   setupController: (controller, model) ->
     @_super(controller, model)
@@ -46,6 +49,11 @@ App.RecordingsNewLocalRoute = Ember.Route.extend
 
     endRecord: ->
       console.log 'End Record'
+      unless @get('connector.isConnected')
+        controller = @controllerFor('recordings.new.local')
+        controller.stop();
+        return
+
       @get('connector').send('record', {record: false}).then (data) =>
         console.debug 'end record received'
         @currentModel.finish(data)

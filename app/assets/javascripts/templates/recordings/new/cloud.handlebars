@@ -24,8 +24,8 @@
           <div class="pull-right">
             {{#unless duration}}
               {{#if confirmTransition}}
-                <a class="btn btn-default" {{action retryEndRecord}}>
-                  You are recording, are you sure?
+                <a class="btn btn-warning" {{action retryEndRecord}}>
+                  <i class="icon-question-sign"></i>&nbsp;You are recording, are you sure?
                 </a>
               {{/if}}
 
@@ -41,6 +41,12 @@
 </div>
 
 <hr/>
+
+{{#if connector.isDisconnected}}
+  <div class="alert alert-danger">
+    <strong>The Octopus Connector has stopped sending data, is it still running?</strong>
+  </div>
+{{/if}}
 
 <div class="graph-container">
   {{#if dataAdapter.isNegotiating}}

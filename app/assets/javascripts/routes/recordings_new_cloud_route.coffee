@@ -1,6 +1,9 @@
 App.RecordingsNewCloudRoute = Ember.Route.extend
   needs: ['currentParticipant']
 
+  beforeModel: ->
+    @transitionTo 'recordings.cloud' unless @get('connector.isConnected')
+
   model: () ->
     recording = App.Recording.create()
 
@@ -53,6 +56,11 @@ App.RecordingsNewCloudRoute = Ember.Route.extend
 
     endRecord: ->
       console.log 'End Record'
+      unless @get('connector.isConnected')
+        controller = @controllerFor('recordings.new.cloud')
+        controller.stop();
+        return
+
       @get('connector').send('record', {record: false}).then (data) =>
         console.debug 'end record received'
         analytics.track 'create recording', { location: 'cloud', type: 'manual' }

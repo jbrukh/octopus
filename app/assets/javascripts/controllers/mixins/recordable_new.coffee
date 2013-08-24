@@ -8,8 +8,14 @@ App.RecordableNew = Ember.Mixin.create
   stop: ->
     console.log 'stopping recording'
     @set 'isRunning', false
-    isRecording = @get('model.isRecording')
-    if isRecording
+
+    unless @get('connector.isConnected')
+      @trigger 'didStop'
+      @get('dataAdapter').stop()
+      @set('model.isRecording', false)
+      return
+
+    if @get('model.isRecording')
       @get('connector').send('record', {record: false}).then (data) =>
         @get('dataAdapter').stop()
         @trigger 'didStop'
