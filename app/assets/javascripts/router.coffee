@@ -43,3 +43,5 @@ App.Router.map ->
     @route 'new'
 
   @resource 'audio', { path: '/audio/:audio_id' }
+
+  @route 'missing', { path: '*:' }
