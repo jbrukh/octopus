@@ -142,6 +142,7 @@ App.Connector = Em.Object.extend
   onInfo: (response) ->
     @set 'device_name', response.device_name
     @set 'version', response.version
+    @set 'pairingId', response.pairing_id
 
     @sendBufferedMessages()
 
