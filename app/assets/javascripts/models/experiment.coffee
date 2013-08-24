@@ -11,8 +11,12 @@ App.Experiment = Ember.Model.extend
   updated_at:   attr(Date)
 
   startTrial: (participant) ->
-    trial = App.Trial.create
+    return App.Trial.create
       state: 'setup'
       experiment: this
 
-    return trial
+App.Experiment.url = "/api/experiments"
+App.Experiment.rootKey = 'experiment'
+App.Experiment.collectionKey = 'experiments'
+App.Experiment.camelizeKeys = true
+App.Experiment.adapter = App.MetaRESTAdapter.create()
