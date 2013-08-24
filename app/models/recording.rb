@@ -19,7 +19,10 @@ class Recording < ActiveRecord::Base
   end
 
   def upload(result_params)
+    return false if self.uploaded?
+
     result_data = result_params[:data]
+
     if result_data
       self.data = result_data
     else
@@ -31,6 +34,8 @@ class Recording < ActiveRecord::Base
     self.duration_ms = result_params[:duration_ms]
 
     on_build_result
+
+    true
   end
 
   def update_from_obf!(obf)

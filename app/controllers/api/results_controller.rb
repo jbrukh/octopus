@@ -11,8 +11,11 @@ class Api::ResultsController < ApplicationController
 
   def update
     authorize! :update, @recording
-    @recording.upload(result_params)
-    render json: @recording, :status => :created
+    if @recording.upload(result_params)
+      render json: @recording, :status => :created
+    else
+      render :text => 'recording data has already been uploaded', :status => :bad_request
+    end
   end
 
 private

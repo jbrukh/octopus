@@ -16,14 +16,23 @@ describe Api::ResultsController do
   end
 
   context 'when authenticated' do
+    let(:data) { Rack::Test::UploadedFile.new(
+      "#{Rails.root}/spec/fixtures/files/obf.data", 'application/octet-stream') }
+
     before :each do
       sign_in users(:user)
     end
 
+    context '#update (with already uploaded file)' do
+      before :each do
+        recording.upload(:data => data)
+        post :update, :id => recording.id, :result => { :data => data }
+      end
+      it { should respond_with :bad_request }
+    end
+
     context '#update (with direct upload)' do
       before :each do
-        data = Rack::Test::UploadedFile.new(
-          "#{Rails.root}/spec/fixtures/files/obf.data", 'application/octet-stream')
         post :update, :id => recording.id, :result => { :data => data }
       end
       it { should respond_with :created }
