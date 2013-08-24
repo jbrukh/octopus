@@ -1,34 +1,37 @@
-<div class="page-header">
-  <h3>New Video</h3>
-</div>
+<ul class="breadcrumb">
+  <li>{{#linkTo 'videos.index'}}Videos{{/linkTo}}</li>
+  <li class="active">New Video</li>
+</ul>
 
 <form class="form-horizontal">
   <fieldset>
     <legend>New Video</legend>
   </fieldset>
 
-  <div class="control-group">
-    <label class="control-label">Name</label>
-    <div class="controls">
-      {{input value=model.name type=text}}
+  <div class="form-group">
+    <label class="col-md-2 control-label">Name</label>
+    <div class="col-md-4">
+      {{input value=model.name type=text class='form-control'}}
     </div>
   </div>
 
-  <div class="control-group">
-    <label class="control-label">Description</label>
-    <div class="controls">
-      {{view Ember.TextArea valueBinding=model.description}}
+  <div class="form-group">
+    <label class="col-md-2 control-label">Description</label>
+    <div class="col-md-4">
+      {{view Ember.TextArea valueBinding=model.description class="form-control" rows="5"}}
     </div>
   </div>
 
-  <div class="control-group">
-    <label class="control-label">File</label>
-    <div class="controls">
+  <div class="form-group">
+    <label class="col-md-2 control-label">File</label>
+    <div class="col-md-4">
       {{control 'shared/upload' valueBinding=model.attachment}}
     </div>
   </div>
 
-  <div class="form-actions">
-    <button type="submit" class="btn btn-primary" {{action save}}>Create Video</button>
+  <div class="form-group">
+    <div class="col-md-offset-2 col-md-10">
+      <button type="submit" class="btn btn-primary" {{action save}}>Create Video</button>
+    </div>
   </div>
 </form>
