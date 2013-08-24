@@ -7,7 +7,7 @@ describe 'App.RecordingsCloudController', ->
       @recording = App.Recording.create()
       spyOn(@recording, 'deleteRecord')
 
-      @controller.destroy(@recording)
+      @controller.destroy(@recording, false)
 
     it 'deletes record', ->
       expect(@recording.deleteRecord).toHaveBeenCalled()

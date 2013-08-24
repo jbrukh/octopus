@@ -8,9 +8,9 @@ basePath = '';
 
 // list of files / patterns to load in the browser
 files = [
-  'vendor/jquery-1.9.1.js',
-  'vendor/handlebars.js',
-  'vendor/ember-latest.js',
+  'vendor/jquery-1.10.2.js',
+  'vendor/handlebars-1.0.0.js',
+  'vendor/ember-1.0.0-rc.7.js',
   'vendor/ember-model-latest.js',
   'vendor/moment.js',
 
