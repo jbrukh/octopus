@@ -15,3 +15,4 @@ App.ModalView = Ember.View.extend
       @controller.send('close')
 
     this.$('.modal, .modal-backdrop').removeClass('in')
+    $(document.body).removeClass('modal-open')
