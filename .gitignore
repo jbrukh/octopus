@@ -16,7 +16,7 @@
 /tmp
 
 # sublime things
-brain.sublime-workspace
+octopus.sublime-workspace
 
 # npm stuff
 app/assets/javascripts/node_modules/
@@ -25,5 +25,6 @@ app/assets/javascripts/npm-debug.log
 # local paperclip uploads
 public/system
 
+bin/
 dump.rdb
 vendor/bundle
