@@ -1,7 +1,7 @@
 {{partial 'recordings/header'}}
 
 {{#unless connector.isConnected}}
-  {{partial 'messaging/download_connector'}}
+  {{partial 'download_connector'}}
 {{else}}
   {{#unless controller.length}}
     <div class="alert alert-info">

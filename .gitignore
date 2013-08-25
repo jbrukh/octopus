@@ -27,3 +27,4 @@ public/system
 
 dump.rdb
 vendor/bundle
+.DS_Store
