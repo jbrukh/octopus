@@ -9,7 +9,7 @@
 <hr/>
 
 {{#unless connector.isConnected}}
-  {{partial 'messaging/download_connector'}}
+  {{render 'messaging/download_connector'}}
 {{/unless}}
 
 {{#if connector.isConnected}}
