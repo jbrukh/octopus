@@ -1,15 +1,17 @@
-<div class="jumbotron">
+<div class="container">
   <h1>
-    <span class="label btn-action">Frequently Asked Questions</span>
+    <i class="icon-question-sign"></i>&nbsp;Frequently Asked Questions
   </h1>
+
   <hr/>
+
   <div class="row">
     <div class="col-md-3">
-      <ul id="faq-menu" class="nav nav-list">
+      <ul class="nav nav-pills nav-stacked">
         <li>
           <a href="#platforms">Supported Platforms and Devices</a>
         </li>
-        <li class="active">
+        <li>
           <a href="#getting-started">Getting Started </a>
         </li>
         <li>
@@ -20,46 +22,65 @@
         </li>
       </ul>
     </div>
+
     <div class="col-md-9">
-      <ul class="list-group">
-        <li class="list-group-item faq-header">
+      <div class="panel panel-info">
+        <div class="panel-heading">
           <a name="platforms"></a>
-          <h2>Supported Platforms and Devices</h2>
-        </li>
-        <li class="list-group-item">
-          <h3>What platforms does Octopus support?</h3>
+          <strong>Supported Platforms and Devices</strong>
+        </div>
+        <div class="panel-body">
+          <h4>What platforms does Octopus support?</h4>
           <p>
-            You can access Octopus from any modern browser on any platform through <a href="http://octopusmetrics.com">http://octopusmetrics.com</a>. To interface hardware devices and create recordings, you will need to install the <a href="/pages/connectors/mac_os_x">Octopus Connector</a>, which is currently available for Mac OS X.  Your machine will also need to have a Bluetooth interface.
+            You can access Octopus Metrics from any modern browser on any platform through <a href="shttp://octopusmetrics.com">http://octopusmetrics.com</a>. To interface hardware devices and create recordings, you will need to install the <a href="/pages/connectors/mac_os_x">Octopus Connector</a>, which is currently available for Mac OS X.  Your machine will also need to have a Bluetooth interface.
           </p>
+
           <hr/>
-          <h3>Can I use Octopus with Windows or Linux?</h3>
+
+          <h4>Can I use Octopus with Windows or Linux?</h4>
           <p>
             We currently support Windows and Linux using a command line interface for the <a href="/pages/connectors/mac_os_x">Octopus Connector</a>. If you would like to use Octopus from a Windows or Linux machine, <a href="/contactus">let us know</a>.
           </p>
+
           <hr/>
-            <h3>What devices does Octopus support?</h3>
+
+          <h4>What devices does Octopus support?</h4>
           <p>
             Octopus currently supports the <a href="http://avatareeg.com">Avatar EEG</a> and ThinkGear protocol for <a href="http://neurosky.com/">NeuroSky</a> devices.
           </p>
-        </li>
-        <li class="list-group-item faq-header">
+        </div>
+      </div>
+
+      <div class="panel panel-info">
+        <div class="panel-heading">
           <a name="getting-started"></a>
-          <h2>Getting Started</h2>
-        </li>
-        <li class="list-group-item">
-          <h3>How do I get access to the site?</h3>
+          <strong>Getting Started</strong>
+        </div>
+        <div class="panel-body">
+          <h4>How do I get access to the site?</h4>
           <p>
-          If you would like to become a <%= link_to 'beta tester', page_url('beta') %>, we will create an account for you. Go ahead and
-          <a href="mailto:brainiacs@octopusmetrics.com?subject=Beta Access Request"><span class="label btn-action">Request Access</span></a>.
+            If you would like to become a <%= link_to 'beta tester', page_url('beta') %>, we will create an account for you. Go ahead and
+            <a href="mailto:brainiacs@octopusmetrics.com?subject=Beta Access Request"><span class="label btn-action">Request Access</span></a>.
           </p>
-      <hr/>
-          <h3>How do I connect my Avatar EEG (or other devices) to Octopus?</h3>
-          <a href="/pages/connectors/mac_os_x">
-            <%= image_tag "connector_logo.png", class:"pull-left", id:"connector-logo-faq" %>
-          </a>
+
+          <hr/>
+
+          <h4>How do I connect my Avatar EEG (or other devices) to Octopus?</h4>
+
+          <a href="/pages/connectors/mac_os_x"><%= image_tag "connector_logo.png", class: "pull-left", id: "connector-logo-faq" %></a>
+
           <p>
-            To interface hardware devices and create recordings, you will need to install the <a href="/pages/connectors/mac_os_x">Octopus Connector</a>, which is currently available for Mac OS X. The Octopus Connector is a lightweight status bar application interfaces your Avatar EEG (or other devices) with the Octopus Platform right in your browser.
+            To interface hardware devices and create recordings, you will need to install
+            the <a href="/pages/connectors/mac_os_x">Octopus Connector</a>, which is
+            currently available for Mac OS X. The Octopus Connector is a lightweight status
+            bar application that interfaces your Avatar EEG (or other devices) with the
+            Octopus Platform right in your browser. You can still use Octopus Metrics
+            without installing the Octopus Connector, but you will only be able to view and
+            manage recordings.
           </p>
+
+          <hr/>
+
           <h4>For Avatar EEG</h4>
           <p>
             Open the Options menu and enter the device type and serial port.
@@ -78,32 +99,39 @@
           <p>
             You can also enter the directory where you want your local Octopus repository to be stored. By default, it is located in <code>/Users/$USER/octopus</code>.
           </p>
-        </li>
-        <li class="list-group-item faq-header">
+        </div>
+      </div>
+
+      <div class="panel panel-info">
+        <div class="panel-heading">
           <a name="storage"></a>
-          <h2>Cloud and Local Storage</h2>
-        </li>
-        <li class="list-group-item">
-          <h3>What is local storage?</h3>
+          <strong>Cloud and Local Storage</strong>
+        </div>
+        <div class="panel-body">
+          <h4>What is local storage?</h4>
           <p>
             When using local storage, your recordings are stored on your local hard drive. This allows you to maintain a high level of privacy around your data. However, when you use local storage you forego a lot of the features and convenience of cloud storage. Read on below.
           </p>
           <hr/>
-          <h3>What is cloud storage?</h3>
+          <h4>What is cloud storage?</h4>
           <p>
             When using cloud storage, your recordings are uploaded to the cloud and become accessible to you anywhere that you can log in to Octopus. You are also able to take advantage of advanced features such as metadata and participant tagging and automated data processing.
           </p>
-        </li>
-        <li class="list-group-item faq-header">
+        </div>
+      </div>
+
+      <div class="panel panel-info">
+        <div class="panel-heading">
           <a name="contact-us"></a>
-          <h2>Contact Us</h2>
-        </li>
-        <li class="list-group-item">
+          <strong>Contact Us</strong>
+        </div>
+        <div class="panel-body">
           <p>
-            If you have any questions about Octopus, please <%= link_to 'contact us', page_url('contact_us') %>.
-          </p>
-        </li>
-      </ul>
+            If you have any questions about Octopus, please feel free to
+            <%= link_to 'contact us', page_url('contact_us') %>.
+            </p>
+        </div>
+      </div>
     </div>
   </div>
 </div>
