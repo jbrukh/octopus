@@ -1,7 +1,10 @@
-App.Video = App.Media.extend()
+attr = Ember.attr
+
+App.Video = App.Media.extend
+  attachment: attr()
 
 App.Video.url = "/api/videos"
 App.Video.rootKey = 'video'
 App.Video.collectionKey = 'videos'
 App.Video.camelizeKeys = true
-App.Video.adapter = App.MetaRESTAdapter.create()
+App.Video.adapter = App.VideoAdapter.create()

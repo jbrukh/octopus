@@ -1,0 +1,5 @@
+{{#unless view.value}}
+  Drag a video here
+{{else}}
+  <i class="icon-facetime-video"></i> {{view.value.fileName}} / {{megabytes view.value.fileSize}}
+{{/unless}}

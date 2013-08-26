@@ -1,6 +1,8 @@
-App.SharedUploadView = Em.View.extend
+App.AttachmentView = Em.View.extend
+  templateName: 'shared/attachment'
   classNames: ['file-target']
   classNameBindings: ['dropIndicator']
+  value: null
 
   dropIndicator: (->
     return 'droppable-indicator' if @get('isDragging')
@@ -26,12 +28,13 @@ App.SharedUploadView = Em.View.extend
     # to take the first one
     file = files[0]
 
-    # set the file on the upload controller
-    @set 'controller.file', App.UploadFile.create
+    uploadFile = App.UploadFile.create
       fileName: file.name
       fileType: file.type
       fileSize: file.size
       lastModifiedDate: file.lastModifiedDate
 
+    # set the file on the upload controller
     @set 'isDragging', false
+    @set 'value', uploadFile
     false

@@ -1,23 +1,24 @@
-<div class="page-header">
-  <h2>New Experiment</h2>
-</div>
+<ul class="breadcrumb">
+  <li>{{#linkTo 'experiments.index'}}Experiments{{/linkTo}}</li>
+  <li class="active">New Experiment</li>
+</ul>
 
 <form class="form-horizontal">
   <fieldset>
     <legend>Details</legend>
   </fieldset>
 
-  <div class="control-group">
-    <label class="control-label">Name</label>
-    <div class="controls">
-     {{input value=model.name type=text}}
+  <div class="form-group">
+    <label class="col-md-2 control-label">Name</label>
+    <div class="col-md-4">
+      {{input value=model.name type=text class='form-control'}}
     </div>
   </div>
 
-  <div class="control-group">
-    <label class="control-label">Description</label>
-    <div class="controls">
-     {{input value=model.description type=text}}
+  <div class="form-group">
+    <label class="col-md-2 control-label">Description</label>
+    <div class="col-md-4">
+      {{input value=model.description type=text class='form-control'}}
     </div>
   </div>
 

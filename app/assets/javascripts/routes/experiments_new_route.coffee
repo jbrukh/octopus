@@ -1,14 +1,8 @@
 App.ExperimentsNewRoute = Ember.Route.extend
   model: ->
-    @transaction = @get('store').transaction()
-    return @transaction.createRecord App.Experiment
-
-  deactivate: ->
-    @transaction.rollback() if @transaction
+    App.Experiment.create()
 
   events:
     save: ->
-      @currentModel.on 'didCreate', =>
-        Ember.run.next this, =>
-          @transitionTo 'experiment', @currentModel
-      @transaction.commit()
+      @currentModel.save().then =>
+        @transitionTo 'experiment', @currentModel
