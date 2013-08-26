@@ -34,6 +34,12 @@ App.AttachmentView = Em.View.extend
       fileSize: file.size
       lastModifiedDate: file.lastModifiedDate
 
+    reader = new FileReader();
+    reader.onload = (f) =>
+      console.log 'file successfully read'
+      uploadFile.set 'data', f.target.result
+    reader.readAsDataURL(file);
+
     # set the file on the upload controller
     @set 'isDragging', false
     @set 'value', uploadFile
