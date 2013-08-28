@@ -70,4 +70,4 @@ App.RecordingsNewCloudRoute = Ember.Route.extend
     upload: ->
       @currentModel.save().then =>
         @get('uploader').upload(@currentModel)
-        @transitionTo 'recordings.cloud'
+        @transitionTo 'recording.cloud', @currentModel
