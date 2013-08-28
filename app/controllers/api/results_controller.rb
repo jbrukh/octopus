@@ -24,6 +24,6 @@ private
   end
 
   def result_params
-    params.require(:result).permit(:data, :data_file_name, :data_file_size, :data_content_type, :duration_ms)
+    params.require(:result).permit(:data, :data_file_name, :data_file_size, :data_content_type)
   end
 end

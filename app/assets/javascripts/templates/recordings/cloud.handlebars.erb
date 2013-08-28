@@ -29,7 +29,11 @@
           </td>
           <td><small>{{owner}}</small></td>
           <td>{{name}}</td>
-          <td>{{durationMs}}</td>
+          <td>
+            {{#if durationMs}}
+              {{durationMs}}ms
+            {{/if}}
+          </td>
           <td>
             {{#if participant}}
               {{#linkTo 'participant' participant tagName='span' class='label label-info clickable'}}

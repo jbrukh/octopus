@@ -32,11 +32,7 @@ describe Recording do
 
     describe '#upload' do
       before :each do
-        @result = @recording.upload(:duration_ms => 3000)
-      end
-
-      it 'sets the duration of the recording' do
-        expect(@recording.duration_ms).to eq(3000)
+        @result = @recording.upload({})
       end
 
       it 'uploads' do

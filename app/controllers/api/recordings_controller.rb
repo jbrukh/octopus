@@ -25,7 +25,7 @@ class Api::RecordingsController < ApplicationController
   end
 
   def create
-    @recording = Recording.new
+    @recording = Recording.new(recording_params)
     @recording.user = current_user
 
     if params[:recording][:participant_id]
@@ -48,8 +48,9 @@ class Api::RecordingsController < ApplicationController
   end
 
 private
+
   def recording_params
-    params.require(:recording).permit(:name, :description)
+    params.require(:recording).permit(:name, :description, :duration_ms)
   end
 
   def load_recording

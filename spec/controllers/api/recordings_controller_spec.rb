@@ -44,10 +44,11 @@ describe Api::RecordingsController do
 
     describe '#create' do
       before :each do
-        post :create, :recording => { }
+        post :create, :recording => { :duration_ms => 5000 }
       end
 
       it { should respond_with :created }
+      it { expect(Recording.last.duration_ms).to eq(5000) }
     end
 
     describe '#create (with participant)' do

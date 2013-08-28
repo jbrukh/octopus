@@ -5,3 +5,4 @@ App.Recordable = Ember.Mixin.create
   finish: (response) ->
     @set 'isRecording', false
     @set 'resourceId', response.resource_id
+    @set 'durationMs', response.milliseconds
