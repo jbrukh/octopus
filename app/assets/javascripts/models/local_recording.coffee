@@ -7,6 +7,7 @@ App.LocalRecording = Ember.Model.extend App.Recordable,
   file: attr()
   lastModified: attr(UnixDate)
   sizeBytes: attr()
+  durationMs: attr(Number)
 
 App.LocalRecording.camelizeKeys = true
 App.LocalRecording.adapter = App.ConnectorAdapter.create()

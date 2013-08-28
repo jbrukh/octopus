@@ -14,6 +14,7 @@
           <th>Created At</th>
           <th>File</th>
           <th>Size</th>
+          <th>Duration</th>
           <th></th>
         </tr>
       </thead>
@@ -25,6 +26,7 @@
             </td>
             <td><code>{{file}}</code></td>
             <td><span class="file-size">{{sizeBytes}}</span></td>
+            <td>{{durationMs}}</td>
             <td>
               <div class="pull-right">
                 <a href="#" rel="tooltip" title="Upload this recording to the cloud" class="btn btn-table btn-success" {{action upload this bubbles=false}}>
