@@ -18,7 +18,7 @@ class Recording < ActiveRecord::Base
     end
   end
 
-  def upload(result_params)
+  def upload(result_params = {})
     return false if self.uploaded?
 
     result_data = result_params[:data]
