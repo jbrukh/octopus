@@ -18,7 +18,7 @@ const (
 	RedisConnections = 30
 	ProcessId        = "1"
 	ProcessingQueue  = "sentipus-queue"
-	Concurrency      = 10
+	Concurrency      = 4
 	StatsServerPort  = 8888
 )
 
