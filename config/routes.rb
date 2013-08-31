@@ -23,7 +23,8 @@ Ruby::Application.routes.draw do
     resources :experiments
 
     resources :recordings do
-      resource :taggings
+      resources :analysis
+      resource  :taggings
     end
 
     resources :results

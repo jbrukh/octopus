@@ -12,6 +12,10 @@ App.RecordingCloudController = Em.ObjectController.extend App.RecordableShow,
     name || @get('model.id')
   ).property('model.name')
 
+  processFFT: ->
+    console.log 'Processing FFT'
+    @get('model').process('fft')
+
   createTag: ->
     console.log 'create tag'
     tagging = @get 'tagging'
