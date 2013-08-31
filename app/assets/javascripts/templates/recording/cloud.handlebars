@@ -8,6 +8,19 @@
   </div>
   <div class="col-md-4">
     <div class="pull-right">
+      {{#if currentUser.isAdmin}}
+        <div class="btn-group">
+          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+            Process <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu" role="menu">
+            <li>
+              <a href='#' {{action processFFT}}>Basic FFT</a>
+            </li>
+          </ul>
+        </div>
+      {{/if}}
+
       <button class="btn btn-info" {{action edit}}>
         <i class="icon-edit"></i>&nbsp;Edit
       </button>
