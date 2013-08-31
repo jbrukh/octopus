@@ -2,7 +2,7 @@ App.ResultDataGraphView = Em.View.extend
   canvasWidth:  920
   margins:      [5, 45, 50, 5]
 
-  graphHeight: 100
+  graphHeight: 40
   graphSpacing: 10
   overviewHeight: 30
   overviewSpacing: 40
@@ -44,6 +44,7 @@ App.ResultDataGraphView = Em.View.extend
     svg = d3.select("##{element}")
       .append("svg:svg")
         .attr('class', 'graph-recording')
+        .attr('class', 'graph-container')
         .attr("width", @canvasWidth)
         .attr("height", totalHeight)
 
