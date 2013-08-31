@@ -27,6 +27,14 @@ App.Recording = Ember.Model.extend App.Recordable,
     @get('state') == 'waiting_for_data'
   ).property('state')
 
+  process: (algorithm) ->
+    id = @get('id')
+
+    payload = analysis:
+      algorithm: algorithm
+
+    $.post("/api/recordings/#{id}/analysis", payload)
+
 App.Recording.url = "/api/recordings"
 App.Recording.rootKey = 'recording'
 App.Recording.collectionKey = 'recordings'

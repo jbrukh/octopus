@@ -1,0 +1,33 @@
+require 'spec_helper'
+
+describe Api::AnalysisController do
+  fixtures :users
+
+  context 'as a guest' do
+    describe '#create' do
+      before :each do
+        post :create, :recording_id => 30, :analysis => { :algorithm => 'fft' }
+      end
+      it { should redirect_to new_user_session_url }
+    end
+  end
+
+  context 'as a user' do
+    let(:user) { users(:user) }
+
+    before :each do
+      sign_in user
+      @recording = Recording.new(:id => 30, :user => user)
+      expect(Recording).to receive(:find) { @recording }
+    end
+
+    describe '#create' do
+      before :each do
+        expect(GoWorker).to receive(:perform_async)
+        post :create, :recording_id => @recording.id, :analysis => { :algorithm => 'fft' }
+      end
+
+      it { should respond_with :created }
+    end
+  end
+end
