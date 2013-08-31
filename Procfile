@@ -1,3 +1,4 @@
 web: bundle exec rainbows -p $PORT -c ./config/rainbows.rb
-worker: bundle exec sidekiq
 redis: redis-server
+worker: bundle exec sidekiq
+go-worker: go run ./lib/go_workers/workers.go
