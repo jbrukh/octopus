@@ -6,12 +6,11 @@ class Api::AnalysisController < ApplicationController
     authorize! :update, @recording
 
     payload = {
-      :resource_ids => ['file1', 'file2'],
+      :resources => [
+        { :name => 'raw', :location => @recording.data.expiring_url(10) }
+      ],
       :algo_id => params[:analysis][:algorithm],
-      :args => {
-        :sensitivity => 30,
-        :something => "lolols"
-      }
+      :args => { }
     }
 
     GoWorker.perform_async(payload)
