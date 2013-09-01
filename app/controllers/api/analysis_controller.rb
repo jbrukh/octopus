@@ -5,12 +5,17 @@ class Api::AnalysisController < ApplicationController
   def create
     authorize! :update, @recording
 
+    algo_id = params[:analysis][:algorithm]
+
+    if algo_id != 'fft'
+      return render :text => "unknown algorithm: #{algo_id}", :status => :bad_request
+    end
+
     payload = {
-      :resources => [
-        { :name => 'raw', :location => @recording.data.expiring_url(10) }
-      ],
-      :algo_id => params[:analysis][:algorithm],
-      :args => { }
+      :algo_id => algo_id,
+      :args => {
+        :input_file => @recording.data.expiring_url(10)
+      }
     }
 
     GoWorker.perform_async(payload)

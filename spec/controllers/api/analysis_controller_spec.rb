@@ -29,5 +29,13 @@ describe Api::AnalysisController do
 
       it { should respond_with :created }
     end
+
+    describe '#create (with unknown algorithm)' do
+      before :each do
+        post :create, :recording_id => @recording.id, :analysis => { :algorithm => 'unknown' }
+      end
+
+      it { should respond_with :bad_request }
+    end
   end
 end
