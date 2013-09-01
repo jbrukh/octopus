@@ -5,6 +5,7 @@ describe Recording do
 
   describe 'in general' do
     it { should belong_to :participant }
+    it { should have_many :analyses }
     it { should strip_attribute(:name) }
   end
 

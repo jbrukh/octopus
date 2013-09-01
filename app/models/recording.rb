@@ -7,6 +7,7 @@ class Recording < ActiveRecord::Base
   belongs_to :user
   belongs_to :participant
   has_many :taggings
+  has_many :analyses
 
   has_attached_file :data
 

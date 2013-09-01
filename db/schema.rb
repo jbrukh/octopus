@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130814230123) do
+ActiveRecord::Schema.define(version: 20130901215858) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,6 +31,17 @@ ActiveRecord::Schema.define(version: 20130814230123) do
   add_index "active_admin_comments", ["author_type", "author_id"], name: "index_active_admin_comments_on_author_type_and_author_id", using: :btree
   add_index "active_admin_comments", ["namespace"], name: "index_active_admin_comments_on_namespace", using: :btree
   add_index "active_admin_comments", ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id", using: :btree
+
+  create_table "analyses", force: true do |t|
+    t.integer  "user_id",      null: false
+    t.integer  "recording_id", null: false
+    t.integer  "jid",          null: false
+    t.string   "state",        null: false
+    t.string   "algorithm",    null: false
+    t.hstore   "arguments",    null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "experiments", force: true do |t|
     t.integer  "media_id",    null: false

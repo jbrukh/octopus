@@ -13,18 +13,18 @@ describe Api::AnalysisController do
   end
 
   context 'as a user' do
-    let(:user) { users(:user) }
+    let (:user) { users(:user) }
+    let (:recording) { create :recording, :user => user }
 
     before :each do
       sign_in user
-      @recording = Recording.new(:id => 30, :user => user)
-      expect(Recording).to receive(:find) { @recording }
+      expect(Recording).to receive(:find) { recording }
     end
 
     describe '#create' do
       before :each do
-        expect(GoWorker).to receive(:perform_async)
-        post :create, :recording_id => @recording.id, :analysis => { :algorithm => 'fft' }
+        expect(GoWorker).to receive(:perform_async) { 12345 }
+        post :create, :recording_id => recording.id, :analysis => { :algorithm => 'fft' }
       end
 
       it { should respond_with :created }
@@ -32,7 +32,7 @@ describe Api::AnalysisController do
 
     describe '#create (with unknown algorithm)' do
       before :each do
-        post :create, :recording_id => @recording.id, :analysis => { :algorithm => 'unknown' }
+        post :create, :recording_id => recording.id, :analysis => { :algorithm => 'unknown' }
       end
 
       it { should respond_with :bad_request }
