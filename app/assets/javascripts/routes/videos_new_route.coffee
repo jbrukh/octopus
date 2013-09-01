@@ -2,7 +2,7 @@ App.VideosNewRoute = Ember.Route.extend
   model: ->
     App.Video.create()
 
-  events:
+  actions:
     save: ->
       result = @currentModel.save()
 

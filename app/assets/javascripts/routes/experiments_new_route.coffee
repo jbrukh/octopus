@@ -2,7 +2,7 @@ App.ExperimentsNewRoute = Ember.Route.extend
   model: ->
     App.Experiment.create()
 
-  events:
+  actions:
     save: ->
       @currentModel.save().then =>
         @transitionTo 'experiment', @currentModel

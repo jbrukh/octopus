@@ -2,7 +2,7 @@ App.ParticipantsNewRoute = Em.Route.extend
   model: ->
     App.Participant.create()
 
-  events:
+  actions:
     save: ->
       console.log 'Saving participant'
 
