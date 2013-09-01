@@ -1,23 +1,24 @@
 App.TrialStartController = Em.ObjectController.extend Ember.Evented,
-  search: ->
-    console.log 'Searching for participant'
-    participants = App.Participant.find { query: @get('query') }
-    @set 'participants', participants
+  actions:
+    search: ->
+      console.log 'Searching for participant'
+      participants = App.Participant.find { query: @get('query') }
+      @set 'participants', participants
 
-  selectParticipant: (participant) ->
-    @set 'model.participant', participant
-    @calibrate()
+    selectParticipant: (participant) ->
+      @set 'model.participant', participant
+      @calibrate()
 
-  calibrate: ->
-    @get('model').calibrate()
-    Ember.run.next this, () -> @get('dataAdapter').start()
+    calibrate: ->
+      @get('model').calibrate()
+      Ember.run.next this, () -> @get('dataAdapter').start()
 
-  run: ->
-    @get('model').run()
-    ##Ember.run.later this, (() ->
-     # console.log 'going fullscreen'
-    #  @trigger 'onFullscreen'), 500
+    run: ->
+      @get('model').run()
+      ##Ember.run.later this, (() ->
+       # console.log 'going fullscreen'
+      #  @trigger 'onFullscreen'), 500
 
-    Ember.run.later this, (() ->
-      console.log 'playing'
-      @trigger 'onPlay'), 1000
+      Ember.run.later this, (() ->
+        console.log 'playing'
+        @trigger 'onPlay'), 1000

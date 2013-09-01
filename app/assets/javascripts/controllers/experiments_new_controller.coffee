@@ -1,5 +1,4 @@
 App.ExperimentsNewController = Em.ObjectController.extend
-
   availableMedia: (->
     mediaType = @get 'selectedMediaType'
     switch mediaType

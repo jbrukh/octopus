@@ -1,26 +1,8 @@
 App.RecordingCloudController = Em.ObjectController.extend App.RecordableShow,
-  save: ->
-    model = @get 'model'
-
-    model.set 'name', @get('newName')
-    model.set 'description', @get('newDescription')
-    model.save().then =>
-      @send('close')
-
   displayName: (->
     name = @get 'model.name'
     name || @get('model.id')
   ).property('model.name')
-
-  processFFT: ->
-    console.log 'Processing FFT'
-    @get('model').process('fft')
-
-  createTag: ->
-    console.log 'create tag'
-    tagging = @get 'tagging'
-    tagging.set('recording', @get('model'))
-    tagging.save()
 
   recordingData: (->
     return unless @get 'model.attachment.isLoaded'
@@ -39,3 +21,22 @@ App.RecordingCloudController = Em.ObjectController.extend App.RecordableShow,
 
     resultData
   ).property('model.attachment.isLoaded')
+
+  actions:
+    save: ->
+      model = @get 'model'
+
+      model.set 'name', @get('newName')
+      model.set 'description', @get('newDescription')
+      model.save().then =>
+        @send('close')
+
+    processFFT: ->
+      console.log 'Processing FFT'
+      @get('model').process('fft')
+
+    createTag: ->
+      console.log 'create tag'
+      tagging = @get 'tagging'
+      tagging.set('recording', @get('model'))
+      tagging.save()
