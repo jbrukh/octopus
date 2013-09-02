@@ -66,8 +66,7 @@ gem 'jbuilder', '~> 1.0.1'
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
 # web server
-gem 'rainbows'
-gem 'em-http-request'
+gem 'puma'
 
 # heroku plogins
 gem 'newrelic_rpm'
