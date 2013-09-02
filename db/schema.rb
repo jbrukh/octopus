@@ -35,8 +35,8 @@ ActiveRecord::Schema.define(version: 20130901215858) do
   create_table "analyses", force: true do |t|
     t.integer  "user_id",      null: false
     t.integer  "recording_id", null: false
-    t.integer  "jid",          null: false
     t.string   "state",        null: false
+    t.string   "jid"
     t.string   "algorithm",    null: false
     t.hstore   "arguments",    null: false
     t.datetime "created_at"

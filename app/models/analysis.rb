@@ -7,12 +7,23 @@ class Analysis < ActiveRecord::Base
 
   before_validation :initialize_arguments, :on => :create, :if => :can_initialize_arguments
 
-  state_machine :state, :initial => :processing do
-    after_transition :on => :processed, :do => :save!
+  state_machine :state, :initial => :pending do
+    after_transition :on => :dispatch,  :do => :save!
+    after_transition :on => :completd,  :do => :save!
 
-    event :completed do
-      transition :processing => :processed
+    event :on_dispatch do
+      transition :pending => :processing
     end
+
+    event :on_completed do
+      transition :dispatched => :processed
+    end
+  end
+
+  def dispatch!(jid)
+    self.jid
+    on_dispatch
+    save!
   end
 
 protected

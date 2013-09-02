@@ -9,12 +9,14 @@ class Api::AnalysisController < ApplicationController
     @analysis.user = current_user
 
     if @analysis.valid?
-      @analysis.jid = GoWorker.perform_async(
+      @analysis.save!
+
+      jid = GoWorker.perform_async(
         :algo_id => @analysis.algorithm,
         :args => @analysis.arguments
       )
 
-      @analysis.save!
+      @analysis.dispatch!(jid)
 
       render json: @analysis, :status => :created
     else

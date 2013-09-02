@@ -2,5 +2,8 @@
 
 FactoryGirl.define do
   factory :analysis do
+    state 'pending'
+    algorithm 'fft'
+    arguments {}
   end
 end
