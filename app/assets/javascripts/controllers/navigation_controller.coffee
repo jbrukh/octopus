@@ -9,10 +9,11 @@ App.NavigationController = Em.Controller.extend
     return role == 'admin'
   ).property('currentUser.isSignedIn', 'currentUser.role')
 
-  signOut: ->
-    url = "http://#{window.location.host}/users/sign_out"
-    $.ajax
-      url: url
-      type: 'DELETE'
-      success: (result) ->
-        window.location = "http://#{window.location.host}"
+  actions:
+    signOut: ->
+      url = "http://#{window.location.host}/users/sign_out"
+      $.ajax
+        url: url
+        type: 'DELETE'
+        success: (result) ->
+          window.location = "http://#{window.location.host}"

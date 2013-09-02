@@ -6,7 +6,7 @@ App.SlideshowsNewRoute = Ember.Route.extend
   deactivate: ->
     @transaction.rollback() if @transaction
 
-  events:
+  actions:
     save: ->
       @currentModel.on 'didCreate', =>
         Ember.run.next this, =>

@@ -11,13 +11,6 @@ App.ParticipantsIndexController = Em.ArrayController.extend App.Pageable,
     return 'participants.page'
   ).property()
 
-  destroyParticipant: (participant) ->
-    participant.deleteRecord()
-
-  select: (participant) ->
-    selector = @get('controllers.currentParticipant')
-    selector.select participant
-
   canSearch: (->
     @get('hasQuery')
   ).property('hasQuery')
@@ -36,8 +29,17 @@ App.ParticipantsIndexController = Em.ArrayController.extend App.Pageable,
     @set 'searchResults', null unless @get 'hasQuery'
   ).observes('query')
 
-  search: ->
-    query = @get 'query'
-    console.log "Searching for participants matching: '#{query}'"
-    searchResults = App.Participant.find { query: query }
-    @set 'searchResults', searchResults
+  actions:
+    destroyParticipant: (participant) ->
+      participant.deleteRecord()
+      @get('model').removeObject(participant)
+
+    select: (participant) ->
+      selector = @get('controllers.currentParticipant')
+      selector.select participant
+
+    search: ->
+      query = @get 'query'
+      console.log "Searching for participants matching: '#{query}'"
+      searchResults = App.Participant.find { query: query }
+      @set 'searchResults', searchResults

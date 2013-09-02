@@ -16,8 +16,8 @@ gem 'sinatra', '>= 1.3.0', :require => nil
 # when ember is released
 #gem 'ember-source', '1.0.0.rc3'
 
-gem 'handlebars-source'#, '1.0.12'
-gem "ember-rails"#, github: 'emberjs/ember-rails'
+gem 'handlebars-source'
+gem "ember-rails"
 
 # static site plugins
 gem 'high_voltage'

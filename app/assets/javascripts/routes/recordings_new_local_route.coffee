@@ -29,7 +29,7 @@ App.RecordingsNewLocalRoute = Ember.Route.extend
     controller = @controllerFor('recordings.new.local')
     controller.stop()
 
-  events:
+  actions:
     retryEndRecord: ->
       controller = @controllerFor('recordings.new.local')
       transition = controller.get('lastTransition')

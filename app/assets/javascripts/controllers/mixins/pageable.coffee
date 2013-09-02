@@ -46,6 +46,7 @@ App.Pageable = Ember.Mixin.create
     # build the pages
     for page in [from..to]
       Em.Object.create
+        pageRoute: @get('pageRoute')
         pageNumber: page
         isCurrentPage: page == currentPage
   ).property('content.meta.total_pages', 'content.meta.page')

@@ -6,7 +6,8 @@ App.RecordingsLocalController = Em.ArrayController.extend App.RecordableList,
     'recordings.new.local'
   ).property()
 
-  upload: (localRecording) ->
-    uploader = @get('uploader')
-    uploader.uploadLocal(localRecording).then =>
-      @transitionToRoute 'recordings.cloud'
+  actions:
+    upload: (localRecording) ->
+      uploader = @get('uploader')
+      uploader.uploadLocal(localRecording).then =>
+        @transitionToRoute 'recordings.cloud'
