@@ -16,14 +16,17 @@ class Analysis < ActiveRecord::Base
     end
 
     event :on_completed do
-      transition :dispatched => :processed
+      transition :processing => :processed
     end
   end
 
   def dispatch!(jid)
     self.jid
     on_dispatch
-    save!
+  end
+
+  def complete!
+    on_completed
   end
 
 protected

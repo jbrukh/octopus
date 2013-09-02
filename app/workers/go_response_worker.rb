@@ -1,7 +1,8 @@
 class GoResponseWorker
   include Sidekiq::Worker
 
-  def perform(response_id)
-    puts "received a response from the go worker: #{response_id}"
+  def perform(analysis_id)
+    analysis = Analysis.find(analysis_id)
+    analysis.complete!
   end
 end

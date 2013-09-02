@@ -30,5 +30,18 @@ describe Analysis do
         expect(analysis.state).to eq('processing')
       end
     end
+
+    context 'processing' do
+      before :each do
+        analysis.dispatch!('jobid')
+      end
+
+      describe '#complete!' do
+        it 'sets state to processed' do
+          analysis.complete!
+          expect(analysis.state).to eq('processed')
+        end
+      end
+    end
   end
 end
