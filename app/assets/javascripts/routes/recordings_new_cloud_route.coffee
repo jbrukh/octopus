@@ -36,7 +36,7 @@ App.RecordingsNewCloudRoute = Ember.Route.extend
     controller = @controllerFor('recordings.new.cloud')
     controller.stop()
 
-  events:
+  actions:
     retryEndRecord: ->
       controller = @controllerFor('recordings.new.cloud')
       transition = controller.get('lastTransition')

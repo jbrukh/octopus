@@ -2,14 +2,14 @@ App.ParticipantsNewRoute = Em.Route.extend
   model: ->
     App.Participant.create()
 
-  events:
+  actions:
     save: ->
       console.log 'Saving participant'
 
       result = @currentModel.save()
 
       # if the model succesfully saves then show the new participant
-      result.then =>
+      result.then () =>
         analytics.track 'create participant'
         @transitionTo 'participant', @currentModel
 

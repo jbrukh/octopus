@@ -1,5 +1,5 @@
 App.RecordingCloudRoute = Em.Route.extend
-  events:
+  actions:
     edit: ->
       @set 'controller.newName', @get('controller.name')
       @set 'controller.newDescription', @get('controller.description')

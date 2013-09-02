@@ -1,4 +1,4 @@
 App.StatusIndexRoute = Ember.Route.extend
-  events:
+  actions:
     goToEditUser: ->
       window.location = "http://#{window.location.host}/users/edit"

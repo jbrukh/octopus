@@ -1,4 +1,5 @@
 App.VideosIndexController = Em.ArrayController.extend
-  destroy: (video) ->
-    video.deleteRecord();
-    video.get("transaction").commit()
+  actions:
+    destroy: (video) ->
+      video.deleteRecord();
+      video.get("transaction").commit()

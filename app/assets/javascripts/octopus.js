@@ -18,15 +18,18 @@
 
 //= require handlebars
 //= require ember
-
 //= require vendor/ember-model-latest
+//= require vendor/ember-states
+
 //= require vendor/moment
 //= require vendor/livestamp
+
 //= require vendor/bootstrap
 //= require vendor/nprogress
 //= require vendor/showdown
 //= require vendor/bootstrap-datepicker
 //= require vendor/filesaver
+
 //= require bootstrapped
 //= require_self
 //= require brain
