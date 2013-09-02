@@ -35,7 +35,7 @@ describe Api::AnalysisController do
         post :create, :recording_id => recording.id, :analysis => { :algorithm => 'unknown' }
       end
 
-      it { should respond_with :bad_request }
+      it { should respond_with :unprocessable_entity }
     end
   end
 end
