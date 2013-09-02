@@ -1,7 +1,7 @@
 class GoResponseWorker
   include Sidekiq::Worker
 
-  def perform()
-    puts 'received a response from the go worker'
+  def perform(response_id)
+    puts "received a response from the go worker: #{response_id}"
   end
 end

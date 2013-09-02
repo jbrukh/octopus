@@ -12,7 +12,7 @@ class Api::AnalysisController < ApplicationController
       @analysis.save!
 
       jid = GoWorker.perform_async(
-        :analysis_id => @analysis.id
+        :analysis_id => @analysis.id.to_s,
         :algo_id => @analysis.algorithm,
         :args => @analysis.arguments
       )
