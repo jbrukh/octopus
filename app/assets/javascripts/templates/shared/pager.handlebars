@@ -4,14 +4,11 @@
       {{#linkTo pageRoute previousPage}}&laquo;{{/linkTo}}
     </li>
 
-    {{#with pageRoute as withRoute}}
       {{#each pages}}
         <li {{bindAttr class="isCurrentPage:active"}}>
-          {{#linkTo withRoute pageNumber}}{{pageNumber}}{{/linkTo}}
+          {{#linkTo pageRoute pageNumber}}{{pageNumber}}{{/linkTo}}
         </li>
       {{/each}}
-
-    {{/with}}
 
     <li {{bindAttr class="isLastPage:disabled"}}>
       {{#linkTo pageRoute nextPage}}&raquo;{{/linkTo}}
