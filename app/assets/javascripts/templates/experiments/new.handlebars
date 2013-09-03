@@ -22,28 +22,32 @@
     </div>
   </div>
 
-  <div class="control-group">
-    <label class="control-label">Media Type</label>
-    <div class="controls">
+  <div class="form-group">
+    <label class="col-md-2 control-label">Media Type</label>
+    <div class="col-md-4">
       {{view Ember.Select
         contentBinding="App.Media.types"
-        valueBinding="selectedMediaType"}}
+        valueBinding="selectedMediaType"
+        class="form-control"}}
     </div>
   </div>
 
-  <div class="control-group">
-    <label class="control-label">Media</label>
-    <div class="controls">
+  <div class="form-group">
+    <label class="col-md-2 control-label">Media</label>
+    <div class="col-md-4">
       {{view Ember.Select
         prompt="Choose some media"
         contentBinding="availableMedia"
         valueBinding="selectedMedia"
         optionValuePath="content.id"
-        optionLabelPath="content.name" }}
+        optionLabelPath="content.name"
+        class="form-control"}}
     </div>
   </div>
 
-  <div class="form-actions">
-    <button type="submit" class="btn btn-primary" {{action save}}>Save</button>
+  <div class="form-group">
+    <div class="col-md-offset-2 col-md-10">
+      <button type="submit" class="btn btn-primary" {{action save}}>Create Experiment</button>
+    </div>
   </div>
 </form>

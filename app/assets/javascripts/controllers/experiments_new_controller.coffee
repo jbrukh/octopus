@@ -9,5 +9,5 @@ App.ExperimentsNewController = Em.ObjectController.extend
   updateSelectedMedia: (->
     selected = @get('selectedMedia')
     return unless selected > 0
-    @set 'model.media', App.Media.createRecord({id: selected})
+    @set 'model.media', App.Media.create({id: selected})
   ).observes('selectedMedia')

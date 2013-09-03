@@ -2,7 +2,7 @@ attr = Ember.attr
 belongsTo = Ember.belongsTo
 
 App.Experiment = Ember.Model.extend
-  media:        belongsTo('App.Media')
+  media:        belongsTo('App.Media', { key: 'media_id' })
 
   name:         attr()
   description:  attr()

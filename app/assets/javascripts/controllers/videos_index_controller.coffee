@@ -1,5 +1,5 @@
 App.VideosIndexController = Em.ArrayController.extend
   actions:
     destroy: (video) ->
-      video.deleteRecord();
-      video.get("transaction").commit()
+      return unless confirm('Are you sure you want to delete this video?')
+      video.deleteRecord()

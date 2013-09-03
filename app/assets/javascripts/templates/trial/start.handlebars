@@ -1,10 +1,10 @@
-<div class="page-header">
-  <ul class="breadcrumb">
-    <li>{{#linkTo 'experiments.index'}}Experiments{{/linkTo}}</li>
-    <li>{{#linkTo 'experiment.index' experiment}}{{experiment.name}}{{/linkTo}}</li>
-    <li class="active">New Trial</li>
-  </ul>
-</div>
+<ul class="breadcrumb">
+  <li>{{#linkTo 'experiments.index'}}Experiments{{/linkTo}}</li>
+  <li>{{#linkTo 'experiment.index' experiment}}{{experiment.name}}{{/linkTo}}</li>
+  <li class="active">New Trial</li>
+</ul>
+
+<hr/>
 
 {{#unless participant}}
   <div class="well">

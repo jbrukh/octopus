@@ -7,7 +7,6 @@ App.RecordableList = Ember.Mixin.create
     if shouldConfirm
       return unless confirm('Are you sure you want to delete this recording')
 
-    console.log 'here'
     recording.deleteRecord()
 
     # we need to call remove object here because the contents might be

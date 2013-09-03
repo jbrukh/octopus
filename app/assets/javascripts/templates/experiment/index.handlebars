@@ -1,7 +1,15 @@
-<div class="page-header">
-  <div class="pull-right">
-    {{#linkTo 'trial.start' model class="btn btn-success"}}Start Trial{{/linkTo}}
+<div class="row">
+  <div class="col-md-8">
+    <ul class="breadcrumb">
+      <li>{{#linkTo 'experiments.index'}}Experiments{{/linkTo}}</li>
+      <li>{{name}}</li>
+    </ul>
   </div>
-
-  <h3>{{name}}</h3>
+  <div class="col-md-4">
+    <div class="pull-right">
+      {{#linkTo 'trial.start' model class="btn btn-success"}}
+        Start Trial
+      {{/linkTo}}
+    </div>
+  </div>
 </div>
