@@ -1,7 +1,7 @@
 attr = Ember.attr
 
 App.Video = App.Media.extend
-  attachment: attr()
+  dataUrl: attr()
 
 App.Video.url = "/api/videos"
 App.Video.rootKey = 'video'
