@@ -20,8 +20,7 @@ class Analysis < ActiveRecord::Base
     end
   end
 
-  def dispatch!(jid)
-    self.jid
+  def dispatch!
     on_dispatch
   end
 

@@ -11,13 +11,13 @@ class Api::AnalysisController < ApplicationController
     if @analysis.valid?
       @analysis.save!
 
-      jid = GoWorker.perform_async(
+      GoWorker.perform_async(
         :analysis_id => @analysis.id.to_s,
         :algo_id => @analysis.algorithm,
         :args => @analysis.arguments
       )
 
-      @analysis.dispatch!(jid)
+      @analysis.dispatch!
 
       render json: @analysis, :status => :created
     else

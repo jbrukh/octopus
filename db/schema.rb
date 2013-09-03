@@ -36,7 +36,6 @@ ActiveRecord::Schema.define(version: 20130901215858) do
     t.integer  "user_id",      null: false
     t.integer  "recording_id", null: false
     t.string   "state",        null: false
-    t.string   "jid"
     t.string   "algorithm",    null: false
     t.hstore   "arguments",    null: false
     t.datetime "created_at"

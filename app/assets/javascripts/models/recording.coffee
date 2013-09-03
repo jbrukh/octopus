@@ -7,6 +7,7 @@ App.Recording = Ember.Model.extend App.Recordable,
 
   participant:          belongsTo(App.Participant, { key: 'participant', embedded: true })
   taggings:             hasMany('App.Tagging', { key: 'taggings', embedded: true })
+  analyses:             hasMany('App.Analysis', { key: 'analyses', embedded: true })
 
   createdAt:            attr(Date)
   updatedAt:            attr(Date)
@@ -33,7 +34,8 @@ App.Recording = Ember.Model.extend App.Recordable,
     payload = analysis:
       algorithm: algorithm
 
-    $.post("/api/recordings/#{id}/analysis", payload)
+    $.post("/api/recordings/#{id}/analysis", payload).then (data) =>
+      @get('analyses').create(data)
 
 App.Recording.url = "/api/recordings"
 App.Recording.rootKey = 'recording'

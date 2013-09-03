@@ -13,4 +13,5 @@ class RecordingSerializer < ActiveModel::Serializer
 
   has_one   :participant
   has_many  :taggings
+  has_many  :analyses
 end

@@ -5,7 +5,6 @@ class CreateAnalyses < ActiveRecord::Migration
       t.references  :recording,     :null => false
 
       t.string  :state,           :null => false
-      t.string  :jid
 
       t.string  :algorithm,      :null => false
       t.hstore  :arguments,      :null => false
