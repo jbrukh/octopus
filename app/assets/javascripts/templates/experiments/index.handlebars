@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="col-offset-10 col-lg-2">
+  <div class="col-md-offset-10 col-md-2">
     {{#linkTo 'experiments.new' class="btn btn-success pull-right"}}
       <i class="icon-plus"></i> New Experiment
     {{/linkTo}}
@@ -43,7 +43,9 @@
             <td>
               <div class="pull-right">
                 {{#linkTo 'trial.start' this class="btn btn-mini btn-success"}}Start Trial{{/linkTo}}
-                <button class="btn btn-mini btn-danger" {{action destroy this bubbles=false}}>Delete</button>
+                <button class="btn btn-mini btn-danger" {{action destroy this bubbles='false'}}>
+                  Delete
+                </button>
               </div>
             </td>
           {{/linkTo}}
