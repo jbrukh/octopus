@@ -1,7 +1,7 @@
 App.CurrentParticipantController = Em.ObjectController.extend
-  actions:
-    select: (participant) ->
-      @set 'model', participant
+  select: (participant) ->
+    @set 'model', participant
 
+  actions:
     clear: ->
       @set 'model', null
