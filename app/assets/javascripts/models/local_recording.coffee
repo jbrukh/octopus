@@ -3,11 +3,11 @@ hasMany = Ember.hasMany
 belongsTo = Ember.belongsTo
 
 App.LocalRecording = Ember.Model.extend App.Recordable,
-  id: attr()
-  file: attr()
-  lastModified: attr(UnixDate)
-  sizeBytes: attr()
-  durationMs: attr(Number)
+  id:             attr()
+  file:           attr()
+  lastModified:   attr(UnixDate)
+  sizeBytes:      attr()
+  duration:       attr(Number)
 
 App.LocalRecording.camelizeKeys = true
 App.LocalRecording.adapter = App.ConnectorAdapter.create()

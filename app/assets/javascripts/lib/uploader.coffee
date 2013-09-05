@@ -2,6 +2,7 @@ App.Uploader = Em.Object.extend
   uploadLocal: (localRecording) ->
     recording = App.Recording.create
       'resourceId': localRecording.get('id')
+      'durationMs': localRecording.get('duration')
 
     recording.save().then =>
       @upload(recording).then =>
