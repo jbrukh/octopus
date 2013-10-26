@@ -23,7 +23,7 @@ gem "ember-rails"
 gem 'high_voltage'
 
 # active admin
-gem 'activeadmin',         github: 'gregbell/active_admin', branch: 'rails4'
+gem 'activeadmin',         github: 'gregbell/active_admin'
 gem 'ransack'
 gem 'inherited_resources', github: 'josevalim/inherited_resources'
 gem 'formtastic',          github: 'justinfrench/formtastic'
