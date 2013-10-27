@@ -80,7 +80,7 @@
         <div class="input-group">
           {{input value=propertyName type=text class='form-control'}}
           <span class="input-group-btn">
-            <button class="btn btn-default" type="button" {{bindAttr class="isValidProperty::disabled"}} {{action addProperty}}>
+            <button type="button" {{bindAttr class=":btn :btn-info isValidProperty::disabled"}} {{action addProperty}}>
              <i class="icon-plus"></i> Add Field
             </button>
           </span>
