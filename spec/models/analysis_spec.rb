@@ -26,14 +26,14 @@ describe Analysis do
 
     describe '#dispatch!' do
       it 'sets state to processing' do
-        analysis.dispatch!('jid')
+        analysis.dispatch!
         expect(analysis.state).to eq('processing')
       end
     end
 
     context 'processing' do
       before :each do
-        analysis.dispatch!('jobid')
+        analysis.dispatch!
       end
 
       describe '#complete!' do
