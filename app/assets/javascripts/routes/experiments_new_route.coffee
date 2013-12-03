@@ -1,6 +1,6 @@
 App.ExperimentsNewRoute = Ember.Route.extend
   model: ->
-    App.Experiment.create()
+    @get('store').createRecord('experiment')
 
   actions:
     save: ->

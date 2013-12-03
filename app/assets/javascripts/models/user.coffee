@@ -1,7 +1,6 @@
-attr = Ember.attr
+attr = DS.attr
 
-App.User = Ember.Model.extend
-  id:                   attr()
+App.User = DS.Model.extend
   firstName:            attr()
   lastName:             attr()
   email:                attr()
@@ -15,7 +14,7 @@ App.User = Ember.Model.extend
     @get('role') == 'admin'
   ).property('role')
 
-App.User.url = "/api/users"
-App.User.rootKey = 'user'
-App.User.camelizeKeys = true
-App.User.adapter = Ember.RESTAdapter.create()
+#App.User.url = "/api/users"
+#App.User.rootKey = 'user'
+#App.User.camelizeKeys = true
+#App.User.adapter = Ember.RESTAdapter.create()

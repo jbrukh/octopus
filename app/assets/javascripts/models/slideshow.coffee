@@ -1,1 +1,1 @@
-App.Slideshow = App.Media.extend()
+# App.Slideshow = App.Media.extend()

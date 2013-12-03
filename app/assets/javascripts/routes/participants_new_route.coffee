@@ -1,6 +1,6 @@
 App.ParticipantsNewRoute = Em.Route.extend
   model: ->
-    App.Participant.create()
+    @get('store').createRecord('participant')
 
   actions:
     save: ->

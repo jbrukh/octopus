@@ -1,1 +1,1 @@
-App.Property = Em.Object.extend()
+# App.Property = Em.Object.extend()

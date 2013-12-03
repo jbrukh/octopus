@@ -3,15 +3,16 @@ Ember.Application.initializer
   after: "environment",
 
   initialize: (container) ->
-    curretUserAttributes = $('meta[name="current-user"]').attr('content')
+    currentUserAttributes = $('meta[name="current-user"]').attr('content')
 
-    if curretUserAttributes
+    if currentUserAttributes
       # parsed the current-user meta tag
-      parsed = JSON.parse(curretUserAttributes)
+      parsed = JSON.parse(currentUserAttributes)
 
       # create a load the user
-      user = App.User.create()
-      user.load(parsed.id, parsed)
+      store = container.lookup('store:main')
+      store.pushPayload('user', {users: [parsed]})
+      user = store.getById('user', parsed.id)
 
       # identify this user with analytics
       analytics.identify user

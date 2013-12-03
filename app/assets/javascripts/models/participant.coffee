@@ -1,18 +1,17 @@
-attr = Ember.attr
-hasMany = Ember.hasMany
-belongsTo = Ember.belongsTo
+attr = DS.attr
+#hasMany = Ember.hasMany
+#belongsTo = Ember.belongsTo
 
-App.Participant = Ember.Model.extend
-  id:         attr()
+App.Participant = DS.Model.extend
   firstName:  attr()
   lastName:   attr()
   email:      attr()
   gender:     attr()
   birthday:   attr()
-  createdAt:  attr(Date)
+  createdAt:  attr('date')
   owner:      attr()
 
-  properties: attr(Properties)
+  #properties: attr(Properties)
 
   fullName: (->
     first = @get('firstName')
@@ -60,8 +59,8 @@ App.Participant.reopenClass
     Em.Object.create({id: 'f', gender: 'Female'})
   ]
 
-App.Participant.url = "/api/participants"
-App.Participant.rootKey = 'participant'
-App.Participant.collectionKey = 'participants'
-App.Participant.camelizeKeys = true
-App.Participant.adapter = App.MetaRESTAdapter.create()
+#App.Participant.url = "/api/participants"
+#App.Participant.rootKey = 'participant'
+#App.Participant.collectionKey = 'participants'
+#App.Participant.camelizeKeys = true
+#App.Participant.adapter = App.MetaRESTAdapter.create()

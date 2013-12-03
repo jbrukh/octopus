@@ -14,10 +14,10 @@ gem 'sinatra', '>= 1.3.0', :require => nil
 
 # use the vendor ember for now, reinstate this
 # when ember is released
-#gem 'ember-source', '1.0.0.rc3'
 
-gem 'handlebars-source'
-gem "ember-rails"
+gem 'ember-rails'
+gem 'ember-source', '1.3.0.beta.1' # or the version you need
+gem 'ember-data-source', '~> 1.0.0.beta.3'
 
 # static site plugins
 gem 'high_voltage'

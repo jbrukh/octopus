@@ -2,7 +2,7 @@ App.ExperimentsNewController = Em.ObjectController.extend
   availableMedia: (->
     mediaType = @get 'selectedMediaType'
     switch mediaType
-      when 'video' then App.Video.find()
+      when 'video' then @get('store').find('video')
       else Em.A []
   ).property('selectedMediaType')
 

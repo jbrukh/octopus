@@ -15,7 +15,7 @@ Ember.Application.initializer
     container.typeInjection 'route', 'connector', 'connector:instance'
 
     # register it with the connector adapter so we can use it to load models
-    App.ConnectorAdapter.connectorInstance = connector
+    #App.ConnectorAdapter.connectorInstance = connector
 
     console.debug 'registered connector'
 

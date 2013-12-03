@@ -1,2 +1,3 @@
 App.ExperimentsIndexRoute = Ember.Route.extend
-  model: -> App.Experiment.find()
+  model: ->
+    @get('store').find('experiment')

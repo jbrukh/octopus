@@ -1,3 +1,3 @@
 App.ParticipantsIndexRoute = Em.Route.extend
   model: ->
-    App.Participant.findQuery({page: 1})
+    @get('store').find 'participant', { page: 1 }

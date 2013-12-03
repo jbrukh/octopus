@@ -18,7 +18,7 @@
 
 //= require handlebars
 //= require ember
-//= require vendor/ember-model-latest
+//= require ember-data
 //= require vendor/ember-states
 
 //= require vendor/moment
@@ -40,6 +40,10 @@ App = Ember.Application.create({
   //LOG_TRANSITIONS: true,
   //LOG_VIEW_LOOKUPS: true,
   //LOG_ACTIVE_GENERATION: true
+});
+
+App.ApplicationAdapter = DS.ActiveModelAdapter.extend({
+  namespace: 'api'
 });
 
 //= require_tree .

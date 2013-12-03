@@ -39,8 +39,8 @@
       <label class="col-md-2 control-label">Gender</label>
       <div class="col-md-4">
         {{view Ember.Select
-          valueBinding=model.gender
-          contentBinding="App.Participant.genders"
+          value=model.gender
+          content=App.Participant.genders
           optionValuePath="content.id"
           optionLabelPath="content.gender"
           class="form-control"
@@ -51,7 +51,7 @@
     <div class="form-group">
       <label class="col-md-2 control-label">Birthday</label>
       <div class="col-md-4">
-        {{view App.DatePicker valueBinding=model.birthday}}
+        {{view App.DatePicker value=model.birthday}}
       </div>
     </div>
   </fieldset>

@@ -1,9 +1,9 @@
-attr = Ember.attr
+attr = DS.attr
 
-App.Media = Ember.Model.extend
+App.Media = DS.Model.extend
   name:         attr()
   description:  attr()
-  createdAt:    attr(Date)
+  createdAt:    attr('date')
   owner:        attr()
 
 App.Media.reopenClass
